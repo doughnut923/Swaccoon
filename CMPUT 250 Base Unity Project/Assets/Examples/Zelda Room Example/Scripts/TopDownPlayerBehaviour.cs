@@ -9,8 +9,16 @@ public enum PlayerState{
     WALKING,
     FALLING,
     ATTACKING,
-    SWAPPING
+    SWAPPING,
+    SWAPPED_OUT
 }
+
+/***
+Basically a PlayerBehaviour will have the states above, and only one of them will be active at a time.
+The inactive character will be the SWAPPED_OUT state, and the active character will be one of the others.
+The switching between inactive and active states of characters will be controlled by the PlayerManager
+And the switching between the active states will be controlled by the PlayerBehaviour itself.
+***/
 
 public class TopDownPlayerBehaviour : TopDownEntityBehaviour
 {
@@ -25,7 +33,7 @@ public class TopDownPlayerBehaviour : TopDownEntityBehaviour
     [SerializeField] public KeyCode down = KeyCode.DownArrow;
     [SerializeField] public KeyCode attack = KeyCode.Space;
     [SerializeField] public KeyCode reset = KeyCode.R;
-
+    [SerializeField] public KeyCode swap = KeyCode.E;
     // public variables
     public float attackCooldown = 2f;
 
@@ -99,6 +107,8 @@ public class TopDownPlayerBehaviour : TopDownEntityBehaviour
 
     // key parameters
     private int _keys = 0;
+
+    private Vector2 movement = Vector2.zero;
     
     // Start is called before the first frame update
     override public void Start()
@@ -131,48 +141,50 @@ public class TopDownPlayerBehaviour : TopDownEntityBehaviour
     // Update is called once per frame
     override public void FixedUpdate()
     {
+
+        if(_playerState == PlayerState.SWAPPED_OUT || _playerState == PlayerState.SWAPPING){
+            //Possibly sleepping animation
+            //but wil be just idle for now
+            DoIdleAnimation();
+            return;
+        }
+
         base.FixedUpdate();
 
-        // handle attack and damage collisions
-        if (_playerState == PlayerState.ATTACKING || Input.GetKey(attack)){
-            handleAttack();
-        }
-
         // handle walk sound
-        if (!_isFalling && !_isOnIce && lastSafePosition != (Vector2)transform.position){
-            playerWalkSoundSource.volume = 0.25f;
-            playerWalkSoundSource.clip = walkSound;
-            if (!playerWalkSoundSource.isPlaying){
-                playerWalkSoundSource.Play();
-            }
-        }
-        else if (_isOnIce){
-            playerWalkSoundSource.volume = 0.25f;
-            playerWalkSoundSource.clip = slipSound;
-            if (!playerWalkSoundSource.isPlaying){
-                playerWalkSoundSource.Play();
-            }
-        }
-        else{
-            playerWalkSoundSource.volume = Mathf.Clamp(playerWalkSoundSource.volume - 0.05f, 0f, 1f);
-            if (playerWalkSoundSource.volume == 0f){
-                playerWalkSoundSource.Stop();
-            }
-        }
+        // if (!_isFalling && !_isOnIce && lastSafePosition != (Vector2)transform.position){
+        //     playerWalkSoundSource.volume = 0.25f;
+        //     playerWalkSoundSource.clip = walkSound;
+        //     if (!playerWalkSoundSource.isPlaying){
+        //         playerWalkSoundSource.Play();
+        //     }
+        // }
+        // else if (_isOnIce){
+        //     playerWalkSoundSource.volume = 0.25f;
+        //     playerWalkSoundSource.clip = slipSound;
+        //     if (!playerWalkSoundSource.isPlaying){
+        //         playerWalkSoundSource.Play();
+        //     }
+        // }
+        // else{
+        //     playerWalkSoundSource.volume = Mathf.Clamp(playerWalkSoundSource.volume - 0.05f, 0f, 1f);
+        //     if (playerWalkSoundSource.volume == 0f){
+        //         playerWalkSoundSource.Stop();
+        //     }
+        // }
 
         // if we aren't falling, save our last safe position!
-        if (!_isFalling){
-            lastSafePosition = transform.position;
-        }
+        // if (!_isFalling){
+        //     lastSafePosition = transform.position;
+        // }
 
         // reset button
         if (Input.GetKey(reset)){
             handleDeath();
         }
-
-        handleAnimation();
-
         
+        getMovement();
+        handleAnimation();
 
         if (_isDead){
             // only die once we are done playing the death sound!
@@ -186,6 +198,7 @@ public class TopDownPlayerBehaviour : TopDownEntityBehaviour
             //Destroy(gameObject);
         }
     }
+
 
     override public Vector2 getMovement(){
         Vector2 update = Vector2.zero;
@@ -219,159 +232,54 @@ public class TopDownPlayerBehaviour : TopDownEntityBehaviour
         return update;
     }
 
-    void handleAttack(){
-        // if we can't attack, don't
-        if (_isAttacking || _isFalling || _isOnIce || _isDead) { return; }
-
-    //     // shoot out a ray looking to ATTACK
-    //     // _canAttack = false;
-    //     _isAttacking = true;
-    //     _playerState = PlayerState.ATTACKING;
-    //     Vector2 attackDir = dirToVec();
-    //     Vector2 extents = _collider.bounds.extents;
-
-    //     Vector2 posUp = new Vector2(rb.position.x - extents.x, rb.position.y);
-    //     Vector2 posDown = new Vector2(rb.position.x + extents.x, rb.position.y);
-
-    //     RaycastHit2D attackRay = Physics2D.Raycast(rb.position, attackDir);
-    //     RaycastHit2D attackRayUp = Physics2D.Raycast(posUp, attackDir);
-    //     RaycastHit2D attackRayDown = Physics2D.Raycast(posDown, attackDir);
-
-    //     if (attackCollision(attackRay)){
-    //         attackRay.collider.gameObject.SendMessage("takeDamage");
-    //     }
-    //     if (attackCollision(attackRayUp)){
-    //         attackRayUp.collider.gameObject.SendMessage("takeDamage");
-    //     }
-    //     if (attackCollision(attackRayDown)){
-    //         attackRayDown.collider.gameObject.SendMessage("takeDamage");
-    //     }
-
-    //     // play the attack sound!
-    //     playerSoundSource.clip = attackSound;
-    //     playerSoundSource.Play();
-
-    //     _currentFrame = 0;
-    // }
-
-    // override public void takeDamage(){
-    //     int currHealth = _health;
-    //     base.takeDamage();
-    //     if (_health > 0){
-    //         PlayerPrefs.SetInt("health", _health);
-    //     }
-
-    //     // if we took damage, do the hurt animation and play the sound
-    //     if (currHealth != _health){
-    //         _isHurt = true;
-    //         _currentHurtFrame = 0f;
-
-    //         // if health is 0, we're going to play the death sound instead!
-    //         if (_health > 0){
-    //             playerSoundSource.clip = hurtSound;
-    //             playerSoundSource.Play();
-    //         }
-    //     }
-    // }
-
-    // override public void handleDeath(){
-    //     _isDead = true;
-
-    //     playerSoundSource.clip = deathSound;
-    //     playerSoundSource.Play();
+    public void DoIdleAnimation(){
+        _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _walkFramesPerSecond, 6f);
+            switch (_currDir){
+                case Direction.North:
+                    currentSprite.sprite = idleSpriteUp[Mathf.FloorToInt(_currentFrame)];
+                    break;
+                case Direction.East:
+                    currentSprite.sprite = idleSpriteRight[Mathf.FloorToInt(_currentFrame)];
+                    break;
+                case Direction.South:
+                    currentSprite.sprite = idleSpriteDown[Mathf.FloorToInt(_currentFrame)];
+                    break;
+                case Direction.West:
+                    currentSprite.sprite = idleSpriteLeft[Mathf.FloorToInt(_currentFrame)];
+                    break;
+                default:
+                    break;
+            }
     }
 
     public void handleAnimation(){
-    //     // check if we are attacking!
-    //     if (_isAttacking){
-    //         int lastFrame = Mathf.FloorToInt(_currentFrame);
-    //         _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _attackFramesPerSecond, 4f);
 
-    //         // if we are done attacking, allow movement again and play the appropriate animation!
-    //         if (lastFrame == 3 && Mathf.FloorToInt(_currentFrame) == 0){
-    //             _isAttacking = false;
-    //             _playerState = PlayerState.ATTACKING;
-    //         }
-    //         // otherwise, time to attack
-    //         else{
-    //             switch (_currDir){
-    //                 case Direction.North:
-    //                     currentSprite.sprite = attackSpritesUp[Mathf.FloorToInt(_currentFrame)];
-    //                     break;
-    //                 case Direction.East:
-    //                     currentSprite.sprite = attackSpritesRight[Mathf.FloorToInt(_currentFrame)];
-    //                     break;
-    //                 case Direction.South:
-    //                     currentSprite.sprite = attackSpritesDown[Mathf.FloorToInt(_currentFrame)];
-    //                     break;
-    //                 case Direction.West:
-    //                     currentSprite.sprite = attackSpritesLeft[Mathf.FloorToInt(_currentFrame)];
-    //                     break;
-    //                 default:
-    //                     break;
-    //             }
-    //             return;
-    //         }
-            
-    //     }
+        // // if we are falling, do the falling animation lol
+        // if (_isFalling){
+        //     int lastFrame = Mathf.FloorToInt(_currentFrame);
+        //     _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _fallFramesPerSecond, 6f);
 
-        // if we are falling, do the falling animation lol
-        if (_isFalling){
-            int lastFrame = Mathf.FloorToInt(_currentFrame);
-            _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _fallFramesPerSecond, 6f);
-
-            // we are done falling! set our position accordingly and take some damage
-            if (lastFrame == 5 && Mathf.FloorToInt(_currentFrame) == 0){
-                _isFalling = false;
-                setInvincible(false);
-                transform.position = lastSafePosition;
-                takeDamage();
-            }
-            // keep playing the animation otherwise
-            else{
-                currentSprite.sprite = fallSprites[Mathf.FloorToInt(_currentFrame)];
-                return;
-            }
-        }
-
-    //     if (_isHurt){
-    //         // check if we should be hurt anymore
-    //         _currentHurtFrame += 1;
-    //         if (_currentHurtFrame > _hurtFrames){
-    //             _isHurt = false;
-    //             _currentFrame = 0f;
-    //         }
-    //         // otherwise, play the hurt animation
-    //         else{
-    //             switch (_currDir){
-    //                 case Direction.North:
-    //                     currentSprite.sprite = hurtSpriteUp;
-    //                     break;
-    //                 case Direction.East:
-    //                     currentSprite.sprite = hurtSpriteRight;
-    //                     break;
-    //                 case Direction.South:
-    //                     currentSprite.sprite = hurtSpriteDown;
-    //                     break;
-    //                 case Direction.West:
-    //                     currentSprite.sprite = hurtSpriteLeft;
-    //                     break;
-    //                 default:
-    //                     break;
-    //             }
-    //             return;
-    //         }
-    //     }
+        //     // we are done falling! set our position accordingly and take some damage
+        //     if (lastFrame == 5 && Mathf.FloorToInt(_currentFrame) == 0){
+        //         _isFalling = false;
+        //         setInvincible(false);
+        //         transform.position = lastSafePosition;
+        //         takeDamage();
+        //     }
+        //     // keep playing the animation otherwise
+        //     else{
+        //         currentSprite.sprite = fallSprites[Mathf.FloorToInt(_currentFrame)];
+        //         return;
+        //     }
+        // }
 
         // otherwise, update according to current movement
-        Vector2 movement = getMovement();
         
         // should be idle, set idle sprite based on direction
         if ((movement.x == 0 && movement.y == 0) || _isOnIce){
             _playerState = PlayerState.IDLE;
             
             _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _walkFramesPerSecond, 6f);
-            Debug.Log(_currentFrame);
             switch (_currDir){
                 case Direction.North:
                     currentSprite.sprite = idleSpriteUp[Mathf.FloorToInt(_currentFrame)];
