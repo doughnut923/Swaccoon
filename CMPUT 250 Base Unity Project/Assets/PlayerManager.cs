@@ -12,10 +12,9 @@ public enum PlayerManagerState
 //The Class basically changes the state of the character based on the input from the player essentially for swapping the character
 public class PlayerManager : MonoBehaviour
 {
-
     public static PlayerManagerState _playerManagerState { get; set; } = PlayerManagerState.NOT_SWAPPING;
 
-    [SerializeField] private GameObject CurrentCharacter;
+    [SerializeField] public GameObject CurrentCharacter;
     [SerializeField] private List<GameObject> SwappableCharacters = new List<GameObject>(3);    //List of characters that can be swapped
     [SerializeField] private List<GameObject> UIOutlines = new List<GameObject>(3);             //Reference to list of UI elements displayed for swapping the chaaracter and for the player to see which character they are in control of
     [SerializeField] private int currentIndex = 0;                                              //Index of the current character
