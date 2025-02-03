@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class TopDownUIKeysBehaviour : MonoBehaviour
+public class UIKeysBehaviour : MonoBehaviour
 {
 
     // text component
@@ -11,14 +11,14 @@ public class TopDownUIKeysBehaviour : MonoBehaviour
 
     // the player
     private Rigidbody2D player;
-    private TopDownPlayerBehaviour playerScript;
+    private PlayerBehaviour playerScript;
 
     // Start is called before the first frame update
     void Start()
     {
         tmp = (TextMeshProUGUI)GameObject.Find("Text").GetComponent<TextMeshProUGUI>();
         player = (Rigidbody2D)GameObject.Find("Player").GetComponent("Rigidbody2D");
-        playerScript = (TopDownPlayerBehaviour)player.gameObject.GetComponent(typeof(TopDownPlayerBehaviour));
+        playerScript = (PlayerBehaviour)player.gameObject.GetComponent(typeof(PlayerBehaviour));
     }
 
     // Update is called once per frame
