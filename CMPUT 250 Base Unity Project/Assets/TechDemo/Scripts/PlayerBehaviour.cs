@@ -155,7 +155,6 @@ public class PlayerBehaviour : EntityBehaviour
         }
 
         base.FixedUpdate();
-
         // handle walk sound
         // if (!_isFalling && !_isOnIce && lastSafePosition != (Vector2)transform.position){
         //     playerWalkSoundSource.volume = 0.25f;

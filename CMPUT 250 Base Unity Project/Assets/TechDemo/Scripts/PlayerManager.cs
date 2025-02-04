@@ -24,6 +24,8 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private KeyCode swap = KeyCode.T;                                   //Key to cancel the swap
     [SerializeField] private KeyCode cancel = KeyCode.Escape;                                   //Key to cancel the swap
 
+    public int SwapsLeft = 3;
+
     void Start()
     {
         CurrentCharacter = SwappableCharacters[currentIndex];
@@ -117,6 +119,11 @@ public class PlayerManager : MonoBehaviour
         */
     private void StartSwap()
     {
+        if (SwapsLeft <= 0)
+        {
+            return;
+        }
+
         if (_playerManagerState == PlayerManagerState.NOT_SWAPPING)
         {
             _playerManagerState = PlayerManagerState.Swapping;
@@ -166,6 +173,8 @@ public class PlayerManager : MonoBehaviour
                     character.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.IDLE;
                 }
             }
+
+            SwapsLeft--;
         }
     }
 
