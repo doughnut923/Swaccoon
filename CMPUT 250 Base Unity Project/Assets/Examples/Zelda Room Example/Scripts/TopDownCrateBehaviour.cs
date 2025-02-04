@@ -48,17 +48,18 @@ public class TopDownCrateBehaviour : TopDownEntityBehaviour
     override public Vector2 getMovement()
     {
         Vector2 update = Vector2.zero;
-       
+
         if (!_lockForce)
         {
             lastPlayerLocation = playerScript.dirToVec();
-        }    
+        }
         // if we are on ice, we're moving in our current direction
         if (_isOnIce)
         {
             boxSoundSource.volume = 1f;
             boxSoundSource.clip = boxIceSlide;
-            if (!boxSoundSource.isPlaying){
+            if (!boxSoundSource.isPlaying)
+            {
                 boxSoundSource.Play();
             }
             _lockForce = true;
@@ -82,7 +83,7 @@ public class TopDownCrateBehaviour : TopDownEntityBehaviour
             Vector2 left = new Vector2(position.x - extents.x, position.y);
             Vector2 up = new Vector2(position.x, position.y + extents.y);
             Vector2 down = new Vector2(position.x, position.y - extents.y);
-            
+
             Vector2 rightDir = new Vector2(1, 0);
             Vector2 leftDir = new Vector2(-1, 0);
             Vector2 upDir = new Vector2(0, 1);
@@ -97,33 +98,41 @@ public class TopDownCrateBehaviour : TopDownEntityBehaviour
             Vector2 playerDirection = playerScript.dirToVec();
 
             // according to case, check if we should be allowed to push the block!
-            if (minDist == rightDist && playerDirection == leftDir){
+            if (minDist == rightDist && playerDirection == leftDir)
+            {
                 update = new Vector2(-1, 0);
             }
-            else if (minDist == leftDist && playerScript.dirToVec() == rightDir){
+            else if (minDist == leftDist && playerScript.dirToVec() == rightDir)
+            {
                 update = new Vector2(1, 0);
             }
-            else if (minDist == upDist && playerScript.dirToVec() == downDir){
+            else if (minDist == upDist && playerScript.dirToVec() == downDir)
+            {
                 update = new Vector2(0, -1);
             }
-            else if (minDist == downDist && playerScript.dirToVec() == upDir){
+            else if (minDist == downDist && playerScript.dirToVec() == upDir)
+            {
                 update = new Vector2(0, 1);
             }
         }
 
         // if we have an update, we need to be making the move sound!
-        if (previousLocation != (Vector2)transform.position){
+        if (previousLocation != (Vector2)transform.position)
+        {
             boxSoundSource.clip = boxGroundPush;
             boxSoundSource.volume = 1f;
-            if (!boxSoundSource.isPlaying){
+            if (!boxSoundSource.isPlaying)
+            {
                 boxSoundSource.Play();
             }
         }
         // if the box is stationary, stop all sound!
-        else{
+        else
+        {
             boxSoundSource.Stop();
             boxSoundSource.volume = Mathf.Clamp(boxSoundSource.volume - 0.1f, 0f, 1f);
-            if (boxSoundSource.volume == 0f){
+            if (boxSoundSource.volume == 0f)
+            {
                 boxSoundSource.Stop();
             }
         }
@@ -162,7 +171,8 @@ public class TopDownCrateBehaviour : TopDownEntityBehaviour
 
             _isOnIce = true;
         }
-        else{
+        else
+        {
             _isOnIce = false;
         }
     }
