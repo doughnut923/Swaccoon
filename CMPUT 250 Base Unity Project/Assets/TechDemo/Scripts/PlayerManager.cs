@@ -28,29 +28,29 @@ public class PlayerManager : MonoBehaviour
     {
         CurrentCharacter = SwappableCharacters[currentIndex];
 
-        // Check for SwappableCharacters being null or empty
-        if (SwappableCharacters == null || SwappableCharacters.Count == 0)
-        {
-            Debug.LogError("SwappableCharacters is null or empty");
-            return;
-        }
+        //// Check for SwappableCharacters being null or empty
+        //if (SwappableCharacters == null || SwappableCharacters.Count == 0)
+        //{
+        //    Debug.LogError("SwappableCharacters is null or empty");
+        //    return;
+        //}
 
-        // Check if currentIndex is valid
-        if (currentIndex < 0 || currentIndex >= SwappableCharacters.Count)
-        {
-            Debug.LogError("currentIndex is out of bounds");
-            return;
-        }
+        //// Check if currentIndex is valid
+        //if (currentIndex < 0 || currentIndex >= SwappableCharacters.Count)
+        //{
+        //    Debug.LogError("currentIndex is out of bounds");
+        //    return;
+        //}
 
-        // Check if the current character is null
-        CurrentCharacter = SwappableCharacters[currentIndex];
-        if (CurrentCharacter == null)
-        {
-            Debug.LogError("Current character at index " + currentIndex + " is null");
-            return;
-        }
+        //// Check if the current character is null
+        //CurrentCharacter = SwappableCharacters[currentIndex];
+        //if (CurrentCharacter == null)
+        //{
+        //    Debug.LogError("Current character at index " + currentIndex + " is null");
+        //    return;
+        //}
 
-        Debug.Log("Current character playing is " + CurrentCharacter.name);
+        //Debug.Log("Current character playing is " + CurrentCharacter.name);
 
         foreach (GameObject person in SwappableCharacters)
         {

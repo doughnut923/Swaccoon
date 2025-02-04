@@ -10,6 +10,7 @@ TagManager:
   - Ice
   - PCGController
   - PCGComponent
+  - Racoon Player
   layers:
   - Default
   - TransparentFX

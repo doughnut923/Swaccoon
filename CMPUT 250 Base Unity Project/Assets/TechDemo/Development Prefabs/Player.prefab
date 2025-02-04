@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2006271616285821622}
+  - component: {fileID: 5418619100219991634}
   - component: {fileID: 2006271616285821579}
   - component: {fileID: 2006271616285821578}
   - component: {fileID: 693238364}
   - component: {fileID: 5998746992836713456}
   - component: {fileID: 8020971037757381641}
-  - component: {fileID: 5418619100219991634}
   - component: {fileID: -76464536692410907}
   m_Layer: 0
   m_Name: Player
@@ -39,6 +39,95 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5418619100219991634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2006271616285821577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1ce5b1154cbe406fbaa68313660014a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  invincibilityTime: 1
+  rb: {fileID: 0}
+  _collider: {fileID: 0}
+  _playerState: 0
+  left: 276
+  right: 275
+  up: 273
+  down: 274
+  attack: 32
+  reset: 114
+  swap: 101
+  attackCooldown: 2
+  idleSpriteUp:
+  - {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  walkSpritesUp:
+  - {fileID: -6358411510385881483, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -6122469512599704747, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 7772193408879962718, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -2524599692705401834, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 6967151936209746986, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -3124884605372549192, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  idleSpriteRight:
+  - {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  walkSpritesRight:
+  - {fileID: -3334996315934385002, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -8076581974082333276, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -7278239577763544788, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -5263749153080092271, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 7231112734061405083, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 8584110993362214456, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  idleSpriteDown:
+  - {fileID: -7149655254542474397, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: -7149655254542474397, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  walkSpritesDown:
+  - {fileID: 4399622216052677518, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -1906566838827814584, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -1906566838827814584, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -7399619259161909340, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -4931093500347432286, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 2308335609822901001, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  idleSpriteLeft:
+  - {fileID: -5273296780164134691, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: -5273296780164134691, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  walkSpritesLeft:
+  - {fileID: -5576590533242094999, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 2800806559522486351, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 7088810788647407318, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -5532615859466041056, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 3081078354943938890, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -5282300517771018440, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  attackSpritesUp: []
+  attackSpritesRight: []
+  attackSpritesDown: []
+  attackSpritesLeft: []
+  fallSprites: []
+  hurtSpriteUp: {fileID: 0}
+  hurtSpriteRight: {fileID: 0}
+  hurtSpriteDown: {fileID: 0}
+  hurtSpriteLeft: {fileID: 0}
+  playerSoundSource: {fileID: 0}
+  attackSound: {fileID: 0}
+  hurtSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  controlSoundSource: {fileID: 0}
+  doorOpenSound: {fileID: 0}
+  keyPickupSound: {fileID: 0}
+  pitFallSound: {fileID: 0}
+  playerWalkSoundSource: {fileID: 0}
+  walkSound: {fileID: 0}
+  slipSound: {fileID: 0}
 --- !u!61 &2006271616285821579
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -374,59 +463,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &5418619100219991634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2006271616285821577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1ce5b1154cbe406fbaa68313660014a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 10
-  invincibilityTime: 1
-  rb: {fileID: 0}
-  _collider: {fileID: 0}
-  _playerState: 0
-  left: 276
-  right: 275
-  up: 273
-  down: 274
-  attack: 32
-  reset: 114
-  swap: 101
-  attackCooldown: 2
-  idleSpriteUp: []
-  walkSpritesUp: []
-  idleSpriteRight: []
-  walkSpritesRight: []
-  idleSpriteDown: []
-  walkSpritesDown: []
-  idleSpriteLeft: []
-  walkSpritesLeft: []
-  attackSpritesUp: []
-  attackSpritesRight: []
-  attackSpritesDown: []
-  attackSpritesLeft: []
-  fallSprites: []
-  hurtSpriteUp: {fileID: 0}
-  hurtSpriteRight: {fileID: 0}
-  hurtSpriteDown: {fileID: 0}
-  hurtSpriteLeft: {fileID: 0}
-  playerSoundSource: {fileID: 0}
-  attackSound: {fileID: 0}
-  hurtSound: {fileID: 0}
-  deathSound: {fileID: 0}
-  controlSoundSource: {fileID: 0}
-  doorOpenSound: {fileID: 0}
-  keyPickupSound: {fileID: 0}
-  pitFallSound: {fileID: 0}
-  playerWalkSoundSource: {fileID: 0}
-  walkSound: {fileID: 0}
-  slipSound: {fileID: 0}
 --- !u!114 &-76464536692410907
 MonoBehaviour:
   m_ObjectHideFlags: 0

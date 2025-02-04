@@ -131,7 +131,7 @@ PrefabInstance:
     - target: {fileID: 2006271616285821577, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player(1)
       objectReference: {fileID: 0}
     - target: {fileID: 2006271616285821622, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
@@ -1449,14 +1449,50 @@ MonoBehaviour:
   reset: 114
   swap: 101
   attackCooldown: 2
-  idleSpriteUp: []
-  walkSpritesUp: []
-  idleSpriteRight: []
-  walkSpritesRight: []
-  idleSpriteDown: []
-  walkSpritesDown: []
-  idleSpriteLeft: []
-  walkSpritesLeft: []
+  idleSpriteUp:
+  - {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  walkSpritesUp:
+  - {fileID: -6358411510385881483, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -6122469512599704747, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 7772193408879962718, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -2524599692705401834, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 6967151936209746986, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -3124884605372549192, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  idleSpriteRight:
+  - {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  walkSpritesRight:
+  - {fileID: -3334996315934385002, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -8076581974082333276, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -7278239577763544788, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -5263749153080092271, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 7231112734061405083, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 8584110993362214456, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  idleSpriteDown:
+  - {fileID: -7149655254542474397, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: -7149655254542474397, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  walkSpritesDown:
+  - {fileID: 4399622216052677518, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -1906566838827814584, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 1287678291942624209, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -7399619259161909340, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -4931093500347432286, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 2308335609822901001, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  idleSpriteLeft:
+  - {fileID: -5273296780164134691, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: -5273296780164134691, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  walkSpritesLeft:
+  - {fileID: -5576590533242094999, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 2800806559522486351, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 7088810788647407318, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -5532615859466041056, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 3081078354943938890, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -5282300517771018440, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   attackSpritesUp: []
   attackSpritesRight: []
   attackSpritesDown: []
@@ -2189,9 +2225,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   puzzleComplete: 0
-  puzzleSoundSource: {fileID: 0}
-  boxCompleteClip: {fileID: 0}
-  puzzleCompleteClip: {fileID: 0}
+  puzzleSoundSource: {fileID: 27692424}
+  boxCompleteClip: {fileID: 8300000, guid: 0342ee12d0df4478496971b48cc41584, type: 3}
+  puzzleCompleteClip: {fileID: 8300000, guid: 97d4d3111397a40648878df1ba6e1d66, type: 3}
 --- !u!114 &1121750724
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2217,14 +2253,50 @@ MonoBehaviour:
   reset: 114
   swap: 101
   attackCooldown: 2
-  idleSpriteUp: []
-  walkSpritesUp: []
-  idleSpriteRight: []
-  walkSpritesRight: []
-  idleSpriteDown: []
-  walkSpritesDown: []
-  idleSpriteLeft: []
-  walkSpritesLeft: []
+  idleSpriteUp:
+  - {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  walkSpritesUp:
+  - {fileID: -6358411510385881483, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -6122469512599704747, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 7772193408879962718, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -2524599692705401834, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 6967151936209746986, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -3124884605372549192, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  idleSpriteRight:
+  - {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  walkSpritesRight:
+  - {fileID: -3334996315934385002, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -8076581974082333276, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -7278239577763544788, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -5263749153080092271, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 7231112734061405083, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 8584110993362214456, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  idleSpriteDown:
+  - {fileID: -7149655254542474397, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: -7149655254542474397, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  walkSpritesDown:
+  - {fileID: 4399622216052677518, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -1906566838827814584, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 1287678291942624209, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -7399619259161909340, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -4931093500347432286, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 2308335609822901001, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  idleSpriteLeft:
+  - {fileID: -5273296780164134691, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: -5273296780164134691, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  walkSpritesLeft:
+  - {fileID: -5576590533242094999, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 2800806559522486351, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 7088810788647407318, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -5532615859466041056, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: 3081078354943938890, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
+  - {fileID: -5282300517771018440, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   attackSpritesUp: []
   attackSpritesRight: []
   attackSpritesDown: []
@@ -11529,6 +11601,11 @@ PrefabInstance:
     - target: {fileID: 2006271616285821577, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2006271616285821577, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2006271616285821622, guid: ec5d4cf984d63344fb93aec78dfc9e47,

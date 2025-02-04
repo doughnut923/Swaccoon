@@ -7,8 +7,10 @@ public class BoxBehaviour : EntityBehaviour
 
     //private TopDownSokobanBehaviour sokobanScript;
     private PlayerBehaviour playerScript;
+    private PlayerBehaviour player1Script;
     private Rigidbody2D player;
-    private Rigidbody2D crate;
+    private Rigidbody2D player1;
+    private Rigidbody2D box;
 
     // ice parameters
     //private Vector2 _closestIce = Vector2.positiveInfinity;
@@ -29,9 +31,11 @@ public class BoxBehaviour : EntityBehaviour
         base.Start();
 
         player = (Rigidbody2D)GameObject.Find("Player").GetComponent("Rigidbody2D");
+        player1 = (Rigidbody2D)GameObject.Find("Player(1)").GetComponent("Rigidbody2D");
         playerScript = (PlayerBehaviour)player.gameObject.GetComponent(typeof(PlayerBehaviour));
+        player1Script = (PlayerBehaviour)player1.gameObject.GetComponent(typeof(PlayerBehaviour));
 
-        crate = gameObject.GetComponent<Rigidbody2D>();
+        box = gameObject.GetComponent<Rigidbody2D>();
         //sokobanScript = (TopDownSokobanBehaviour)player.gameObject.GetComponent(typeof(TopDownSokobanBehaviour));
         Physics2D.IgnoreCollision(gameObject.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
@@ -71,8 +75,13 @@ public class BoxBehaviour : EntityBehaviour
         //    _lockForce = false;
         //}
 
+        
+
+        PlayerBehaviour playerBehaviour = player.GetComponent<PlayerBehaviour>();
+        PlayerBehaviour player1Behaviour = player1.GetComponent<PlayerBehaviour>();
+
         // handle player collision with crate
-        if (Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= 1f)
+        if (Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= 1f || Mathf.Abs(Vector2.Distance(player1.position, transform.position)) <= 1f)
         {
             // check if our position matches with the player
             Vector2 position = rb.position;
@@ -89,32 +98,66 @@ public class BoxBehaviour : EntityBehaviour
             Vector2 upDir = new Vector2(0, 1);
             Vector2 downDir = new Vector2(0, -1);
 
-            float rightDist = Vector2.Distance(right, player.position);
-            float leftDist = Vector2.Distance(left, player.position);
-            float upDist = Vector2.Distance(up, player.position);
-            float downDist = Vector2.Distance(down, player.position);
+            // handles pushing depending on which player is pushing the box
+            // so far only handles 2 players
+            if ((Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= 1f) && (playerBehaviour._playerState == CurrentPlayerState.IDLE)) { // if raccoon is pushing
 
-            float minDist = Mathf.Min(rightDist, leftDist, upDist, downDist);
-            Vector2 playerDirection = playerScript.dirToVec();
+                float rightDist = Vector2.Distance(right, player.position);
+                float leftDist = Vector2.Distance(left, player.position);
+                float upDist = Vector2.Distance(up, player.position);
+                float downDist = Vector2.Distance(down, player.position);
 
-            // according to case, check if we should be allowed to push the block!
-            if (minDist == rightDist && playerDirection == leftDir)
-            {
-                update = new Vector2(-1, 0);
+                float minDist = Mathf.Min(rightDist, leftDist, upDist, downDist);
+                Vector2 playerDirection = playerScript.dirToVec();
+
+                // according to case, check if we should be allowed to push the block!
+                if (minDist == rightDist && playerDirection == leftDir)
+                {
+                    update = new Vector2(-1, 0);
+                }
+                else if (minDist == leftDist && playerScript.dirToVec() == rightDir)
+                {
+                    update = new Vector2(1, 0);
+                }
+                else if (minDist == upDist && playerScript.dirToVec() == downDir)
+                {
+                    update = new Vector2(0, -1);
+                }
+                else if (minDist == downDist && playerScript.dirToVec() == upDir)
+                {
+                    update = new Vector2(0, 1);
+                }
             }
-            else if (minDist == leftDist && playerScript.dirToVec() == rightDir)
+            else if ((Mathf.Abs(Vector2.Distance(player1.position, transform.position)) <= 1f) && (player1Behaviour._playerState == CurrentPlayerState.IDLE))// other player is pushing the box
             {
-                update = new Vector2(1, 0);
-            }
-            else if (minDist == upDist && playerScript.dirToVec() == downDir)
-            {
-                update = new Vector2(0, -1);
-            }
-            else if (minDist == downDist && playerScript.dirToVec() == upDir)
-            {
-                update = new Vector2(0, 1);
+                float rightDist = Vector2.Distance(right, player1.position);
+                float leftDist = Vector2.Distance(left, player1.position);
+                float upDist = Vector2.Distance(up, player1.position);
+                float downDist = Vector2.Distance(down, player1.position);
+
+                float minDist = Mathf.Min(rightDist, leftDist, upDist, downDist);
+                Vector2 player1Direction = player1Script.dirToVec();
+
+                // according to case, check if we should be allowed to push the block!
+                if (minDist == rightDist && player1Direction == leftDir)
+                {
+                    update = new Vector2(-1, 0);
+                }
+                else if (minDist == leftDist && player1Script.dirToVec() == rightDir)
+                {
+                    update = new Vector2(1, 0);
+                }
+                else if (minDist == upDist && player1Script.dirToVec() == downDir)
+                {
+                    update = new Vector2(0, -1);
+                }
+                else if (minDist == downDist && player1Script.dirToVec() == upDir)
+                {
+                    update = new Vector2(0, 1);
+                }
             }
         }
+
 
         // if we have an update, we need to be making the move sound!
         if (previousLocation != (Vector2)transform.position)
@@ -139,6 +182,16 @@ public class BoxBehaviour : EntityBehaviour
 
         return update;
     }
+
+    //bool WhichPlayerIsPushing(string PlayerTag)
+    //{
+    //    GameObject currentPlayer = GameObject.FindGameObjectWithTag(PlayerTag);
+    //    if (currentPlayer != null && (Mathf.Abs(Vector2.Distance(currentPlayer.position, transform.position)) <= 1f))
+    //    {
+    //        return true;
+    //    }
+    //    return false;
+    //}
 
     //Just overlapped a collider 2D
     private void OnTriggerEnter2D(Collider2D collision)
