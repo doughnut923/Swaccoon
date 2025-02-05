@@ -5,7 +5,7 @@ using UnityEngine;
 public class SokobanBehaviour : MonoBehaviour
 {
     // Internal Parameters
-    private int _crates;
+    private int _boxes;
     private int _goals;
 
     // Check if Sokoban puzzle complete
@@ -27,11 +27,11 @@ public class SokobanBehaviour : MonoBehaviour
     void VerifyCrates()
     {
         _goals = GameObject.FindGameObjectsWithTag("Goal").Length;
-        _crates = GameObject.FindGameObjectsWithTag("Crate").Length;
+        _boxes = GameObject.FindGameObjectsWithTag("Crate").Length;
 
-        if (_crates != _goals)
+        if (_boxes != _goals)
         {
-            Debug.LogError(("Number of crates and goals for the puzzle are not equal. \nNumber of Crates: " + _crates + " Number of Goals: " + _goals));
+            Debug.LogError(("Number of boxes and pressure plates for the puzzle are not equal. \nNumber of boxes: " + _boxes + " Number of Goals: " + _goals));
         }
     }
 
@@ -56,6 +56,6 @@ public class SokobanBehaviour : MonoBehaviour
 
     public void DecrementCrates()
     {
-        _crates--;
+        _boxes--;
     }
 }

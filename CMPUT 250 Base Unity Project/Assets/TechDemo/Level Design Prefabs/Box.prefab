@@ -91,10 +91,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4964052204845527533}
+  - component: {fileID: -7508397687440914691}
   - component: {fileID: 4964052204845527539}
   - component: {fileID: 4964052204845527534}
   - component: {fileID: 7096411873445857036}
-  - component: {fileID: -7508397687440914691}
   m_Layer: 0
   m_Name: Box
   m_TagString: Crate
@@ -117,6 +117,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &-7508397687440914691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4964052204845527538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60cad0b6a624741aeb484f042f966be1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 10
+  invincibilityTime: 1
+  rb: {fileID: 0}
+  _collider: {fileID: 0}
+  boxSoundSource: {fileID: 0}
+  boxGroundPush: {fileID: 8300000, guid: 942da1aad966e4d4390e37ab0c572b62, type: 3}
 --- !u!50 &4964052204845527539
 Rigidbody2D:
   serializedVersion: 4
@@ -260,21 +278,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &-7508397687440914691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4964052204845527538}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60cad0b6a624741aeb484f042f966be1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 10
-  invincibilityTime: 1
-  rb: {fileID: 0}
-  _collider: {fileID: 0}
-  boxSoundSource: {fileID: 0}
-  boxGroundPush: {fileID: 0}

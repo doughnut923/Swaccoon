@@ -11,6 +11,7 @@ TagManager:
   - PCGController
   - PCGComponent
   - Racoon Player
+  - Box
   layers:
   - Default
   - TransparentFX
