@@ -346,7 +346,7 @@ public class PlayerBehaviour : EntityBehaviour
         return PlayerPrefs.GetInt("keys");
     }
 
-    public void unlockDoor(bool usedKey)
+    public void unlockGate(bool usedKey)
     {
         if (usedKey)
         {

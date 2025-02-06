@@ -91,7 +91,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7311252006878071649}
-  - component: {fileID: 7311252006878071648}
   - component: {fileID: 7311252006878071651}
   m_Layer: 0
   m_Name: Door
@@ -115,20 +114,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7311252006878071648
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7311252006878071662}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bee4b835ced07c4490f4bbb9640e22f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  openCondition: 0
-  openRadius: 1
 --- !u!61 &7311252006878071651
 BoxCollider2D:
   m_ObjectHideFlags: 0
