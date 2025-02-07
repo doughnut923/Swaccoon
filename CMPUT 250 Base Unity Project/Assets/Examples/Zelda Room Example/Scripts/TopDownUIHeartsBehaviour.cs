@@ -8,14 +8,11 @@ public class TopDownUIHeartsBehaviour : MonoBehaviour
 
     // the player
     private PlayerManager playerManager;
-    private TopDownPlayerBehaviour playerScript;
-
 
     // Start is called before the first frame update
     void Start()
     {
-        playerManager = GameObject.Find("PlayerManager").GetComponent<PlayerManager>();
-        playerScript = playerManager.CurrentCharacter.GetComponent<TopDownPlayerBehaviour>();
+        playerManager = PlayerManager.Instance;
     }
 
     // Update is called once per frame

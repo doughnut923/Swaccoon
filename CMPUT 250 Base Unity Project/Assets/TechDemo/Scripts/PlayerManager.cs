@@ -12,9 +12,19 @@ public enum PlayerManagerState
 //The Class basically changes the state of the character based on the input from the player essentially for swapping the character
 public class PlayerManager : MonoBehaviour
 {
+
+    private static PlayerManager _instance;
+    public static PlayerManager Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+
     public static PlayerManagerState _playerManagerState { get; set; } = PlayerManagerState.NOT_SWAPPING;
 
-    [SerializeField] public GameObject CurrentCharacter;
+    [SerializeField] public GameObject CurrentCharacter { get; private set; }            //Reference to the current character
     [SerializeField] private List<GameObject> SwappableCharacters = new List<GameObject>(3);    //List of characters that can be swapped
     [SerializeField] private List<GameObject> UIOutlines = new List<GameObject>(3);             //Reference to list of UI elements displayed for swapping the chaaracter and for the player to see which character they are in control of
     [SerializeField] private int currentIndex = 0;                                              //Index of the current character
@@ -26,9 +36,17 @@ public class PlayerManager : MonoBehaviour
 
     public int SwapsLeft = 3;
 
+    void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            CurrentCharacter = SwappableCharacters[currentIndex];
+        }
+    }
+
     void Start()
     {
-        CurrentCharacter = SwappableCharacters[currentIndex];
 
         //// Check for SwappableCharacters being null or empty
         //if (SwappableCharacters == null || SwappableCharacters.Count == 0)
@@ -187,7 +205,7 @@ public class PlayerManager : MonoBehaviour
         {
             _playerManagerState = PlayerManagerState.NOT_SWAPPING;
             Debug.Log("Cancelled Swap, youw are still : " + lastCharacter);
-            
+
             foreach (GameObject character in SwappableCharacters)
             {
                 if (character != CurrentCharacter)
