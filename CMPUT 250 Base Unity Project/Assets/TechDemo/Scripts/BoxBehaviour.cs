@@ -90,8 +90,6 @@ public class BoxBehaviour : EntityBehaviour
             player = PlayerManager.Instance.CurrentCharacter.GetComponent<Rigidbody2D>();
             playerScript = PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>();
 
-            Debug.Log("Player: " + player);
-            
             // handle player collision with crate
             if (Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= 1f
             // || Mathf.Abs(Vector2.Distance(player1.position, transform.position)) <= 1f
@@ -216,7 +214,24 @@ public class BoxBehaviour : EntityBehaviour
 
             //Destroy(collision.gameObject);
             //Destroy(gameObject);
+            Debug.Log("Start moving");
+            IEnumerator coroutine = MoveSelfToPosition(collision.transform.position);
+            StartCoroutine(coroutine);
+
+            CameraManager.Instance.ShakeCamera(0.2f, 0.1f);
         }
+    }
+
+    private IEnumerator MoveSelfToPosition(Vector2 position)
+    {
+        while (Vector2.Distance(transform.position, position) > 0.01f)
+        {
+            transform.position = Vector2.Lerp(transform.position, position, 0.1f);
+            Debug.Log("Moving to position");
+            yield return new WaitForFixedUpdate();
+        }
+        yield return null;
+
     }
 
     //public void updateIce()
