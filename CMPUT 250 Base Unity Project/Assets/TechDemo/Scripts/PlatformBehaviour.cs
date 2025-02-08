@@ -6,24 +6,35 @@ public class PlatformBehaviour : MonoBehaviour
 {
 
     private Vector3 TargetPosition;
-    [Range(0.01f, 1f)]
-    [SerializeField] private float riseSpeed = 0.1f;
+    private Vector3 StartPosition;
+    
+    [SerializeField] AnimationCurve riseCurve;
+    [SerializeField] float riseTime = 1f;
+    [SerializeField] SpriteRenderer spriteRenderer;
 
     void Awake(){
         TargetPosition = transform.position;
-        transform.position = new Vector3(transform.position.x, transform.position.y-100, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y-10, transform.position.z);
+        StartPosition = transform.position;
+        spriteRenderer.color = new Color(1, 1, 1, 0);
     }
     public void Rise()
     {
+        CameraManager.Instance.ShakeCamera(riseTime, .1f);
         StartCoroutine(RisePlatform());
     }
 
     IEnumerator RisePlatform()
     {
-        while (transform.position.y < 0)
+        //use the curve to move the platform up also change the opcaity of the platform
+        float time = 0;
+        while (time < riseTime)
         {
-            transform.position = Vector3.Lerp(transform.position, TargetPosition, riseSpeed);
-            yield return new WaitForFixedUpdate();
+            time += Time.deltaTime;
+            float t = time / riseTime;
+            transform.position = Vector3.Lerp(StartPosition, TargetPosition, riseCurve.Evaluate(t));
+            spriteRenderer.color = new Color(1, 1, 1, riseCurve.Evaluate(t));
+            yield return null;
         }
     }
 }

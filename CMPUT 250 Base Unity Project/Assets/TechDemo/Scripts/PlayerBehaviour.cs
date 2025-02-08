@@ -177,7 +177,8 @@ public class PlayerBehaviour : EntityBehaviour
             playerWalkSoundSource.volume = 0.25f;
             playerWalkSoundSource.clip = walkSound;
             if (!playerWalkSoundSource.isPlaying){
-                playerWalkSoundSource.Play();
+                // Debug.Log("Playing walk sound");
+                // playerWalkSoundSource.Play();
             }
         }
         // else if (_isOnIce){
@@ -245,6 +246,7 @@ public class PlayerBehaviour : EntityBehaviour
             if(_canStep)
             {
                 CreateWalkParticles();
+                playerWalkSoundSource.Play();
                 _canStep = false;
                 StartCoroutine(WaitForNextStep());
             }
@@ -262,6 +264,7 @@ public class PlayerBehaviour : EntityBehaviour
             if(_canStep)
             {
                 CreateWalkParticles();
+                playerWalkSoundSource.Play();
                 _canStep = false;
                 StartCoroutine(WaitForNextStep());
             }
@@ -276,6 +279,7 @@ public class PlayerBehaviour : EntityBehaviour
             if(_canStep)
             {
                 CreateWalkParticles();
+                playerWalkSoundSource.Play();
                 _canStep = false;
                 StartCoroutine(WaitForNextStep());
             }
@@ -290,6 +294,7 @@ public class PlayerBehaviour : EntityBehaviour
             if(_canStep)
             {
                 CreateWalkParticles();
+                playerWalkSoundSource.Play();
                 _canStep = false;
                 StartCoroutine(WaitForNextStep());
             }
