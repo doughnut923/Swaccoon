@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Narrative
+namespace SwacoonNarrative
 {
     /// <summary>
     /// A data container for dialogues. 
     /// </summary>
-    /// <seealso cref="DialogueCSVParser"/>
-    public class DialogueSequence : IEnumerable
+    /// <seealso cref="SwacoonDialogueCSVParser"/>
+    public class SwacoonDialogueSequence : IEnumerable
     {
         /// Line data
         private List<List<string>> lines;
@@ -17,10 +17,10 @@ namespace Narrative
         /// Constructor that duplicates the contents of the source data (prevents overwriting)
         /// </summary>
         /// <param name="srcLines">Source line data</param>
-        public DialogueSequence(List<List<string>> srcLines)
+        public SwacoonDialogueSequence(List<List<string>> srcLines)
         {
             //Create list as duplicate
-            
+            Debug.Log("now we are in the dialogue sequece");
             lines = new List<List<string>>(srcLines);
             for (int i = 0; i < lines.Count; i++)
             {
@@ -32,11 +32,11 @@ namespace Narrative
         /// Constructor from a TextAsset. Doesn't need duplication since the parser returns a new list.
         /// </summary>
         /// <param name="sourceAsset">Source asset, the CSV file directly usually</param>
-        public DialogueSequence(TextAsset sourceAsset)
+        public SwacoonDialogueSequence(TextAsset sourceAsset)
         {
             //Get data from parser
-            lines = DialogueCSVParser.ReadCSVLines(sourceAsset.text);
-            lines = DialogueCSVParser.CleanCSVInput(lines);
+            lines = SwacoonDialogueCSVParser.ReadCSVLines(sourceAsset.text);
+            lines = SwacoonDialogueCSVParser.CleanCSVInput(lines);
         }
 
         /// <summary>
@@ -65,9 +65,9 @@ namespace Narrative
         /// <param name="start">First line in new subsequence</param>
         /// <param name="end">Last line in new subsequence, inclusive</param>
         /// <returns>A DialogueSequence object containing the subsequence</returns>
-        public DialogueSequence GetSubSequenceObj(int start, int end)
+        public SwacoonDialogueSequence GetSubSequenceObj(int start, int end)
         {
-            return new DialogueSequence(GetSubSequence(start, end));
+            return new SwacoonDialogueSequence(GetSubSequence(start, end));
         }
         /// <summary>
         /// Obtains a subsequence of the lines in this DialogueSequence and returns them as a List of Lists.
@@ -82,6 +82,7 @@ namespace Narrative
             {
                 subsequence.Add(GetRow(i));
             }
+            Debug.Log("subsequence is "+subsequence);
             return subsequence;
         }
 
@@ -106,6 +107,7 @@ namespace Narrative
             {
                 if (row[i] != "")//todo: also check tags if any
                 {
+                    Debug.Log("row dialogue is " + row[i]);
                     return row[i];
                 }
             }
@@ -137,7 +139,7 @@ namespace Narrative
 
             //Find a valid entry
             if(row.Count>1){
-                if (DialoguePortraitContainer.IsValidPortraitName(row[1]))
+                if (SwacoonDialoguePortraitContainer.IsValidPortraitName(row[1]))
                 {
                     return row[1];
                 }
@@ -156,7 +158,7 @@ namespace Narrative
 
             //Find a valid entry
             if(row.Count>2){
-                if (DialoguePortraitContainer.IsValidPortraitName(row[2]))
+                if (SwacoonDialoguePortraitContainer.IsValidPortraitName(row[2]))
                 {
                     return row[2];
                 }
@@ -171,11 +173,12 @@ namespace Narrative
         /// <param name="lineNum">Line number</param>
         public string GetRowSoundClip(int lineNum)
         {
+            Debug.Log("getrowsoundclip");
             List<string> row = lines[lineNum];
 
             //Find a valid entry
             if(row.Count>3){
-                if (DialogueSounds.IsValidSoundName(row[3]))
+                if (SwacoonDialogueSounds.IsValidSoundName(row[3]))
                 {
                     return row[3];
                 }

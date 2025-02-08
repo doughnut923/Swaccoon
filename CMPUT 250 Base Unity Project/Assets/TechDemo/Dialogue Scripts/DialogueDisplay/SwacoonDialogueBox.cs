@@ -4,12 +4,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Narrative
+namespace SwacoonNarrative
 {
     /// <summary>
     /// A component class for the dialogue textbox display.
     /// </summary>
-    public class DialogueBox : MonoBehaviour
+    public class SwacoonDialogueBox : MonoBehaviour
     {
         //Event Callbacks
         public UnityEvent onAdvance;
@@ -17,7 +17,7 @@ namespace Narrative
         //Sub-object references
         [SerializeField] private TextMeshProUGUI textLabel;
         [SerializeField] private TextMeshProUGUI nameLabel;
-        [SerializeField] private AdvanceArrow advanceArrow;
+        [SerializeField] private SwacoonAdvanceArrow advanceArrow;
         [SerializeField] private Animator animator;
 
         //Object properties
@@ -29,6 +29,7 @@ namespace Narrative
         //serialized so the animator can edit them but shouldn't be modified otherwise
         [SerializeField] [HideInInspector] private bool isOpen = false;
         [SerializeField] [HideInInspector] private bool isActive = false;
+        [SerializeField] [HideInInspector] private bool isSpedUp = false;
         public bool IsOpen { get { return isOpen; } }
         public bool IsActive { get { return isActive; } }
 
@@ -47,7 +48,11 @@ namespace Narrative
             {
                 //Update state
                 CheckInput();
-                UpdateText();
+                if (!isSpedUp)
+                {
+                    UpdateText();
+                }
+                
             }
         }
 
@@ -56,12 +61,15 @@ namespace Narrative
         /// </summary>
         private void CheckInput()
         {
+            Debug.Log("in checkinput");
             //Input for advancing textbox
             if (Input.GetButtonDown("Submit"))
             {
-                if (isEndOfText())
+                Debug.Log("mouse ");
+                if (isEndOfText() || isSpedUp==true)
                 {
                     AdvanceLine();
+                    isSpedUp = false;
                 }
             }
         }
@@ -71,14 +79,40 @@ namespace Narrative
         /// </summary>
         private void UpdateText()
         {
+            Debug.Log("in the updatetext, is currentcharacter < textlength? "+(currentCharacter<textLength));
+            Debug.Log("textlength is "+textLength);
             if (currentCharacter < textLength)
             {
+                Debug.Log("writing the text!");
                 //Advance visible characters
-                currentCharacter += Time.deltaTime * charactersPerSecond;
-                textLabel.maxVisibleCharacters = Mathf.FloorToInt(currentCharacter);
+                if (Input.GetMouseButtonDown(1))
+                {
+
+                    Debug.Log("mouse has been pressed");
+                    //currentCharacter += Time.deltaTime * spedUpCharactersPerSecond;
+                    textLabel.maxVisibleCharacters = textLength;
+                    //isOpen = false;
+                    isSpedUp = true;
+                    advanceArrow.SetVisible(true);
+                    CheckInput();
+                    
+                    //if (isEndOfText()) {
+                    //    isSpedUp = true;
+                    //    advanceArrow.SetVisible(true);
+
+                    //}
+                }
+                else
+                {
+                    Debug.Log("current character speed " + currentCharacter);
+                    currentCharacter += Time.deltaTime * charactersPerSecond;
+                    textLabel.maxVisibleCharacters = Mathf.FloorToInt(currentCharacter);
+                }
+                
 
                 if (isEndOfText())
                 {
+                    Debug.Log("end of current text");
                     advanceArrow.SetVisible(true);
                 }
             }
@@ -89,12 +123,14 @@ namespace Narrative
         /// </summary>
         public void OpenTextbox()
         {
-            Debug.Log("isopen is "+isOpen);
+            Debug.Log("opeing the textbox "+isOpen);
+
             animator.SetBool("isOpen", true);
-            Debug.Log("isopen is now " + isOpen);
             advanceArrow.SetVisible(false);
             nameLabel.text = "";
             isActive = true;
+            isOpen = true;
+            Debug.Log("opentextbox, isopen" + isOpen);
         }
 
         /// <summary>
@@ -102,6 +138,7 @@ namespace Narrative
         /// </summary>
         public void CloseTextbox()
         {
+            Debug.Log("closing the textbox");
             animator.SetBool("isOpen", false);
             isActive = false;
         }
@@ -112,6 +149,9 @@ namespace Narrative
         /// <param name="sourceText"></param>
         public void SetLine(string sourceText)
         {
+            Debug.Log("setting the line");
+            Debug.Log("line is " + sourceText);
+            //textLabel.SetText("Hello World");
             Debug.Log("max visible characters is " + textLabel.maxVisibleCharacters);
             Debug.Log("current character is " + currentCharacter);
             Debug.Log("text length is " + textLength);
@@ -121,6 +161,7 @@ namespace Narrative
             textLabel.maxVisibleCharacters = 0;
             currentCharacter = 0f;
             textLength = sourceText.Length;
+            Debug.Log("new textlength is " + textLength);
         }
 
         /// <summary>
@@ -129,6 +170,7 @@ namespace Narrative
         /// <param name="sourceText">The name to be displayed</param>
         public void SetName(string sourceText)
         {
+            Debug.Log("setname");
             if (nameLabel.text != sourceText && nameLabel.text != "")
             {
                 //Jostle the textbox when the speaker changes
@@ -140,12 +182,14 @@ namespace Narrative
         }
 
 
+
         /// <summary>
         /// Checks if the per character scrolling reached the end of the text.
         /// </summary>
         /// <returns></returns>
         private bool isEndOfText()
         {
+            Debug.Log("isendoftext");
             return (currentCharacter >= textLength);
         }
 
@@ -154,6 +198,7 @@ namespace Narrative
         /// </summary>
         public void AdvanceLine()
         {
+            Debug.Log("advanceline");
             advanceArrow.SetVisible(false);
             onAdvance.Invoke();
         }
