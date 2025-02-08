@@ -130,11 +130,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
         type: 3}
-      propertyPath: gate
-      value: 
-      objectReference: {fileID: 1684837999}
-    - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
-        type: 3}
       propertyPath: switchRadius
       value: 0.9
       objectReference: {fileID: 0}
@@ -211,16 +206,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player(1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2006271616285821578, guid: ec5d4cf984d63344fb93aec78dfc9e47,
-        type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2006271616285821578, guid: ec5d4cf984d63344fb93aec78dfc9e47,
-        type: 3}
-      propertyPath: m_GravityScale
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2006271616285821622, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
@@ -1743,7 +1728,7 @@ MonoBehaviour:
   attack: 32
   reset: 114
   swap: 101
-  attackCooldown: 0.2
+  attackCooldown: 2
   idleSpriteUp:
   - {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
@@ -1820,11 +1805,6 @@ MonoBehaviour:
   playerWalkSoundSource: {fileID: 2006271616154854293}
   walkSound: {fileID: 8300000, guid: 9f81c7bccf6294d9697daa51327e22d0, type: 3}
   slipSound: {fileID: 8300000, guid: 6f030e173cd58481e980ccef0c66fd44, type: 3}
-  walkParticles: {fileID: 2092620471}
-  acceleration: 0.1
-  TiltAngle: 10
-  tiltSpeed: 0.2
-  particleTimer: 30
 --- !u!82 &693238364
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2704,11 +2684,6 @@ MonoBehaviour:
   playerWalkSoundSource: {fileID: 27692424}
   walkSound: {fileID: 8300000, guid: 9f81c7bccf6294d9697daa51327e22d0, type: 3}
   slipSound: {fileID: 8300000, guid: 6f030e173cd58481e980ccef0c66fd44, type: 3}
-  walkParticles: {fileID: 0}
-  acceleration: 0.25
-  TiltAngle: 10
-  tiltSpeed: 0.2
-  particleTimer: 0.5
 --- !u!1 &1330296792
 GameObject:
   m_ObjectHideFlags: 0
@@ -11928,12 +11903,6 @@ Rigidbody2D:
     type: 3}
   m_PrefabInstance: {fileID: 1674566373}
   m_PrefabAsset: {fileID: 0}
---- !u!198 &2092620471 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8461553506607811304, guid: ec5d4cf984d63344fb93aec78dfc9e47,
-    type: 3}
-  m_PrefabInstance: {fileID: 2006271616154854292}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2097179042
 GameObject:
   m_ObjectHideFlags: 0
@@ -12387,11 +12356,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -7292806435240409650, guid: 49a0237bf709025438e58f7a2ff89ffa,
         type: 3}
-    - target: {fileID: 8461553506607811304, guid: ec5d4cf984d63344fb93aec78dfc9e47,
-        type: 3}
-      propertyPath: InitialModule.gravityModifier.scalar
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2006271616285821623, guid: ec5d4cf984d63344fb93aec78dfc9e47, type: 3}
     - {fileID: 4924457988990904593, guid: ec5d4cf984d63344fb93aec78dfc9e47, type: 3}

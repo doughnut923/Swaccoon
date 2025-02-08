@@ -12,9 +12,9 @@ public class LeverBehaviour : MonoBehaviour
     // the player
     private Rigidbody2D player;
     private PlayerBehaviour playerScript;
-    [SerializeField]private GateBehaviour gate;
+    private GateBehaviour gate;
 
-    [SerializeField]private KeyCode _openGate = KeyCode.Z;
+    private KeyCode _openGate = KeyCode.Z;
 
     // Start is called before the first frame update
     void Start()
@@ -22,9 +22,7 @@ public class LeverBehaviour : MonoBehaviour
         player = (Rigidbody2D)GameObject.Find("Player").GetComponent("Rigidbody2D");
         playerScript = (PlayerBehaviour)player.gameObject.GetComponent(typeof(PlayerBehaviour));
         //gate = gameObject.GetComponent<GateBehaviour>();
-        if(gate == null){
-            Debug.LogError("Target gate is not set.");
-        }
+        gate = FindObjectOfType<GateBehaviour>();
     }
 
     // Update is called once per frame

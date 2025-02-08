@@ -75,8 +75,6 @@ public class PlayerBehaviour : EntityBehaviour
     [SerializeField] private AudioClip walkSound;
     [SerializeField] private AudioClip slipSound;
 
-    public ParticleSystem walkParticles;
-
     // internal variables    
     // attack parameters
     private bool _isAttacking = false;
@@ -112,20 +110,6 @@ public class PlayerBehaviour : EntityBehaviour
     private int _keys = 0;
 
     private Vector2 movement = Vector2.zero;
-    private bool _canStep = true;
-    
-    //add a slider to inspector to adjust acceleration
-    [Header("Juice Settings")]
-    [Range(0.01f, 1f)]
-    [Tooltip("How fast the player accelerates")]
-    [SerializeField] private float acceleration = 0.1f;
-    private Vector2 currentSpeed = Vector2.zero;
-    [Range(0f, 45f)]
-    [SerializeField] private float TiltAngle = 10f;
-    private float currentTilt = 0f;
-    [Range(0.01f, 1f)]
-    [SerializeField] private float tiltSpeed = 0.2f;
-    [SerializeField] private float particleTimer = 0.5f;
 
     // Start is called before the first frame update
     override public void Start()
@@ -224,7 +208,7 @@ public class PlayerBehaviour : EntityBehaviour
 
     override public Vector2 getMovement()
     {
-        Vector2 update = Vector2.Lerp(currentSpeed, Vector2.zero, acceleration);
+        Vector2 update = Vector2.zero;
         // if we are attacking or falling or hurt or dead (i wish i used a state machine), we're frozen
 
         // // if we are on ice, we're moving in our current direction
@@ -233,84 +217,30 @@ public class PlayerBehaviour : EntityBehaviour
         // read input, and set our direction accordingly
         if (Input.GetKey(right))
         {
-            update.x = Mathf.Lerp(currentSpeed.x, 1, acceleration);
+            update.x = 1;
             _currDir = Direction.East;
             _playerState = CurrentPlayerState.WALKING;
-
-            // tilt the player
-            currentTilt = Mathf.Lerp(currentTilt, -TiltAngle, tiltSpeed);
-
-            // play walk partciles
-            if(_canStep)
-            {
-                Debug.Log("particles");
-                CreateWalkParticles();
-                _canStep = false;
-                StartCoroutine(WaitForNextStep());
-            }
         }
         else if (Input.GetKey(left))
         {
-            update.x = Mathf.Lerp(currentSpeed.x, -1, acceleration);
+            update.x = -1;
             _currDir = Direction.West;
             _playerState = CurrentPlayerState.WALKING;
-
-            //tilt the player
-            currentTilt = Mathf.Lerp(currentTilt, TiltAngle, tiltSpeed);
-
-            // play walk partciles
-            if(_canStep)
-            {
-                Debug.Log("particles");
-                CreateWalkParticles();
-                _canStep = false;
-                StartCoroutine(WaitForNextStep());
-            }
         }
         else if (Input.GetKey(up))
         {
-            update.y = Mathf.Lerp(currentSpeed.y, 1, acceleration);
+            update.y = 1;
             _currDir = Direction.North;
             _playerState = CurrentPlayerState.WALKING;
-
-            // play walk partciles
-            if(_canStep)
-            {
-                Debug.Log("particles");
-                CreateWalkParticles();
-                _canStep = false;
-                StartCoroutine(WaitForNextStep());
-            }
         }
         else if (Input.GetKey(down))
         {
-            update.y = Mathf.Lerp(currentSpeed.y, -1, acceleration);
+            update.y = -1;
             _currDir = Direction.South;
             _playerState = CurrentPlayerState.WALKING;
-
-            // play walk partciles
-            if(_canStep)
-            {
-                Debug.Log("particles");
-                CreateWalkParticles();
-                _canStep = false;
-                StartCoroutine(WaitForNextStep());
-            }
         }
-        currentSpeed = update;
-
-        // If not moving set the player tilt to 0
-        currentTilt = Mathf.Lerp(currentTilt, 0, tiltSpeed);
-        transform.rotation = Quaternion.Euler(0, 0, currentTilt);
-
         _playerState = CurrentPlayerState.IDLE;
         return update;
-    }
-    
-    private IEnumerator WaitForNextStep()
-    {
-        yield return new WaitForSeconds(particleTimer);
-        _canStep = true;
     }
 
     public void DoIdleAnimation()
@@ -404,7 +334,6 @@ public class PlayerBehaviour : EntityBehaviour
                     break;
                 default:
                     break;
-                    
             }
 
         }
@@ -484,11 +413,6 @@ public class PlayerBehaviour : EntityBehaviour
     public bool isStopped()
     {
         return (lastSafePosition.x == transform.position.x && lastSafePosition.y == transform.position.y);
-    }
-
-    public void CreateWalkParticles()
-    {
-        walkParticles.Play();
     }
 
     public bool attackCollision(RaycastHit2D attackRay)
