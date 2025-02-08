@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public enum CurrentPlayerState
@@ -172,13 +173,13 @@ public class PlayerBehaviour : EntityBehaviour
 
         base.FixedUpdate();
         // handle walk sound
-        // if (!_isFalling && !_isOnIce && lastSafePosition != (Vector2)transform.position){
-        //     playerWalkSoundSource.volume = 0.25f;
-        //     playerWalkSoundSource.clip = walkSound;
-        //     if (!playerWalkSoundSource.isPlaying){
-        //         playerWalkSoundSource.Play();
-        //     }
-        // }
+        if (!_isFalling && !_isOnIce && lastSafePosition != (Vector2)transform.position){
+            playerWalkSoundSource.volume = 0.25f;
+            playerWalkSoundSource.clip = walkSound;
+            if (!playerWalkSoundSource.isPlaying){
+                playerWalkSoundSource.Play();
+            }
+        }
         // else if (_isOnIce){
         //     playerWalkSoundSource.volume = 0.25f;
         //     playerWalkSoundSource.clip = slipSound;
@@ -243,7 +244,6 @@ public class PlayerBehaviour : EntityBehaviour
             // play walk partciles
             if(_canStep)
             {
-                Debug.Log("particles");
                 CreateWalkParticles();
                 _canStep = false;
                 StartCoroutine(WaitForNextStep());
@@ -261,7 +261,6 @@ public class PlayerBehaviour : EntityBehaviour
             // play walk partciles
             if(_canStep)
             {
-                Debug.Log("particles");
                 CreateWalkParticles();
                 _canStep = false;
                 StartCoroutine(WaitForNextStep());
@@ -276,7 +275,6 @@ public class PlayerBehaviour : EntityBehaviour
             // play walk partciles
             if(_canStep)
             {
-                Debug.Log("particles");
                 CreateWalkParticles();
                 _canStep = false;
                 StartCoroutine(WaitForNextStep());
@@ -291,7 +289,6 @@ public class PlayerBehaviour : EntityBehaviour
             // play walk partciles
             if(_canStep)
             {
-                Debug.Log("particles");
                 CreateWalkParticles();
                 _canStep = false;
                 StartCoroutine(WaitForNextStep());
@@ -339,23 +336,23 @@ public class PlayerBehaviour : EntityBehaviour
     {
 
         // // if we are falling, do the falling animation lol
-        // if (_isFalling){
-        //     int lastFrame = Mathf.FloorToInt(_currentFrame);
-        //     _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _fallFramesPerSecond, 6f);
+        if (_isFalling){
+            int lastFrame = Mathf.FloorToInt(_currentFrame);
+            _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _fallFramesPerSecond, 6f);
 
-        //     // we are done falling! set our position accordingly and take some damage
-        //     if (lastFrame == 5 && Mathf.FloorToInt(_currentFrame) == 0){
-        //         _isFalling = false;
-        //         setInvincible(false);
-        //         transform.position = lastSafePosition;
-        //         takeDamage();
-        //     }
-        //     // keep playing the animation otherwise
-        //     else{
-        //         currentSprite.sprite = fallSprites[Mathf.FloorToInt(_currentFrame)];
-        //         return;
-        //     }
-        // }
+            // we are done falling! set our position accordingly and take some damage
+            if (lastFrame == 5 && Mathf.FloorToInt(_currentFrame) == 0){
+                _isFalling = false;
+                setInvincible(false);
+                transform.position = lastSafePosition;
+                takeDamage();
+            }
+            // keep playing the animation otherwise
+            else{
+                currentSprite.sprite = fallSprites[Mathf.FloorToInt(_currentFrame)];
+                return;
+            }
+        }
 
         // otherwise, update according to current movement
 
@@ -452,7 +449,8 @@ public class PlayerBehaviour : EntityBehaviour
         _isFalling = true;
         setInvincible(true);
 
-        transform.position = pitPosition;
+        IEnumerator dropToPit = DropToPit(pitPosition);
+        StartCoroutine(dropToPit);
         _currentFrame = 0;
 
         // play falling sound
@@ -460,7 +458,20 @@ public class PlayerBehaviour : EntityBehaviour
         controlSoundSource.Play();
 
         // we successfully fell!
+
+        // Lose the game (for now)
+        GameOverUIBehavior.instance.ShowGameOverUI();
+        
         return true;
+    }
+
+    IEnumerator DropToPit(Vector2 pitPosition)
+    {
+        while (transform.position.y > pitPosition.y)
+        {
+            transform.position = Vector2.Lerp(transform.position, pitPosition, 0.1f);
+            yield return new WaitForFixedUpdate();
+        }
     }
 
     public void updateIce(Vector2 icePos)

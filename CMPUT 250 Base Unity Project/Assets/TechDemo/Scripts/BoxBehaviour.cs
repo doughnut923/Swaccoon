@@ -214,7 +214,6 @@ public class BoxBehaviour : EntityBehaviour
 
             //Destroy(collision.gameObject);
             //Destroy(gameObject);
-            Debug.Log("Start moving");
             IEnumerator coroutine = MoveSelfToPosition(collision.transform.position);
             StartCoroutine(coroutine);
 
@@ -227,7 +226,6 @@ public class BoxBehaviour : EntityBehaviour
         while (Vector2.Distance(transform.position, position) > 0.01f)
         {
             transform.position = Vector2.Lerp(transform.position, position, 0.1f);
-            Debug.Log("Moving to position");
             yield return new WaitForFixedUpdate();
         }
         yield return null;

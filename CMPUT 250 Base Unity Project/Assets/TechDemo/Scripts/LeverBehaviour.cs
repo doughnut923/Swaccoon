@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class LeverBehaviour : MonoBehaviour
@@ -15,6 +16,8 @@ public class LeverBehaviour : MonoBehaviour
     [SerializeField]private GateBehaviour gate;
 
     [SerializeField]private KeyCode _openGate = KeyCode.Z;
+
+    [SerializeField]UnityEvent leverPulled = new UnityEvent();
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,7 @@ public class LeverBehaviour : MonoBehaviour
         if (player != null && Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= switchRadius && Input.GetKeyDown(_openGate))
         {
             LeverPulled();
+            CameraManager.Instance.ShakeCamera(0.1f, 0.1f);
         }
     }
     void LeverPulled()
@@ -48,11 +52,13 @@ public class LeverBehaviour : MonoBehaviour
         
         //Debug.Log("gate is type " + gate);
 
-        gate.leverPulled();
+        // gate.leverPulled();
 
-        Destroy(gameObject);
+        //Envoke the Unity Events
+        leverPulled.Invoke();
         
         //playerScript.collectKey();
+        Destroy(gameObject);
 
     }
 }
