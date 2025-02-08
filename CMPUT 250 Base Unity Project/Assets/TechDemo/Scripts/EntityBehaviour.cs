@@ -122,7 +122,7 @@ public class EntityBehaviour : MonoBehaviour
         //    V  V
 
         // horizontal, right
-        if (update.x == 1)
+        if (update.x > 0)
         {
             RaycastHit2D tr = Physics2D.Raycast(topRight, Vector2.right);
             RaycastHit2D br = Physics2D.Raycast(bottomRight, Vector2.right);
@@ -141,7 +141,7 @@ public class EntityBehaviour : MonoBehaviour
             }
         }
         // horizontal, left
-        else if (update.x == -1)
+        else if (update.x < 0)
         {
             RaycastHit2D tl = Physics2D.Raycast(topLeft, Vector2.left);
             RaycastHit2D bl = Physics2D.Raycast(bottomLeft, Vector2.left);
@@ -161,7 +161,7 @@ public class EntityBehaviour : MonoBehaviour
         }
 
         // vertical, up
-        if (update.y == 1)
+        if (update.y > 0)
         {
             RaycastHit2D tr = Physics2D.Raycast(topRight, Vector2.up);
             RaycastHit2D tl = Physics2D.Raycast(topLeft, Vector2.up);
@@ -180,7 +180,7 @@ public class EntityBehaviour : MonoBehaviour
             }
         }
         // vertical, down
-        else if (update.y == -1)
+        else if (update.y < 0)
         {
             RaycastHit2D br = Physics2D.Raycast(bottomRight, Vector2.down);
             RaycastHit2D bl = Physics2D.Raycast(bottomLeft, Vector2.down);
