@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace Narrative
+namespace SwacoonNarrative
 {
 
 
@@ -23,19 +23,19 @@ namespace Narrative
     /// <summary>
     /// Component that controls the sequencing of a dialogue.
     /// </summary>
-    public class DialogueSequencer : MonoBehaviour
+    public class SwacoonDialogueSequencer : MonoBehaviour
     {
         //Event Callbacks
         public UnityEvent onStarted;
         public UnityEvent onFinish;
 
         //Sub-Object references
-        [SerializeField] private DialogueBox textbox;
-        [SerializeField] private DialoguePortraits portraits;
-        [SerializeField] private DialogueChoices choices;
+        [SerializeField] private SwacoonDialogueBox textbox;
+        [SerializeField] private SwacoonDialoguePortraits portraits;
+        [SerializeField] private SwacoonDialogueChoices choices;
 
         //Object properties
-        private DialogueSequence currentDialog;  //set when we are playing
+        private SwacoonDialogueSequence currentDialog;  //set when we are playing
         private int currentLine = 0;  //current line in the sequence we are playing
         private bool isPlaying = false;
 
@@ -44,8 +44,9 @@ namespace Narrative
         /// Starts playing the given sequence
         /// </summary>
         /// <param name="dialogue">Dialogue resource to play</param>
-        public void PlaySequence(DialogueSequence dialogue)
+        public void PlaySequence(SwacoonDialogueSequence dialogue)
         {
+            Debug.Log("wohoo in the sequecer");
             if (dialogue.IsEmpty())
             {
                 Debug.LogWarning("Playing sequence stopped because DialogueSequence was empty");
@@ -56,10 +57,12 @@ namespace Narrative
             currentDialog = dialogue;
             currentLine = 0;
             isPlaying = true;
-
+            Debug.Log("is it playing" + isPlaying);
             //Open and play
             textbox.OpenTextbox();
+            Debug.Log("shoule have gone into Opentextbox");
             ParseLine(currentLine);
+            //Debug.Log(ParseLine(currentLine));
             onStarted.Invoke();
         }
 
@@ -68,7 +71,11 @@ namespace Narrative
         /// </summary>
         public void onSequenceAdvanced()
         {
+            
             bool hasNext = currentDialog.HasLine(currentLine + 1);
+            Debug.Log("is there another line " + hasNext);
+
+
             if (hasNext)
             {
                 //Start next line
@@ -90,21 +97,24 @@ namespace Narrative
         /// <param name="lineNum">Line number</param>
         private void ParseLine(int lineNum)
         {
+            Debug.Log("dialog currently playing " + currentDialog);
+            Debug.Log("parsing the lines");
             //Apply to textbox
             textbox.SetLine(currentDialog.GetRowDialogue(lineNum));
-            
+            Debug.Log("hahaha " + textbox);
             //Apply to textbox speaker name
             string name = currentDialog.GetRowName(lineNum);
             if (name != "")//Only apply if not empty
             {
                 textbox.SetName(name);
+                Debug.Log("name is "+name);
             }
             //Apply to left portrait
             string portraitLeft = currentDialog.GetRowPortraitLeft(lineNum);
 
             if (portraitLeft != "")//Only apply if not empty
             {
-                Sprite spr = DialoguePortraitContainer.GetPortrait(portraitLeft);
+                Sprite spr = SwacoonDialoguePortraitContainer.GetPortrait(portraitLeft);
                 portraits.SetPortraitSpriteLeft(spr);
             }
             else{
@@ -115,21 +125,23 @@ namespace Narrative
             string portraitRight = currentDialog.GetRowPortraitRight(lineNum);
             if (portraitRight != "")//Only apply if not empty
             {
-                Sprite spr = DialoguePortraitContainer.GetPortrait(portraitRight);
+                Sprite spr = SwacoonDialoguePortraitContainer.GetPortrait(portraitRight);
                 portraits.SetPortraitSpriteRight(spr);
             }
             else{
                 portraits.ClosePortraitRight();
             }
+            Debug.Log("got all portraits");
 
             //Play sound if any
             string soundClip = currentDialog.GetRowSoundClip(lineNum);
             if(soundClip!= "")//Only apply if not empty
             {
-                AudioClip clip = DialogueSounds.GetSound(soundClip);
-                DialogueSounds.AudioSource.PlayOneShot(clip);
+                AudioClip clip = SwacoonDialogueSounds.GetSound(soundClip);
+                SwacoonDialogueSounds.AudioSource.PlayOneShot(clip);
             }
-            Debug.Log("dialog currently playing " + currentDialog);
+            Debug.Log("done parsing");
+
         }
 
         /// <summary>
@@ -137,6 +149,7 @@ namespace Narrative
         /// </summary>
         public bool IsPlaying()
         {
+            Debug.Log("writing the text!");
             return textbox.IsActive;
         }
 

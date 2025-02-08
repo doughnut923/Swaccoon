@@ -90,7 +90,7 @@ public class BoxBehaviour : EntityBehaviour
             player = PlayerManager.Instance.CurrentCharacter.GetComponent<Rigidbody2D>();
             playerScript = PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>();
 
-            Debug.Log("Player: " + player);
+            //Debug.Log("Player: " + player);
             
             // handle player collision with crate
             if (Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= 1f
