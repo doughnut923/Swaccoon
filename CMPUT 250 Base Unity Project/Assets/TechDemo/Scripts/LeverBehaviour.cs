@@ -30,6 +30,7 @@ public class LeverBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (player != null && Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= switchRadius && Input.GetKeyDown(_openGate))
         {
             LeverPulled();

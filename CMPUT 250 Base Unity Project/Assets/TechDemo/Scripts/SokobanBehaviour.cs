@@ -46,6 +46,9 @@ public class SokobanBehaviour : MonoBehaviour
 
             puzzleSoundSource.clip = puzzleCompleteClip;
             puzzleSoundSource.Play();
+
+            // show game over UI
+            GameOverUIBehavior.instance.ShowGameOverUI();
         }
         else
         {

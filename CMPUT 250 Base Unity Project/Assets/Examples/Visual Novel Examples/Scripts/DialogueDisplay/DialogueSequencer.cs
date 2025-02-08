@@ -60,7 +60,6 @@ namespace Narrative
             //Open and play
             textbox.OpenTextbox();
             ParseLine(currentLine);
-
             onStarted.Invoke();
         }
 
@@ -93,6 +92,7 @@ namespace Narrative
         {
             //Apply to textbox
             textbox.SetLine(currentDialog.GetRowDialogue(lineNum));
+            
             //Apply to textbox speaker name
             string name = currentDialog.GetRowName(lineNum);
             if (name != "")//Only apply if not empty
@@ -129,7 +129,7 @@ namespace Narrative
                 AudioClip clip = DialogueSounds.GetSound(soundClip);
                 DialogueSounds.AudioSource.PlayOneShot(clip);
             }
-            
+            Debug.Log("dialog currently playing " + currentDialog);
         }
 
         /// <summary>

@@ -42,6 +42,7 @@ namespace Narrative
         // Update is called once per frame
         void Update()
         {
+            Debug.Log("is it open " + isOpen);
             if (isOpen)
             {
                 //Update state
@@ -88,7 +89,9 @@ namespace Narrative
         /// </summary>
         public void OpenTextbox()
         {
+            Debug.Log("isopen is "+isOpen);
             animator.SetBool("isOpen", true);
+            Debug.Log("isopen is now " + isOpen);
             advanceArrow.SetVisible(false);
             nameLabel.text = "";
             isActive = true;
@@ -100,6 +103,7 @@ namespace Narrative
         public void CloseTextbox()
         {
             animator.SetBool("isOpen", false);
+            isActive = false;
         }
 
         /// <summary>
@@ -108,6 +112,9 @@ namespace Narrative
         /// <param name="sourceText"></param>
         public void SetLine(string sourceText)
         {
+            Debug.Log("max visible characters is " + textLabel.maxVisibleCharacters);
+            Debug.Log("current character is " + currentCharacter);
+            Debug.Log("text length is " + textLength);
             textLabel.SetText(sourceText);
 
             //Reset scroll

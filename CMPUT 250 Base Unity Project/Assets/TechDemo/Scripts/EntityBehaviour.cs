@@ -34,7 +34,7 @@ public class EntityBehaviour : MonoBehaviour
     {
         // initialize variables
         _invTimer = invincibilityTime;
-        renderer = (SpriteRenderer)this.gameObject.transform.GetChild(0).gameObject.GetComponent("SpriteRenderer");
+        renderer = (SpriteRenderer)gameObject.transform.GetChild(0).gameObject.GetComponent("SpriteRenderer");
         baseColor = renderer.material.color;
 
         // set up transparency

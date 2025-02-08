@@ -32,7 +32,10 @@ public class PlayerManager : MonoBehaviour
     [SerializeField] private KeyCode startSwap = KeyCode.Q;                                     //Key to start swap the character
     [SerializeField] private KeyCode select = KeyCode.E;                                        //Key for select between character when swapping
     [SerializeField] private KeyCode swap = KeyCode.T;                                   //Key to cancel the swap
-    [SerializeField] private KeyCode cancel = KeyCode.Escape;                                   //Key to cancel the swap
+    [SerializeField] private KeyCode cancel = KeyCode.Q;                                   //Key to cancel the swap
+
+    [SerializeField] private float swapTimeLimit = 60;
+    public float swapTimer;
 
     public int SwapsLeft = 3;
 
@@ -43,6 +46,7 @@ public class PlayerManager : MonoBehaviour
             _instance = this;
             CurrentCharacter = SwappableCharacters[currentIndex];
         }
+        swapTimer = swapTimeLimit;
     }
 
     void Start()
@@ -114,7 +118,14 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(startSwap))
+        if(swapTimer <= 0){
+            //Lose
+            GameOverUIBehavior.instance.ShowGameOverUI();
+        } else {
+            swapTimer -= Time.deltaTime;
+        }
+
+        if (Input.GetKeyDown(startSwap) && _playerManagerState == PlayerManagerState.NOT_SWAPPING)
         {
             StartSwap();
         }
@@ -179,6 +190,9 @@ public class PlayerManager : MonoBehaviour
             // UIOutlines[currentIndex].SetActive(false);
             Debug.Log("Swapping from : " + lastCharacter + " to : " + currentIndex);
             CurrentCharacter = SwappableCharacters[currentIndex];
+
+            //reset timer
+            swapTimer = swapTimeLimit;
 
             foreach (GameObject character in SwappableCharacters)
             {

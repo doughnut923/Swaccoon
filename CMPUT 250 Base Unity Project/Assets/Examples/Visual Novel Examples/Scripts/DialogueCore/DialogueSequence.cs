@@ -20,6 +20,7 @@ namespace Narrative
         public DialogueSequence(List<List<string>> srcLines)
         {
             //Create list as duplicate
+            
             lines = new List<List<string>>(srcLines);
             for (int i = 0; i < lines.Count; i++)
             {
