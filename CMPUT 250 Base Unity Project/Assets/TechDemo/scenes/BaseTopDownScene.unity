@@ -851,7 +851,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 285381103}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 17.726566, y: -0.43584192, z: -135.53093}
+  m_LocalPosition: {x: 17.726566, y: -0.43584192, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1045165692}
@@ -2703,7 +2703,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6e5c33c7f800541baf804d1a313495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  riseSpeed: 0.1
+  riseCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  riseTime: 2
+  spriteRenderer: {fileID: 1045165691}
 --- !u!212 &1045165691
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2763,7 +2788,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1045165689}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.52, y: -0.26, z: 125.4}
+  m_LocalPosition: {x: -4.52, y: -0.26, z: -5.55}
   m_LocalScale: {x: 1.7230204, y: 1.7230204, z: 1.7230204}
   m_Children: []
   m_Father: {fileID: 285381105}
