@@ -22,7 +22,7 @@ namespace SwacoonNarrative
         void Start()
         {
             if (dialogueCSV!=null){//If we have a dialogue
-                Debug.Log("entering the on start dialgue");
+                //Debug.Log("entering the on start dialgue");
                 SwacoonDialogueSystem.OnDialogueEnd.AddListener(OnDialogueEnd);
                 SwacoonDialogueSystem.PlaySequence(dialogueCSV);
             }
@@ -34,7 +34,7 @@ namespace SwacoonNarrative
         /// </summary>
         private void OnDialogueEnd()
         {
-            Debug.Log("entering the on end dialgue");
+            //Debug.Log("entering the on end dialgue");
             if (writeToFlagId != "")
             {
                 SwacoonDialogueFlags.SetFlag(writeToFlagId, writeToFlagValue);

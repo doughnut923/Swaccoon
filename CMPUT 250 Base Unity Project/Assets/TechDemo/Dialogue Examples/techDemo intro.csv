@@ -1,4 +1,6 @@
 Character A,neutralA,NONE,characterA,"Welcome to the Swaccoon Tech Demo!"
 Character B,NONE,neutralB,characterB,"You can move around with the up, down, left, and right keys"
+Character A,neutralA,NONE,characterA,"Right click the mouse to speed up the text."
 Character A,neutralA,NONE,characterA,"To swap characters: use Q to start a swap, E to switch who you will swap with, and T to complete a swap. To cancel swapping press ESC"
+Character B,NONE,neutralB,characterB,"Keep in mind you only have a limited number of swaps and a time limit on each swap."
 Character B,NONE,neutralB,characterB,"Happy exploring!!!"

@@ -43,7 +43,7 @@ namespace SwacoonNarrative
         // Update is called once per frame
         void Update()
         {
-            Debug.Log("is it open " + isOpen);
+            //Debug.Log("is it open " + isOpen);
             if (isOpen)
             {
                 //Update state
@@ -61,11 +61,11 @@ namespace SwacoonNarrative
         /// </summary>
         private void CheckInput()
         {
-            Debug.Log("in checkinput");
+            //Debug.Log("in checkinput");
             //Input for advancing textbox
             if (Input.GetButtonDown("Submit"))
             {
-                Debug.Log("mouse ");
+                //Debug.Log("mouse ");
                 if (isEndOfText() || isSpedUp==true)
                 {
                     AdvanceLine();
@@ -79,16 +79,16 @@ namespace SwacoonNarrative
         /// </summary>
         private void UpdateText()
         {
-            Debug.Log("in the updatetext, is currentcharacter < textlength? "+(currentCharacter<textLength));
-            Debug.Log("textlength is "+textLength);
+            //Debug.Log("in the updatetext, is currentcharacter < textlength? "+(currentCharacter<textLength));
+            //Debug.Log("textlength is "+textLength);
             if (currentCharacter < textLength)
             {
-                Debug.Log("writing the text!");
+                //Debug.Log("writing the text!");
                 //Advance visible characters
                 if (Input.GetMouseButtonDown(1))
                 {
 
-                    Debug.Log("mouse has been pressed");
+                    //Debug.Log("mouse has been pressed");
                     //currentCharacter += Time.deltaTime * spedUpCharactersPerSecond;
                     textLabel.maxVisibleCharacters = textLength;
                     //isOpen = false;
@@ -104,7 +104,7 @@ namespace SwacoonNarrative
                 }
                 else
                 {
-                    Debug.Log("current character speed " + currentCharacter);
+                    //Debug.Log("current character speed " + currentCharacter);
                     currentCharacter += Time.deltaTime * charactersPerSecond;
                     textLabel.maxVisibleCharacters = Mathf.FloorToInt(currentCharacter);
                 }
@@ -112,7 +112,7 @@ namespace SwacoonNarrative
 
                 if (isEndOfText())
                 {
-                    Debug.Log("end of current text");
+                    //Debug.Log("end of current text");
                     advanceArrow.SetVisible(true);
                 }
             }
@@ -123,14 +123,14 @@ namespace SwacoonNarrative
         /// </summary>
         public void OpenTextbox()
         {
-            Debug.Log("opeing the textbox "+isOpen);
+            //Debug.Log("opeing the textbox "+isOpen);
 
             animator.SetBool("isOpen", true);
             advanceArrow.SetVisible(false);
             nameLabel.text = "";
             isActive = true;
             isOpen = true;
-            Debug.Log("opentextbox, isopen" + isOpen);
+            //Debug.Log("opentextbox, isopen" + isOpen);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace SwacoonNarrative
         /// </summary>
         public void CloseTextbox()
         {
-            Debug.Log("closing the textbox");
+            //Debug.Log("closing the textbox");
             animator.SetBool("isOpen", false);
             isActive = false;
         }
@@ -149,19 +149,19 @@ namespace SwacoonNarrative
         /// <param name="sourceText"></param>
         public void SetLine(string sourceText)
         {
-            Debug.Log("setting the line");
-            Debug.Log("line is " + sourceText);
+            //Debug.Log("setting the line");
+            //Debug.Log("line is " + sourceText);
             //textLabel.SetText("Hello World");
-            Debug.Log("max visible characters is " + textLabel.maxVisibleCharacters);
-            Debug.Log("current character is " + currentCharacter);
-            Debug.Log("text length is " + textLength);
+            //Debug.Log("max visible characters is " + textLabel.maxVisibleCharacters);
+            //Debug.Log("current character is " + currentCharacter);
+            //Debug.Log("text length is " + textLength);
             textLabel.SetText(sourceText);
 
             //Reset scroll
             textLabel.maxVisibleCharacters = 0;
             currentCharacter = 0f;
             textLength = sourceText.Length;
-            Debug.Log("new textlength is " + textLength);
+            //Debug.Log("new textlength is " + textLength);
         }
 
         /// <summary>
@@ -170,7 +170,7 @@ namespace SwacoonNarrative
         /// <param name="sourceText">The name to be displayed</param>
         public void SetName(string sourceText)
         {
-            Debug.Log("setname");
+            //Debug.Log("setname");
             if (nameLabel.text != sourceText && nameLabel.text != "")
             {
                 //Jostle the textbox when the speaker changes
@@ -189,7 +189,7 @@ namespace SwacoonNarrative
         /// <returns></returns>
         private bool isEndOfText()
         {
-            Debug.Log("isendoftext");
+            //Debug.Log("isendoftext");
             return (currentCharacter >= textLength);
         }
 
@@ -198,7 +198,7 @@ namespace SwacoonNarrative
         /// </summary>
         public void AdvanceLine()
         {
-            Debug.Log("advanceline");
+            //Debug.Log("advanceline");
             advanceArrow.SetVisible(false);
             onAdvance.Invoke();
         }

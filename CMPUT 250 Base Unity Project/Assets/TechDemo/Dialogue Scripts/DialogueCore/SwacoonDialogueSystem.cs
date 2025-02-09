@@ -45,7 +45,7 @@ namespace SwacoonNarrative
         /// <param name="asset">Text asset source to play</param>
         public static void PlaySequence(TextAsset asset)
         {
-            Debug.Log("in the first play sequence");
+            //Debug.Log("in the first play sequence");
             PlaySequence(new SwacoonDialogueSequence(asset));
         }
 
@@ -55,11 +55,11 @@ namespace SwacoonNarrative
         /// <param name="dialogue">Dialogue sequence object to play</param>
         public static void PlaySequence(SwacoonDialogueSequence dialogue)
         {
-            Debug.Log("yay playing sequence now");
+            //Debug.Log("yay playing sequence now");
             Instance.dialogueSequencer.PlaySequence(dialogue);
-            Debug.Log("invoke next");
+            //Debug.Log("invoke next");
             Instance.onDialogueStarted.Invoke();
-            Debug.Log("has been invoked");
+            //Debug.Log("has been invoked");
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace SwacoonNarrative
         /// </summary>
         public static bool IsPlaying()
         {
-            Debug.Log("is it playing?");
+            //Debug.Log("is it playing?");
             return Instance.dialogueSequencer.IsPlaying();
         }
 
@@ -76,11 +76,11 @@ namespace SwacoonNarrative
         /// </summary>
         private static void OnFinish()
         {
-            Debug.Log("done the sequence");
+            //Debug.Log("done the sequence");
             Instance.onDialogueEnd.Invoke();
             //IsPlaying = false;
             //SwacoonDialogueBox.IsActive = false;
-            Debug.Log("are we still playing "+SwacoonDialogueSystem.IsPlaying());
+            //Debug.Log("are we still playing "+SwacoonDialogueSystem.IsPlaying());
         }
     }
 }

@@ -5,8 +5,28 @@ using UnityEngine;
 public class TriggerHandler : MonoBehaviour
 {
     public SwacoonNarrative.SwacoonDialogueTrigger dialogueTrigger;
-    
+    public LeverBehaviour lever;
+    //private LeverBehaviour leverPulled;
+    //private static TriggerHandler _instance;
+    //public static TriggerHandler Instance
+    //{
+    //    get
+    //    {
+    //        return _instance;
+    //    }
+    //}
 
+    //[SerializeField] [HideInInspector] public bool isOpen = false;
+
+    //void Awake()
+    //{
+    //    if (_instance == null)
+    //    {
+    //        _instance = this;
+    //    }
+
+        
+    //}
     // Start is called before the first frame update
     void Start()
     {
@@ -24,10 +44,17 @@ public class TriggerHandler : MonoBehaviour
     {   
         if (other.CompareTag("Player"))
         {
-            
-            Debug.Log("compared was true, what is happening in dialogue trigger ");
+            if (!lever.IsLeverPulled)
+            {
+                dialogueTrigger.Trigger();
+                
+                
+            }
+            else
+            {
+                Destroy(this);
 
-            dialogueTrigger.Trigger();
+            }
         }
     }
 }
