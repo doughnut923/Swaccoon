@@ -120,6 +120,12 @@ public class PlayerManager : MonoBehaviour
     {
         if(swapTimer <= 0){
             //Lose
+            Debug.Log("game is now over");
+            //EntityBehaviour.handleDeath();
+
+            //EntityBehaviour deathObject = new EntityBehaviour();
+            //deathObject.handleDeath();
+
             GameOverUIBehavior.instance.ShowGameOverUI();
         } else {
             swapTimer -= Time.deltaTime;
@@ -127,14 +133,17 @@ public class PlayerManager : MonoBehaviour
 
         if (Input.GetKeyDown(startSwap) && _playerManagerState == PlayerManagerState.NOT_SWAPPING)
         {
+            Debug.Log("starting swap");
             StartSwap();
         }
         else if (Input.GetKeyDown(select))
         {
+            Debug.Log("choosing character" + select);
             SelectCharacter();
         }
         else if (Input.GetKeyDown(swap))
         {
+            Debug.Log("we have chosen the character");
             SwapCharacter();
         }
         else if (Input.GetKeyDown(cancel))

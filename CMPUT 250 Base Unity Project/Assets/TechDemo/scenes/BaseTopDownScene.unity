@@ -822,7 +822,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: 200}
+  m_AnchoredPosition: {x: 250, y: 325}
   m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &308038071
@@ -888,7 +888,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1121,10 +1121,15 @@ MonoBehaviour:
   advanceArrow: {fileID: 685452190}
   animator: {fileID: 352740403}
   charactersPerSecond: 45
-  spedUpCharactersPerSecond: 900
   isOpen: 0
   isActive: 0
   isSpedUp: 0
+--- !u!198 &382578691 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8461553506607811304, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+    type: 3}
+  m_PrefabInstance: {fileID: 27692423}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &394428227
 GameObject:
   m_ObjectHideFlags: 0
@@ -1164,6 +1169,8 @@ MonoBehaviour:
   select: 101
   swap: 116
   cancel: 27
+  swapTimeLimit: 60
+  swapTimer: 0
   SwapsLeft: 3
 --- !u!4 &394428229
 Transform:
@@ -1525,7 +1532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -256.519, y: 200.374}
+  m_AnchoredPosition: {x: -256.519, y: 325}
   m_SizeDelta: {x: 180, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &620471199
@@ -1746,7 +1753,7 @@ MonoBehaviour:
   attackCooldown: 0.2
   idleSpriteUp:
   - {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
-  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: -2710092844523721524, guid: 56a9d555b4f4f40b5b268a10bc31f8ee, type: 3}
   - {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   - {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   - {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
@@ -1760,7 +1767,7 @@ MonoBehaviour:
   - {fileID: -3124884605372549192, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   idleSpriteRight:
   - {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
-  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: 7771550337802657845, guid: 56a9d555b4f4f40b5b268a10bc31f8ee, type: 3}
   - {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   - {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   - {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
@@ -1774,7 +1781,7 @@ MonoBehaviour:
   - {fileID: 8584110993362214456, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   idleSpriteDown:
   - {fileID: -7149655254542474397, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
-  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: 3385816691517966324, guid: 56a9d555b4f4f40b5b268a10bc31f8ee, type: 3}
   - {fileID: -7149655254542474397, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   - {fileID: -7149655254542474397, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   - {fileID: -7149655254542474397, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
@@ -1788,7 +1795,7 @@ MonoBehaviour:
   - {fileID: 2308335609822901001, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   idleSpriteLeft:
   - {fileID: -5273296780164134691, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
-  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: 8637524454217707811, guid: 56a9d555b4f4f40b5b268a10bc31f8ee, type: 3}
   - {fileID: -5273296780164134691, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   - {fileID: -5273296780164134691, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   - {fileID: -5273296780164134691, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
@@ -2630,7 +2637,7 @@ MonoBehaviour:
   attackCooldown: 2
   idleSpriteUp:
   - {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
-  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: 4267328516626503511, guid: 9e3dd266709f3421ba8ea88a8706e90b, type: 3}
   - {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   - {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   - {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
@@ -2644,7 +2651,7 @@ MonoBehaviour:
   - {fileID: -3124884605372549192, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   idleSpriteRight:
   - {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
-  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: -8750127948470661739, guid: 9e3dd266709f3421ba8ea88a8706e90b, type: 3}
   - {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   - {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   - {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
@@ -2658,7 +2665,7 @@ MonoBehaviour:
   - {fileID: 8584110993362214456, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   idleSpriteDown:
   - {fileID: -7149655254542474397, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
-  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: 6047188100117337643, guid: 9e3dd266709f3421ba8ea88a8706e90b, type: 3}
   - {fileID: -7149655254542474397, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   - {fileID: -7149655254542474397, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   - {fileID: -7149655254542474397, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
@@ -2672,7 +2679,7 @@ MonoBehaviour:
   - {fileID: 2308335609822901001, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   idleSpriteLeft:
   - {fileID: -5273296780164134691, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
-  - {fileID: 21300000, guid: 3fa9e3c50a18540d3bc106b0f50b9662, type: 3}
+  - {fileID: -1714797870993926755, guid: 9e3dd266709f3421ba8ea88a8706e90b, type: 3}
   - {fileID: -5273296780164134691, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   - {fileID: -5273296780164134691, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
   - {fileID: -5273296780164134691, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
@@ -2704,7 +2711,7 @@ MonoBehaviour:
   playerWalkSoundSource: {fileID: 27692424}
   walkSound: {fileID: 8300000, guid: 9f81c7bccf6294d9697daa51327e22d0, type: 3}
   slipSound: {fileID: 8300000, guid: 6f030e173cd58481e980ccef0c66fd44, type: 3}
-  walkParticles: {fileID: 0}
+  walkParticles: {fileID: 382578691}
   acceleration: 0.25
   TiltAngle: 10
   tiltSpeed: 0.2
@@ -2755,7 +2762,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portraitsByID:
   - id: neutralA
-    sprite: {fileID: 21300000, guid: a0b645be58170ca478588acba7e83c60, type: 3}
+    sprite: {fileID: 7850783155425755697, guid: d2a92ddd2e60d9e418c8250ccd60bd5f,
+      type: 3}
   - id: questionA
     sprite: {fileID: 21300000, guid: e9f5bfeb19ae9394ba21d1ad9ba0cb93, type: 3}
   - id: boldA
@@ -2767,7 +2775,8 @@ MonoBehaviour:
   - id: fearA
     sprite: {fileID: 21300000, guid: 6721315fbc252fc4d9b3d7dcdef0b521, type: 3}
   - id: neutralB
-    sprite: {fileID: 21300000, guid: 7907618d16b0be24aa46ed6e898f382d, type: 3}
+    sprite: {fileID: 4465829113291031069, guid: 396f49a5379df4eefafe91e4a795a6a0,
+      type: 3}
   - id: questionB
     sprite: {fileID: 21300000, guid: 67b4257ac46fb6e41871bd6346a1eb6b, type: 3}
   - id: boldB
@@ -12794,6 +12803,21 @@ PrefabInstance:
     - target: {fileID: 4160942892754134806, guid: 470e3bb5f77eb984982070f946f65f44,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6394455883264512658, guid: 470e3bb5f77eb984982070f946f65f44,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6394455883264512658, guid: 470e3bb5f77eb984982070f946f65f44,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6394455883264512658, guid: 470e3bb5f77eb984982070f946f65f44,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

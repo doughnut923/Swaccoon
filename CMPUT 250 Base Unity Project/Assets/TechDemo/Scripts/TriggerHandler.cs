@@ -5,7 +5,8 @@ using UnityEngine;
 public class TriggerHandler : MonoBehaviour
 {
     public SwacoonNarrative.SwacoonDialogueTrigger dialogueTrigger;
-    
+    [SerializeField] 
+
 
     // Start is called before the first frame update
     void Start()
@@ -25,9 +26,10 @@ public class TriggerHandler : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             
-            Debug.Log("compared was true, what is happening in dialogue trigger ");
+            //Debug.Log("compared was true, what is happening in dialogue trigger ");
 
             dialogueTrigger.Trigger();
+            Destroy(this);
         }
     }
 }

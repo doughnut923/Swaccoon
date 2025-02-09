@@ -46,7 +46,7 @@ namespace SwacoonNarrative
         /// <param name="dialogue">Dialogue resource to play</param>
         public void PlaySequence(SwacoonDialogueSequence dialogue)
         {
-            Debug.Log("wohoo in the sequecer");
+            //Debug.Log("wohoo in the sequecer");
             if (dialogue.IsEmpty())
             {
                 Debug.LogWarning("Playing sequence stopped because DialogueSequence was empty");
@@ -57,10 +57,10 @@ namespace SwacoonNarrative
             currentDialog = dialogue;
             currentLine = 0;
             isPlaying = true;
-            Debug.Log("is it playing" + isPlaying);
+            //Debug.Log("is it playing" + isPlaying);
             //Open and play
             textbox.OpenTextbox();
-            Debug.Log("shoule have gone into Opentextbox");
+            //Debug.Log("shoule have gone into Opentextbox");
             ParseLine(currentLine);
             //Debug.Log(ParseLine(currentLine));
             onStarted.Invoke();
@@ -73,7 +73,7 @@ namespace SwacoonNarrative
         {
             
             bool hasNext = currentDialog.HasLine(currentLine + 1);
-            Debug.Log("is there another line " + hasNext);
+            //Debug.Log("is there another line " + hasNext);
 
 
             if (hasNext)
@@ -97,17 +97,17 @@ namespace SwacoonNarrative
         /// <param name="lineNum">Line number</param>
         private void ParseLine(int lineNum)
         {
-            Debug.Log("dialog currently playing " + currentDialog);
-            Debug.Log("parsing the lines");
+            //Debug.Log("dialog currently playing " + currentDialog);
+            //Debug.Log("parsing the lines");
             //Apply to textbox
             textbox.SetLine(currentDialog.GetRowDialogue(lineNum));
-            Debug.Log("hahaha " + textbox);
+            //Debug.Log("hahaha " + textbox);
             //Apply to textbox speaker name
             string name = currentDialog.GetRowName(lineNum);
             if (name != "")//Only apply if not empty
             {
                 textbox.SetName(name);
-                Debug.Log("name is "+name);
+                //Debug.Log("name is "+name);
             }
             //Apply to left portrait
             string portraitLeft = currentDialog.GetRowPortraitLeft(lineNum);
@@ -131,7 +131,7 @@ namespace SwacoonNarrative
             else{
                 portraits.ClosePortraitRight();
             }
-            Debug.Log("got all portraits");
+            //Debug.Log("got all portraits");
 
             //Play sound if any
             string soundClip = currentDialog.GetRowSoundClip(lineNum);
@@ -140,7 +140,7 @@ namespace SwacoonNarrative
                 AudioClip clip = SwacoonDialogueSounds.GetSound(soundClip);
                 SwacoonDialogueSounds.AudioSource.PlayOneShot(clip);
             }
-            Debug.Log("done parsing");
+            //Debug.Log("done parsing");
 
         }
 
@@ -149,7 +149,7 @@ namespace SwacoonNarrative
         /// </summary>
         public bool IsPlaying()
         {
-            Debug.Log("writing the text!");
+            //Debug.Log("writing the text!");
             return textbox.IsActive;
         }
 

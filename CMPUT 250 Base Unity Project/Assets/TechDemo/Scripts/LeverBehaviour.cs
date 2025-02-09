@@ -10,6 +10,9 @@ public class LeverBehaviour : MonoBehaviour
     public float switchRadius = 0.1f;
 
     // the player
+    //private Rigidbody2D player;
+    //private PlayerBehaviour playerScript;
+
     private Rigidbody2D player;
     private PlayerBehaviour playerScript;
     [SerializeField]private GateBehaviour gate;
@@ -19,8 +22,10 @@ public class LeverBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player = (Rigidbody2D)GameObject.Find("Player").GetComponent("Rigidbody2D");
-        playerScript = (PlayerBehaviour)player.gameObject.GetComponent(typeof(PlayerBehaviour));
+        player = PlayerManager.Instance.CurrentCharacter.GetComponent<Rigidbody2D>();
+        playerScript = PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>();
+        //player = (Rigidbody2D)GameObject.Find("Player").GetComponent("Rigidbody2D");
+        //playerScript = (PlayerBehaviour)player.gameObject.GetComponent(typeof(PlayerBehaviour));
         //gate = gameObject.GetComponent<GateBehaviour>();
         if(gate == null){
             Debug.LogError("Target gate is not set.");
@@ -30,6 +35,8 @@ public class LeverBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        player = PlayerManager.Instance.CurrentCharacter.GetComponent<Rigidbody2D>();
+        playerScript = PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>();
         
         if (player != null && Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= switchRadius && Input.GetKeyDown(_openGate))
         {

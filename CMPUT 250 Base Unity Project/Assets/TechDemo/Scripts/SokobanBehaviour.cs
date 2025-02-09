@@ -48,6 +48,7 @@ public class SokobanBehaviour : MonoBehaviour
             puzzleSoundSource.Play();
 
             // show game over UI
+            Debug.Log("game over won");
             GameOverUIBehavior.instance.ShowGameOverUI();
         }
         else

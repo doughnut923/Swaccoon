@@ -34,12 +34,12 @@ namespace SwacoonNarrative
         public void Trigger()
         {
 
-            Debug.Log("trigger() called");
-            Debug.Log("smothing is already playing "+ SwacoonDialogueSystem.IsPlaying());
+            //Debug.Log("trigger() called");
+            //Debug.Log("smothing is already playing "+ SwacoonDialogueSystem.IsPlaying());
             //Debug.Log("trigger " + SwacoonDialogueSystem.IsPlaying());
             if (SwacoonDialogueSystem.IsPlaying())
             {
-                Debug.Log("something already playing");
+                //Debug.Log("something already playing");
                 return;//Don't activate if already playing something
             }
 
@@ -51,7 +51,7 @@ namespace SwacoonNarrative
             }
 
             //Activate Dialogue
-            Debug.Log("entering play sequence");
+            //Debug.Log("entering play sequence");
             SwacoonDialogueSystem.OnDialogueEnd.AddListener(OnDialogueEnd);
             SwacoonDialogueSystem.PlaySequence(dialogueCSV);
         }

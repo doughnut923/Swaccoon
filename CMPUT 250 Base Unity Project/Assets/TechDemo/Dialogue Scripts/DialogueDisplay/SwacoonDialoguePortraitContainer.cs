@@ -52,7 +52,7 @@ namespace SwacoonNarrative {
             {
                 //Catch duplicates
                 if (portraitsDictionary.ContainsKey(item.id)){
-                    Debug.LogWarning("Duplicate portrait id: " + item.id);
+                    //Debug.LogWarning("Duplicate portrait id: " + item.id);
                 }
                 //Add portrait name in uppercase for non-case-sensitivity
                 portraitsDictionary.Add(item.id.ToUpper().Trim(), item.sprite);
@@ -66,7 +66,7 @@ namespace SwacoonNarrative {
         /// <returns>The sprite object of given id</returns>
         public static Sprite GetPortrait(string id)
         {
-            Debug.Log("getting the portrait");
+            //Debug.Log("getting the portrait");
             string nonCaseSensitiveID = id.ToUpper().Trim();
             if (!Instance.portraitsDictionary.ContainsKey(nonCaseSensitiveID))
             {

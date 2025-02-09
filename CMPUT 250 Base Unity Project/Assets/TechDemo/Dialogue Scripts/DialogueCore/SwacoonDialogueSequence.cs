@@ -20,7 +20,7 @@ namespace SwacoonNarrative
         public SwacoonDialogueSequence(List<List<string>> srcLines)
         {
             //Create list as duplicate
-            Debug.Log("now we are in the dialogue sequece");
+            //Debug.Log("now we are in the dialogue sequece");
             lines = new List<List<string>>(srcLines);
             for (int i = 0; i < lines.Count; i++)
             {
@@ -82,7 +82,7 @@ namespace SwacoonNarrative
             {
                 subsequence.Add(GetRow(i));
             }
-            Debug.Log("subsequence is "+subsequence);
+            //Debug.Log("subsequence is "+subsequence);
             return subsequence;
         }
 
@@ -107,7 +107,7 @@ namespace SwacoonNarrative
             {
                 if (row[i] != "")//todo: also check tags if any
                 {
-                    Debug.Log("row dialogue is " + row[i]);
+                    //Debug.Log("row dialogue is " + row[i]);
                     return row[i];
                 }
             }
@@ -173,7 +173,7 @@ namespace SwacoonNarrative
         /// <param name="lineNum">Line number</param>
         public string GetRowSoundClip(int lineNum)
         {
-            Debug.Log("getrowsoundclip");
+            //Debug.Log("getrowsoundclip");
             List<string> row = lines[lineNum];
 
             //Find a valid entry
