@@ -526,6 +526,18 @@ MonoBehaviour:
   conditions: []
   writeToFlagId: how_to_pull_lever
   writeToFlagValue: 1
+--- !u!114 &140803463 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 10419814}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 140803461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 515ee39397e3343739a91324927107d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &140803466
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -562,7 +574,7 @@ PrefabInstance:
     - target: {fileID: 5754101334661333843, guid: 8be35696f53ed4798a0eae38336d87bc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5754101334661333843, guid: 8be35696f53ed4798a0eae38336d87bc,
         type: 3}
@@ -614,6 +626,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6222294688131702379, guid: 8be35696f53ed4798a0eae38336d87bc,
+        type: 3}
+      propertyPath: lever
+      value: 
+      objectReference: {fileID: 728168515}
+    - target: {fileID: 6222294688131702379, guid: 8be35696f53ed4798a0eae38336d87bc,
+        type: 3}
+      propertyPath: dialogueTrigger
+      value: 
+      objectReference: {fileID: 140803462}
     - target: {fileID: 7123809796818879894, guid: 8be35696f53ed4798a0eae38336d87bc,
         type: 3}
       propertyPath: m_Name
@@ -1787,7 +1809,7 @@ Transform:
   m_Children:
   - {fileID: 1728207954}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &488837435
 MonoBehaviour:
@@ -2414,6 +2436,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &728168515 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
+    type: 3}
+  m_PrefabInstance: {fileID: 1109151426}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 515ee39397e3343739a91324927107d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!198 &729407676 stripped
 ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 8461553506607811304, guid: ec5d4cf984d63344fb93aec78dfc9e47,
@@ -11835,7 +11869,7 @@ Transform:
   - {fileID: 693238362}
   - {fileID: 1121750727}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1650397665
 GameObject:
@@ -13678,7 +13712,7 @@ PrefabInstance:
     - target: {fileID: 5754101334661333843, guid: 8be35696f53ed4798a0eae38336d87bc,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5754101334661333843, guid: 8be35696f53ed4798a0eae38336d87bc,
         type: 3}
@@ -13730,6 +13764,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6222294688131702379, guid: 8be35696f53ed4798a0eae38336d87bc,
+        type: 3}
+      propertyPath: lever
+      value: 
+      objectReference: {fileID: 140803463}
     - target: {fileID: 6222294688131702379, guid: 8be35696f53ed4798a0eae38336d87bc,
         type: 3}
       propertyPath: dialogueTrigger
