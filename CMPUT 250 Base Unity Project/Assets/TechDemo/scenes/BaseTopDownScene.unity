@@ -2928,6 +2928,8 @@ MonoBehaviour:
     m_RotationOrder: 4
   riseTime: 2
   spriteRenderer: {fileID: 1045165691}
+  platformSoundSource: {fileID: 695096444}
+  platformRiseSound: {fileID: 8300000, guid: 86e393d86d50845a0a63af5d5673b530, type: 3}
 --- !u!212 &1045165691
 SpriteRenderer:
   m_ObjectHideFlags: 0
