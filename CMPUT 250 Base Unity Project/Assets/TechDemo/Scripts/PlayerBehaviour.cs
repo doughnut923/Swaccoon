@@ -12,7 +12,8 @@ public enum CurrentPlayerState
     FALLING,
     ATTACKING,
     SWAPPING,
-    SWAPPED_OUT
+    SWAPPED_OUT,
+    CUTSCENE_PLAYING
 }
 
 /***
@@ -164,7 +165,7 @@ public class PlayerBehaviour : EntityBehaviour
     override public void FixedUpdate()
     {
 
-        if (_playerState == CurrentPlayerState.SWAPPED_OUT || _playerState == CurrentPlayerState.SWAPPING)
+        if (_playerState == CurrentPlayerState.SWAPPED_OUT || _playerState == CurrentPlayerState.SWAPPING || _playerState == CurrentPlayerState.CUTSCENE_PLAYING)
         {
             //Possibly sleepping animation
             //but wil be just idle for now

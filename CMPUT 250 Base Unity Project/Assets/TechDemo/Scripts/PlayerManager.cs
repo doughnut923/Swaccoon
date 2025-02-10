@@ -6,7 +6,8 @@ using UnityEngine;
 public enum PlayerManagerState
 {
     Swapping,
-    NOT_SWAPPING
+    NOT_SWAPPING,
+    CUTSCENE_PLAYING
 }
 
 //The Class basically changes the state of the character based on the input from the player essentially for swapping the character
@@ -118,11 +119,16 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
+        if(_playerManagerState == PlayerManagerState.CUTSCENE_PLAYING){
+            return;
+        }
         if(swapTimer <= 0){
             //Lose
             GameOverUIBehavior.instance.ShowGameOverUI();
         } else {
-            swapTimer -= Time.deltaTime;
+            if(!_playerManagerState.Equals(PlayerManagerState.CUTSCENE_PLAYING)){
+                swapTimer -= Time.deltaTime;   
+            }
         }
 
         if (Input.GetKeyDown(startSwap) && _playerManagerState == PlayerManagerState.NOT_SWAPPING)
