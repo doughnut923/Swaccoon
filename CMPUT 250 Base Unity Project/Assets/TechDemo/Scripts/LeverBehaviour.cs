@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class LeverBehaviour : MonoBehaviour
@@ -16,11 +17,21 @@ public class LeverBehaviour : MonoBehaviour
 
     [SerializeField]private KeyCode _openGate = KeyCode.Z;
 
+    [SerializeField]UnityEvent leverPulled = new UnityEvent();
+
+    [SerializeField] [HideInInspector] private bool isLeverPulled = false;
+    public bool IsLeverPulled { get { return isLeverPulled; } }
+
+    [SerializeField] private AudioSource leverSoundSource;
+    [SerializeField] private AudioClip leverPulledSound;
+
     // Start is called before the first frame update
     void Start()
     {
-        player = (Rigidbody2D)GameObject.Find("Player").GetComponent("Rigidbody2D");
-        playerScript = (PlayerBehaviour)player.gameObject.GetComponent(typeof(PlayerBehaviour));
+        player = PlayerManager.Instance.CurrentCharacter.GetComponent<Rigidbody2D>();
+        playerScript = PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>();
+        //player = (Rigidbody2D)GameObject.Find("Player").GetComponent("Rigidbody2D");
+        //playerScript = (PlayerBehaviour)player.gameObject.GetComponent(typeof(PlayerBehaviour));
         //gate = gameObject.GetComponent<GateBehaviour>();
         if(gate == null){
             Debug.LogError("Target gate is not set.");
@@ -30,10 +41,12 @@ public class LeverBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        player = PlayerManager.Instance.CurrentCharacter.GetComponent<Rigidbody2D>();
+        playerScript = PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>();
         if (player != null && Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= switchRadius && Input.GetKeyDown(_openGate))
         {
             LeverPulled();
+            CameraManager.Instance.ShakeCamera(0.1f, 0.1f);
         }
     }
     void LeverPulled()
@@ -46,14 +59,18 @@ public class LeverBehaviour : MonoBehaviour
 
         // log that the lever has been pulled
         PlayerPrefs.SetInt(gameObject.scene.name + gameObject.name, 1);
-        
-        //Debug.Log("gate is type " + gate);
 
-        gate.leverPulled();
+        leverSoundSource.clip = leverPulledSound;
+        leverSoundSource.volume = 0.5f;
+        leverSoundSource.Play();
 
-        Destroy(gameObject);
+
+            //Envoke the Unity Events
+            leverPulled.Invoke();
+        isLeverPulled = true;
         
         //playerScript.collectKey();
+        Destroy(gameObject);
 
     }
 }

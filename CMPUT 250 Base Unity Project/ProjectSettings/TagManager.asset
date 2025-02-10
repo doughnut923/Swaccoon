@@ -12,6 +12,9 @@ TagManager:
   - PCGComponent
   - Racoon Player
   - Box
+  - Gate Trigger
+  - Lever Trigger
+  - Pit Trigger
   layers:
   - Default
   - TransparentFX

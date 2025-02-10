@@ -66,7 +66,7 @@ namespace SwacoonNarrative {
         /// <returns>The sprite object of given id</returns>
         public static Sprite GetPortrait(string id)
         {
-            Debug.Log("getting the portrait");
+            //Debug.Log("getting the portrait");
             string nonCaseSensitiveID = id.ToUpper().Trim();
             if (!Instance.portraitsDictionary.ContainsKey(nonCaseSensitiveID))
             {

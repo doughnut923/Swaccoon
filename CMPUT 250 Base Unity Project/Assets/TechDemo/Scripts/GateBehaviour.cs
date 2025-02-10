@@ -21,6 +21,9 @@ public class GateBehaviour : MonoBehaviour
     private PlayerBehaviour playerScript;
     private SokobanBehaviour sokobanScript;
 
+    [SerializeField] private AudioSource gateSoundSource;
+    [SerializeField] private AudioClip gateOpenSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,6 +91,9 @@ public class GateBehaviour : MonoBehaviour
         // if we're opening with a key, decrement key from player
         if (openCondition == Condition.Key){
             playerScript.unlockGate(true);
+            gateSoundSource.clip = gateOpenSound;
+            gateSoundSource.volume = 0.5f;
+            gateSoundSource.Play();
         }
         else{
             playerScript.unlockGate(false);

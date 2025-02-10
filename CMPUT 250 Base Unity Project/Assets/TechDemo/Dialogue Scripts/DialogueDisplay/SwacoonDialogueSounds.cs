@@ -65,7 +65,7 @@ namespace SwacoonNarrative
             /// <returns>The sprite object of given id</returns>
             public static AudioClip GetSound(string id)
             {
-                Debug.Log("in the getsound");
+                //Debug.Log("in the getsound");
                 string nonCaseSensitiveID = id.ToUpper().Trim();
                 if (!Instance.soundsDictionary.ContainsKey(nonCaseSensitiveID))
                 {

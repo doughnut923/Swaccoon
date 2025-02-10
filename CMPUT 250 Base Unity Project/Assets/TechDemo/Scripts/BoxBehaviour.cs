@@ -48,14 +48,14 @@ public class BoxBehaviour : EntityBehaviour
         boxCollider = box.GetComponent<Collider2D>();
     }
 
-    // Update is called once per frame
-    //override public void FixedUpdate()
-    //{
-    //    base.FixedUpdate();
+    //Update is called once per frame
+    override public void FixedUpdate()
+    {
+        base.FixedUpdate();
 
-    //    updateIce();
-    //    previousLocation = crate.position;
-    //}
+        //updateIce();
+        previousLocation = box.position;
+    }
 
     override public Vector2 getMovement()
     {
@@ -78,7 +78,7 @@ public class BoxBehaviour : EntityBehaviour
         //    return lastPlayerLocation;
         //}
 
-        //else if (!_isOnIce || isStopped())
+        //if (isStopped())
         //{
         //    _lockForce = false;
         //}
@@ -113,7 +113,6 @@ public class BoxBehaviour : EntityBehaviour
                 Vector2 downDir = new Vector2(0, -1);
 
                 // handles pushing depending on which player is pushing the box
-                // so far only handles 2 players
                 if ((Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= 1f) && (playerScript._playerState == CurrentPlayerState.IDLE))
                 { // if raccoon is pushing
 
@@ -142,7 +141,13 @@ public class BoxBehaviour : EntityBehaviour
                     {
                         update = new Vector2(0, 1);
                     }
+                    // if we have an update, we need to be making the move sound!
+                    
+                    
+
                 }
+                
+
                 // else if ((Mathf.Abs(Vector2.Distance(player1.position, transform.position)) <= 1f) && (player1Behaviour._playerState == CurrentPlayerState.IDLE))// other player is pushing the box
                 // {
                 //     float rightDist = Vector2.Distance(right, player1.position);
@@ -172,30 +177,29 @@ public class BoxBehaviour : EntityBehaviour
                 //     }
                 // }
             }
-        }
-
-
-        // if we have an update, we need to be making the move sound!
-        if (previousLocation != (Vector2)transform.position)
-        {
-            boxSoundSource.clip = boxGroundPush;
-            boxSoundSource.volume = 1f;
-            if (!boxSoundSource.isPlaying)
+            if (previousLocation != (Vector2)transform.position)
             {
-                boxSoundSource.Play();
+                //Debug.Log("making moving sound");
+                boxSoundSource.clip = boxGroundPush;
+                boxSoundSource.volume = 1f;
+                if (!boxSoundSource.isPlaying)
+                {
+                    boxSoundSource.Play();
+                }
             }
-        }
-        // if the box is stationary, stop all sound!
-        else
-        {
-            boxSoundSource.Stop();
-            boxSoundSource.volume = Mathf.Clamp(boxSoundSource.volume - 0.1f, 0f, 1f);
-            if (boxSoundSource.volume == 0f)
+            // if the box is stationary, stop all sound!
+            else
             {
+                //Debug.Log("stopping moving sound");
                 boxSoundSource.Stop();
+                boxSoundSource.volume = Mathf.Clamp(boxSoundSource.volume - 0.1f, 0f, 1f);
+                if (boxSoundSource.volume == 0f)
+                {
+                    boxSoundSource.Stop();
+                }
             }
         }
-
+        
         return update;
     }
 
@@ -216,11 +220,17 @@ public class BoxBehaviour : EntityBehaviour
 
             //Destroy(collision.gameObject);
             //Destroy(gameObject);
-            Debug.Log("Start moving");
             IEnumerator coroutine = MoveSelfToPosition(collision.transform.position);
             StartCoroutine(coroutine);
 
             CameraManager.Instance.ShakeCamera(0.2f, 0.1f);
+            Debug.Log("stopping moving sound");
+            boxSoundSource.Stop();
+            boxSoundSource.volume = Mathf.Clamp(boxSoundSource.volume - 0.1f, 0f, 1f);
+            if (boxSoundSource.volume == 0f)
+            {
+                boxSoundSource.Stop();
+            }
         }
     }
 
@@ -229,7 +239,6 @@ public class BoxBehaviour : EntityBehaviour
         while (Vector2.Distance(transform.position, position) > 0.01f)
         {
             transform.position = Vector2.Lerp(transform.position, position, 0.1f);
-            Debug.Log("Moving to position");
             yield return new WaitForFixedUpdate();
         }
         yield return null;
@@ -260,8 +269,8 @@ public class BoxBehaviour : EntityBehaviour
     //    }
     //}
 
-    //public bool isStopped()
-    //{
-    //    return (crate.position.x == previousLocation.x && crate.position.y == previousLocation.y);
-    //}
+    public bool isStopped()
+    {
+        return (box.position.x == previousLocation.x && box.position.y == previousLocation.y);
+    }
 }

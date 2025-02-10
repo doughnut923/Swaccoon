@@ -1,8 +1,14 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:CMPUT 250 Base Unity Project/Assets/Examples/Zelda Room Example/Sprites/Assets/VoidRuleTile.asset.meta
+guid: a1a847a2cc0bb584198a81495ccac854
+NativeFormatImporter:
+========
 guid: 8019e351668eb44f78e819e5fbf6504c
 folderAsset: yes
 DefaultImporter:
+>>>>>>>> alysha:CMPUT 250 Base Unity Project/Assets/TechDemo/Dialogue Examples.meta
   externalObjects: {}
+  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

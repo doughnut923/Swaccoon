@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 namespace SwacoonNarrative
 {
     public class SwacoonDialogueOnStart : MonoBehaviour
@@ -18,11 +19,16 @@ namespace SwacoonNarrative
         [Header("Conditions")]
         [SerializeField] private List<Condition> conditions = new List<Condition>();
 
+        [SerializeField] UnityEvent onDialogueEndEvents;
+
         // Start is called before the first frame update
         void Start()
         {
+            PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.CUTSCENE_PLAYING;
+            PlayerManager._playerManagerState = PlayerManagerState.CUTSCENE_PLAYING;
+
             if (dialogueCSV!=null){//If we have a dialogue
-                Debug.Log("entering the on start dialgue");
+                //Debug.Log("entering the on start dialgue");
                 SwacoonDialogueSystem.OnDialogueEnd.AddListener(OnDialogueEnd);
                 SwacoonDialogueSystem.PlaySequence(dialogueCSV);
             }
@@ -34,7 +40,11 @@ namespace SwacoonNarrative
         /// </summary>
         private void OnDialogueEnd()
         {
-            Debug.Log("entering the on end dialgue");
+            onDialogueEndEvents.Invoke();
+
+            PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.IDLE;
+            PlayerManager._playerManagerState = PlayerManagerState.NOT_SWAPPING;
+            //Debug.Log("entering the on end dialgue");
             if (writeToFlagId != "")
             {
                 SwacoonDialogueFlags.SetFlag(writeToFlagId, writeToFlagValue);
