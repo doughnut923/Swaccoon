@@ -12,6 +12,11 @@ public class PlatformBehaviour : MonoBehaviour
     [SerializeField] float riseTime = 1f;
     [SerializeField] SpriteRenderer spriteRenderer;
 
+    [SerializeField] private AudioSource platformSoundSource;
+    [SerializeField] private AudioClip platformRiseSound;
+    private float minPitch = 0.5f;
+    private float maxPitch = 1f;
+
     void Awake(){
         TargetPosition = transform.position;
         transform.position = new Vector3(transform.position.x, transform.position.y-10, transform.position.z);
@@ -30,8 +35,14 @@ public class PlatformBehaviour : MonoBehaviour
         float time = 0;
         while (time < riseTime)
         {
+            platformSoundSource.clip = platformRiseSound;
+            platformSoundSource.volume = 0.5f;
+
             time += Time.deltaTime;
             float t = time / riseTime;
+
+            platformSoundSource.pitch = Mathf.Lerp(minPitch, maxPitch, t);
+            platformSoundSource.Play();
             transform.position = Vector3.Lerp(StartPosition, TargetPosition, riseCurve.Evaluate(t));
             spriteRenderer.color = new Color(1, 1, 1, riseCurve.Evaluate(t));
             yield return null;

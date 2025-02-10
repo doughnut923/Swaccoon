@@ -22,7 +22,8 @@ public class LeverBehaviour : MonoBehaviour
     [SerializeField] [HideInInspector] private bool isLeverPulled = false;
     public bool IsLeverPulled { get { return isLeverPulled; } }
 
-
+    [SerializeField] private AudioSource leverSoundSource;
+    [SerializeField] private AudioClip leverPulledSound;
 
     // Start is called before the first frame update
     void Start()
@@ -59,10 +60,13 @@ public class LeverBehaviour : MonoBehaviour
         // log that the lever has been pulled
         PlayerPrefs.SetInt(gameObject.scene.name + gameObject.name, 1);
 
+        leverSoundSource.clip = leverPulledSound;
+        leverSoundSource.volume = 0.5f;
+        leverSoundSource.Play();
 
 
-        //Envoke the Unity Events
-        leverPulled.Invoke();
+            //Envoke the Unity Events
+            leverPulled.Invoke();
         isLeverPulled = true;
         
         //playerScript.collectKey();

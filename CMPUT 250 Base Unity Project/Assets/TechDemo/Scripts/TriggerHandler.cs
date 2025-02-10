@@ -6,6 +6,7 @@ public class TriggerHandler : MonoBehaviour
 {
     public SwacoonNarrative.SwacoonDialogueTrigger dialogueTrigger;
     public LeverBehaviour lever;
+    public GateBehaviour gate;
     //private LeverBehaviour leverPulled;
     //private static TriggerHandler _instance;
     //public static TriggerHandler Instance
@@ -41,19 +42,37 @@ public class TriggerHandler : MonoBehaviour
 
     //when player enters the trigger area
     private void OnTriggerEnter2D(Collider2D other)
-    {   
+    {
+        //Debug.Log("entering trigger zone");
         if (other.CompareTag("Player"))
         {
-            if (!lever.IsLeverPulled)
+            //Debug.Log("game object name is " + gameObject.name);
+            if (gameObject.tag == "Lever Trigger")
             {
-                dialogueTrigger.Trigger();
-                
-                
-            }
-            else
-            {
-                Destroy(this);
+                //Debug.Log("compare tag");
+                if (!lever.IsLeverPulled)
+                {
+                    dialogueTrigger.Trigger();
 
+
+                }
+                else
+                {
+                    Destroy(this);
+
+                }
+            }
+            if (gameObject.tag == "Gate Trigger")
+            {
+                if (!lever.IsLeverPulled)
+                {
+                    dialogueTrigger.Trigger();
+                    
+                }
+                else
+                {
+                    Destroy(this);
+                }
             }
         }
     }

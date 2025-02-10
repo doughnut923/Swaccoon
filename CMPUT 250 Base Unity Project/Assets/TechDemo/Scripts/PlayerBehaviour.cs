@@ -132,6 +132,7 @@ public class PlayerBehaviour : EntityBehaviour
     override public void Start()
     {
         base.Start();
+        
         _attackCountdown = attackCooldown;
 
         // reset the room if we aren't using the connective wrapper
