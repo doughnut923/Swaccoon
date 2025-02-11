@@ -23,6 +23,8 @@ public class GameOverUIBehavior : MonoBehaviour
     public void ShowGameOverUI()
     {
         //show the UI elements
+        GameStateManager.instance.gameState = GameState.GAME_OVER;  
+
         BackgroundImage.gameObject.SetActive(true);
         GameOverText.gameObject.SetActive(true);
         PlayAgainText.gameObject.SetActive(true);

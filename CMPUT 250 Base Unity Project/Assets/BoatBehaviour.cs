@@ -1,37 +1,38 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxBehaviour : EntityBehaviour
+public class BoatBehaviour : EntityBehaviour
 {
 
-    protected SokobanBehaviour sokobanScript;
-    protected PlayerBehaviour playerScript;
-    protected PlayerBehaviour player1Script;
-    protected Rigidbody2D player;
-    protected Rigidbody2D player1;
-    protected Rigidbody2D box;
+    private SokobanBehaviour sokobanScript;
+    private PlayerBehaviour playerScript;
+    private PlayerBehaviour player1Script;
+    private Rigidbody2D player;
+    private Rigidbody2D player1;
+    private Rigidbody2D box;
 
-    protected Collider2D boxCollider;
-    protected Collider2D playerCollider;
-    protected Collider2D player1Collider;
+    private Vector2 closestWater;
+
+    private Collider2D boxCollider;
+    private Collider2D playerCollider;
+    private Collider2D player1Collider;
 
     // ice parameters
-    //protected Vector2 _closestIce = Vector2.positiveInfinity;
-    //protected bool _isOnIce = false;
-    //protected float _iceThreshold = 0.9f;
-    //protected bool _lockForce = false;
-    protected Vector2 previousLocation;
-    //protected Vector2 lastPlayerLocation;
+    //private Vector2 _closestIce = Vector2.positiveInfinity;
+    //private bool _isOnIce = false;
+    //private float _iceThreshold = 0.9f;
+    //private bool _lockForce = false;
+    private Vector2 previousLocation;
+    //private Vector2 lastPlayerLocation;
 
     // sound parameters
-    [SerializeField] protected AudioSource boxSoundSource;
-    [SerializeField] protected AudioClip boxGroundPush;
-    //[SerializeField] protected AudioClip boxIceSlide;
+    [SerializeField] private AudioSource boxSoundSource;
+    [SerializeField] private AudioClip boxGroundPush;
+    //[SerializeField] private AudioClip boxIceSlide;
 
-    protected bool isOnGoal = false;
-
-    public bool isOnWater = false;
+    private bool isOnGoal = false;
 
     // Start is called before the first frame update
     override public void Start()
@@ -54,30 +55,9 @@ public class BoxBehaviour : EntityBehaviour
     override public void FixedUpdate()
     {
         base.FixedUpdate();
-
         //updateIce();
         previousLocation = box.position;
-
-        // if the box is on a water tile, it will sink
-        if (isOnWater)
-        {
-            StartCoroutine(SinkBox());
-        }
     }
-
-    IEnumerator SinkBox(){
-        //Play the box sinking sound
-
-        //Play the box sinking animation
-        
-        //Wait for the animation to finish
-
-        //Destroy the box
-        Destroy(gameObject);
-        yield return null;
-    }
-
-
 
     override public Vector2 getMovement()
     {
@@ -169,36 +149,30 @@ public class BoxBehaviour : EntityBehaviour
 
                 }
                 
-
-                // else if ((Mathf.Abs(Vector2.Distance(player1.position, transform.position)) <= 1f) && (player1Behaviour._playerState == CurrentPlayerState.IDLE))// other player is pushing the box
-                // {
-                //     float rightDist = Vector2.Distance(right, player1.position);
-                //     float leftDist = Vector2.Distance(left, player1.position);
-                //     float upDist = Vector2.Distance(up, player1.position);
-                //     float downDist = Vector2.Distance(down, player1.position);
-
-                //     float minDist = Mathf.Min(rightDist, leftDist, upDist, downDist);
-                //     Vector2 player1Direction = player1Script.dirToVec();
-
-                //     // according to case, check if we should be allowed to push the block!
-                //     if (minDist == rightDist && player1Direction == leftDir)
-                //     {
-                //         update = new Vector2(-1, 0);
-                //     }
-                //     else if (minDist == leftDist && player1Script.dirToVec() == rightDir)
-                //     {
-                //         update = new Vector2(1, 0);
-                //     }
-                //     else if (minDist == upDist && player1Script.dirToVec() == downDir)
-                //     {
-                //         update = new Vector2(0, -1);
-                //     }
-                //     else if (minDist == downDist && player1Script.dirToVec() == upDir)
-                //     {
-                //         update = new Vector2(0, 1);
-                //     }
-                // }
             }
+            
+            //check if the next position of the boat collides with a non-water object, if it does, don't move
+            // as the next position is determined by position + update * moveSpeed * Time.deltaTime, so we can check based on this
+            Vector2 nextPosition = box.position + update * moveSpeed * Time.deltaTime;
+            //get the closest water tile to the boat
+            closestWater = Vector2.positiveInfinity;
+            foreach (GameObject go in GameObject.FindGameObjectsWithTag("Water"))
+            {
+                Vector2 waterPos = go.transform.position;
+                if (Mathf.Abs(Vector2.Distance(nextPosition, waterPos)) < Mathf.Abs(Vector2.Distance(nextPosition, closestWater)))
+                {
+                    closestWater = waterPos;
+                }
+            }
+            
+            if(Mathf.Abs(nextPosition.x - closestWater.x) > 0.6f || Mathf.Abs(nextPosition.y - closestWater.y) > 0.6f)
+            {
+                update = Vector2.zero;
+            }
+
+
+            
+            // if the boat is moving, play the moving sound
             if (previousLocation != (Vector2)transform.position)
             {
                 //Debug.Log("making moving sound");
@@ -225,8 +199,25 @@ public class BoxBehaviour : EntityBehaviour
         return update;
     }
 
+    //called by all water tiles to set the closest water tile to the boat
+    // public void UpdateClosestWater(Vector2 waterPos)
+    // {
+    //     Debug.Log("updating closest water");
+    //     if (closestWater == null)
+    //     {
+    //         closestWater = waterPos;
+    //     }
+    //     else
+    //     {
+    //         if (Mathf.Abs(Vector2.Distance(transform.position, waterPos)) < Mathf.Abs(Vector2.Distance(transform.position, closestWater)))
+    //         {
+    //             closestWater = waterPos;
+    //         }
+    //     }
+    // }
+
     //Just overlapped a collider 2D
-    protected void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Goal")
         {
@@ -256,7 +247,7 @@ public class BoxBehaviour : EntityBehaviour
         }
     }
 
-    protected IEnumerator MoveSelfToPosition(Vector2 position)
+    private IEnumerator MoveSelfToPosition(Vector2 position)
     {
         while (Vector2.Distance(transform.position, position) > 0.01f)
         {

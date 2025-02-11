@@ -41,93 +41,93 @@ public class PlayerBehaviour : EntityBehaviour
     public float attackCooldown = 2f;
 
     [Header("Sprite Settings")]
-    [SerializeField] private List<Sprite> idleSpriteUp = new List<Sprite>(6);
-    [SerializeField] private List<Sprite> walkSpritesUp = new List<Sprite>(6);
-    [SerializeField] private List<Sprite> idleSpriteRight = new List<Sprite>(6);
-    [SerializeField] private List<Sprite> walkSpritesRight = new List<Sprite>(6);
-    [SerializeField] private List<Sprite> idleSpriteDown = new List<Sprite>(6);
-    [SerializeField] private List<Sprite> walkSpritesDown = new List<Sprite>(6);
-    [SerializeField] private List<Sprite> idleSpriteLeft = new List<Sprite>(6);
-    [SerializeField] private List<Sprite> walkSpritesLeft = new List<Sprite>(6);
+    [SerializeField] protected List<Sprite> idleSpriteUp = new List<Sprite>(6);
+    [SerializeField] protected List<Sprite> walkSpritesUp = new List<Sprite>(6);
+    [SerializeField] protected List<Sprite> idleSpriteRight = new List<Sprite>(6);
+    [SerializeField] protected List<Sprite> walkSpritesRight = new List<Sprite>(6);
+    [SerializeField] protected List<Sprite> idleSpriteDown = new List<Sprite>(6);
+    [SerializeField] protected List<Sprite> walkSpritesDown = new List<Sprite>(6);
+    [SerializeField] protected List<Sprite> idleSpriteLeft = new List<Sprite>(6);
+    [SerializeField] protected List<Sprite> walkSpritesLeft = new List<Sprite>(6);
 
-    [SerializeField] private List<Sprite> attackSpritesUp = new List<Sprite>(4);
-    [SerializeField] private List<Sprite> attackSpritesRight = new List<Sprite>(4);
-    [SerializeField] private List<Sprite> attackSpritesDown = new List<Sprite>(4);
-    [SerializeField] private List<Sprite> attackSpritesLeft = new List<Sprite>(4);
+    [SerializeField] protected List<Sprite> attackSpritesUp = new List<Sprite>(4);
+    [SerializeField] protected List<Sprite> attackSpritesRight = new List<Sprite>(4);
+    [SerializeField] protected List<Sprite> attackSpritesDown = new List<Sprite>(4);
+    [SerializeField] protected List<Sprite> attackSpritesLeft = new List<Sprite>(4);
 
-    [SerializeField] private List<Sprite> fallSprites = new List<Sprite>(6);
+    [SerializeField] protected List<Sprite> fallSprites = new List<Sprite>(6);
 
-    [SerializeField] private Sprite hurtSpriteUp;
-    [SerializeField] private Sprite hurtSpriteRight;
-    [SerializeField] private Sprite hurtSpriteDown;
-    [SerializeField] private Sprite hurtSpriteLeft;
+    [SerializeField] protected Sprite hurtSpriteUp;
+    [SerializeField] protected Sprite hurtSpriteRight;
+    [SerializeField] protected Sprite hurtSpriteDown;
+    [SerializeField] protected Sprite hurtSpriteLeft;
 
     [Header("Sound Settings")]
-    [SerializeField] private AudioSource playerSoundSource;
-    [SerializeField] private AudioClip attackSound;
-    [SerializeField] private AudioClip hurtSound;
-    [SerializeField] private AudioClip deathSound;
+    [SerializeField] protected AudioSource playerSoundSource;
+    [SerializeField] protected AudioClip attackSound;
+    [SerializeField] protected AudioClip hurtSound;
+    [SerializeField] protected AudioClip deathSound;
 
-    [SerializeField] private AudioSource controlSoundSource;
-    [SerializeField] private AudioClip doorOpenSound;
-    [SerializeField] private AudioClip keyPickupSound;
-    [SerializeField] private AudioClip pitFallSound;
+    [SerializeField] protected AudioSource controlSoundSource;
+    [SerializeField] protected AudioClip doorOpenSound;
+    [SerializeField] protected AudioClip keyPickupSound;
+    [SerializeField] protected AudioClip pitFallSound;
 
-    [SerializeField] private AudioSource playerWalkSoundSource;
-    [SerializeField] private AudioClip walkSound;
-    [SerializeField] private AudioClip slipSound;
+    [SerializeField] protected AudioSource playerWalkSoundSource;
+    [SerializeField] protected AudioClip walkSound;
+    [SerializeField] protected AudioClip slipSound;
 
     public ParticleSystem walkParticles;
 
     // internal variables    
     // attack parameters
-    private bool _isAttacking = false;
-    private float _attackThreshold = 1.8f;
-    private float _attackCountdown;
+    protected bool _isAttacking = false;
+    protected float _attackThreshold = 1.8f;
+    protected float _attackCountdown;
 
     // animation speed
-    private float _walkFramesPerSecond = 12.5f;
-    private float _attackFramesPerSecond = 15f;
-    private float _fallFramesPerSecond = 15f;
-    private float _currentFrame = 0f;
+    protected float _walkFramesPerSecond = 12.5f;
+    protected float _attackFramesPerSecond = 15f;
+    protected float _fallFramesPerSecond = 15f;
+    protected float _currentFrame = 0f;
 
     // falling parameters
-    private bool _isFalling = false;
-    private Vector2 lastSafePosition = Vector2.zero;
+    protected bool _isFalling = false;
+    protected Vector2 lastSafePosition = Vector2.zero;
 
     // ice parameters
-    private Vector2 _closestIce = Vector2.positiveInfinity;
-    private bool _isOnIce = false;
-    private float _iceThreshold = 0.9f;
+    protected Vector2 _closestIce = Vector2.positiveInfinity;
+    protected bool _isOnIce = false;
+    protected float _iceThreshold = 0.9f;
 
     // hurt parameters
-    private float _hurtFrames = 24f;
-    private float _currentHurtFrame = 0f;
-    private bool _isHurt = false;
-    private bool _isDead = false;
+    protected float _hurtFrames = 24f;
+    protected float _currentHurtFrame = 0f;
+    protected bool _isHurt = false;
+    protected bool _isDead = false;
 
     // components
-    private SpriteRenderer currentSprite;
-    private SpriteRenderer shadow;
+    protected SpriteRenderer currentSprite;
+    protected SpriteRenderer shadow;
 
     // key parameters
-    private int _keys = 0;
+    protected int _keys = 0;
 
-    private Vector2 movement = Vector2.zero;
-    private bool _canStep = true;
+    protected Vector2 movement = Vector2.zero;
+    protected bool _canStep = true;
     
     //add a slider to inspector to adjust acceleration
     [Header("Juice Settings")]
     [Range(0.01f, 1f)]
     [Tooltip("How fast the player accelerates")]
-    [SerializeField] private float acceleration = 0.1f;
-    private Vector2 currentSpeed = Vector2.zero;
+    [SerializeField] protected float acceleration = 0.1f;
+    protected Vector2 currentSpeed = Vector2.zero;
     [Range(0f, 45f)]
-    [SerializeField] private float TiltAngle = 10f;
-    private float currentTilt = 0f;
+    [SerializeField] protected float TiltAngle = 10f;
+    protected float currentTilt = 0f;
     [Range(0.01f, 1f)]
-    [SerializeField] private float tiltSpeed = 0.2f;
-    [SerializeField] private float particleTimer = 0.5f;
+    [SerializeField] protected float tiltSpeed = 0.2f;
+    [SerializeField] protected float particleTimer = 0.5f;
 
     // Start is called before the first frame update
     override public void Start()
@@ -164,6 +164,11 @@ public class PlayerBehaviour : EntityBehaviour
     // Update is called once per frame
     override public void FixedUpdate()
     {
+
+        if(GameStateManager.instance.gameState == GameState.GAME_OVER)
+        {
+            return;
+        }
 
         if (_playerState == CurrentPlayerState.SWAPPED_OUT || _playerState == CurrentPlayerState.SWAPPING || _playerState == CurrentPlayerState.CUTSCENE_PLAYING)
         {
@@ -311,7 +316,7 @@ public class PlayerBehaviour : EntityBehaviour
         return update;
     }
     
-    private IEnumerator WaitForNextStep()
+    protected IEnumerator WaitForNextStep()
     {
         yield return new WaitForSeconds(particleTimer);
         _canStep = true;
@@ -485,16 +490,19 @@ public class PlayerBehaviour : EntityBehaviour
     {
         if (Mathf.Abs(Vector2.Distance(transform.position, icePos)) < Mathf.Abs(Vector2.Distance(transform.position, _closestIce)))
         {
+            //check if the ice block who called the updateIce function is closer to the player than the previous closest ice block, if so set the new closest ice block
             _closestIce = icePos;
         }
 
         if (Mathf.Abs(_closestIce.x - transform.position.x) <= _iceThreshold && Mathf.Abs(_closestIce.y - transform.position.y) <= _iceThreshold && !isStopped())
         {
+            // To check the distance between the player and the ice block if it is less than the threshold, then the player is on ice
             _isOnIce = true;
 
         }
         else
         {
+            // If the player is not on ice, then the player is not on ice
             _isOnIce = false;
         }
     }
@@ -512,5 +520,10 @@ public class PlayerBehaviour : EntityBehaviour
     public bool attackCollision(RaycastHit2D attackRay)
     {
         return attackRay.collider && attackRay.distance < _attackThreshold && attackRay.transform.gameObject.tag == "Enemy";
+    }
+
+    public override void handleDeath(){
+        GameOverUIBehavior.instance.ShowGameOverUI();
+        Destroy(gameObject);
     }
 }

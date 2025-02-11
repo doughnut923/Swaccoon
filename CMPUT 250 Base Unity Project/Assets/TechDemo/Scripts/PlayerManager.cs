@@ -119,7 +119,19 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(startSwap))
+        if(_playerManagerState == PlayerManagerState.CUTSCENE_PLAYING){
+            return;
+        }
+        if(swapTimer <= 0){
+            //Lose
+            GameOverUIBehavior.instance.ShowGameOverUI();
+        } else {
+            if(!_playerManagerState.Equals(PlayerManagerState.CUTSCENE_PLAYING)){
+                swapTimer -= Time.deltaTime;   
+            }
+        }
+
+        if (Input.GetKeyDown(startSwap) && _playerManagerState == PlayerManagerState.NOT_SWAPPING)
         {
             StartSwap();
         }
