@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FishBehaviour : PlayerBehaviour
 {
 
     [SerializeField] private float OutOfWaterLimit = 10;
     private float OutOfWaterTimeLeft= 0f;
-
     public bool InWater = true;
 
-    [SerializeField] private Collider2D waterCollider;
-    
+
+    [SerializeField] private RectTransform TimeBar;
 
     public override void Start(){
         base.Start();
@@ -37,8 +37,16 @@ public class FishBehaviour : PlayerBehaviour
         // if we are out of the water, decrement the timer
         if (!InWater)
         {
+            TimeBar.gameObject.SetActive(true);
             OutOfWaterTimeLeft -= Time.deltaTime;
             Debug.Log("Out of water time left: " + OutOfWaterTimeLeft);
+
+            //change length of time bar
+            TimeBar.sizeDelta = new Vector2(OutOfWaterTimeLeft / OutOfWaterLimit * 100 , TimeBar.sizeDelta.y);
+
+            //set the color of the Bar based on how much time is left from white to red
+            TimeBar.GetComponent<Image>().color = Color.Lerp(Color.white, Color.red, 1 - OutOfWaterTimeLeft / OutOfWaterLimit);
+
             if (OutOfWaterTimeLeft <= 0)
             {
                 handleDeath();
@@ -46,6 +54,7 @@ public class FishBehaviour : PlayerBehaviour
         }
         else
         {
+            TimeBar.gameObject.SetActive(false);
             OutOfWaterTimeLeft = OutOfWaterLimit;
         }
 
@@ -204,7 +213,7 @@ public class FishBehaviour : PlayerBehaviour
         {
             Debug.Log("Closest water is " + closestWater.gameObject.name);
             //compare the distnce to the water to the fish
-            if (Vector2.Distance(transform.position, closestWater.transform.position) > 0.5)
+            if (Mathf.Abs(transform.position.x - closestWater.transform.position.x) > .6 || Mathf.Abs(transform.position.y - closestWater.transform.position.y) > .6)
             {
                 InWater = false;
             }
