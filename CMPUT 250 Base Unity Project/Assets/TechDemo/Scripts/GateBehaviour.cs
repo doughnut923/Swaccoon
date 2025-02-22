@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class GateBehaviour : MonoBehaviour
 {
     // Types of Door
-    public enum Condition {GateOpen, Key, Puzzle};
+    public enum Condition {GateOpen, Key, Puzzle, GateClosed};
     public Condition openCondition;
 
     [Header("Key Options")]
@@ -24,11 +24,20 @@ public class GateBehaviour : MonoBehaviour
     [SerializeField] private AudioSource gateSoundSource;
     [SerializeField] private AudioClip gateOpenSound;
 
+    [SerializeField] SpriteRenderer spriteRenderer;
+
+    //public LeverBehaviour leverStatus;
+    public LeverBehaviour lever;
+    //private LeverBehaviour leverBehave;
+
+    Collider2D gateCollider;
+
     // Start is called before the first frame update
     void Start()
     {
         // if we've already been opened in a past life, don't open again!
         if (PlayerPrefs.HasKey(gameObject.scene.name + gameObject.name) && SceneManager.sceneCount != 1){
+            Debug.Log("detroying game object");
             Destroy(gameObject);
         }
 
@@ -46,7 +55,13 @@ public class GateBehaviour : MonoBehaviour
         // Manually getting sokoban script. Might be better to get the player and call sokoban script when needed
         sokobanScript = (SokobanBehaviour)player.gameObject.GetComponent(typeof(SokobanBehaviour));
 
-        
+        gateCollider = gameObject.GetComponent<Collider2D>();
+
+        //leverStatus = LeverBehaviour.Instance.GetComponent<LeverBehaviour>();
+        //leverBehave = GetComponent<LeverBehaviour>();
+        //Debug.Log(leverStatus);
+        //Debug.Log("lever behave is " + leverStatus);
+
     }
 
     // Update is called once per frame
@@ -54,6 +69,7 @@ public class GateBehaviour : MonoBehaviour
     {
         if (openCondition == Condition.GateOpen)
         {
+            Unlock();
             if (_remainingLevers <= 0){
                 Unlock();
             }
@@ -102,6 +118,31 @@ public class GateBehaviour : MonoBehaviour
         // log that this door has been opened
         PlayerPrefs.SetInt(gameObject.scene.name + gameObject.name, 1);
 
-        Destroy(gameObject);
+        
+        //(gameObject.GetComponent(typeof(Collider2D)) as Collider2D).isTrigger = true;
+        if (lever.IsLeverPulled == true)
+        {
+            spriteRenderer.color = new Color(1, 1, 1, 0);
+            gateCollider.isTrigger = true;
+            //Debug.Log("unlock function" + gateCollider.isTrigger);
+
+        }
+        
+        //Destroy(gameObject);
+    }
+
+    // once the timer is done, closes/locks the door
+    public void Lock()
+    {
+        
+        if (lever.IsLeverPulled == true)
+        {
+            
+            spriteRenderer.color = new Color(1, 1, 1, 1);
+            
+            gateCollider.isTrigger = false;
+            
+            
+        }
     }
 }

@@ -17,6 +17,8 @@ TagManager:
   - Pit Trigger
   - Boat
   - Water
+  - Platform Trigger
+  - Wall
   layers:
   - Default
   - TransparentFX

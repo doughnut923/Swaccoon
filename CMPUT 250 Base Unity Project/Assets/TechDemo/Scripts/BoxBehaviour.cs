@@ -22,11 +22,15 @@ public class BoxBehaviour : EntityBehaviour
     //protected float _iceThreshold = 0.9f;
     //protected bool _lockForce = false;
     protected Vector2 previousLocation;
+    protected Vector3 TargetPosition;
+    protected Vector3 StartPosition;
+
     //protected Vector2 lastPlayerLocation;
 
     // sound parameters
     [SerializeField] protected AudioSource boxSoundSource;
     [SerializeField] protected AudioClip boxGroundPush;
+    [SerializeField] SpriteRenderer spriteRenderer;
     //[SerializeField] protected AudioClip boxIceSlide;
 
     protected bool isOnGoal = false;
@@ -48,6 +52,11 @@ public class BoxBehaviour : EntityBehaviour
         sokobanScript = (SokobanBehaviour)player.gameObject.GetComponent(typeof(SokobanBehaviour));
 
         boxCollider = box.GetComponent<Collider2D>();
+
+        //TargetPosition = transform.position;
+        //transform.position = new Vector3(transform.position.x, transform.position.y - 10, transform.position.z);
+        //StartPosition = transform.position;
+        //spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
     //Update is called once per frame
@@ -61,7 +70,9 @@ public class BoxBehaviour : EntityBehaviour
         // if the box is on a water tile, it will sink
         if (isOnWater)
         {
+            
             StartCoroutine(SinkBox());
+            //spriteRenderer.color = new Color(1, 1, 1, 0);
         }
     }
 
@@ -69,12 +80,22 @@ public class BoxBehaviour : EntityBehaviour
         //Play the box sinking sound
 
         //Play the box sinking animation
-        
+
         //Wait for the animation to finish
+        Debug.Log("sinking box");
+
 
         //Destroy the box
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        
+        GameOverUIBehavior.instance.ShowGameOverUI();
+        //spriteRenderer.color = new Color(1, 1, 1, 0);
         yield return null;
+        //while (transform.position.y > WaterBehaviour.transform.position.y)
+        //{
+        //    transform.position = Vector2.Lerp(transform.position, pitPosition, 0.1f);
+        //    yield return new WaitForFixedUpdate();
+        //}
     }
 
 

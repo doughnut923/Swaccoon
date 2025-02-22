@@ -10,19 +10,37 @@ public class FishBehaviour : PlayerBehaviour
     [SerializeField] private float OutOfWaterLimit = 10;
     private float OutOfWaterTimeLeft= 0f;
     public bool InWater = true;
+    private GameObject player;
+    private PlayerBehaviour playerBehaviour;
+    public Transform fishTransform;
+    private Vector2 punchDir;
 
+    private WallBehaviour wall;
+
+    private static FishBehaviour _instance;
+    public static FishBehaviour Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
 
     [SerializeField] private RectTransform TimeBar;
 
     public override void Start(){
         base.Start();
-
         OutOfWaterTimeLeft = OutOfWaterLimit;
+        fishTransform = GameObject.Find("Fish").transform;
+        //Debug.Log("fish transform " + fishTransform.position);
     }
 
     override public void FixedUpdate(){
         
         base.FixedUpdate();
+
+        player = PlayerManager.Instance.CurrentCharacter;
+        playerBehaviour = GetComponent<PlayerBehaviour>();
 
         if (_playerState == CurrentPlayerState.SWAPPED_OUT || _playerState == CurrentPlayerState.SWAPPING || _playerState == CurrentPlayerState.CUTSCENE_PLAYING)
         {
@@ -123,6 +141,7 @@ public class FishBehaviour : PlayerBehaviour
         {
             update.x = Mathf.Lerp(currentSpeed.x, 1, acceleration);
             _currDir = Direction.East;
+            punchDir = transform.right;
             _playerState = CurrentPlayerState.WALKING;
 
             // tilt the player
@@ -141,6 +160,7 @@ public class FishBehaviour : PlayerBehaviour
         {
             update.x = Mathf.Lerp(currentSpeed.x, -1, acceleration);
             _currDir = Direction.West;
+            punchDir = -transform.right;
             _playerState = CurrentPlayerState.WALKING;
 
             //tilt the player
@@ -159,6 +179,7 @@ public class FishBehaviour : PlayerBehaviour
         {
             update.y = Mathf.Lerp(currentSpeed.y, 1, acceleration);
             _currDir = Direction.North;
+            punchDir = transform.up;
             _playerState = CurrentPlayerState.WALKING;
 
             // play walk partciles
@@ -174,6 +195,7 @@ public class FishBehaviour : PlayerBehaviour
         {
             update.y = Mathf.Lerp(currentSpeed.y, -1, acceleration);
             _currDir = Direction.South;
+            punchDir = -transform.up;
             _playerState = CurrentPlayerState.WALKING;
 
             // play walk partciles
@@ -185,12 +207,40 @@ public class FishBehaviour : PlayerBehaviour
                 StartCoroutine(WaitForNextStep());
             }
         }
-        currentSpeed = update;
+        else if (Input.GetKeyDown(punch))
+        {
+            // if player wants to punch
+            _playerState = CurrentPlayerState.ATTACKING;
+            playerBehaviour.isPunching = true;
+            playerBehaviour._currentFrame = 0;
+            
+            // Set the position and direction for the raycast
+            // fishTransform.position is the current position of fish character
+            // punchDir is the direction that we are punching
+            // _attackThreshold is the distance the ray should travel
+            RaycastHit2D attackRay = Physics2D.Raycast(fishTransform.position, punchDir, _attackThreshold);
 
+            // Call the attackCollision function with the raycast hit result
+            if (attackCollision(attackRay))
+            {
+                // If attackCollision returns true, it means we hit an enemy
+                // get the collider information and checks if it is has wall behaviour script
+                WallBehaviour wall = attackRay.collider.GetComponent<WallBehaviour>();
+
+                Debug.Log("Attack hit something!");
+                wall.beginWallBreak();
+            }
+            else
+            {
+                Debug.Log("did not hit anything");
+            }
+            
+        }
+        currentSpeed = update;
         // If not moving set the player tilt to 0
         currentTilt = Mathf.Lerp(currentTilt, 0, tiltSpeed);
         transform.rotation = Quaternion.Euler(0, 0, currentTilt);
-
+        
         _playerState = CurrentPlayerState.IDLE;
         return update;
     }
@@ -211,7 +261,7 @@ public class FishBehaviour : PlayerBehaviour
         
         if (closestWater != null)
         {
-            Debug.Log("Closest water is " + closestWater.gameObject.name);
+            //Debug.Log("Closest water is " + closestWater.gameObject.name);
             //compare the distnce to the water to the fish
             if (Mathf.Abs(transform.position.x - closestWater.transform.position.x) > .6 || Mathf.Abs(transform.position.y - closestWater.transform.position.y) > .6)
             {

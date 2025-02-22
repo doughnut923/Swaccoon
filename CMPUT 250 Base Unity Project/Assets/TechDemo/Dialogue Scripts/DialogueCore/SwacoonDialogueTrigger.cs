@@ -15,8 +15,6 @@ namespace SwacoonNarrative
         /// <summary> The csv file containing the dialogue to be played. </summary>
         [SerializeField] private TextAsset dialogueCSV;
 
-        
-
         [Header("Conditions")]
         [SerializeField] private List<Condition> conditions = new List<Condition>();
 
@@ -52,6 +50,8 @@ namespace SwacoonNarrative
 
             //Activate Dialogue
             //Debug.Log("entering play sequence");
+            PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.CUTSCENE_PLAYING;
+            PlayerManager._playerManagerState = PlayerManagerState.CUTSCENE_PLAYING;
             SwacoonDialogueSystem.OnDialogueEnd.AddListener(OnDialogueEnd);
             SwacoonDialogueSystem.PlaySequence(dialogueCSV);
         }
@@ -82,7 +82,9 @@ namespace SwacoonNarrative
                 SwacoonDialogueFlags.SetFlag(writeToFlagId, writeToFlagValue);
             }
             SwacoonDialogueSystem.OnDialogueEnd.RemoveListener(OnDialogueEnd);//We shouldn't recieve this if we aren't playing something.
-            if(!repeatable){
+            PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.IDLE;
+            PlayerManager._playerManagerState = PlayerManagerState.NOT_SWAPPING;
+            if (!repeatable){
                 Destroy(this);
             }
         }

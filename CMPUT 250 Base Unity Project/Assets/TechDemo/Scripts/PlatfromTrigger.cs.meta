@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a75ea4db3ba7c43b69d74195aac399de
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - rb: {instanceID: 0}
+  - _collider: {instanceID: 0}
+  - boxSoundSource: {instanceID: 0}
+  - boxGroundPush: {fileID: 8300000, guid: 942da1aad966e4d4390e37ab0c572b62, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

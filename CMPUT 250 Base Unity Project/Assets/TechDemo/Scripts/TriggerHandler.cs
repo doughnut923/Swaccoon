@@ -53,12 +53,10 @@ public class TriggerHandler : MonoBehaviour
                 if (!lever.IsLeverPulled)
                 {
                     dialogueTrigger.Trigger();
-
-
                 }
                 else
                 {
-                    Destroy(this);
+                    Destroy(gameObject);
 
                 }
             }

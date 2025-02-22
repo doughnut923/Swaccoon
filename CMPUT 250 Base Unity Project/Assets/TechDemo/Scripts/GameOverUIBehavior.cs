@@ -23,7 +23,9 @@ public class GameOverUIBehavior : MonoBehaviour
     public void ShowGameOverUI()
     {
         //show the UI elements
-        GameStateManager.instance.gameState = GameState.GAME_OVER;  
+        GameStateManager.instance.gameState = GameState.GAME_OVER;
+
+        Debug.Log("game over UI");
 
         BackgroundImage.gameObject.SetActive(true);
         GameOverText.gameObject.SetActive(true);
@@ -33,6 +35,7 @@ public class GameOverUIBehavior : MonoBehaviour
 
     private IEnumerator FadeIn()
     {
+        Debug.Log("fade in begins");
         float time = 0;
         while (time < 1)
         {
