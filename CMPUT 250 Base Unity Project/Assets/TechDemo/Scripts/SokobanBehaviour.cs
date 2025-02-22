@@ -67,18 +67,13 @@ public class SokobanBehaviour : MonoBehaviour
 
     public void Win()
     {
-        if (_goals <= 0 && lever.IsLeverPulled)
+        if (_goals <= 0)
         {
             Debug.Log("Puzzle complete!");
             puzzleComplete = true;
 
             puzzleSoundSource.clip = puzzleCompleteClip;
             puzzleSoundSource.Play();
-
-
-            // show game over UI
-            GameOverUIBehavior.instance.ShowGameOverUI();
-            endLocationDialogue.Trigger();
         }
     }
 

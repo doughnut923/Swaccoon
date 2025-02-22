@@ -7,6 +7,8 @@ public class TriggerHandler : MonoBehaviour
     public SwacoonNarrative.SwacoonDialogueTrigger dialogueTrigger;
     public LeverBehaviour lever;
     public GateBehaviour gate;
+    private SokobanBehaviour sokobanScript;
+    private Rigidbody2D player;
     //private LeverBehaviour leverPulled;
     //private static TriggerHandler _instance;
     //public static TriggerHandler Instance
@@ -26,12 +28,12 @@ public class TriggerHandler : MonoBehaviour
     //        _instance = this;
     //    }
 
-        
+
     //}
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -72,6 +74,7 @@ public class TriggerHandler : MonoBehaviour
                     Destroy(this);
                 }
             }
+
         }
     }
 }

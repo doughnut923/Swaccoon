@@ -27,7 +27,7 @@ public class TopDownPitBehaviour : MonoBehaviour
         }
     }
     
-    public bool HavePlatform(){
+    private bool HavePlatform(){
         foreach(PlatformBehaviour platform in PlatformManager.Instance.platforms){
             //check the bounds of the platform is in the pit if so return true
             Vector2 extents = platform.GetComponent<BoxCollider2D>().bounds.extents;

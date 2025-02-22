@@ -14,7 +14,7 @@ public class WaterBehaviour : MonoBehaviour
     private Rigidbody2D player;
     private PlayerBehaviour playerScript;
 
-    public GameObject onPlatform;
+    private TopDownPitBehaviour onPlatform;
 
     // the boat
     //private Rigidbody2D boat;
@@ -29,10 +29,12 @@ public class WaterBehaviour : MonoBehaviour
         {
             boxes.Add(boatObject.GetComponent<BoxBehaviour>());
         }
+
         player = PlayerManager.Instance.CurrentCharacter.GetComponent<Rigidbody2D>();
         boat = GameObject.FindGameObjectWithTag("Boat");
         playerScript = player.gameObject.GetComponent<PlayerBehaviour>();
-        onPlatform = GameObject.FindGameObjectWithTag("Platform");
+
+        //platform = PlatformManager.Instance.platforms;
         //platformScript = onPlatform.gameObject.GetComponent<PlatformBehaviour>;
         //GameObject fishPlayer = GameObject.Find("Fish");
     }
@@ -43,10 +45,12 @@ public class WaterBehaviour : MonoBehaviour
         //Debug.Log("are we on the platform " + onPlatform.HavePlatform());
         //if (Mathf.Abs(player.position.x - transform.position.x) <= fallRadius && Mathf.Abs(player.position.y - transform.position.y) <= fallRadius
         //&& (!HaveBoat() || !onPlatform.HavePlatform()) && player.name != "Fish")
+        //Debug.Log("havePlatform " + HavePlatform());
+
         if (Mathf.Abs(player.position.x - transform.position.x) <= fallRadius && Mathf.Abs(player.position.y - transform.position.y) <= fallRadius
-        && !HaveBoat() && player.name != "Fish")
+        && !HaveBoat() && !HavePlatform() && player.name != "Fish")
         {
-            
+ 
             Fall();
         }
         foreach (BoxBehaviour box in boxes)
@@ -81,6 +85,42 @@ public class WaterBehaviour : MonoBehaviour
             Vector2 bottomLeft = new Vector2(boat.transform.position.x - extents.x, boat.transform.position.y - extents.y);
 
             // check if the corners are in the water
+            if (Mathf.Abs(topRight.x - transform.position.x) <= fallRadius && Mathf.Abs(topRight.y - transform.position.y) <= fallRadius)
+            {
+                return true;
+            }
+            if (Mathf.Abs(topLeft.x - transform.position.x) <= fallRadius && Mathf.Abs(topLeft.y - transform.position.y) <= fallRadius)
+            {
+                return true;
+            }
+            if (Mathf.Abs(bottomRight.x - transform.position.x) <= fallRadius && Mathf.Abs(bottomRight.y - transform.position.y) <= fallRadius)
+            {
+                return true;
+            }
+            if (Mathf.Abs(bottomLeft.x - transform.position.x) <= fallRadius && Mathf.Abs(bottomLeft.y - transform.position.y) <= fallRadius)
+            {
+                return true;
+            }
+
+        }
+        return false;
+    }
+    public bool HavePlatform()
+    {
+        foreach (PlatformBehaviour platform in PlatformManager.Instance.platforms)
+        {
+            //check the bounds of the platform is in the pit if so return true
+            Vector2 extents = platform.GetComponent<BoxCollider2D>().bounds.extents;
+
+            Vector2 flush = Vector2.zero;
+
+            // corners for checking if the pit is safe
+            Vector2 topRight = new Vector2(platform.transform.position.x + extents.x, platform.transform.position.y + extents.y);
+            Vector2 topLeft = new Vector2(platform.transform.position.x - extents.x, platform.transform.position.y + extents.y);
+            Vector2 bottomRight = new Vector2(platform.transform.position.x + extents.x, platform.transform.position.y - extents.y);
+            Vector2 bottomLeft = new Vector2(platform.transform.position.x - extents.x, platform.transform.position.y - extents.y);
+
+            // check if the corners are in the pit
             if (Mathf.Abs(topRight.x - transform.position.x) <= fallRadius && Mathf.Abs(topRight.y - transform.position.y) <= fallRadius)
             {
                 return true;

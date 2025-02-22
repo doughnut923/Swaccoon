@@ -63,7 +63,6 @@ public class LeverBehaviour : MonoBehaviour
         //player = (Rigidbody2D)GameObject.Find("Player").GetComponent("Rigidbody2D");
         //playerScript = (PlayerBehaviour)player.gameObject.GetComponent(typeof(PlayerBehaviour));
         //gate = gameObject.GetComponent<GateBehaviour>();
-        Debug.Log("gate is " + gate);
         if(gate == null){
             Debug.LogError("Target gate is not set.");
         }
@@ -135,7 +134,7 @@ public class LeverBehaviour : MonoBehaviour
         //Debug.Log(leverTimeLimit);
         if (timeRemaining > 0)
         {
-            Debug.Log("lever pulled timer is at "+timeRemaining);
+            //Debug.Log("lever pulled timer is at "+timeRemaining);
 
             timeRemaining--;
             Invoke("LeverDownTimer", 1f);
