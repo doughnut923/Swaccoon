@@ -93,7 +93,7 @@ public class PlayerBehaviour : EntityBehaviour
     protected float _attackCountdown;
 
     // punch parameters
-    protected bool _isPunching = false;
+    //protected bool _isPunching = false;
     protected float _PunchThreshold = 1.8f;
     protected float _PunchCountdown;
 
@@ -141,6 +141,8 @@ public class PlayerBehaviour : EntityBehaviour
     [Range(0.01f, 1f)]
     [SerializeField] protected float tiltSpeed = 0.2f;
     [SerializeField] protected float particleTimer = 0.5f;
+
+    public bool isPunching = false;
 
     private Rigidbody2D playerManager;
 
@@ -361,42 +363,41 @@ public class PlayerBehaviour : EntityBehaviour
                 break;
         }
     }
-    public bool isPunching = false;
 
-    public void DoPunchAnimation()
-    {
-        //_playerState = CurrentPlayerState.ATTACKING;
-        _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _attackFramesPerSecond, 4f);
-        //Debug.Log(_playerState);
+    //public void DoPunchAnimation()
+    //{
+    //    //_playerState = CurrentPlayerState.ATTACKING;
+    //    _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _attackFramesPerSecond, 4f);
+    //    //Debug.Log(_playerState);
 
-        //Debug.Log("current sprite is " + currentSprite);
-        //Debug.Log("current frame is " + _currentFrame);
-        //Debug.Log("punch now" + punchSpritesUp[Mathf.FloorToInt(_currentFrame)]);
-        //Debug.Log("")
-        switch (_currDir)
-        {
-            case Direction.North:
-                //Debug.Log("punch now" + punchSpritesUp[Mathf.FloorToInt(_currentFrame)]);
-                currentSprite.sprite = punchSpritesUp[Mathf.FloorToInt(_currentFrame)];
-                //Debug.Log("sprite is " + currentSprite.sprite);
-                break;
-            case Direction.East:
-                currentSprite.sprite = punchSpritesRight[Mathf.FloorToInt(_currentFrame)];
-                break;
-            case Direction.South:
-                currentSprite.sprite = punchSpritesDown[Mathf.FloorToInt(_currentFrame)];
-                break;
-            case Direction.West:
-                currentSprite.sprite = punchSpritesLeft[Mathf.FloorToInt(_currentFrame)];
-                break;
-            default:
-                break;
-        }
-        if (_currentFrame >= 4f - 1)
-        {
-            isPunching = false;
-        }
-    }
+    //    //Debug.Log("current sprite is " + currentSprite);
+    //    //Debug.Log("current frame is " + _currentFrame);
+    //    //Debug.Log("punch now" + punchSpritesUp[Mathf.FloorToInt(_currentFrame)]);
+    //    //Debug.Log("")
+    //    switch (_currDir)
+    //    {
+    //        case Direction.North:
+    //            //Debug.Log("punch now" + punchSpritesUp[Mathf.FloorToInt(_currentFrame)]);
+    //            currentSprite.sprite = punchSpritesUp[Mathf.FloorToInt(_currentFrame)];
+    //            //Debug.Log("sprite is " + currentSprite.sprite);
+    //            break;
+    //        case Direction.East:
+    //            currentSprite.sprite = punchSpritesRight[Mathf.FloorToInt(_currentFrame)];
+    //            break;
+    //        case Direction.South:
+    //            currentSprite.sprite = punchSpritesDown[Mathf.FloorToInt(_currentFrame)];
+    //            break;
+    //        case Direction.West:
+    //            currentSprite.sprite = punchSpritesLeft[Mathf.FloorToInt(_currentFrame)];
+    //            break;
+    //        default:
+    //            break;
+    //    }
+    //    if (_currentFrame >= 4f - 1)
+    //    {
+    //        isPunching = false;
+    //    }
+    //}
 
     public void handleAnimation()
     {
@@ -424,7 +425,36 @@ public class PlayerBehaviour : EntityBehaviour
 
         // should be idle if no movement --> including punching
         // set idle sprite based on direction
-        if (((movement.x == 0 && movement.y == 0) || _isOnIce) && isPunching==false)
+
+        // if punching
+        if (isPunching == true)
+        {
+            _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _attackFramesPerSecond, 4f);
+            switch (_currDir)
+            {
+                case Direction.North:
+                    currentSprite.sprite = punchSpritesUp[Mathf.FloorToInt(_currentFrame)];
+                    break;
+                case Direction.East:
+                    currentSprite.sprite = punchSpritesRight[Mathf.FloorToInt(_currentFrame)];
+                    break;
+                case Direction.South:
+                    currentSprite.sprite = punchSpritesDown[Mathf.FloorToInt(_currentFrame)];
+                    break;
+                case Direction.West:
+                    currentSprite.sprite = punchSpritesLeft[Mathf.FloorToInt(_currentFrame)];
+                    break;
+                default:
+                    break;
+            }
+            // sets isPunching back to false after the animation finishes
+            if (_currentFrame >= 4f - 1)
+            {
+                isPunching = false;
+            }
+        }
+        // if idle
+        else if (((movement.x == 0 && movement.y == 0) || _isOnIce) && isPunching==false)
         {
             _playerState = CurrentPlayerState.IDLE;
 
@@ -447,56 +477,6 @@ public class PlayerBehaviour : EntityBehaviour
                     break;
             }
         }
-        // if punching
-        else if(isPunching == true){
-            _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _attackFramesPerSecond, 4f);
-            switch (_currDir)
-            {
-                case Direction.North:
-                    currentSprite.sprite = punchSpritesUp[Mathf.FloorToInt(_currentFrame)];
-                    break;
-                case Direction.East:
-                    currentSprite.sprite = punchSpritesRight[Mathf.FloorToInt(_currentFrame)];
-                    break;
-                case Direction.South:
-                    currentSprite.sprite = punchSpritesDown[Mathf.FloorToInt(_currentFrame)];
-                    break;
-                case Direction.West:
-                    currentSprite.sprite = punchSpritesLeft[Mathf.FloorToInt(_currentFrame)];
-                    break;
-                default:
-                    break;
-            }
-
-
-
-            // sets isPunching back to false after the animation finishes
-            if (_currentFrame >= 4f - 1)
-            {
-                //// Set the position and direction for the raycast
-                //Vector2 attackOrigin = transform.position; // Example: starting position of the attack (e.g., player position)
-                //Vector2 attackDirection = transform.up; // Example: direction of the attack (e.g., right for punch)
-                ////Debug.Log("attack origin and direction " + attackOrigin + attackDirection);
-                //// Cast the ray (you can customize the length and direction)
-                ////RaycastHit2D attackRay = Physics2D.Raycast(attackOrigin, attackDirection, _attackThreshold);
-                //Debug.Log("current direction is " + _currDir);
-                //RaycastHit2D attackRay = Physics2D.Raycast(lastSafePosition, attackDirection, _attackThreshold);
-                //Debug.Log("posotion is " + transform.position);
-                //Debug.Log("attack ray is " + attackRay);
-                //// Call the attackCollision function with the raycast hit result
-                //if (attackCollision(attackRay))
-                //{
-                //    // If attackCollision returns true, it means we hit an enemy
-                //    Debug.Log("Attack hit a the wall!");
-                //    // You can perform additional actions here, like dealing damage to the enemy
-                //}
-                //else
-                //{
-                //    Debug.Log("did not hit anything");
-                //}
-                isPunching = false;
-            }
-        }
         // otherwise we're moving, set the update accordingly!
         else
         {
@@ -517,12 +497,9 @@ public class PlayerBehaviour : EntityBehaviour
                     currentSprite.sprite = walkSpritesLeft[Mathf.FloorToInt(_currentFrame)];
                     break;
                 default:
-                    break;
-                    
+                    break;  
             }
-
         }
-
         return;
     }
 

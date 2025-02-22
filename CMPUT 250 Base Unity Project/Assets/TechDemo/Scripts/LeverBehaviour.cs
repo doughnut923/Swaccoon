@@ -85,9 +85,13 @@ public class LeverBehaviour : MonoBehaviour
         playerScript = PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>();
         if (player != null && Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= switchRadius && Input.GetKeyDown(_openGate))
         {
-            _leverState = CurrentLeverState.DOWN;
-            LeverPulled();
-            CameraManager.Instance.ShakeCamera(0.1f, 0.1f);
+            // player can't pull if it is already down
+            if (_leverState != CurrentLeverState.DOWN)
+            {
+                _leverState = CurrentLeverState.DOWN;
+                LeverPulled();
+                CameraManager.Instance.ShakeCamera(0.1f, 0.1f);
+            }
         }
     }
     void LeverPulled()

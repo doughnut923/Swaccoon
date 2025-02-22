@@ -210,29 +210,36 @@ public class FishBehaviour : PlayerBehaviour
         else if (Input.GetKeyDown(punch))
         {
             // if player wants to punch
-            _playerState = CurrentPlayerState.ATTACKING;
-            playerBehaviour.isPunching = true;
-            playerBehaviour._currentFrame = 0;
-            
-            // Set the position and direction for the raycast
-            // fishTransform.position is the current position of fish character
-            // punchDir is the direction that we are punching
-            // _attackThreshold is the distance the ray should travel
-            RaycastHit2D attackRay = Physics2D.Raycast(fishTransform.position, punchDir, _attackThreshold);
-
-            // Call the attackCollision function with the raycast hit result
-            if (attackCollision(attackRay))
+            if (playerBehaviour.isPunching != true)
             {
-                // If attackCollision returns true, it means we hit an enemy
-                // get the collider information and checks if it is has wall behaviour script
-                WallBehaviour wall = attackRay.collider.GetComponent<WallBehaviour>();
+                _playerState = CurrentPlayerState.ATTACKING;
+                playerBehaviour.isPunching = true;
+                playerBehaviour._currentFrame = 0;
 
-                Debug.Log("Attack hit something!");
-                wall.beginWallBreak();
+                // Set the position and direction for the raycast
+                // fishTransform.position is the current position of fish character
+                // punchDir is the direction that we are punching
+                // _attackThreshold is the distance the ray should travel
+                RaycastHit2D attackRay = Physics2D.Raycast(fishTransform.position, punchDir, _attackThreshold);
+
+                // Call the attackCollision function with the raycast hit result
+                if (attackCollision(attackRay))
+                {
+                    // If attackCollision returns true, it means we hit an enemy
+                    // get the collider information and checks if it is has wall behaviour script
+                    WallBehaviour wall = attackRay.collider.GetComponent<WallBehaviour>();
+
+                    Debug.Log("Attack hit something!");
+                    wall.beginWallBreak();
+                }
+                else
+                {
+                    Debug.Log("did not hit anything");
+                }
             }
             else
             {
-                Debug.Log("did not hit anything");
+                Debug.Log("cant punch, already punching");
             }
             
         }

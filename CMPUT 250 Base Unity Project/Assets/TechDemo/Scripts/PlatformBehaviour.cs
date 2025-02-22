@@ -9,7 +9,6 @@ public class PlatformBehaviour : MonoBehaviour
     private Vector3 StartPosition;
     
     [SerializeField] AnimationCurve riseCurve;
-    [SerializeField] AnimationCurve fallCurve;
     [SerializeField] float riseTime = 1f;
     [SerializeField] SpriteRenderer spriteRenderer;
 
@@ -56,9 +55,6 @@ public class PlatformBehaviour : MonoBehaviour
             spriteRenderer.color = new Color(1, 1, 1, riseCurve.Evaluate(t));
             yield return null;
         }
-        // call function to handle when to lower the platform
-        //Debug.Log("starting fall timer");
-        //Invoke("FallTimer", 1f);
     }
     public void FallTimer()
     {
@@ -96,13 +92,16 @@ public class PlatformBehaviour : MonoBehaviour
 
             time += Time.deltaTime;
             float t = time / riseTime;
+            // calculate how transparent the platform should be as it falls. going from solid to transparent (1 to 0)
+            float transparency = Mathf.Lerp(1f, 0f, riseCurve.Evaluate(t));
 
             platformSoundSource.pitch = Mathf.Lerp(minPitch, maxPitch, t);
             platformSoundSource.Play();
-            Debug.Log("fall curve is " + fallCurve.Evaluate(t));
-            transform.position = Vector3.Lerp(TargetPosition, StartPosition, fallCurve.Evaluate(t));
-            spriteRenderer.color = new Color(1, 1, 1, fallCurve.Evaluate(t));
-           
+            transform.position = Vector3.Lerp(TargetPosition, StartPosition, riseCurve.Evaluate(t));
+            
+            spriteRenderer.color = new Color(1, 1, 1, transparency);
+
+
             yield return null;
         }
     }

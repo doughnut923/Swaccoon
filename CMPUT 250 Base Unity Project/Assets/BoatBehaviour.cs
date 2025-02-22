@@ -6,16 +6,25 @@ using UnityEngine;
 public class BoatBehaviour : EntityBehaviour
 {
 
+    private static BoatBehaviour _instance;
+    public static BoatBehaviour Instance
+    {
+        get
+        {
+            return _instance;
+        }
+    }
+
     private SokobanBehaviour sokobanScript;
     private PlayerBehaviour playerScript;
     private PlayerBehaviour player1Script;
     private Rigidbody2D player;
     private Rigidbody2D player1;
-    private Rigidbody2D box;
+    private Rigidbody2D boat;
 
     private Vector2 closestWater;
 
-    private Collider2D boxCollider;
+    private Collider2D boatCollider;
     private Collider2D playerCollider;
     private Collider2D player1Collider;
 
@@ -44,11 +53,11 @@ public class BoatBehaviour : EntityBehaviour
         playerScript = PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>();
         // player1Script = (PlayerBehaviour)player1.gameObject.GetComponent(typeof(PlayerBehaviour));
 
-        box = gameObject.GetComponent<Rigidbody2D>();
+        boat = gameObject.GetComponent<Rigidbody2D>();
         GetComponent<Collider2D>().isTrigger = true;
         sokobanScript = (SokobanBehaviour)player.gameObject.GetComponent(typeof(SokobanBehaviour));
 
-        boxCollider = box.GetComponent<Collider2D>();
+        boatCollider = boat.GetComponent<Collider2D>();
     }
 
     //Update is called once per frame
@@ -56,7 +65,7 @@ public class BoatBehaviour : EntityBehaviour
     {
         base.FixedUpdate();
         //updateIce();
-        previousLocation = box.position;
+        previousLocation = boat.position;
     }
 
     override public Vector2 getMovement()
@@ -153,7 +162,7 @@ public class BoatBehaviour : EntityBehaviour
             
             //check if the next position of the boat collides with a non-water object, if it does, don't move
             // as the next position is determined by position + update * moveSpeed * Time.deltaTime, so we can check based on this
-            Vector2 nextPosition = box.position + update * moveSpeed * Time.deltaTime;
+            Vector2 nextPosition = boat.position + update * moveSpeed * Time.deltaTime;
             //get the closest water tile to the boat
             closestWater = Vector2.positiveInfinity;
             foreach (GameObject go in GameObject.FindGameObjectsWithTag("Water"))
@@ -222,9 +231,9 @@ public class BoatBehaviour : EntityBehaviour
         if (collision.gameObject.tag == "Goal")
         {
             // stopping the box at the goal/pressure plate
-            box.velocity = Vector2.zero;
-            boxCollider.isTrigger = false; // changing the trigger so that the box wont be moved again
-            box.isKinematic = true;
+            boat.velocity = Vector2.zero;
+            boatCollider.isTrigger = false; // changing the trigger so that the box wont be moved again
+            boat.isKinematic = true;
 
             isOnGoal = true;
 
@@ -284,6 +293,6 @@ public class BoatBehaviour : EntityBehaviour
 
     public bool isStopped()
     {
-        return (box.position.x == previousLocation.x && box.position.y == previousLocation.y);
+        return (boat.position.x == previousLocation.x && boat.position.y == previousLocation.y);
     }
 }

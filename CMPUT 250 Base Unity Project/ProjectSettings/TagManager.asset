@@ -19,6 +19,7 @@ TagManager:
   - Water
   - Platform Trigger
   - Wall
+  - Platform
   layers:
   - Default
   - TransparentFX
