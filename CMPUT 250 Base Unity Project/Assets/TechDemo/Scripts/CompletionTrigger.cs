@@ -7,34 +7,27 @@ public class CompletionTrigger : MonoBehaviour
     public SwacoonNarrative.SwacoonDialogueTrigger dialogueTrigger;
     private SokobanBehaviour sokobanScript;
     private Rigidbody2D player;
-    //private LeverBehaviour leverPulled;
-    //private static TriggerHandler _instance;
-    //public static TriggerHandler Instance
-    //{
-    //    get
-    //    {
-    //        return _instance;
-    //    }
-    //}
 
-    //[SerializeField] [HideInInspector] public bool isOpen = false;
+    [SerializeField] private AudioSource levelCompleteSoundSource;
+    [SerializeField] private AudioClip levelCompletePulledSound;
+    [SerializeField] private AudioSource vortexSoundSource;
+    [SerializeField] private AudioClip vortexSound;
 
-    //void Awake()
-    //{
-    //    if (_instance == null)
-    //    {
-    //        _instance = this;
-    //    }
+    [SerializeField] private float leaveTime = 20f;
 
+    [SerializeField] AnimationCurve vortexCurve;
+    [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] SpriteRenderer shadowSpriteRenderer;
 
-    //}
+    private float minPitch = 0.5f;
+    private float maxPitch = 1f;
+
+    private Vector3 TargetPosition;
+    private Vector3 StartPosition;
     // Start is called before the first frame update
     void Start()
     {
-        //sokobanScript = (SokobanBehaviour)player.gameObject.GetComponent(typeof(SokobanBehaviour));
-        //Debug.Log("sokoban script is " + sokobanScript);
 
-        //player = (Rigidbody2D)GameObject.Find("Player").GetComponent("Rigidbody2D");
     }
 
     // Update is called once per frame
@@ -60,13 +53,78 @@ public class CompletionTrigger : MonoBehaviour
             if (sokobanScript.puzzleComplete == true)
                 //now checks if all the boxes are on the goals
             {
+                TargetPosition = transform.position;
+                transform.position = new Vector3(transform.position.x - 10, transform.position.y, transform.position.z);
+                StartPosition = transform.position;
+                Debug.Log("leave time is set to " + leaveTime);
+                float time = 0;
+                while (time < leaveTime)
+                {
+                    Debug.Log("in while loop time is " + time);
+                    vortexSoundSource.clip = vortexSound;
+                    vortexSoundSource.volume = 0.5f;
+
+                    time += Time.deltaTime;
+                    float t = time / leaveTime;
+
+                    vortexSoundSource.pitch = Mathf.Lerp(minPitch, maxPitch, t);
+                    vortexSoundSource.Play();
+                    //transform.position = Vector3.Lerp(StartPosition, TargetPosition, riseCurve.Evaluate(t));
+                    transform.position = Vector3.Lerp(StartPosition, TargetPosition, vortexCurve.Evaluate(t));
+                    float transparency = Mathf.Lerp(1f, 0f, vortexCurve.Evaluate(t));
+                    spriteRenderer.color = new Color(1, 1, 1, transparency);
+                    shadowSpriteRenderer.color = new Color(1, 1, 1, transparency);
+                    //yield return new WaitForSeconds(leaveTime);
+                }
+                StartCoroutine(LevelComplete());
                 //dialogueTrigger.Trigger();
 
                 // show game over UI
-                GameOverUIBehavior.instance.ShowGameOverUI();
-                dialogueTrigger.Trigger(); // triggers level over cutscene
+                //GameOverUIBehavior.instance.ShowGameOverUI();
+                //levelCompleteSoundSource.clip = levelCompletePulledSound;
+                //levelCompleteSoundSource.volume = 0.5f;
+                //levelCompleteSoundSource.Play();
+                //dialogueTrigger.Trigger(); // triggers level over cutscene
             }
         }
+    }
+    IEnumerator LevelComplete()
+    {
+        //use the curve to move the platform up also change the opcaity of the platform
+
+        //TargetPosition = transform.position;
+        //transform.position = new Vector3(transform.position.x - 10, transform.position.y, transform.position.z);
+        //StartPosition = transform.position;
+        //Debug.Log("leave time is set to " + leaveTime);
+        //float time = 0;
+        //while (time < leaveTime)
+        //{
+        //    Debug.Log("in while loop time is " + time);
+        //    vortexSoundSource.clip = vortexSound;
+        //    vortexSoundSource.volume = 0.5f;
+
+        //    time += Time.deltaTime;
+        //    float t = time / leaveTime;
+
+        //    vortexSoundSource.pitch = Mathf.Lerp(minPitch, maxPitch, t);
+        //    vortexSoundSource.Play();
+        //    //transform.position = Vector3.Lerp(StartPosition, TargetPosition, riseCurve.Evaluate(t));
+        //    transform.position = Vector3.Lerp(StartPosition, TargetPosition, vortexCurve.Evaluate(t));
+        //    float transparency = Mathf.Lerp(1f, 0f, vortexCurve.Evaluate(t));
+        //    spriteRenderer.color = new Color(1, 1, 1, transparency);
+        //    spriteRenderer.color = new Color(1, 1, 1, transparency);
+        //    yield return null;
+        //}
+
+
+        // show game over UI
+        GameOverUIBehavior.instance.ShowGameOverUI();
+        levelCompleteSoundSource.clip = levelCompletePulledSound;
+        levelCompleteSoundSource.volume = 0.5f;
+        levelCompleteSoundSource.Play();
+        dialogueTrigger.Trigger(); // triggers level over cutscene
+        yield return null;
+
     }
 }
 

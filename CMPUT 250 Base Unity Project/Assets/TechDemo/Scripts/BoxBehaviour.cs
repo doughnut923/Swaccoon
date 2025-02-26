@@ -33,6 +33,9 @@ public class BoxBehaviour : EntityBehaviour
     [SerializeField] SpriteRenderer spriteRenderer;
     //[SerializeField] protected AudioClip boxIceSlide;
 
+    [SerializeField] private AudioSource boxSinkingSoundSource;
+    [SerializeField] private AudioClip boxSinkingPulledSound;
+
     protected bool isOnGoal = false;
 
     public bool isOnWater = false;
@@ -87,7 +90,10 @@ public class BoxBehaviour : EntityBehaviour
 
         //Destroy the box
         //Destroy(gameObject);
-        
+        boxSinkingSoundSource.clip = boxSinkingPulledSound;
+        boxSinkingSoundSource.volume = 0.5f;
+        boxSinkingSoundSource.Play();
+
         GameOverUIBehavior.instance.ShowGameOverUI();
         //spriteRenderer.color = new Color(1, 1, 1, 0);
         yield return null;
@@ -267,6 +273,8 @@ public class BoxBehaviour : EntityBehaviour
             StartCoroutine(coroutine);
 
             CameraManager.Instance.ShakeCamera(0.2f, 0.1f);
+            // checks if we won everytime we move box onto goal
+            //sokobanScript.Win();
             Debug.Log("stopping moving sound");
             boxSoundSource.Stop();
             boxSoundSource.volume = Mathf.Clamp(boxSoundSource.volume - 0.1f, 0f, 1f);

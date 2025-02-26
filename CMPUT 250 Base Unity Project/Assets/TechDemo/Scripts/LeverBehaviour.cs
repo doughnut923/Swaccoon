@@ -55,6 +55,8 @@ public class LeverBehaviour : MonoBehaviour
     [SerializeField] private AudioSource leverSoundSource;
     [SerializeField] private AudioClip leverPulledSound;
 
+    public bool gateOpening = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -84,12 +86,20 @@ public class LeverBehaviour : MonoBehaviour
         playerScript = PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>();
         if (player != null && Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= switchRadius && Input.GetKeyDown(_openGate))
         {
-            // player can't pull if it is already down
-            if (_leverState != CurrentLeverState.DOWN)
+            if (gameObject.name == "PlatformLever" && sokobanScript.puzzleComplete==true && _leverState != CurrentLeverState.DOWN)
             {
                 _leverState = CurrentLeverState.DOWN;
                 LeverPulled();
                 CameraManager.Instance.ShakeCamera(0.1f, 0.1f);
+
+            }
+            // player can't pull if it is already down
+            else if (gameObject.name != "PlatformLever" && _leverState != CurrentLeverState.DOWN)
+            {
+                _leverState = CurrentLeverState.DOWN;
+                LeverPulled();
+                CameraManager.Instance.ShakeCamera(0.1f, 0.1f);
+                
             }
         }
     }
@@ -113,14 +123,15 @@ public class LeverBehaviour : MonoBehaviour
             leverPulled.Invoke();
         isLeverPulled = true;
 
+        gateOpening = true;
+        Debug.Log("gate opening is " + gateOpening);
         if (_leverState == CurrentLeverState.DOWN)
         {
             // if lever is down (open) then timer begins. will switch lever to up once timer is over
             //Debug.Log("in leverpulled if statement");
             currentSprite.sprite = leverSprite[1];
-            sokobanScript.Win();
+            //sokobanScript.Win();
             LeverDownTimer();
-
         }
 
         //playerScript.collectKey();
@@ -142,7 +153,7 @@ public class LeverBehaviour : MonoBehaviour
         else
         {
             _leverState = CurrentLeverState.UP;
-
+            //gateOpening = false;
             //Debug.Log(_leverState);
             currentSprite.sprite = leverSprite[0];
             gate.Lock();

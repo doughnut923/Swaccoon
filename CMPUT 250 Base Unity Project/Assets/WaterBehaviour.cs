@@ -8,7 +8,7 @@ public class WaterBehaviour : MonoBehaviour
     private List<BoxBehaviour> boxes = new List<BoxBehaviour>();
     private GameObject boat;
     // public variables
-    public float fallRadius = 0.9f;
+    public float fallRadius = 5f;
 
     // the player
     private Rigidbody2D player;
@@ -33,6 +33,7 @@ public class WaterBehaviour : MonoBehaviour
         player = PlayerManager.Instance.CurrentCharacter.GetComponent<Rigidbody2D>();
         boat = GameObject.FindGameObjectWithTag("Boat");
         playerScript = player.gameObject.GetComponent<PlayerBehaviour>();
+        //Debug.Log("fall radius " + fallRadius);
 
         //platform = PlatformManager.Instance.platforms;
         //platformScript = onPlatform.gameObject.GetComponent<PlatformBehaviour>;
@@ -50,7 +51,7 @@ public class WaterBehaviour : MonoBehaviour
         if (Mathf.Abs(player.position.x - transform.position.x) <= fallRadius && Mathf.Abs(player.position.y - transform.position.y) <= fallRadius
         && !HaveBoat() && !HavePlatform() && player.name != "Fish")
         {
- 
+            //Debug.Log("fall radius is " + fallRadius);
             Fall();
         }
         foreach (BoxBehaviour box in boxes)
@@ -73,6 +74,7 @@ public class WaterBehaviour : MonoBehaviour
     {
         if (boat != null)
         {
+            Debug.Log("do we have a boat?");
             //check the bounds of the platform is in the pit if so return true
             Vector2 extents = boat.GetComponent<BoxCollider2D>().bounds.extents;
 
@@ -85,19 +87,19 @@ public class WaterBehaviour : MonoBehaviour
             Vector2 bottomLeft = new Vector2(boat.transform.position.x - extents.x, boat.transform.position.y - extents.y);
 
             // check if the corners are in the water
-            if (Mathf.Abs(topRight.x - transform.position.x) <= fallRadius && Mathf.Abs(topRight.y - transform.position.y) <= fallRadius)
+            if (Mathf.Abs(topRight.x - transform.position.x) <= fallRadius+2 && Mathf.Abs(topRight.y - transform.position.y) <= fallRadius+2)
             {
                 return true;
             }
-            if (Mathf.Abs(topLeft.x - transform.position.x) <= fallRadius && Mathf.Abs(topLeft.y - transform.position.y) <= fallRadius)
+            if (Mathf.Abs(topLeft.x - transform.position.x) <= fallRadius+2 && Mathf.Abs(topLeft.y - transform.position.y) <= fallRadius+2)
             {
                 return true;
             }
-            if (Mathf.Abs(bottomRight.x - transform.position.x) <= fallRadius && Mathf.Abs(bottomRight.y - transform.position.y) <= fallRadius)
+            if (Mathf.Abs(bottomRight.x - transform.position.x) <= fallRadius+2 && Mathf.Abs(bottomRight.y - transform.position.y) <= fallRadius+2)
             {
                 return true;
             }
-            if (Mathf.Abs(bottomLeft.x - transform.position.x) <= fallRadius && Mathf.Abs(bottomLeft.y - transform.position.y) <= fallRadius)
+            if (Mathf.Abs(bottomLeft.x - transform.position.x) <= fallRadius+2 && Mathf.Abs(bottomLeft.y - transform.position.y) <= fallRadius+2)
             {
                 return true;
             }

@@ -18,7 +18,7 @@ public class SokobanBehaviour : MonoBehaviour
 
     public SwacoonNarrative.SwacoonDialogueTrigger endLocationDialogue;
 
-    public LeverBehaviour lever;
+    //public LeverBehaviour lever;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +43,9 @@ public class SokobanBehaviour : MonoBehaviour
     {
         _goals--;
 
+        Debug.Log("number of goals is "+_goals);
+
+        
         //if (_goals <= 0 && lever.IsLeverPulled)
         //{
         //    Debug.Log("Puzzle complete!");
@@ -63,6 +66,7 @@ public class SokobanBehaviour : MonoBehaviour
         //}
         puzzleSoundSource.clip = boxCompleteClip;
         puzzleSoundSource.Play();
+        Win();
     }
 
     public void Win()

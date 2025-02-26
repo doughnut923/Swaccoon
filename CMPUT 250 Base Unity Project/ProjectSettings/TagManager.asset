@@ -20,6 +20,8 @@ TagManager:
   - Platform Trigger
   - Wall
   - Platform
+  - Platform Dialogue
+  - Boat Dialogue
   layers:
   - Default
   - TransparentFX

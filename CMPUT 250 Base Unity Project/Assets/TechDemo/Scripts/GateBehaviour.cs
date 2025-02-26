@@ -60,8 +60,6 @@ public class GateBehaviour : MonoBehaviour
         //leverStatus = LeverBehaviour.Instance.GetComponent<LeverBehaviour>();
         //leverBehave = GetComponent<LeverBehaviour>();
         //Debug.Log(leverStatus);
-        //Debug.Log("lever behave is " + leverStatus);
-
     }
 
     // Update is called once per frame
@@ -69,9 +67,14 @@ public class GateBehaviour : MonoBehaviour
     {
         if (openCondition == Condition.GateOpen)
         {
-            Unlock();
-            if (_remainingLevers <= 0){
+            //Unlock();
+            //if (_remainingLevers <= 0){
+            //    Unlock();
+            //}
+            if (lever.IsLeverPulled == true)
+            {
                 Unlock();
+
             }
         }
 
@@ -105,13 +108,65 @@ public class GateBehaviour : MonoBehaviour
 
     void Unlock(){
         // if we're opening with a key, decrement key from player
-        if (openCondition == Condition.Key){
-            playerScript.unlockGate(true);
-            gateSoundSource.clip = gateOpenSound;
-            gateSoundSource.volume = 0.5f;
-            gateSoundSource.Play();
+        //if (openCondition == Condition.GateOpen)
+        //{
+        //    playerScript.unlockGate(true);
+        //}
+        //Debug.Log("Unlock function");
+        //Debug.Log("is sound playing " + gateSoundSource.isPlaying);
+        if (openCondition == Condition.GateOpen){
+            if (lever.IsLeverPulled == true)
+            {
+                Debug.Log("here gate is now opening sound " + lever.IsLeverPulled);
+                spriteRenderer.color = new Color(1, 1, 1, 0);
+                gameObject.GetComponent<Collider2D>().enabled = false;
+                gateCollider.isTrigger = true;
+                gateSoundSource.clip = gateOpenSound;
+                //gateSoundSource.volume = 1f;
+                gateSoundSource.Play();
+                //Debug.Log("unlock function" + gateCollider.isTrigger);
+
+            }
+            //Debug.Log("in open condition is sound playing "+ gateSoundSource.isPlaying);
+            //Debug.Log("gate is set to " + gateOpenSound);
+            ////playerScript.unlockGate(true);
+            //if (lever.gateOpening!=true)
+            //{
+            //    gateSoundSource.clip = gateOpenSound;
+            //    gateSoundSource.volume = 0.5f;
+            //    gateSoundSource.Play();
+            //}
+            //lever.gateOpening = false;
+            //if (!gateSoundSource.isPlaying)
+            //{
+            //    Debug.Log("is the sound really playing " + gateSoundSource.isPlaying);
+            //    gateSoundSource.clip = gateOpenSound;
+            //    gateSoundSource.volume = 1f;
+            //    gateSoundSource.mute = false;
+            //    if (gateOpenSound == null)
+            //    {
+            //        Debug.Log("gate open sound not assigned");
+            //    }
+            //    //gateSoundSource.Play();
+            //    Debug.Log("Attempting to play sound...");
+            //    gateSoundSource.Play();
+            //    Debug.Log("Sound should be playing now.");
+            //    Debug.Log("but the sound is playing now right " + gateSoundSource.isPlaying);
+            //}
+            //else
+            //{
+            //    Debug.Log("Audio is already playing!");
+            //}
+
+            //gateSoundSource.clip = gateOpenSound;
+            ////gateSoundSource.volume = 1f;
+            //gateSoundSource.Play();
+
+            //playerScript.unlockGate(true);
+
         }
-        else{
+        else
+        {
             playerScript.unlockGate(false);
         }
 
@@ -122,8 +177,13 @@ public class GateBehaviour : MonoBehaviour
         //(gameObject.GetComponent(typeof(Collider2D)) as Collider2D).isTrigger = true;
         if (lever.IsLeverPulled == true)
         {
+            Debug.Log("gate is now opening sound " + lever.IsLeverPulled);
             spriteRenderer.color = new Color(1, 1, 1, 0);
+            gameObject.GetComponent<Collider2D>().enabled = false;
             gateCollider.isTrigger = true;
+            gateSoundSource.clip = gateOpenSound;
+            //gateSoundSource.volume = 1f;
+            gateSoundSource.Play();
             //Debug.Log("unlock function" + gateCollider.isTrigger);
 
         }
@@ -141,8 +201,8 @@ public class GateBehaviour : MonoBehaviour
             spriteRenderer.color = new Color(1, 1, 1, 1);
             
             gateCollider.isTrigger = false;
-            
-            
+            gameObject.GetComponent<Collider2D>().enabled = true;
+
         }
     }
 }

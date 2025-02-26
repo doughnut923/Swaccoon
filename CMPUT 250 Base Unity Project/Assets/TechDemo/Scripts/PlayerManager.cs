@@ -48,7 +48,7 @@ public class PlayerManager : MonoBehaviour
             _instance = this;
             CurrentCharacter = SwappableCharacters[currentIndex];
         }
-        swapTimer = swapTimeLimit;
+        //swapTimer = swapTimeLimit;
     }
 
     void Start()
@@ -136,16 +136,16 @@ public class PlayerManager : MonoBehaviour
         {
             return;
         }
-        if (swapTimer <= 0)
-        {
-            //Lose
-            GameOverUIBehavior.instance.ShowGameOverUI();
-        }
+        //if (swapTimer <= 0)
+        //{
+        //    //Lose
+        //    GameOverUIBehavior.instance.ShowGameOverUI();
+        //}
         else
         {
             if (!_playerManagerState.Equals(PlayerManagerState.CUTSCENE_PLAYING))
             {
-                swapTimer -= Time.deltaTime;
+                //swapTimer -= Time.deltaTime;
             }
         }
 
@@ -224,7 +224,7 @@ public class PlayerManager : MonoBehaviour
             CurrentCharacter = SwappableCharacters[currentIndex];
 
             //reset timer
-            swapTimer = swapTimeLimit;
+            //swapTimer = swapTimeLimit;
 
             foreach (GameObject character in SwappableCharacters)
             {

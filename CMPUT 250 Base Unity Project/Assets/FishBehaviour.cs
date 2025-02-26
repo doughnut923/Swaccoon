@@ -15,6 +15,12 @@ public class FishBehaviour : PlayerBehaviour
     public Transform fishTransform;
     private Vector2 punchDir;
 
+    private int punch_key_down;
+
+    [Header("Fishies Sound Settings")]
+    [SerializeField] protected AudioSource fishSoundSource;
+    [SerializeField] protected AudioClip punchSound;
+
     private WallBehaviour wall;
 
     private static FishBehaviour _instance;
@@ -57,7 +63,7 @@ public class FishBehaviour : PlayerBehaviour
         {
             TimeBar.gameObject.SetActive(true);
             OutOfWaterTimeLeft -= Time.deltaTime;
-            Debug.Log("Out of water time left: " + OutOfWaterTimeLeft);
+            //Debug.Log("Out of water time left: " + OutOfWaterTimeLeft);
 
             //change length of time bar
             TimeBar.sizeDelta = new Vector2(OutOfWaterTimeLeft / OutOfWaterLimit * 100 , TimeBar.sizeDelta.y);
@@ -207,14 +213,19 @@ public class FishBehaviour : PlayerBehaviour
                 StartCoroutine(WaitForNextStep());
             }
         }
-        else if (Input.GetKeyDown(punch))
+        if (Input.GetKey(punch) && punch_key_down == 0)
         {
+            punch_key_down = 1;
             // if player wants to punch
             if (playerBehaviour.isPunching != true)
             {
                 _playerState = CurrentPlayerState.ATTACKING;
                 playerBehaviour.isPunching = true;
                 playerBehaviour._currentFrame = 0;
+
+                fishSoundSource.clip = punchSound;
+                fishSoundSource.volume = 0.5f;
+                fishSoundSource.Play();
 
                 // Set the position and direction for the raycast
                 // fishTransform.position is the current position of fish character
@@ -242,6 +253,10 @@ public class FishBehaviour : PlayerBehaviour
                 Debug.Log("cant punch, already punching");
             }
             
+        }
+        else if(!Input.GetKey(punch))
+        {
+            punch_key_down = 0;
         }
         currentSpeed = update;
         // If not moving set the player tilt to 0

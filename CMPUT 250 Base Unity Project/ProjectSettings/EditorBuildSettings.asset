@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/TechDemo/scenes/Location1.unity
+    guid: d32cb95d0578b4163bc02fff06a7803f
   m_configObjects: {}

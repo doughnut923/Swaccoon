@@ -20,20 +20,33 @@ public class PlatformBehaviour : MonoBehaviour
     private float minPitch = 0.5f;
     private float maxPitch = 1f;
 
+    private Rigidbody2D player;
+    private PlayerBehaviour playerScript;
+    private SokobanBehaviour sokobanScript;
+
     void Awake(){
         TargetPosition = transform.position;
         transform.position = new Vector3(transform.position.x, transform.position.y-10, transform.position.z);
         StartPosition = transform.position;
         spriteRenderer.color = new Color(1, 1, 1, 0);
+
+        player = (Rigidbody2D)GameObject.Find("Player").GetComponent("Rigidbody2D");
+        playerScript = (PlayerBehaviour)player.gameObject.GetComponent(typeof(PlayerBehaviour));
+        sokobanScript = (SokobanBehaviour)player.gameObject.GetComponent(typeof(SokobanBehaviour));
+
         // set timeRemaining
         timeRemaining = platformTimeLimit;
     }
     public void Rise()
     {
         //Invoke("FallTimer", 1f);
-        FallTimer();
-        CameraManager.Instance.ShakeCamera(riseTime, .1f);
-        StartCoroutine(RisePlatform());
+        Debug.Log("are we sure the puzzle is complete " + sokobanScript.puzzleComplete);
+        if (sokobanScript.puzzleComplete == true)
+        {
+            FallTimer();
+            CameraManager.Instance.ShakeCamera(riseTime, .1f);
+            StartCoroutine(RisePlatform());
+        }
     }
 
     IEnumerator RisePlatform()

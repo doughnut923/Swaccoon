@@ -64,6 +64,11 @@ public class PlayerBehaviour : EntityBehaviour
     [SerializeField] protected List<Sprite> punchSpritesLeft = new List<Sprite>(4);
     [SerializeField] protected List<Sprite> punchSpritesRight = new List<Sprite>(4);
 
+    [SerializeField] protected List<Sprite> sleepSpritesUp = new List<Sprite>(4);
+    [SerializeField] protected List<Sprite> sleepSpritesDown = new List<Sprite>(4);
+    [SerializeField] protected List<Sprite> sleepSpritesLeft = new List<Sprite>(4);
+    [SerializeField] protected List<Sprite> sleepSpritesRight = new List<Sprite>(4);
+
     [SerializeField] protected Sprite hurtSpriteUp;
     [SerializeField] protected Sprite hurtSpriteRight;
     [SerializeField] protected Sprite hurtSpriteDown;
@@ -341,23 +346,66 @@ public class PlayerBehaviour : EntityBehaviour
         _canStep = true;
     }
 
+    public void DoFallAnimation()
+    {
+        if (_isFalling)
+        {
+            Debug.Log("_isfalling is set to " + _isFalling);
+            int lastFrame = Mathf.FloorToInt(_currentFrame);
+            _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _fallFramesPerSecond, 6f);
+
+            // we are done falling! set our position accordingly and take some damage
+            if (lastFrame == 5 && Mathf.FloorToInt(_currentFrame) == 0)
+            {
+                _isFalling = false;
+                setInvincible(false);
+                transform.position = lastSafePosition;
+                takeDamage();
+            }
+            // keep playing the animation otherwise
+            else
+            {
+                currentSprite.sprite = fallSprites[Mathf.FloorToInt(_currentFrame)];
+                return;
+            }
+        }
+    }
+
     public void DoIdleAnimation()
     {
         _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _walkFramesPerSecond, 6f);
         //Debug.Log("current sprite is");
+        //switch (_currDir)
+        //{
+        //    case Direction.North:
+        //        currentSprite.sprite = idleSpriteUp[Mathf.FloorToInt(_currentFrame)];
+        //        break;
+        //    case Direction.East:
+        //        currentSprite.sprite = idleSpriteRight[Mathf.FloorToInt(_currentFrame)];
+        //        break;
+        //    case Direction.South:
+        //        currentSprite.sprite = idleSpriteDown[Mathf.FloorToInt(_currentFrame)];
+        //        break;
+        //    case Direction.West:
+        //        currentSprite.sprite = idleSpriteLeft[Mathf.FloorToInt(_currentFrame)];
+        //        break;
+        //    default:
+        //        break;
+        //}
+
         switch (_currDir)
         {
             case Direction.North:
-                currentSprite.sprite = idleSpriteUp[Mathf.FloorToInt(_currentFrame)];
+                currentSprite.sprite = sleepSpritesUp[Mathf.FloorToInt(_currentFrame)];
                 break;
             case Direction.East:
-                currentSprite.sprite = idleSpriteRight[Mathf.FloorToInt(_currentFrame)];
+                currentSprite.sprite = sleepSpritesRight[Mathf.FloorToInt(_currentFrame)];
                 break;
             case Direction.South:
-                currentSprite.sprite = idleSpriteDown[Mathf.FloorToInt(_currentFrame)];
+                currentSprite.sprite = sleepSpritesDown[Mathf.FloorToInt(_currentFrame)];
                 break;
             case Direction.West:
-                currentSprite.sprite = idleSpriteLeft[Mathf.FloorToInt(_currentFrame)];
+                currentSprite.sprite = sleepSpritesLeft[Mathf.FloorToInt(_currentFrame)];
                 break;
             default:
                 break;
@@ -403,7 +451,10 @@ public class PlayerBehaviour : EntityBehaviour
     {
 
         // // if we are falling, do the falling animation lol
+        
+        //Debug.Log("player is currently " + currentSprite);
         if (_isFalling){
+            Debug.Log("_isfalling is set to " + _isFalling);
             int lastFrame = Mathf.FloorToInt(_currentFrame);
             _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _fallFramesPerSecond, 6f);
 
@@ -538,9 +589,12 @@ public class PlayerBehaviour : EntityBehaviour
     {
         // if we are already falling, don't fall!
         if (_isFalling) { return false; }
-
+        Debug.Log("falling yet? " + _isFalling);
         // time to fall! get rid of our sprite as we play the falling animation, and make us invulnerable!
         _isFalling = true;
+        DoFallAnimation();
+        Debug.Log("falling now? " + _isFalling);
+
         setInvincible(true);
 
         IEnumerator dropToPit = DropToPit(pitPosition);

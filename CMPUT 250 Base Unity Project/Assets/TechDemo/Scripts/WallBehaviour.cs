@@ -12,6 +12,9 @@ public class WallBehaviour : MonoBehaviour
     private Collider2D wallCollider;
 
     private PlayerBehaviour player;
+
+    [SerializeField] private AudioSource wallBreakSoundSource;
+    [SerializeField] private AudioClip wallBreakPulledSound;
     /// <summary>
     /// make sure to add audio!
     /// </summary>
@@ -34,6 +37,10 @@ public class WallBehaviour : MonoBehaviour
     {
         // completes each item before moving to the next
         // so will finish playing the particle effect before destroying the game object wall
+        wallBreakSoundSource.clip = wallBreakPulledSound;
+        wallBreakSoundSource.volume = 0.5f;
+        wallBreakSoundSource.Play();
+        CameraManager.Instance.ShakeCamera(0.1f, 0.1f);
         particle.Play();
         spriteRenderer.enabled = false;
         wallCollider.enabled = false;
