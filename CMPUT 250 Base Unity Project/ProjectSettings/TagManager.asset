@@ -22,6 +22,7 @@ TagManager:
   - Platform
   - Platform Dialogue
   - Boat Dialogue
+  - Ground
   layers:
   - Default
   - TransparentFX

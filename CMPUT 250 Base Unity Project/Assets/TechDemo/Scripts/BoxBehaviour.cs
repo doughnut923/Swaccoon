@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class BoxBehaviour : EntityBehaviour
 {
@@ -24,6 +25,9 @@ public class BoxBehaviour : EntityBehaviour
     protected Vector2 previousLocation;
     protected Vector3 TargetPosition;
     protected Vector3 StartPosition;
+    
+    private Vector3 SpawnPosition;
+    private bool isSinking = false;
 
     //protected Vector2 lastPlayerLocation;
 
@@ -36,11 +40,19 @@ public class BoxBehaviour : EntityBehaviour
     [SerializeField] private AudioSource boxSinkingSoundSource;
     [SerializeField] private AudioClip boxSinkingPulledSound;
 
+    [SerializeField] private float spawnRaise = 10f;
+    [SerializeField] private float padding = 1.5f;
+
     protected bool isOnGoal = false;
 
     public bool isOnWater = false;
 
     // Start is called before the first frame update
+
+    public void Awake(){
+        SpawnPosition = transform.position;
+    }
+
     override public void Start()
     {
         base.Start();
@@ -71,21 +83,22 @@ public class BoxBehaviour : EntityBehaviour
         previousLocation = box.position;
 
         // if the box is on a water tile, it will sink
-        if (isOnWater)
+        if (isOnWater && !isSinking)
         {
-            
+            isSinking = true;
             StartCoroutine(SinkBox());
-            //spriteRenderer.color = new Color(1, 1, 1, 0);
         }
     }
 
     IEnumerator SinkBox(){
+
         //Play the box sinking sound
 
         //Play the box sinking animation
 
         //Wait for the animation to finish
         Debug.Log("sinking box");
+        
 
 
         //Destroy the box
@@ -94,7 +107,18 @@ public class BoxBehaviour : EntityBehaviour
         boxSinkingSoundSource.volume = 0.5f;
         boxSinkingSoundSource.Play();
 
-        GameOverUIBehavior.instance.ShowGameOverUI();
+        //Player Box sinking animation
+
+        //called After box sinking animation is done
+        yield return new WaitForSeconds(1.0f);
+
+        //Spawn a new box in the box spawnpoint
+        box.position = new Vector2(SpawnPosition.x, SpawnPosition.y);
+        GetComponent<Animator>().Play("SpawnBox");
+        isOnWater = false;
+        boxCollider.isTrigger = true;
+        isSinking = false;
+
         //spriteRenderer.color = new Color(1, 1, 1, 0);
         yield return null;
         //while (transform.position.y > WaterBehaviour.transform.position.y)
@@ -104,7 +128,125 @@ public class BoxBehaviour : EntityBehaviour
         //}
     }
 
+    override public void moveAndCollide(Vector2 update)
+    {
+        // if we aren't moving, don't move!
+        if (update == Vector2.zero) { return; }
 
+        // move, with respect for collisions
+        Vector2 position = rb.position;
+        Vector2 extents = _collider.bounds.extents;
+        Vector2 flush = Vector2.zero;
+
+        // corners for raycasting
+        Vector2 topRight = new Vector2(position.x + extents.x * padding, position.y + extents.y * padding);
+        Vector2 topLeft = new Vector2(position.x - extents.x * padding, position.y + extents.y * padding);
+        Vector2 bottomRight = new Vector2(position.x + extents.x * padding, position.y - extents.y * padding);
+        Vector2 bottomLeft = new Vector2(position.x - extents.x * padding, position.y - extents.y * padding);
+
+        // perform 2 raycasts in total from appropriate corners to check collision
+        // raycasting is used due to issues with tilemap colliders
+
+        //    ^  ^
+        //    |  |
+        // <- *--* ->
+        //    |  |
+        // <- *--* ->
+        //    |  |
+        //    V  V
+
+        // horizontal, right
+        if (update.x > 0)
+        {
+            RaycastHit2D tr = Physics2D.Raycast(topRight, Vector2.right);
+            RaycastHit2D br = Physics2D.Raycast(bottomRight, Vector2.right);
+
+            if (collided(tr) || collided(br))
+            {
+                update.x = 0;
+                if (collided(tr))
+                {
+                    flush.x = tr.distance;
+                }
+                if (collided(br))
+                {
+                    flush.x = br.distance;
+                }
+            }
+        }
+        // horizontal, left
+        else if (update.x < 0)
+        {
+            RaycastHit2D tl = Physics2D.Raycast(topLeft, Vector2.left);
+            RaycastHit2D bl = Physics2D.Raycast(bottomLeft, Vector2.left);
+
+            if (collided(tl) || collided(bl))
+            {
+                update.x = 0;
+                if (collided(tl))
+                {
+                    flush.x = tl.distance;
+                }
+                if (collided(bl))
+                {
+                    flush.x = bl.distance;
+                }
+            }
+        }
+
+        // vertical, up
+        if (update.y > 0)
+        {
+            RaycastHit2D tr = Physics2D.Raycast(topRight, Vector2.up);
+            RaycastHit2D tl = Physics2D.Raycast(topLeft, Vector2.up);
+
+            if (collided(tr) || collided(tl))
+            {
+                update.y = 0;
+                if (collided(tr))
+                {
+                    flush.y = tr.distance;
+                }
+                if (collided(tl))
+                {
+                    flush.y = tl.distance;
+                }
+            }
+        }
+        // vertical, down
+        else if (update.y < 0)
+        {
+            RaycastHit2D br = Physics2D.Raycast(bottomRight, Vector2.down);
+            RaycastHit2D bl = Physics2D.Raycast(bottomLeft, Vector2.down);
+
+            if (collided(br) || collided(bl))
+            {
+                update.y = 0;
+                if (collided(br))
+                {
+                    flush.y = br.distance;
+                }
+                if (collided(bl))
+                {
+                    flush.y = bl.distance;
+                }
+            }
+        }
+
+        // update position and clamp according to flush raycasts
+        Vector2 newPosition = position + update * moveSpeed * Time.deltaTime;
+
+        if (flush.x != 0)
+        {
+            newPosition.x = Mathf.Clamp(newPosition.x, position.x - flush.x, position.x + flush.x);
+        }
+        if (flush.y != 0)
+        {
+            newPosition.y = Mathf.Clamp(newPosition.y, position.y - flush.y, position.y + flush.y);
+        }
+
+        rb.MovePosition(newPosition);
+    }
 
     override public Vector2 getMovement()
     {

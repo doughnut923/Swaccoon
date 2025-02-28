@@ -94,7 +94,7 @@ public class EntityBehaviour : MonoBehaviour
     virtual public void handleDeath() { return; }
 
     // controls movement and collision
-    void moveAndCollide(Vector2 update)
+    virtual public void moveAndCollide(Vector2 update)
     {
         // if we aren't moving, don't move!
         if (update == Vector2.zero) { return; }
@@ -215,7 +215,7 @@ public class EntityBehaviour : MonoBehaviour
     }
 
     // helper function for collisions
-    bool collided(RaycastHit2D result)
+    protected bool collided(RaycastHit2D result)
     {
         return (result.collider && result.distance < _collisionBuffer && !result.collider.isTrigger);
     }

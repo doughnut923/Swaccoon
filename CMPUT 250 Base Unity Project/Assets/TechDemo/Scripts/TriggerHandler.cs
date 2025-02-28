@@ -60,7 +60,7 @@ public class TriggerHandler : MonoBehaviour
         if (other.name != "Fish")
         {
             //Debug.Log("player name is " + other.name);
-            Debug.Log("game obejcte tag is " + gameObject.tag);
+            // Debug.Log("game obejcte tag is " + gameObject.tag);
             if (gameObject.tag == "Boat Dialogue")
             {
                 if (other.CompareTag("Player"))

@@ -16,6 +16,8 @@ public class GameStateManager : MonoBehaviour
 
     public static GameStateManager instance{get; private set;}
 
+    [SerializeField] List<PlayerBehaviour> players = new List<PlayerBehaviour>();
+
     public GameState gameState = GameState.PLAYING;
 
     // Update is called once per frame
@@ -37,7 +39,17 @@ public class GameStateManager : MonoBehaviour
     {
         if(gameState == GameState.GAME_OVER)
         {
-            if(Input.GetKeyDown(KeyCode.Space))
+
+            //Handle Undo
+            if(Input.GetKeyDown(KeyCode.U))
+            {
+                foreach (var player in players)
+                {
+                    player.UndoMove();
+                }   
+                GameOverUIBehavior.instance.UnshowGameOverUI();
+            }
+            else if(Input.GetKeyDown(KeyCode.R))
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }

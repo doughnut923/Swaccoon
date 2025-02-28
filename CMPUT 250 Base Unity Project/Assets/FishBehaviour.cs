@@ -14,6 +14,7 @@ public class FishBehaviour : PlayerBehaviour
     private PlayerBehaviour playerBehaviour;
     public Transform fishTransform;
     private Vector2 punchDir;
+    private GameObject closestWater;
 
     private int punch_key_down;
 
@@ -38,23 +39,23 @@ public class FishBehaviour : PlayerBehaviour
         base.Start();
         OutOfWaterTimeLeft = OutOfWaterLimit;
         fishTransform = GameObject.Find("Fish").transform;
+
+        GameObject[] waterObjects = GameObject.FindGameObjectsWithTag("Water");
+        //get the one closest to the fish
+        float closestDistance = Mathf.Infinity;
+        foreach (GameObject water in waterObjects){
+            float distance = Vector2.Distance(transform.position, water.transform.position);
+            if (distance < closestDistance){
+                closestDistance = distance;
+                closestWater = water;
+            }
+        }
         //Debug.Log("fish transform " + fishTransform.position);
     }
 
     override public void FixedUpdate(){
         
         base.FixedUpdate();
-
-        player = PlayerManager.Instance.CurrentCharacter;
-        playerBehaviour = GetComponent<PlayerBehaviour>();
-
-        if (_playerState == CurrentPlayerState.SWAPPED_OUT || _playerState == CurrentPlayerState.SWAPPING || _playerState == CurrentPlayerState.CUTSCENE_PLAYING)
-        {
-            //Possibly sleepping animation
-            //but wil be just idle for now
-            DoIdleAnimation();
-            return;
-        }
 
         // check if we are in water
         checkInWater();
@@ -81,6 +82,18 @@ public class FishBehaviour : PlayerBehaviour
             TimeBar.gameObject.SetActive(false);
             OutOfWaterTimeLeft = OutOfWaterLimit;
         }
+
+        player = PlayerManager.Instance.CurrentCharacter;
+        playerBehaviour = GetComponent<PlayerBehaviour>();
+
+        if (_playerState == CurrentPlayerState.SWAPPED_OUT || _playerState == CurrentPlayerState.SWAPPING || _playerState == CurrentPlayerState.CUTSCENE_PLAYING)
+        {
+            //Possibly sleepping animation
+            //but wil be just idle for now
+            DoIdleAnimation();
+            return;
+        }
+
 
         // handle walk sound
         if (!_isFalling && !_isOnIce && lastSafePosition != (Vector2)transform.position){
@@ -267,11 +280,41 @@ public class FishBehaviour : PlayerBehaviour
         return update;
     }
 
+    public override void UpdateSafePosition()
+    {
+        //check whether the tile that the player standing on is a safe tile (i.e. Ground Tile), if so update the last safe position
+        // Vector3Int gridPosition = tilemap.WorldToCell(new Vector3(transform.position.x, transform.position.y, transform.position.z));
+        // TileBase searchedTile = tilemap.GetTile(gridPosition);
+
+        // Debug.Log(searchedTile.name);
+
+        // if(searchedTile.name == "GroundTile"){
+        //     lastSafePosition = transform.position;
+        // }
+
+        GameObject[] waterObjects = GameObject.FindGameObjectsWithTag("Water");
+        //get the one closest to the fish
+        float closestDistance = Mathf.Infinity;
+        foreach (GameObject water in waterObjects){
+            float distance = Vector2.Distance(transform.position, water.transform.position);
+            if (distance < closestDistance){
+                closestDistance = distance;
+                closestWater = water;
+            }
+        }
+
+        if(InWater){
+            //set the safe position to the center of the tile
+            // Vector3Int gridPosition = tilemap.WorldToCell(new Vector3(transform.position.x, transform.position.y, transform.position.z));
+            // Vector3 worldPos = tilemap.CellToWorld(gridPosition);
+            lastSafePosition = closestWater.transform.position;
+        }
+    }
+
     private void checkInWater(){
         //Get a list of water in scene
         GameObject[] waterObjects = GameObject.FindGameObjectsWithTag("Water");
         //get the one closest to the fish
-        GameObject closestWater = null;
         float closestDistance = Mathf.Infinity;
         foreach (GameObject water in waterObjects){
             float distance = Vector2.Distance(transform.position, water.transform.position);

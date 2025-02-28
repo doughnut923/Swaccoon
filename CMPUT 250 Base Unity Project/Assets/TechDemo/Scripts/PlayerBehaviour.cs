@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Tilemaps;
 using UnityEngine.UI;
 
 
@@ -89,6 +90,8 @@ public class PlayerBehaviour : EntityBehaviour
     [SerializeField] protected AudioClip walkSound;
     [SerializeField] protected AudioClip slipSound;
 
+    [SerializeField] protected Tilemap tilemap;
+
     public ParticleSystem walkParticles;
 
     // internal variables    
@@ -148,6 +151,7 @@ public class PlayerBehaviour : EntityBehaviour
     [SerializeField] protected float particleTimer = 0.5f;
 
     public bool isPunching = false;
+    public bool inWater = false;
 
     private Rigidbody2D playerManager;
 
@@ -233,7 +237,6 @@ public class PlayerBehaviour : EntityBehaviour
         {
             handleDeath();
         }
-
         getMovement();
         handleAnimation();
 
@@ -249,6 +252,14 @@ public class PlayerBehaviour : EntityBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
             //Destroy(gameObject);
         }
+    }
+
+    public void LateUpdate(){
+        UpdateSafePosition();
+    }
+
+    public void UndoMove(){
+        transform.position = lastSafePosition;
     }
 
 
@@ -409,6 +420,25 @@ public class PlayerBehaviour : EntityBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    public virtual void UpdateSafePosition()
+    {
+        //check whether the tile that the player standing on is a safe tile (i.e. Ground Tile), if so update the last safe position
+        // Vector3Int gridPosition = tilemap.WorldToCell(new Vector3(transform.position.x, transform.position.y, transform.position.z));
+        // TileBase searchedTile = tilemap.GetTile(gridPosition);
+
+        // Debug.Log(searchedTile.name);
+
+        // if(searchedTile.name == "GroundTile"){
+        //     lastSafePosition = transform.position;
+        // }
+        if(!_isFalling){
+            //set the safe position to the center of the tile
+            Vector3Int gridPosition = tilemap.WorldToCell(new Vector3(transform.position.x, transform.position.y, transform.position.z));
+            Vector3 worldPos = tilemap.CellToWorld(gridPosition);
+            lastSafePosition = new Vector2(worldPos.x + tilemap.cellSize.x/2, worldPos.y + tilemap.cellSize.y/2);
         }
     }
 
@@ -589,11 +619,9 @@ public class PlayerBehaviour : EntityBehaviour
     {
         // if we are already falling, don't fall!
         if (_isFalling) { return false; }
-        Debug.Log("falling yet? " + _isFalling);
         // time to fall! get rid of our sprite as we play the falling animation, and make us invulnerable!
         _isFalling = true;
         DoFallAnimation();
-        Debug.Log("falling now? " + _isFalling);
 
         setInvincible(true);
 
@@ -662,6 +690,6 @@ public class PlayerBehaviour : EntityBehaviour
 
     public override void handleDeath(){
         GameOverUIBehavior.instance.ShowGameOverUI();
-        Destroy(gameObject);
+        // Destroy(gameObject);
     }
 }

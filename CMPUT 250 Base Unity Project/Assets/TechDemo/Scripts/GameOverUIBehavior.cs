@@ -33,6 +33,17 @@ public class GameOverUIBehavior : MonoBehaviour
         StartCoroutine(FadeIn());
     }
 
+    public void UnshowGameOverUI()
+    {
+        GameStateManager.instance.gameState = GameState.PLAYING;
+        
+        //hide the UI elements
+        BackgroundImage.gameObject.SetActive(false);
+        GameOverText.gameObject.SetActive(false);
+        PlayAgainText.gameObject.SetActive(false);
+        
+    }
+
     private IEnumerator FadeIn()
     {
         Debug.Log("fade in begins");
@@ -47,5 +58,4 @@ public class GameOverUIBehavior : MonoBehaviour
             yield return null;
         }
     }
-
 }
