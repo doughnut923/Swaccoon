@@ -426,20 +426,21 @@ public class PlayerBehaviour : EntityBehaviour
     public virtual void UpdateSafePosition()
     {
         //check whether the tile that the player standing on is a safe tile (i.e. Ground Tile), if so update the last safe position
-        // Vector3Int gridPosition = tilemap.WorldToCell(new Vector3(transform.position.x, transform.position.y, transform.position.z));
-        // TileBase searchedTile = tilemap.GetTile(gridPosition);
+        Vector3Int gridPosition = tilemap.WorldToCell(new Vector3(transform.position.x, transform.position.y, transform.position.z));
+        TileBase searchedTile = tilemap.GetTile(gridPosition);
 
-        // Debug.Log(searchedTile.name);
+        Debug.Log(searchedTile.name);
 
-        // if(searchedTile.name == "GroundTile"){
-        //     lastSafePosition = transform.position;
-        // }
-        if(!_isFalling){
-            //set the safe position to the center of the tile
-            Vector3Int gridPosition = tilemap.WorldToCell(new Vector3(transform.position.x, transform.position.y, transform.position.z));
+        if(searchedTile.name == "GroundTile"){
             Vector3 worldPos = tilemap.CellToWorld(gridPosition);
             lastSafePosition = new Vector2(worldPos.x + tilemap.cellSize.x/2, worldPos.y + tilemap.cellSize.y/2);
         }
+        // if(!_isFalling){
+        //     //set the safe position to the center of the tile
+        //     Vector3Int gridPosition = tilemap.WorldToCell(new Vector3(transform.position.x, transform.position.y, transform.position.z));
+        //     Vector3 worldPos = tilemap.CellToWorld(gridPosition);
+        //     lastSafePosition = new Vector2(worldPos.x + tilemap.cellSize.x/2, worldPos.y + tilemap.cellSize.y/2);
+        // }
     }
 
     //public void DoPunchAnimation()

@@ -395,7 +395,7 @@ public class BoxBehaviour : EntityBehaviour
     }
 
     //Just overlapped a collider 2D
-    protected void OnTriggerEnter2D(Collider2D collision)
+    virtual protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Goal")
         {
@@ -408,6 +408,12 @@ public class BoxBehaviour : EntityBehaviour
 
             sokobanScript.DecrementGoals();
             sokobanScript.DecrementCrates();
+
+            GameObject goalGameObject = collision.gameObject;
+            if(gameObject.GetComponent<GoalBehaviour>() != null)
+            {
+                gameObject.GetComponent<GoalBehaviour>().onGoalReached();
+            }
 
             //Destroy(collision.gameObject);
             //Destroy(gameObject);

@@ -23,6 +23,8 @@ public class PlatformBehaviour : MonoBehaviour
     private Rigidbody2D player;
     private PlayerBehaviour playerScript;
     private SokobanBehaviour sokobanScript;
+    public bool hasRose = false;
+    public float shakeIntensity = 0.01f;
 
     void Awake(){
         TargetPosition = transform.position;
@@ -39,6 +41,14 @@ public class PlatformBehaviour : MonoBehaviour
     }
     public void Rise()
     {
+        if(hasRose){
+            //reset the timer
+            timeRemaining = platformTimeLimit;
+            return;
+        }
+
+        hasRose = true;
+
         //Invoke("FallTimer", 1f);
         Debug.Log("are we sure the puzzle is complete " + sokobanScript.puzzleComplete);
         if (sokobanScript.puzzleComplete == true)
@@ -69,6 +79,26 @@ public class PlatformBehaviour : MonoBehaviour
             yield return null;
         }
     }
+
+    public void ShakePlatform()
+    {
+        //shake the platform
+        StartCoroutine(Shake());
+    }
+
+    IEnumerator Shake(){
+        Vector3 originalPos = transform.position;
+        float elapsed = 0.0f;
+        while (elapsed < 0.5f){
+            float x = UnityEngine.Random.Range(-1f, 1f) * shakeIntensity;
+            float y = UnityEngine.Random.Range(-1f, 1f) * shakeIntensity;
+            transform.position = new Vector3(transform.position.x + x, transform.position.y + y, transform.position.z);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = originalPos;
+    }
+
     public void FallTimer()
     {
         // begin timer for how long to keep the platform raised
@@ -77,6 +107,9 @@ public class PlatformBehaviour : MonoBehaviour
         {
             //Debug.Log("platform timer is "+timeRemaining);
             timeRemaining--;
+            if(timeRemaining < platformTimeLimit / 2 && timeRemaining > 0){
+                ShakePlatform();
+            }
             Invoke("FallTimer", 1f);
 
         }
@@ -92,6 +125,7 @@ public class PlatformBehaviour : MonoBehaviour
         //begin lowering the platform
         CameraManager.Instance.ShakeCamera(riseTime, .1f);
         StartCoroutine(FallPlatform());
+        hasRose = false;
     }
 
     IEnumerator FallPlatform()

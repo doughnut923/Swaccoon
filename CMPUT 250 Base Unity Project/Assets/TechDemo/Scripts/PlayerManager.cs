@@ -27,7 +27,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManagerState _playerManagerState { get; set; } = PlayerManagerState.NOT_SWAPPING;
 
     [SerializeField] public GameObject CurrentCharacter { get; private set; }            //Reference to the current character
-    [SerializeField] private List<GameObject> SwappableCharacters = new List<GameObject>(3);    //List of characters that can be swapped
+    [SerializeField] public List<GameObject> SwappableCharacters = new List<GameObject>(3);    //List of characters that can be swapped
     [SerializeField] private List<Image> UIOutlines = new List<Image>(3);             //Reference to list of UI elements displayed for swapping the chaaracter and for the player to see which character they are in control of
     [SerializeField] private int currentIndex = 0;                                              //Index of the current character
     [SerializeField] private int lastCharacter = 0;                                             //Index of the last character
@@ -170,22 +170,22 @@ public class PlayerManager : MonoBehaviour
     /**
         * The following function start the swap and outlines the current character and the character that can be swapped to
         */
-    private void StartSwap()
-    {
-        if (SwapsLeft <= 0)
-        {
-            return;
-        }
+    // private void StartSwap()
+    // {
+    //     if (SwapsLeft <= 0)
+    //     {
+    //         return;
+    //     }
 
-        if (_playerManagerState == PlayerManagerState.NOT_SWAPPING)
-        {
-            _playerManagerState = PlayerManagerState.Swapping;
-            CurrentCharacter.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.SWAPPING;
-            lastCharacter = currentIndex;
+    //     if (_playerManagerState == PlayerManagerState.NOT_SWAPPING)
+    //     {
+    //         _playerManagerState = PlayerManagerState.Swapping;
+    //         CurrentCharacter.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.SWAPPING;
+    //         lastCharacter = currentIndex;
 
-            Debug.Log("You are now : " + lastCharacter + " and can swap to : " + currentIndex);
-        }
-    }
+    //         Debug.Log("You are now : " + lastCharacter + " and can swap to : " + currentIndex);
+    //     }
+    // }
 
     /**
         * The following function selects the character to swap to
@@ -219,6 +219,7 @@ public class PlayerManager : MonoBehaviour
     {
 
         _playerManagerState = PlayerManagerState.NOT_SWAPPING;
+        currentIndex = (currentIndex + 1) % SwappableCharacters.Count;
         Debug.Log("Swapping from : " + lastCharacter + " to : " + currentIndex);
         CurrentCharacter = SwappableCharacters[currentIndex];
 
@@ -237,7 +238,6 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
-        currentIndex = (currentIndex + 1) % SwappableCharacters.Count;
         //increase the opacity of the outline of the character that can be swapped to
         foreach (Image outline in UIOutlines)
         {

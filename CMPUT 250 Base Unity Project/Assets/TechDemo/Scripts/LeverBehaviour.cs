@@ -55,7 +55,8 @@ public class LeverBehaviour : MonoBehaviour
     [SerializeField] private AudioSource leverSoundSource;
     [SerializeField] private AudioClip leverPulledSound;
 
-    public bool gateOpening = false;
+    private bool gateOpening = false;
+    [SerializeField]private bool _enabled = true;
 
     // Start is called before the first frame update
     void Start()
@@ -69,7 +70,7 @@ public class LeverBehaviour : MonoBehaviour
             Debug.LogError("Target gate is not set.");
         }
         _leverState = CurrentLeverState.UP;
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        // spriteRenderer = GetComponent<SpriteRenderer>();
         currentSprite = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
         sokobanScript = (SokobanBehaviour)player.gameObject.GetComponent(typeof(SokobanBehaviour));
 
@@ -82,6 +83,14 @@ public class LeverBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Dim the Lever and make the player unable to interact with it if the lever is disabled
+        if(!_enabled){
+
+            currentSprite.color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+
+            return;
+        }
+
         player = PlayerManager.Instance.CurrentCharacter.GetComponent<Rigidbody2D>();
         playerScript = PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>();
         if (player != null && Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= switchRadius && Input.GetKeyDown(_openGate))
@@ -103,6 +112,13 @@ public class LeverBehaviour : MonoBehaviour
             }
         }
     }
+
+    // Enable the Lever 
+    public void EnableLever(){
+        currentSprite.color = new Color(1f, 1f, 1f, 1f);
+        _enabled = true;
+    }
+
     void LeverPulled()
     {
         // todo: play sound / animation?
@@ -119,8 +135,8 @@ public class LeverBehaviour : MonoBehaviour
         leverSoundSource.volume = 0.5f;
         leverSoundSource.Play();
 
-            //Envoke the Unity Events
-            leverPulled.Invoke();
+        //Envoke the Unity Events
+        leverPulled.Invoke();
         isLeverPulled = true;
 
         gateOpening = true;

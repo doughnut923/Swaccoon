@@ -16,6 +16,8 @@ public class GateBehaviour : MonoBehaviour
     //private int _remainingEnemies = 0;
     public int _remainingLevers = 0;
 
+    public bool gateOpen = false;
+
     // the player
     private Rigidbody2D player;
     private PlayerBehaviour playerScript;
@@ -114,6 +116,13 @@ public class GateBehaviour : MonoBehaviour
         //}
         //Debug.Log("Unlock function");
         //Debug.Log("is sound playing " + gateSoundSource.isPlaying);
+        if(gateOpen){
+            Debug.Log("Gate is already open");
+            return;
+        }
+
+        gateOpen = true;
+        
         if (openCondition == Condition.GateOpen){
             if (lever.IsLeverPulled == true)
             {
@@ -202,7 +211,7 @@ public class GateBehaviour : MonoBehaviour
             
             gateCollider.isTrigger = false;
             gameObject.GetComponent<Collider2D>().enabled = true;
-
+            gateOpen = false;
         }
     }
 }

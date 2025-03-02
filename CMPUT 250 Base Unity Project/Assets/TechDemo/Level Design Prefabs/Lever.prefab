@@ -95,7 +95,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 515ee39397e3343739a91324927107d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _leverState: 0
   switchRadius: 0.9
+  gate: {fileID: 0}
+  _openGate: 122
+  leverPulled:
+    m_PersistentCalls:
+      m_Calls: []
+  isLeverPulled: 0
+  leverTimeLimit: 10
+  spriteRenderer: {fileID: 4660201048990885103}
+  leverSprite:
+  - {fileID: 21300000, guid: 059820c4a83bd4b9ab42bb3f15bb826c, type: 3}
+  - {fileID: 21300000, guid: a1ac29e4f9590410b8655c0422a4b23d, type: 3}
+  leverSoundSource: {fileID: 0}
+  leverPulledSound: {fileID: 8300000, guid: 650643d8443ea4ed7bb6ebac0fbb737e, type: 3}
+  enabled: 1
 --- !u!1 &4704536851211308374
 GameObject:
   m_ObjectHideFlags: 0

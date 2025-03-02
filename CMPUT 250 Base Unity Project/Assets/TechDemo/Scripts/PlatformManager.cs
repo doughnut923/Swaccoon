@@ -15,4 +15,10 @@ public class PlatformManager : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    void RiseAllPlatforms(){
+        foreach(PlatformBehaviour platform in platforms){
+            platform.Rise();
+        }
+    }
 }
