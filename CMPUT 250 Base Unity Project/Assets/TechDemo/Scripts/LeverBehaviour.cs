@@ -70,11 +70,18 @@ public class LeverBehaviour : MonoBehaviour
         }
         _leverState = CurrentLeverState.UP;
         spriteRenderer = GetComponent<SpriteRenderer>();
+        
         currentSprite = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
         sokobanScript = (SokobanBehaviour)player.gameObject.GetComponent(typeof(SokobanBehaviour));
 
         timeRemaining = leverTimeLimit;
 
+        // turns the platform lever grey as it is not activated
+        // wonder if it will work for currentSprite.name == PlatformLever?
+        if (currentSprite.tag == "switch") // tag currently only applied to the platform lever tag
+        {
+            currentSprite.color = new Color(0.5f, 0.5f, 0.5f, 1); 
+        }
         //closeGate = GateBehaviour.Instance.GetComponent<Rigidbody2D>();
         //spriteRenderer.sprite = leverSprite[0];
     }
@@ -84,6 +91,15 @@ public class LeverBehaviour : MonoBehaviour
     {
         player = PlayerManager.Instance.CurrentCharacter.GetComponent<Rigidbody2D>();
         playerScript = PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>();
+        // checks if we can activate the platform lever
+        if (sokobanScript.puzzleComplete == true)
+        {
+            if (currentSprite.tag == "switch")
+            {
+                currentSprite.color = new Color(1, 1, 1, 1);
+            }
+        }
+
         if (player != null && Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= switchRadius && Input.GetKeyDown(_openGate))
         {
             if (gameObject.name == "PlatformLever" && sokobanScript.puzzleComplete==true && _leverState != CurrentLeverState.DOWN)

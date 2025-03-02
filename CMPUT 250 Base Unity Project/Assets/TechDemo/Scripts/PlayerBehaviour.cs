@@ -195,8 +195,14 @@ public class PlayerBehaviour : EntityBehaviour
         {
             //Possibly sleepping animation
             //but wil be just idle for now
+            currentSprite.color = new Color(0.5f, 0.5f, 0.5f, 1);
             DoIdleAnimation();
+
             return;
+        }
+        else
+        {
+            currentSprite.color = new Color(1, 1, 1, 1);
         }
 
         base.FixedUpdate();
