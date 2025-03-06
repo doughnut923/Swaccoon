@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,7 @@ public class FishBehaviour : PlayerBehaviour
     public Transform fishTransform;
     private Vector2 punchDir;
     private GameObject closestWater;
+    [SerializeField] private float LandSpeed = 1f;
 
     private int punch_key_down;
 
@@ -60,6 +62,7 @@ public class FishBehaviour : PlayerBehaviour
         // check if we are in water
         checkInWater();
         // if we are out of the water, decrement the timer
+        moveSpeed = 6f;
         if (!InWater)
         {
             TimeBar.gameObject.SetActive(true);
@@ -72,9 +75,12 @@ public class FishBehaviour : PlayerBehaviour
             //set the color of the Bar based on how much time is left from white to red
             TimeBar.GetComponent<Image>().color = Color.Lerp(Color.white, Color.red, 1 - OutOfWaterTimeLeft / OutOfWaterLimit);
 
+            moveSpeed = LandSpeed;
+
             if (OutOfWaterTimeLeft <= 0)
             {
-                handleDeath();
+                //Lose the game
+                GameOverUIBehavior.instance.ShowGameOverUI();
             }
         }
         else

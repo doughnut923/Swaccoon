@@ -690,7 +690,7 @@ public class PlayerBehaviour : EntityBehaviour
     }
 
     public override void handleDeath(){
-        GameOverUIBehavior.instance.ShowGameOverUI();
+        // GameOverUIBehavior.instance.ShowGameOverUI();
         // Destroy(gameObject);
     }
 }

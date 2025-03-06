@@ -36,11 +36,15 @@ public class CameraManager : MonoBehaviour
         // Camera.position = Vector3.Lerp(Camera.position, closestCamera, 0.1f);
 
         //Move ease the Camera Horizontally to the mean of the character's position
+        //However, the camera is shift slightly toward the current character, so if the character is the current character, count twice
         float meanPosition = 0;
         foreach (GameObject character in PlayerManager.Instance.SwappableCharacters){
             meanPosition += character.transform.position.x;
+            if (character == PlayerManager.Instance.CurrentCharacter){
+                meanPosition += character.transform.position.x;
+            }
         }
-        meanPosition /= PlayerManager.Instance.SwappableCharacters.Count;
+        meanPosition /= PlayerManager.Instance.SwappableCharacters.Count + 1;
         if(meanPosition > MaxX){
             meanPosition = MaxX;
         }

@@ -63,7 +63,7 @@ public class BoxBehaviour : EntityBehaviour
         // player1Script = (PlayerBehaviour)player1.gameObject.GetComponent(typeof(PlayerBehaviour));
 
         box = gameObject.GetComponent<Rigidbody2D>();
-        GetComponent<Collider2D>().isTrigger = true;
+        // GetComponent<Collider2D>().isTrigger = true;
         sokobanScript = (SokobanBehaviour)player.gameObject.GetComponent(typeof(SokobanBehaviour));
 
         boxCollider = box.GetComponent<Collider2D>();
