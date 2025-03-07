@@ -18,9 +18,9 @@ public class PressurePlateBehviour : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        Debug.Log("Pressure Plate Triggered");
-        Debug.Log(collision.gameObject.name);
-        Debug.Log(collision.gameObject.GetComponent<HorseBehaviour>());
+        //Debug.Log("Pressure Plate Triggered");
+        //Debug.Log(collision.gameObject.name);
+        //Debug.Log(collision.gameObject.GetComponent<HorseBehaviour>());
         if (collision.gameObject.GetComponent<HorseBehaviour>() != null)
         {
             isPressed = true;

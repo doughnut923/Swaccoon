@@ -199,8 +199,13 @@ public class PlayerBehaviour : EntityBehaviour
         {
             //Possibly sleepping animation
             //but wil be just idle for now
+            currentSprite.color = new Color(0.5f, 0.5f, 0.5f, 1f); // change color to grey if swapped out or if cutscene dialogue is playing (maybe set as variable)
             DoIdleAnimation();
             return;
+        }
+        else
+        {
+            currentSprite.color = new Color(1, 1, 1, 1); // change color back to original (maybe set as variable)
         }
 
         base.FixedUpdate();
@@ -429,7 +434,7 @@ public class PlayerBehaviour : EntityBehaviour
         Vector3Int gridPosition = tilemap.WorldToCell(new Vector3(transform.position.x, transform.position.y, transform.position.z));
         TileBase searchedTile = tilemap.GetTile(gridPosition);
 
-        Debug.Log(searchedTile.name);
+        //Debug.Log(searchedTile.name);
 
         if(searchedTile.name == "GroundTile"){
             Vector3 worldPos = tilemap.CellToWorld(gridPosition);

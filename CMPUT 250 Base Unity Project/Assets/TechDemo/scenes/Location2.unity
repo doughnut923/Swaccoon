@@ -2315,6 +2315,22 @@ PrefabInstance:
       propertyPath: padding
       value: 1.2
       objectReference: {fileID: 0}
+    - target: {fileID: 8440342039835490573, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b04d3bcb438be43ffbf5dc38be231526,
+        type: 3}
+    - target: {fileID: 8440342039835490577, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440342039835490577, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.165
+      objectReference: {fileID: 0}
     - target: {fileID: 8440342039909161868, guid: 69ddedb4b88fc804cad89471e276c4d8,
         type: 3}
       propertyPath: m_RootOrder
@@ -3731,7 +3747,7 @@ PrefabInstance:
     - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
         type: 3}
       propertyPath: _enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
         type: 3}
@@ -3742,7 +3758,7 @@ PrefabInstance:
         type: 3}
       propertyPath: leverPulledSound
       value: 
-      objectReference: {fileID: 8300000, guid: 650643d8443ea4ed7bb6ebac0fbb737e, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
         type: 3}
       propertyPath: leverSoundSource
@@ -15103,6 +15119,22 @@ PrefabInstance:
         type: 3}
       propertyPath: padding
       value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440342039835490573, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b04d3bcb438be43ffbf5dc38be231526,
+        type: 3}
+    - target: {fileID: 8440342039835490577, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440342039835490577, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.165
       objectReference: {fileID: 0}
     - target: {fileID: 8440342039909161868, guid: 69ddedb4b88fc804cad89471e276c4d8,
         type: 3}

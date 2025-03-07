@@ -18,6 +18,7 @@ public class LeverManager : MonoBehaviour
 
     public void CheckPlateStatus()
     {
+        Debug.Log("checking pressure plates");
         foreach (bool plate in PressurePlateStatus)
         {
             if (!plate)

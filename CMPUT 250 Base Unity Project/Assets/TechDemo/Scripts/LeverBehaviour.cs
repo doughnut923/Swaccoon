@@ -126,7 +126,7 @@ public class LeverBehaviour : MonoBehaviour
         // gate open
         // destroy switch
         // play lever pulled sound
-        
+        Debug.Log("lever was pulled");
 
         // log that the lever has been pulled
         PlayerPrefs.SetInt(gameObject.scene.name + gameObject.name, 1);
@@ -134,7 +134,7 @@ public class LeverBehaviour : MonoBehaviour
         leverSoundSource.clip = leverPulledSound;
         leverSoundSource.volume = 0.5f;
         leverSoundSource.Play();
-
+        leverSoundSource.Stop();
         //Envoke the Unity Events
         leverPulled.Invoke();
         isLeverPulled = true;
