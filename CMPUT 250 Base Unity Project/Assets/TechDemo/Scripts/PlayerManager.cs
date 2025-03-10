@@ -235,6 +235,7 @@ public class PlayerManager : MonoBehaviour
             else
             {
                 character.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.IDLE;
+                character.gameObject.GetComponentsInChildren<BrainWave>()[0].TriggerBrainWave();
             }
         }
 
