@@ -694,3 +694,8 @@ public class PlayerBehaviour : EntityBehaviour
         // Destroy(gameObject);
     }
 }
+
+
+public class CutsceneElements{
+    
+}
