@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Narrative;
+using JetBrains.Annotations;
+using System;
 
 /// <summary>
 /// An inline struct to contain cinematic steps
@@ -33,11 +36,49 @@ public struct InteractStep
     // pulling a lever
 
 }
+
+public class CutSceneManager : MonoBehaviour
+{
+
+    public CutSceneManager instance {get; private set;}
+
+    [SerializeField] public List<CutSceneItem> cutSceneItems;
+    private CutSceneItem currentCutSceneItem;
+
+    public bool cinematicControlled = true;
+
+    private int _cutsceneIndex = 0;
+
+    [SerializeField] private string nextScene;
+
+    void Awake(){
+        if(instance == null){
+            instance = this;
+        }
+        else{
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void FixedUpdate(){
+        if(currentCutSceneItem.CheckDone() || !cinematicControlled){                            //Check if the current cutscene item is done
+            _cutsceneIndex += 1;                                        //Move to the next cutscene item
+            if(_cutsceneIndex < cutSceneItems.Count){
+                currentCutSceneItem = cutSceneItems[_cutsceneIndex];    
+                currentCutSceneItem.Play();                             //Note that the play fucntion should only be called once
+                cinematicControlled = true;
+            }
+            else{
+                SceneManager.LoadScene(nextScene); //Load the next scene if all cutscene items are done
+            }
+        }
+    }
+}
+
 public class Cutscene : AnimatedEntity
 {
 
     [Header("Cinematic Settings")]
-    public bool cinematicControlled = true;
     public List<CinematicStep> cinematicSteps;
     private int _cinematicIndex;
 
@@ -54,6 +95,8 @@ public class Cutscene : AnimatedEntity
     private int _direction = -1;//0 is up, 1 is right, 2 is down, 3 is left
     private float minDiff = 0.00001f;
 
+    public CutsceneState CutsceneState;
+
     void Start()
     {
         AnimationSetup();
@@ -63,59 +106,61 @@ public class Cutscene : AnimatedEntity
     // Update is called once per frame
     void Update()
     {
+
+        
         //What to do if the player is being controlled by a cinemtic
-        if (cinematicControlled)
-        {
-            // if cutscene state is in cinematic
-            if (CutsceneState == CutsceneState.CINEMATIC)
-            {
-                if (_cinematicIndex < cinematicSteps.Count)
-                {
-                    //Move player to first cinematicSteps location if not there yet
-                    if ((transform.position - cinematicSteps[_cinematicIndex].location).magnitude > 0.005f)
-                    {
-                        transform.position += (cinematicSteps[_cinematicIndex].location - transform.position).normalized * Time.deltaTime * Speed;
-                    }
-                    else
-                    {
-                        //Set player location to avoid float issues
-                        transform.position = cinematicSteps[_cinematicIndex].location;
-                        if (_cutsceneTimer >= cinematicSteps[_cinematicIndex].timeAtLocation)
-                        {
-                            _cinematicIndex += 1;//Move on to next step if there is one
-                            _cutsceneTimer = 0;
-                            uiCanvas.SetActive(false);
-                        }
-                        else
-                        {
-                            //Display text during timer if there is any
-                            if (cinematicSteps[_cinematicIndex].statement != "")
-                            {
-                                uiCanvas.SetActive(true);
-                                text.text = cinematicSteps[_cinematicIndex].statement;
-                            }
+        // if (cinematicControlled)
+        // {
+        //     // if cutscene state is in cinematic
+        //     if (CutsceneState == CutsceneState.CINEMATIC)
+        //     {
+        //         if (_cinematicIndex < cinematicSteps.Count)
+        //         {
+        //             //Move player to first cinematicSteps location if not there yet
+        //             if ((transform.position - cinematicSteps[_cinematicIndex].location).magnitude > 0.005f)
+        //             {
+        //                 transform.position += (cinematicSteps[_cinematicIndex].location - transform.position).normalized * Time.deltaTime * Speed;
+        //             }
+        //             else
+        //             {
+        //                 //Set player location to avoid float issues
+        //                 transform.position = cinematicSteps[_cinematicIndex].location;
+        //                 if (_cutsceneTimer >= cinematicSteps[_cinematicIndex].timeAtLocation)
+        //                 {
+        //                     _cinematicIndex += 1;//Move on to next step if there is one
+        //                     _cutsceneTimer = 0;
+        //                     uiCanvas.SetActive(false);
+        //                 }
+        //                 else
+        //                 {
+        //                     //Display text during timer if there is any
+        //                     if (cinematicSteps[_cinematicIndex].statement != "")
+        //                     {
+        //                         uiCanvas.SetActive(true);
+        //                         text.text = cinematicSteps[_cinematicIndex].statement;
+        //                     }
 
-                            _cutsceneTimer += Time.deltaTime;
-                        }
-                    }
-                }
-            }
-            // if cutscene state is in dialogue
-            else if (CutsceneState = CutsceneState.DIALOGUE)
-            {
-                // play dialogue
-            }
-            // if cutscene state is in interact
-            else if (CutsceneState = CutsceneState.INTERACT)
-            {
+        //                     _cutsceneTimer += Time.deltaTime;
+        //                 }
+        //             }
+        //         }
+        //     }
+        //     // if cutscene state is in dialogue
+        //     else if (CutsceneState = CutsceneState.DIALOGUE)
+        //     {
+        //         // play dialogue
+        //     }
+        //     // if cutscene state is in interact
+        //     else if (CutsceneState = CutsceneState.INTERACT)
+        //     {
 
-            }
-        }
-        else
-        {
-            // Return control to the player at the end of this
-            cinematicControlled = false;
-        }
+        //     }
+        // }
+        // else
+        // {
+        //     // Return control to the player at the end of this
+        //     cinematicControlled = false;
+        // }
         //else
         //{
         //    //Movement controls if not cinematic controlled
@@ -208,19 +253,62 @@ public class Cutscene : AnimatedEntity
 
     // on trigger enter --> when player starts at a location and when they complete a location
     // triggers when starting the game and completing the game
-    void OnTriggerEnter(Collider other)
-    {
-        Enemy enemy = other.gameObject.GetComponent<Enemy>();
+    // void OnTriggerEnter(Collider other)
+    // {
+    //     Enemy enemy = other.gameObject.GetComponent<Enemy>();
 
-        if (enemy != null)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    //     if (enemy != null)
+    //     {
+    //         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    //     }
+    //     else
+    //     {
+    //         Time.timeScale = 0;
+    //         uiCanvas.SetActive(true);
+    //         text.text = "I win!";
+    //     }
+    // }
+}
+
+[Serializable]
+public class CutSceneItem{
+    //The item could either be a cinematic, a dialogue, or an interactable
+
+    public GameObject CutSceneObject;
+    public CutsceneState cutsceneState;
+
+    // public void Play();
+    // public bool CheckDone();
+
+    public void Play(){
+        if(cutsceneState == CutsceneState.CINEMATIC){
+            CutSceneObject.GetComponent<Cinematic>().Play();
         }
-        else
-        {
-            Time.timeScale = 0;
-            uiCanvas.SetActive(true);
-            text.text = "I win!";
+        else if(cutsceneState == CutsceneState.DIALOGUE){
+            CutSceneObject.GetComponent<Dialogue>().Play();
+        }
+        else if(cutsceneState == CutsceneState.INTERACT){
+            CutSceneObject.GetComponent<InteractionScene>().Play();
+        }
+        else{
+            Debug.LogError("Please provide a valid cutscene state");
         }
     }
+
+    public bool CheckDone(){
+        if(cutsceneState == CutsceneState.CINEMATIC){
+            return CutSceneObject.GetComponent<Cinematic>().CheckDone();
+        }
+        else if(cutsceneState == CutsceneState.DIALOGUE){
+            return CutSceneObject.GetComponent<Dialogue>().CheckDone();
+        }
+        else if(cutsceneState == CutsceneState.INTERACT){
+            return CutSceneObject.GetComponent<InteractionScene>().CheckDone();
+        }
+        else{
+            Debug.LogError("Please provide a valid cutscene state");
+            return false;
+        }
+    }
+
 }
