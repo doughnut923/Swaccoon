@@ -195,8 +195,10 @@ public class PlayerBehaviour : EntityBehaviour
             return;
         }
 
-        if (_playerState == CurrentPlayerState.SWAPPED_OUT || _playerState == CurrentPlayerState.SWAPPING || _playerState == CurrentPlayerState.CUTSCENE_PLAYING)
+        
+        if (_playerState == CurrentPlayerState.SWAPPED_OUT || _playerState == CurrentPlayerState.CUTSCENE_PLAYING)
         {
+
             //Possibly sleepping animation
             //but wil be just idle for now
             currentSprite.color = new Color(0.5f, 0.5f, 0.5f, 1f); // change color to grey if swapped out or if cutscene dialogue is playing (maybe set as variable)
@@ -209,6 +211,12 @@ public class PlayerBehaviour : EntityBehaviour
         }
 
         base.FixedUpdate();
+
+        if(gameObject.name == "Horse" || gameObject.name == "Fish"){
+            return;
+        }
+
+
         // handle walk sound
         if (!_isFalling && !_isOnIce && lastSafePosition != (Vector2)transform.position){
             playerWalkSoundSource.volume = 0.25f;
@@ -286,6 +294,8 @@ public class PlayerBehaviour : EntityBehaviour
             _currDir = Direction.East;
             _playerState = CurrentPlayerState.WALKING;
 
+            movement = update;
+
             // tilt the player
             currentTilt = Mathf.Lerp(currentTilt, -TiltAngle, tiltSpeed);
 
@@ -303,6 +313,8 @@ public class PlayerBehaviour : EntityBehaviour
             update.x = Mathf.Lerp(currentSpeed.x, -1, acceleration);
             _currDir = Direction.West;
             _playerState = CurrentPlayerState.WALKING;
+
+            movement = update;
 
             //tilt the player
             currentTilt = Mathf.Lerp(currentTilt, TiltAngle, tiltSpeed);
@@ -322,6 +334,8 @@ public class PlayerBehaviour : EntityBehaviour
             _currDir = Direction.North;
             _playerState = CurrentPlayerState.WALKING;
 
+            movement = update;
+
             // play walk partciles
             if(_canStep)
             {
@@ -337,6 +351,8 @@ public class PlayerBehaviour : EntityBehaviour
             _currDir = Direction.South;
             _playerState = CurrentPlayerState.WALKING;
 
+            movement = update;
+
             // play walk partciles
             if(_canStep)
             {
@@ -346,6 +362,10 @@ public class PlayerBehaviour : EntityBehaviour
                 StartCoroutine(WaitForNextStep());
             }
         }
+        else{
+            movement = Vector2.zero;
+        }
+
         currentSpeed = update;
 
         // If not moving set the player tilt to 0
@@ -485,7 +505,6 @@ public class PlayerBehaviour : EntityBehaviour
 
     public void handleAnimation()
     {
-
         // // if we are falling, do the falling animation lol
         
         //Debug.Log("player is currently " + currentSprite);
@@ -568,7 +587,6 @@ public class PlayerBehaviour : EntityBehaviour
         else
         {
             _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _walkFramesPerSecond, 6f);
-
             switch (_currDir)
             {
                 case Direction.North:

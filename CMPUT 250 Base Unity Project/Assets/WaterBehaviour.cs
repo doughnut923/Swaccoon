@@ -25,6 +25,12 @@ public class WaterBehaviour : MonoBehaviour
     {
         //get all boats in the scene
         GameObject[] boxObjects = GameObject.FindGameObjectsWithTag("Crate");
+
+        if (boxObjects.Length == 0)
+        {
+            Debug.LogWarning("No boxes in the scene");
+            return;
+        }
         foreach (GameObject boatObject in boxObjects)
         {
             boxes.Add(boatObject.GetComponent<BoxBehaviour>());
@@ -54,6 +60,13 @@ public class WaterBehaviour : MonoBehaviour
             //Debug.Log("fall radius is " + fallRadius);
             Fall();
         }
+
+        if (boxes.Count == 0)
+        {
+            Debug.LogWarning("No boxes in the scene");
+            return;
+        }
+
         foreach (BoxBehaviour box in boxes)
         {
             //if the box position is within the water's collider, set the boat IsOnWater to true

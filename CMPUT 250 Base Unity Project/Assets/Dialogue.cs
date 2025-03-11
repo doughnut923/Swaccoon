@@ -7,6 +7,8 @@ public class Dialogue : MonoBehaviour
 
     public bool flagtocheck = false;
 
+    
+
     public bool CheckDone(){
         return true;
     }

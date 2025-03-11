@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 using UnityEngine.UI;
 
 public class FishBehaviour : PlayerBehaviour
@@ -169,6 +170,8 @@ public class FishBehaviour : PlayerBehaviour
             punchDir = transform.right;
             _playerState = CurrentPlayerState.WALKING;
 
+            movement = update;
+
             // tilt the player
             currentTilt = Mathf.Lerp(currentTilt, -TiltAngle, tiltSpeed);
 
@@ -187,6 +190,8 @@ public class FishBehaviour : PlayerBehaviour
             _currDir = Direction.West;
             punchDir = -transform.right;
             _playerState = CurrentPlayerState.WALKING;
+
+            movement = update;
 
             //tilt the player
             currentTilt = Mathf.Lerp(currentTilt, TiltAngle, tiltSpeed);
@@ -207,6 +212,8 @@ public class FishBehaviour : PlayerBehaviour
             punchDir = transform.up;
             _playerState = CurrentPlayerState.WALKING;
 
+            movement = update;
+
             // play walk partciles
             if(_canStep)
             {
@@ -223,6 +230,8 @@ public class FishBehaviour : PlayerBehaviour
             punchDir = -transform.up;
             _playerState = CurrentPlayerState.WALKING;
 
+            movement = update;
+
             // play walk partciles
             if(_canStep)
             {
@@ -232,6 +241,10 @@ public class FishBehaviour : PlayerBehaviour
                 StartCoroutine(WaitForNextStep());
             }
         }
+        else{
+            movement = Vector2.zero;
+        }
+
         if (Input.GetKey(punch) && punch_key_down == 0)
         {
             punch_key_down = 1;
@@ -271,6 +284,7 @@ public class FishBehaviour : PlayerBehaviour
             {
                 Debug.Log("cant punch, already punching");
             }
+
             
         }
         else if(!Input.GetKey(punch))
@@ -278,6 +292,8 @@ public class FishBehaviour : PlayerBehaviour
             punch_key_down = 0;
         }
         currentSpeed = update;
+
+
         // If not moving set the player tilt to 0
         currentTilt = Mathf.Lerp(currentTilt, 0, tiltSpeed);
         transform.rotation = Quaternion.Euler(0, 0, currentTilt);
@@ -344,7 +360,7 @@ public class FishBehaviour : PlayerBehaviour
             }
         }
         else{
-            Debug.LogError("No water found in scene");
+            Debug.LogWarningFormat("No water found in scene");
         }
     }
 

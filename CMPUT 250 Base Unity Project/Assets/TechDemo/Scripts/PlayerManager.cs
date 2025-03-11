@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -117,17 +117,6 @@ public class PlayerManager : MonoBehaviour
         }
 
 
-        foreach (GameObject character in SwappableCharacters)
-        {
-            if (character != CurrentCharacter)
-            {
-                character.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.SWAPPED_OUT;
-            }
-            else
-            {
-                character.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.IDLE;
-            }
-        }
     }
 
     void Update()
