@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WallBehaviour : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class WallBehaviour : MonoBehaviour
     private ParticleSystem particle;
     private SpriteRenderer spriteRenderer;
     private Collider2D wallCollider;
+
+    public UnityEvent onWallBreak;
 
     private PlayerBehaviour player;
 
@@ -44,6 +47,7 @@ public class WallBehaviour : MonoBehaviour
         particle.Play();
         spriteRenderer.enabled = false;
         wallCollider.enabled = false;
+        onWallBreak?.Invoke();
         yield return new WaitForSeconds(particle.main.startLifetime.constantMax);
         Destroy(gameObject);
     }

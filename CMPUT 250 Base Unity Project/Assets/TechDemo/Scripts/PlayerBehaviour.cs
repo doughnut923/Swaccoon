@@ -134,7 +134,7 @@ public class PlayerBehaviour : EntityBehaviour
     // key parameters
     protected int _keys = 0;
 
-    protected Vector2 movement = Vector2.zero;
+    public Vector2 movement = Vector2.zero;
     protected bool _canStep = true;
     
     //add a slider to inspector to adjust acceleration
@@ -195,8 +195,17 @@ public class PlayerBehaviour : EntityBehaviour
             return;
         }
 
+        if(_playerState == CurrentPlayerState.CUTSCENE_PLAYING)
+        {
+            //Possibly sleepping animation
+            //but wil be just idle for now
+            handleAnimation();
+            return;
+
+        }
+
         
-        if (_playerState == CurrentPlayerState.SWAPPED_OUT || _playerState == CurrentPlayerState.CUTSCENE_PLAYING)
+        if (_playerState == CurrentPlayerState.SWAPPED_OUT)
         {
 
             //Possibly sleepping animation
@@ -448,6 +457,35 @@ public class PlayerBehaviour : EntityBehaviour
         }
     }
 
+    public static Direction vectTorDir(Vector2 v){
+        //Normalize the vector to get the direction;
+        if (v.x > 0 && v.y > 0){
+            return Direction.North;
+        }
+        else if (v.x > 0 && v.y < 0){
+            return Direction.North;
+        }
+        else if (v.x < 0 && v.y > 0){
+            return Direction.West;
+        }
+        else if (v.x < 0 && v.y < 0){
+            return Direction.West;
+        }
+        else if (v.x > 0){
+            return Direction.East;
+        }
+        else if (v.x < 0){
+            return Direction.West;
+        }
+        else if (v.y > 0){
+            return Direction.North;
+        }
+        else if (v.y < 0){
+            return Direction.South;
+        }
+        return Direction.North;
+    }
+
     public virtual void UpdateSafePosition()
     {
         //check whether the tile that the player standing on is a safe tile (i.e. Ground Tile), if so update the last safe position
@@ -505,6 +543,8 @@ public class PlayerBehaviour : EntityBehaviour
 
     public void handleAnimation()
     {
+
+        // Debug.Log("From " + name + " " +  movement.x + " " + movement.y);
         // // if we are falling, do the falling animation lol
         
         //Debug.Log("player is currently " + currentSprite);
@@ -586,6 +626,7 @@ public class PlayerBehaviour : EntityBehaviour
         // otherwise we're moving, set the update accordingly!
         else
         {
+            // Debug.Log("Ima walkin");
             _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _walkFramesPerSecond, 6f);
             switch (_currDir)
             {
@@ -625,6 +666,11 @@ public class PlayerBehaviour : EntityBehaviour
         controlSoundSource.Play();
     }
 
+    public void setDirection(Direction dir)
+    {
+        _currDir = dir;
+    }
+
     public void collectKey()
     {
         PlayerPrefs.SetInt("keys", PlayerPrefs.GetInt("keys") + 1);
@@ -637,6 +683,11 @@ public class PlayerBehaviour : EntityBehaviour
     {
         currentSprite.enabled = vis;
         shadow.enabled = vis;
+    }
+
+    public void setMovment(Vector2 move)
+    {
+        movement = move;
     }
 
     public bool fallInPit(Vector2 pitPosition)

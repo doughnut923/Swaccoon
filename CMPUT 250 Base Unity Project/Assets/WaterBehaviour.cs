@@ -21,14 +21,13 @@ public class WaterBehaviour : MonoBehaviour
 
     //public Transform 
 
-    void Awake()
+    void Start()
     {
         //get all boats in the scene
         GameObject[] boxObjects = GameObject.FindGameObjectsWithTag("Crate");
 
         if (boxObjects.Length == 0)
         {
-            Debug.LogWarning("No boxes in the scene");
             return;
         }
         foreach (GameObject boatObject in boxObjects)
@@ -37,6 +36,10 @@ public class WaterBehaviour : MonoBehaviour
         }
 
         player = PlayerManager.Instance.CurrentCharacter.GetComponent<Rigidbody2D>();
+        if (player == null)
+        {
+            Debug.LogWarning("No player in the scene");
+        }  
         boat = GameObject.FindGameObjectWithTag("Boat");
         playerScript = player.gameObject.GetComponent<PlayerBehaviour>();
         //Debug.Log("fall radius " + fallRadius);
@@ -54,6 +57,7 @@ public class WaterBehaviour : MonoBehaviour
         //&& (!HaveBoat() || !onPlatform.HavePlatform()) && player.name != "Fish")
         //Debug.Log("havePlatform " + HavePlatform());
 
+        player = PlayerManager.Instance.CurrentCharacter.GetComponent<Rigidbody2D>();
         if (Mathf.Abs(player.position.x - transform.position.x) <= fallRadius && Mathf.Abs(player.position.y - transform.position.y) <= fallRadius
         && !HaveBoat() && !HavePlatform() && player.name != "Fish")
         {
@@ -63,7 +67,6 @@ public class WaterBehaviour : MonoBehaviour
 
         if (boxes.Count == 0)
         {
-            Debug.LogWarning("No boxes in the scene");
             return;
         }
 
@@ -121,6 +124,19 @@ public class WaterBehaviour : MonoBehaviour
     }
     public bool HavePlatform()
     {
+        if (PlatformManager.Instance == null)
+        {
+            return false;
+        }
+        if (PlatformManager.Instance.platforms.Count == 0)
+        {
+            return false;
+        }
+
+        if (PlatformManager.Instance.platforms.Count == 0)
+        {
+            return false;
+        }
         foreach (PlatformBehaviour platform in PlatformManager.Instance.platforms)
         {
             //check the bounds of the platform is in the pit if so return true

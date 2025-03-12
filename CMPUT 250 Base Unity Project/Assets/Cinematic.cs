@@ -9,95 +9,158 @@ public class Cinematic : MonoBehaviour
     // List of character movements in the cinematic
     public List<Movement> movements;
     private bool _doneMovement = true;
-    private bool _doneAllMovements = false; 
+    private bool _doneAllMovements = false;
 
-    public bool CheckDone(){
-        if(_doneAllMovements){
+    private bool enableWater = false;
+    private bool enableWaterFlag = true;
+
+    public bool CheckDone()
+    {
+        if (_doneAllMovements)
+        {
             //enable the PlayerManager and all PlayerBehaviour
             PlayerManager.Instance.enabled = true;
             List<GameObject> players = PlayerManager.Instance.SwappableCharacters;
 
-            foreach(GameObject player in players){
-                player.GetComponent<PlayerBehaviour>().enabled = true;
+            foreach (GameObject player in players)
+            {
+                // player.GetComponent<PlayerBehaviour>().enabled = true;
+                if(player == PlayerManager.Instance.CurrentCharacter)
+                {
+                    player.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.IDLE;
+                }else{
+                    player.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.SWAPPED_OUT;
+                }
             }
 
-            //enable all WaterBehaviour on Scene
-            GameObject [] waters = GameObject.FindGameObjectsWithTag("Water");
+
+            enableWater = true;
+            enableWaterFlag = true;
+
+            return true;
+        }
+        return false;
+    }
+
+    void Update()
+    {
+        if (enableWater && enableWaterFlag)
+        {
+            GameObject[] waters = GameObject.FindGameObjectsWithTag("Water");
+            if(waters.Length == 0)
+            {
+                Debug.LogWarning("No water in the scene");
+                return;
+            }
             foreach (GameObject water in waters)
             {
                 water.GetComponent<WaterBehaviour>().enabled = true;
             }
 
-            return true;
-        }  
-        return false;
+            enableWaterFlag = false;
+
+        }else if (!enableWater && enableWaterFlag)
+        {
+            GameObject[] waters = GameObject.FindGameObjectsWithTag("Water");
+            if(waters.Length == 0)
+            {
+                Debug.LogWarning("No water in the scene");
+                return;
+            }
+            foreach (GameObject water in waters)
+            {
+                water.GetComponent<WaterBehaviour>().enabled = false;
+            }
+
+            enableWaterFlag = false;
+        }
     }
 
-    public void Play(){
+    public void Play()
+    {
 
-        Debug.Log("Playing " + name);
-
-        if(movements.Count == 0){
+        if (movements.Count == 0)
+        {
             Debug.LogWarning("No movements in cinematic");
             return;
         }
         //Disable the PlayerManager and all PlayerBehaviour
 
-        PlayerManager.Instance.enabled =false;
+        PlayerManager.Instance.enabled = false;
         List<GameObject> players = PlayerManager.Instance.SwappableCharacters;
 
-        Debug.Log("Disabling Player : " +  PlayerManager.Instance.enabled);
+        Debug.Log("Disabling Player : " + PlayerManager.Instance.enabled);
 
-        foreach(GameObject player in players){
-            player.GetComponent<PlayerBehaviour>().enabled = false;
+        foreach (GameObject player in players)
+        {
+            // player.GetComponent<PlayerBehaviour>().enabled = false;
+            player.GetComponent<PlayerBehaviour>()._playerState= CurrentPlayerState.CUTSCENE_PLAYING;
         }
 
         //Disable all WaterBehaviour on Scene
-        GameObject [] waters = GameObject.FindGameObjectsWithTag("Water");
-        foreach (GameObject water in waters)
-        {
-            water.GetComponent<WaterBehaviour>().enabled = false;
-        }
+        enableWater = false;
+        enableWaterFlag = true;
 
         //Loop through the movements and move the characters
         StartCoroutine(PlayMovements());
     }
 
-    private IEnumerator PlayMovements(){
+    private IEnumerator PlayMovements()
+    {
         int index = 0;
-        while(index < movements.Count){
+        while (index < movements.Count)
+        {
             //Check if the last movement is done
-            if(_doneMovement){
+            if (_doneMovement)
+            {
+                if (index > 0)
+                    yield return new WaitForSeconds(movements[index-1].delay);
+
                 _doneMovement = false;
                 Movement movement = movements[index];
+                // Debug.Log("Moving " + movement.character.name + " to " + movement.toPosition);
                 StartCoroutine(MoveCharacterCoroutine(movement.character, movement.toPosition, movement.speed, movement.delay));
                 index++;
             }
             yield return null;
         }
-        _doneAllMovements = true;
+        while (true){
+            if (_doneMovement)
+            {
+                _doneAllMovements = true;
+                break;
+            }
+            yield return null;
+        }
     }
 
-    private IEnumerator MoveCharacterCoroutine(Transform character, Vector3 toPosition, float speed, float delayAfter){
+    
+
+    private IEnumerator MoveCharacterCoroutine(Transform character, Vector3 toPosition, float speed, float delayAfter)
+    {
         //Move the player toward the position
 
-        while(Vector3.Distance(character.position, toPosition) > 0.1f){
+        while (character.position != toPosition)
+        {
             character.position = Vector3.MoveTowards(character.position, toPosition, speed * Time.deltaTime);
+            //set movement to allow animation
+            character.GetComponent<PlayerBehaviour>().setMovment(character.position - toPosition);
+            character.GetComponent<PlayerBehaviour>().setDirection(PlayerBehaviour.vectTorDir(toPosition - character.position));
             yield return null;
         }
 
-        character.position = toPosition;
-        
         yield return new WaitForSeconds(delayAfter);
 
         _doneMovement = true;
+        
     }
-    
+
 }
 
 
 [Serializable]
-public class Movement{
+public class Movement
+{
     public Transform character;
     public Vector3 toPosition;
     public float speed;

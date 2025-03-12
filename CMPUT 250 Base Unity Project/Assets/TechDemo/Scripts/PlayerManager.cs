@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public enum PlayerManagerState
@@ -23,7 +24,7 @@ public class PlayerManager : MonoBehaviour
             return _instance;
         }
     }
-
+    public UnityEvent onSwap;
     public static PlayerManagerState _playerManagerState { get; set; } = PlayerManagerState.NOT_SWAPPING;
 
     [SerializeField] public GameObject CurrentCharacter { get; private set; }            //Reference to the current character
@@ -241,6 +242,7 @@ public class PlayerManager : MonoBehaviour
             }
         }
 
+        onSwap?.Invoke();
         SwapsLeft--;
     }
 

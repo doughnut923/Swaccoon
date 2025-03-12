@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InteractionScene : MonoBehaviour
 {
 
     //Will be changed to true seperately as the player triggers something in the scene
     public List<bool> flags;
+
+    public UnityEvent OnPlay;
 
     public bool CheckDone(){
         foreach(bool flag in flags){
@@ -19,6 +22,7 @@ public class InteractionScene : MonoBehaviour
 
     public void Play(){
         //Actually does nothing
+        OnPlay.Invoke();
         return;
     }
 

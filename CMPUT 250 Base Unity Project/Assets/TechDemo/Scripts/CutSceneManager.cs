@@ -70,15 +70,18 @@ public class CutSceneManager : MonoBehaviour
         currentCutSceneItem.Play();
     }
 
-    public void Update()
+    public void FixedUpdate()
     {
-
-        Debug.Log("Current Cutscene: " + currentCutSceneItem);
         if (currentCutSceneItem.CheckDone())
         {                            //Check if the current cutscene item is done
+
+            
+            
             _cutsceneIndex += 1;                                        //Move to the next cutscene item
             if (_cutsceneIndex < cutSceneItems.Count)
             {
+                //Destroy last cutscene item
+                // Destroy(cutSceneItems[_cutsceneIndex - 1].CutSceneObject);
                 currentCutSceneItem = cutSceneItems[_cutsceneIndex];
                 currentCutSceneItem.Play();                             //Note that the play fucntion should only be called once
             }
