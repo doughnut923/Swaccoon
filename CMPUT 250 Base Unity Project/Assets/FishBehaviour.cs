@@ -60,6 +60,15 @@ public class FishBehaviour : PlayerBehaviour
         
         base.FixedUpdate();
 
+        if(_playerState == CurrentPlayerState.CUTSCENE_PLAYING)
+        {
+            //Possibly sleepping animation
+            //but wil be just idle for now
+            handleAnimation();
+            return;
+
+        }
+
         // check if we are in water
         checkInWater();
         // if we are out of the water, decrement the timer
