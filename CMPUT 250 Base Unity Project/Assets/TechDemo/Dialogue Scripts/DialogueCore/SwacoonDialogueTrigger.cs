@@ -25,13 +25,15 @@ namespace SwacoonNarrative
         private string writeToFlagId = "";
         [SerializeField] private bool writeToFlagValue = false;
 
+        public bool isDialogueDone = false;
+
 
         /// <summary>
         /// Call this to activate the dialogue. If condition are set they must all be satisfied.
         /// </summary>
         public void Trigger()
         {
-
+            isDialogueDone = false;
             //Debug.Log("trigger() called");
             //Debug.Log("smothing is already playing "+ SwacoonDialogueSystem.IsPlaying());
             //Debug.Log("trigger " + SwacoonDialogueSystem.IsPlaying());
@@ -77,6 +79,7 @@ namespace SwacoonNarrative
         /// </summary>
         private void OnDialogueEnd()
         {
+            isDialogueDone = true;
             if (writeToFlagId != "")
             {
                 SwacoonDialogueFlags.SetFlag(writeToFlagId, writeToFlagValue);

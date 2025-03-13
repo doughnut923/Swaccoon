@@ -85,17 +85,24 @@ namespace SwacoonNarrative
             {
                 //Debug.Log("writing the text!");
                 //Advance visible characters
-                if (Input.GetMouseButtonDown(1))
+                //if (Input.GetMouseButtonDown(1))
+                if (Input.GetButtonDown("Submit"))
+                //if (isSpedUp == true)
                 {
+                    Debug.Log("speed up little lads");
+                    speedUpText();
+                    isSpedUp = true;
+                    CheckInput();
 
                     //Debug.Log("mouse has been pressed");
                     //currentCharacter += Time.deltaTime * spedUpCharactersPerSecond;
-                    textLabel.maxVisibleCharacters = textLength;
-                    //isOpen = false;
-                    isSpedUp = true;
-                    advanceArrow.SetVisible(true);
-                    CheckInput();
-                    
+
+                    //textLabel.maxVisibleCharacters = textLength;
+                    ////isOpen = false;
+                    //isSpedUp = true;
+                    //advanceArrow.SetVisible(true);
+                    //CheckInput();
+
                     //if (isEndOfText()) {
                     //    isSpedUp = true;
                     //    advanceArrow.SetVisible(true);
@@ -108,7 +115,7 @@ namespace SwacoonNarrative
                     currentCharacter += Time.deltaTime * charactersPerSecond;
                     textLabel.maxVisibleCharacters = Mathf.FloorToInt(currentCharacter);
                 }
-                
+
 
                 if (isEndOfText())
                 {
@@ -181,7 +188,18 @@ namespace SwacoonNarrative
             nameLabel.SetText(sourceText);
         }
 
+        private void speedUpText()
+        {
+            Debug.Log("in speedUpText");
+            textLabel.maxVisibleCharacters = textLength;
+            //isOpen = false;
 
+            currentCharacter = textLength;
+            advanceArrow.SetVisible(true);
+            isSpedUp = false;
+            
+            CheckInput();
+        }
 
         /// <summary>
         /// Checks if the per character scrolling reached the end of the text.

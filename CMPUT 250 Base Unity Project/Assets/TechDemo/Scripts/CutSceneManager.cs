@@ -310,6 +310,7 @@ public class CutSceneItem
         }
         else if (cutsceneState == CutsceneState.DIALOGUE)
         {
+            Debug.Log("Playing Cinematic:" + CutSceneObject.name);
             CutSceneObject.GetComponent<Dialogue>().Play();
         }
         else if (cutsceneState == CutsceneState.INTERACT)
