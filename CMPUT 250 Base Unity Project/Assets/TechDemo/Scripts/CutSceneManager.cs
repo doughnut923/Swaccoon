@@ -48,8 +48,11 @@ public class CutSceneManager : MonoBehaviour
     public bool cinematicControlled = true;
 
     private int _cutsceneIndex = 0;
+    [SerializeField] private Image fadeImage;
+    [SerializeField] private float fadeSpeed = 1.0f;
 
     [SerializeField] private string nextScene;
+    private bool exit = true;
 
     void Awake()
     {
@@ -65,10 +68,31 @@ public class CutSceneManager : MonoBehaviour
 
     void Start()
     {
+        
+        FadeInScene();
         //Initial Play of the CutScene
         currentCutSceneItem = cutSceneItems[_cutsceneIndex];
         currentCutSceneItem.Play();
     }
+
+    void FadeInScene()
+    {
+        //Fade in the screen
+        fadeImage.canvasRenderer.SetAlpha(1.0f);
+        fadeImage.CrossFadeAlpha(0, fadeSpeed, false);
+    }
+
+    private IEnumerator FadeOutAndNextScene()
+    {
+        //Fade in the screen
+        fadeImage.canvasRenderer.SetAlpha(0.0f);
+        fadeImage.CrossFadeAlpha(1, fadeSpeed, false);
+        yield return new WaitForSeconds(fadeSpeed + 3f);
+        SceneManager.LoadScene(nextScene);
+    }
+
+    
+
 
     public void FixedUpdate()
     {
@@ -87,7 +111,11 @@ public class CutSceneManager : MonoBehaviour
             }
             else
             {
-                SceneManager.LoadScene(nextScene); //Load the next scene if all cutscene items are done
+                //Fade out and load next scene
+                if(exit){
+                    exit = false;
+                    StartCoroutine(FadeOutAndNextScene());
+                }
             }
         }
     }
