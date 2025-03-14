@@ -30,6 +30,7 @@ public class Dialogue : MonoBehaviour
                 {
                     player.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.SWAPPED_OUT;
                 }
+                cutsceneDialogue.isDialogueDone = false;
             }
             return true;
         }
