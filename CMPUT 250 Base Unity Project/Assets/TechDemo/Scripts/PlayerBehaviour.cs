@@ -460,10 +460,10 @@ public class PlayerBehaviour : EntityBehaviour
     public static Direction vectTorDir(Vector2 v){
         //Normalize the vector to get the direction;
         if (v.x > 0 && v.y > 0){
-            return Direction.North;
+            return Direction.East;
         }
         else if (v.x > 0 && v.y < 0){
-            return Direction.North;
+            return Direction.East;
         }
         else if (v.x < 0 && v.y > 0){
             return Direction.West;
