@@ -14,6 +14,8 @@ public enum GameState
 public class GameStateManager : MonoBehaviour
 {
 
+    [SerializeField] private UnityEngine.UI.Image fadeImage;
+    [SerializeField] private float fadeSpeed = 1.5f;
     public static GameStateManager instance{get; private set;}
 
     [SerializeField] List<PlayerBehaviour> players = new List<PlayerBehaviour>();
@@ -32,6 +34,21 @@ public class GameStateManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void Start(){
+        if(fadeImage == null)
+        {
+            Debug.LogWarning("No fade image found, skipping fading");
+        }
+        FadeInScene();
+    }
+
+    void FadeInScene()
+    {
+        //Fade in the screen
+        fadeImage.canvasRenderer.SetAlpha(1.0f);
+        fadeImage.CrossFadeAlpha(0, fadeSpeed, false);
     }
 
     

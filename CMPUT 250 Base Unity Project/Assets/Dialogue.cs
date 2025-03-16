@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Dialogue : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class Dialogue : MonoBehaviour
     public bool flagtocheck = false;
 
     public SwacoonNarrative.SwacoonDialogueTrigger cutsceneDialogue;
+
+    public UnityEvent OnPlay;
+    public UnityEvent OnDialogueEnd;
 
     public bool CheckDone()
     {
@@ -32,6 +36,8 @@ public class Dialogue : MonoBehaviour
                 }
                 cutsceneDialogue.isDialogueDone = false;
             }
+
+            OnDialogueEnd?.Invoke();
             return true;
         }
         else
@@ -56,6 +62,7 @@ public class Dialogue : MonoBehaviour
             player.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.CUTSCENE_PLAYING;
         }
 
+        OnPlay?.Invoke();
         cutsceneDialogue.Trigger();
         return;
     }

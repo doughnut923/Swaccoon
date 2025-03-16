@@ -16,6 +16,8 @@ public enum CutsceneState
     INTERACT,
     DIALOGUE,
     CINEMATIC,
+    SLIDESHOW,
+    SHAKE_OBJECT
 }
 
 [System.Serializable]
@@ -345,6 +347,10 @@ public class CutSceneItem
         {
             CutSceneObject.GetComponent<InteractionScene>().Play();
         }
+        else if (cutsceneState == CutsceneState.SHAKE_OBJECT)
+        {
+            CutSceneObject.GetComponent<ShakeCinematic>().Play();
+        }
         else
         {
             Debug.LogError("Please provide a valid cutscene state");
@@ -364,6 +370,10 @@ public class CutSceneItem
         else if (cutsceneState == CutsceneState.INTERACT)
         {
             CutSceneObject.GetComponent<InteractionScene>().Play();
+        }
+        else if (cutsceneState == CutsceneState.SHAKE_OBJECT)
+        {
+            CutSceneObject.GetComponent<ShakeCinematic>().Play();
         }
         else
         {
@@ -385,6 +395,10 @@ public class CutSceneItem
         else if (cutsceneState == CutsceneState.INTERACT)
         {
             return CutSceneObject.GetComponent<InteractionScene>().CheckDone();
+        }
+        else if (cutsceneState == CutsceneState.SHAKE_OBJECT)
+        {
+            return CutSceneObject.GetComponent<ShakeCinematic>().CheckDone();
         }
         else
         {

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Cinematic : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class Cinematic : MonoBehaviour
 
     private bool enableWater = false;
     private bool enableWaterFlag = true;
+
+    public UnityEvent OnPlay;
+    public UnityEvent CinematicEnd;
 
     public bool CheckDone()
     {
@@ -36,6 +40,8 @@ public class Cinematic : MonoBehaviour
 
             enableWater = true;
             enableWaterFlag = true;
+            
+            CinematicEnd?.Invoke();
 
             return true;
         }
@@ -89,17 +95,22 @@ public class Cinematic : MonoBehaviour
         PlayerManager.Instance.enabled = false;
         List<GameObject> players = PlayerManager.Instance.SwappableCharacters;
 
-        Debug.Log("Disabling Player : " + PlayerManager.Instance.enabled);
 
         foreach (GameObject player in players)
         {
             // player.GetComponent<PlayerBehaviour>().enabled = false;
             player.GetComponent<PlayerBehaviour>()._playerState= CurrentPlayerState.CUTSCENE_PLAYING;
+            if(player.name == "Fish")
+            {
+                player.GetComponent<FishBehaviour>()._playerState = CurrentPlayerState.CUTSCENE_PLAYING;
+            }
         }
 
         //Disable all WaterBehaviour on Scene
         enableWater = false;
         enableWaterFlag = true;
+
+        OnPlay?.Invoke();
 
         //Loop through the movements and move the characters
         StartCoroutine(PlayMovements());

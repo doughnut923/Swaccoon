@@ -493,6 +493,10 @@ public class PlayerBehaviour : EntityBehaviour
         TileBase searchedTile = tilemap.GetTile(gridPosition);
 
         //Debug.Log(searchedTile.name);
+        
+        if(searchedTile == null){
+            return;
+        }
 
         if(searchedTile.name == "GroundTile"){
             Vector3 worldPos = tilemap.CellToWorld(gridPosition);

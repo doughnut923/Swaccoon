@@ -121,6 +121,12 @@ public class EntityBehaviour : MonoBehaviour
         //    |  |
         //    V  V
 
+        //if cutscene is playing, ignore collision
+        if (PlayerManager.Instance.enabled == false)
+        {
+            return;
+        }
+
         // horizontal, right
         if (update.x > 0)
         {

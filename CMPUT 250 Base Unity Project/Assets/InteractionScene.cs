@@ -23,6 +23,10 @@ public class InteractionScene : MonoBehaviour
     public void Play(){
         //Actually does nothing
         OnPlay.Invoke();
+        //set all flags to false
+        for(int i = 0; i < flags.Count; i++){
+            flags[i] = false;
+        }
         return;
     }
 

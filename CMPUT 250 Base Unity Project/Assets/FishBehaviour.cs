@@ -307,7 +307,7 @@ public class FishBehaviour : PlayerBehaviour
         currentTilt = Mathf.Lerp(currentTilt, 0, tiltSpeed);
         transform.rotation = Quaternion.Euler(0, 0, currentTilt);
         
-        _playerState = CurrentPlayerState.IDLE;
+        // _playerState = CurrentPlayerState.IDLE;
         return update;
     }
 
