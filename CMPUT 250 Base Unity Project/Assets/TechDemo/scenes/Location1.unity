@@ -4006,6 +4006,7 @@ MonoBehaviour:
   onLevelComplete:
     m_PersistentCalls:
       m_Calls: []
+  character_name: Player
 --- !u!4 &1357839353 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5754101334661333843, guid: 8be35696f53ed4798a0eae38336d87bc,
@@ -12564,7 +12565,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 75d042753834e4045b69b98112dc439d, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 300be510f27fd5b4b89cb67f0f59a9ce, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
