@@ -89,10 +89,10 @@ namespace SwacoonNarrative
                 if (Input.GetButtonDown("Submit"))
                 //if (isSpedUp == true)
                 {
-                    Debug.Log("speed up little lads");
-                    speedUpText();
-                    isSpedUp = true;
-                    CheckInput();
+                    //Debug.Log("speed up little lads");
+                    //speedUpText();
+                    //isSpedUp = true;
+                    //CheckInput();
 
                     //Debug.Log("mouse has been pressed");
                     //currentCharacter += Time.deltaTime * spedUpCharactersPerSecond;
