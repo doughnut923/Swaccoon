@@ -15,7 +15,7 @@ public class Dialogue : MonoBehaviour
 
     public bool CheckDone()
     {
-        Debug.Log("check dialogue");
+        //Debug.Log("check dialogue");
         // if given dialogue is finished
         // if given dialogue is ongoing --> keeps going
         if (cutsceneDialogue.isDialogueDone == true)
@@ -37,7 +37,7 @@ public class Dialogue : MonoBehaviour
                 cutsceneDialogue.isDialogueDone = false;
             }
 
-            OnDialogueEnd?.Invoke();
+            //OnDialogueEnd?.Invoke();
             return true;
         }
         else
@@ -62,7 +62,7 @@ public class Dialogue : MonoBehaviour
             player.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.CUTSCENE_PLAYING;
         }
 
-        OnPlay?.Invoke();
+        //OnPlay?.Invoke();
         cutsceneDialogue.Trigger();
         return;
     }

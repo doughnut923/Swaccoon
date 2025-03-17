@@ -50,6 +50,14 @@ public class ShakeCinematic : MonoBehaviour
 
     public bool CheckDone(){
         //check if the shake is done
-        return doneShake;
+        Debug.Log(doneShake);
+        if (doneShake == true)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }
