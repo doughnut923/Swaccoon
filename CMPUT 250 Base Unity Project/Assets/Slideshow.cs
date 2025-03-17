@@ -19,14 +19,14 @@ public class Slideshow : MonoBehaviour
 
     public void Play()
     {
-        onPlay.Invoke();
+        onPlay?.Invoke();
         StartCoroutine(PlayCoroutine());
     }
 
     public IEnumerator PlayCoroutine()
     {
-        onPlay.Invoke();
         //initialize alpha
+        image.canvasRenderer.SetAlpha(0.0f);
         image.CrossFadeAlpha(1, slideFadeSpeed, true);
         yield return new WaitForSeconds(slideduration);
         image.CrossFadeAlpha(0, slideFadeSpeed, true);
@@ -36,7 +36,7 @@ public class Slideshow : MonoBehaviour
     public bool checkDone()
     {
         if (doneFlag){
-            onDone.Invoke();
+            onDone?.Invoke();
         }
 
         return doneFlag;
