@@ -3782,7 +3782,7 @@ MonoBehaviour:
   cinematicControlled: 1
   fadeImage: {fileID: 519454385}
   fadeSpeed: 1
-  nextScene: Location3
+  nextScene: Outro
 --- !u!4 &2107599645
 Transform:
   m_ObjectHideFlags: 0
