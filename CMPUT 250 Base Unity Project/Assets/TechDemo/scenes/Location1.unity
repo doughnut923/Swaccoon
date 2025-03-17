@@ -3676,7 +3676,7 @@ MonoBehaviour:
   - id: fearA
     sprite: {fileID: 21300000, guid: 6721315fbc252fc4d9b3d7dcdef0b521, type: 3}
   - id: neutralB
-    sprite: {fileID: -5107095409447224594, guid: 8e726fcc17f7a4ef68779cfa37e96399,
+    sprite: {fileID: -7839224193386075401, guid: 22fb5f227127a4686bff849d26d3d3a4,
       type: 3}
   - id: questionB
     sprite: {fileID: 21300000, guid: 67b4257ac46fb6e41871bd6346a1eb6b, type: 3}
@@ -3998,6 +3998,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   spriteRenderer: {fileID: 878209756}
   shadowSpriteRenderer: {fileID: 1044305796}
+  onLevelComplete:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1357839353 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5754101334661333843, guid: 8be35696f53ed4798a0eae38336d87bc,
@@ -14251,6 +14254,72 @@ PrefabInstance:
       propertyPath: tilemap
       value: 
       objectReference: {fileID: 1606240336}
+    - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
+      propertyPath: idleSpriteUp.Array.data[0]
+      value: 
+      objectReference: {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e,
+        type: 3}
+    - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
+      propertyPath: idleSpriteUp.Array.data[1]
+      value: 
+      objectReference: {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e,
+        type: 3}
+    - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
+      propertyPath: idleSpriteUp.Array.data[2]
+      value: 
+      objectReference: {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e,
+        type: 3}
+    - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
+      propertyPath: idleSpriteUp.Array.data[4]
+      value: 
+      objectReference: {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e,
+        type: 3}
+    - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
+      propertyPath: idleSpriteDown.Array.data[1]
+      value: 
+      objectReference: {fileID: -7149655254542474397, guid: 68cc7cae3b9d149e4b6afc8301e4c72e,
+        type: 3}
+    - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
+      propertyPath: idleSpriteLeft.Array.data[1]
+      value: 
+      objectReference: {fileID: -5273296780164134691, guid: 68cc7cae3b9d149e4b6afc8301e4c72e,
+        type: 3}
+    - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
+      propertyPath: sleepSpritesUp.Array.data[3]
+      value: 
+      objectReference: {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e,
+        type: 3}
+    - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
+      propertyPath: idleSpriteRight.Array.data[1]
+      value: 
+      objectReference: {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e,
+        type: 3}
+    - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
+      propertyPath: sleepSpritesDown.Array.data[3]
+      value: 
+      objectReference: {fileID: -7149655254542474397, guid: 68cc7cae3b9d149e4b6afc8301e4c72e,
+        type: 3}
+    - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
+      propertyPath: sleepSpritesLeft.Array.data[3]
+      value: 
+      objectReference: {fileID: -5273296780164134691, guid: 68cc7cae3b9d149e4b6afc8301e4c72e,
+        type: 3}
+    - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
+      propertyPath: sleepSpritesRight.Array.data[3]
+      value: 
+      objectReference: {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e,
+        type: 3}
     - target: {fileID: 8461553506607811304, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
       propertyPath: InitialModule.gravityModifier.scalar

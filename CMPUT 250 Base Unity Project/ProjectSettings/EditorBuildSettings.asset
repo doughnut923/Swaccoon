@@ -53,9 +53,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TechDemo/scenes/Location2.unity
     guid: fda1d82b7a71b6041bea5a936ff1a4f3
-  - enabled: 1
-    path: Assets/TechDemo/scenes/Location3.unity
-    guid: b5f2a94ef738b0e4a9f5c53771500551
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/TechDemo/scenes/HorseOut.unity
     guid: 4d73a41a9b2f97a43a481c6297581fa1
