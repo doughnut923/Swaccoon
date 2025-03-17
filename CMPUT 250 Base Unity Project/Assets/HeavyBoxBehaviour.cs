@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.PlayerLoop;
+using Unity.Mathematics;
 
 public class HeavyBoxBehaviour : BoxBehaviour
 {
@@ -56,7 +57,8 @@ public class HeavyBoxBehaviour : BoxBehaviour
             // checks if we won everytime we move box onto goal
             //sokobanScript.Win();
             Debug.Log("stopping moving sound");
-            boxSoundSource.Stop();
+            boxSoundSource.Play();
+            boxSoundSource.pitch = 0.75f;
             boxSoundSource.volume = Mathf.Clamp(boxSoundSource.volume - 0.1f, 0f, 1f);
             if (boxSoundSource.volume == 0f)
             {
