@@ -34,7 +34,7 @@ public class HeavyBoxBehaviour : BoxBehaviour
             }
             // stopping the box at the goal/pressure plate
             box.velocity = Vector2.zero;
-            boxCollider.isTrigger = false; // changing the trigger so that the box wont be moved again
+            boxCollider.isTrigger = false;          // changing the trigger so that the box wont be moved again
             box.isKinematic = true;
 
             isOnGoal = true;

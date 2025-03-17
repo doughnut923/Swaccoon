@@ -63,7 +63,7 @@ public class BoatBehaviour : EntityBehaviour
     }
 
     //Update is called once per frame
-    override public void FixedUpdate()
+    public void Update()
     {
         base.FixedUpdate();
         //updateIce();

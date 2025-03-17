@@ -72,7 +72,7 @@ public class FishBehaviour : PlayerBehaviour
         // check if we are in water
         checkInWater();
         // if we are out of the water, decrement the timer
-        moveSpeed = 6f;
+        moveSpeed = 4f;
         if (!InWater)
         {
             TimeBar.gameObject.SetActive(true);
