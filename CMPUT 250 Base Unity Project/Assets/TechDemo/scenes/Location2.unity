@@ -2442,7 +2442,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719254130}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09a87721dc02f4f90ab85ff6d6bcc883, type: 3}
   m_Name: 
@@ -6446,6 +6446,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -7292806435240409650, guid: 49a0237bf709025438e58f7a2ff89ffa,
         type: 3}
+    - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
+      propertyPath: tilemap
+      value: 
+      objectReference: {fileID: 1606240336}
     - target: {fileID: 8461553506607811304, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
       propertyPath: InitialModule.gravityModifier.scalar
@@ -6807,6 +6812,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1687097716459357817, guid: 78d2b5a73234141b2b757d21edff955d,
         type: 3}
+    - target: {fileID: 6711103143901753132, guid: 32749da348ac7fb42a9afa32f1cec477,
+        type: 3}
+      propertyPath: tilemap
+      value: 
+      objectReference: {fileID: 1606240336}
     - target: {fileID: 6711103143901753132, guid: 32749da348ac7fb42a9afa32f1cec477,
         type: 3}
       propertyPath: idleSpriteUp.Array.data[0]
@@ -7286,7 +7296,12 @@ PrefabInstance:
     - target: {fileID: 3123074962597398032, guid: 470e3bb5f77eb984982070f946f65f44,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.21
+      value: 1.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3123074962597398032, guid: 470e3bb5f77eb984982070f946f65f44,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.8
       objectReference: {fileID: 0}
     - target: {fileID: 3123074962597398032, guid: 470e3bb5f77eb984982070f946f65f44,
         type: 3}
@@ -7617,7 +7632,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 2693899778015109357, guid: 2838021a3ae234eeb99cb2353139bc60,
+      objectReference: {fileID: 8594338749944499298, guid: c897608dbda634b7ca256686e2746066,
         type: 3}
     - target: {fileID: 8992099151186955477, guid: 470e3bb5f77eb984982070f946f65f44,
         type: 3}

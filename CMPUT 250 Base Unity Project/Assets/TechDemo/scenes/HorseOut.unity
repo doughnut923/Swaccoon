@@ -394,7 +394,7 @@ MonoBehaviour:
   - id: fearA
     sprite: {fileID: 21300000, guid: 6721315fbc252fc4d9b3d7dcdef0b521, type: 3}
   - id: neutralB
-    sprite: {fileID: -5107095409447224594, guid: 8e726fcc17f7a4ef68779cfa37e96399,
+    sprite: {fileID: -6099560664619024832, guid: 09aae52502abb48b28f7f8de977f46de,
       type: 3}
   - id: questionB
     sprite: {fileID: 21300000, guid: 67b4257ac46fb6e41871bd6346a1eb6b, type: 3}
