@@ -20,7 +20,7 @@ public class Slideshow : MonoBehaviour
     public void Play()
     {
         onPlay.Invoke();
-
+        StartCoroutine(PlayCoroutine());
     }
 
     public IEnumerator PlayCoroutine()
