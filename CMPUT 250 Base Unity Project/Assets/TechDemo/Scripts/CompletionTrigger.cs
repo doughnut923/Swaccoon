@@ -26,6 +26,9 @@ public class CompletionTrigger : MonoBehaviour
 
     private Vector3 TargetPosition;
     private Vector3 StartPosition;
+
+    public string character_name = "Player";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +50,8 @@ public class CompletionTrigger : MonoBehaviour
         // if no and in the area --> nothing happens
 
         // check if the player (racoon) is triggering the zone, since only the racoon can win
-        if (other.name == "Player")
+        Debug.Log(other.name + " is in the trigger zone");
+        if (other.name == character_name)
         {
             sokobanScript = (SokobanBehaviour)other.gameObject.GetComponent(typeof(SokobanBehaviour));
             Debug.Log("sokoban scritp is " + sokobanScript);

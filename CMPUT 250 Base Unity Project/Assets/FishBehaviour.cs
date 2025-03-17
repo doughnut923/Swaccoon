@@ -112,7 +112,7 @@ public class FishBehaviour : PlayerBehaviour
 
 
         // handle walk sound
-        if (!_isFalling && !_isOnIce && lastSafePosition != (Vector2)transform.position){
+        if (!_isFalling && !_isOnIce && lastSafePosition != (Vector3)transform.position){
             playerWalkSoundSource.volume = 0.25f;
             playerWalkSoundSource.clip = walkSound;
             if (!playerWalkSoundSource.isPlaying){

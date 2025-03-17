@@ -114,7 +114,7 @@ public class PlayerBehaviour : EntityBehaviour
 
     // falling parameters
     protected bool _isFalling = false;
-    public Vector2 lastSafePosition = Vector2.zero;
+    public Vector3 lastSafePosition = Vector3.zero;
 
     // ice parameters
     protected Vector2 _closestIce = Vector2.positiveInfinity;
@@ -152,10 +152,16 @@ public class PlayerBehaviour : EntityBehaviour
 
     public bool isPunching = false;
     public bool inWater = false;
+    public float original_z = 0f;
 
     private Rigidbody2D playerManager;
 
     // Start is called before the first frame update
+
+    void Awake()
+    {
+        original_z  = transform.position.z;
+    }
     override public void Start()
     {
         base.Start();
@@ -227,7 +233,7 @@ public class PlayerBehaviour : EntityBehaviour
 
 
         // handle walk sound
-        if (!_isFalling && !_isOnIce && lastSafePosition != (Vector2)transform.position){
+        if (!_isFalling && !_isOnIce && lastSafePosition != (Vector3)transform.position){
             playerWalkSoundSource.volume = 0.25f;
             playerWalkSoundSource.clip = walkSound;
             if (!playerWalkSoundSource.isPlaying){
@@ -500,7 +506,7 @@ public class PlayerBehaviour : EntityBehaviour
 
         if(searchedTile.name == "GroundTile"){
             Vector3 worldPos = tilemap.CellToWorld(gridPosition);
-            lastSafePosition = new Vector2(worldPos.x + tilemap.cellSize.x/2, worldPos.y + tilemap.cellSize.y/2);
+            lastSafePosition = new Vector3(worldPos.x + tilemap.cellSize.x/2, worldPos.y + tilemap.cellSize.y/2, original_z);
         }
         // if(!_isFalling){
         //     //set the safe position to the center of the tile
