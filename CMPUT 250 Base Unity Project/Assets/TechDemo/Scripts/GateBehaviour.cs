@@ -131,7 +131,7 @@ public class GateBehaviour : MonoBehaviour
                 gameObject.GetComponent<Collider2D>().enabled = false;
                 gateCollider.isTrigger = true;
                 gateSoundSource.clip = gateOpenSound;
-                //gateSoundSource.volume = 1f;
+                gateSoundSource.volume = 1f;
                 gateSoundSource.Play();
                 //Debug.Log("unlock function" + gateCollider.isTrigger);
 

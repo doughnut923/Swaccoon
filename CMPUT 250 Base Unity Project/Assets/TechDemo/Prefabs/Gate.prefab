@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 1070554115114522042}
   - component: {fileID: 7759024571536426100}
   m_Layer: 0
-  m_Name: Door
+  m_Name: Gate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -156,7 +156,8 @@ MonoBehaviour:
   openCondition: 0
   openRadius: 1
   _remainingLevers: 0
+  gateOpen: 0
   gateSoundSource: {fileID: 0}
-  gateOpenSound: {fileID: 8300000, guid: 2e2edc9fafab744158a08dcf92db6c4a, type: 3}
+  gateOpenSound: {fileID: 8300000, guid: 650643d8443ea4ed7bb6ebac0fbb737e, type: 3}
   spriteRenderer: {fileID: 1070554114374224702}
   lever: {fileID: 0}
