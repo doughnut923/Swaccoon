@@ -17,6 +17,11 @@ public class Slideshow : MonoBehaviour
     public Image image;
     
 
+    void Start()
+    {
+        image.canvasRenderer.SetAlpha(0.0f);
+    }
+
     public void Play()
     {
         onPlay?.Invoke();
@@ -26,7 +31,7 @@ public class Slideshow : MonoBehaviour
     public IEnumerator PlayCoroutine()
     {
         //initialize alpha
-        image.canvasRenderer.SetAlpha(0.0f);
+        Debug.Log("Playing slideshow");
         image.CrossFadeAlpha(1, slideFadeSpeed, true);
         yield return new WaitForSeconds(slideduration);
         image.CrossFadeAlpha(0, slideFadeSpeed, true);

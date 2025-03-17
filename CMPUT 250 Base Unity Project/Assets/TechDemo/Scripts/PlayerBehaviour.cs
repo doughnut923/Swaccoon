@@ -212,7 +212,6 @@ public class PlayerBehaviour : EntityBehaviour
             //but wil be just idle for now
             currentSprite.color = new Color(0.5f, 0.5f, 0.5f, 1f); // change color to grey if swapped out or if cutscene dialogue is playing (maybe set as variable)
             DoIdleAnimation();
-            Debug.Log("HI" + gameObject.name);
             return;
         }
         else
@@ -549,7 +548,6 @@ public class PlayerBehaviour : EntityBehaviour
     public void handleAnimation()
     {
 
-        Debug.Log("Handling animatino on" + gameObject.name);
 
         // Debug.Log("From " + name + " " +  movement.x + " " + movement.y);
         // // if we are falling, do the falling animation lol
