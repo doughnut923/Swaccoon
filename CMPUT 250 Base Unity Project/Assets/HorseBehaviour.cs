@@ -4,5 +4,13 @@ using UnityEngine;
 
 public class HorseBehaviour : PlayerBehaviour
 {
-    
+    void Start()
+    {
+        base.Start();
+    }
+
+    void FixedUpdate()
+    {
+        base.FixedUpdate();
+    }
 }

@@ -114,7 +114,7 @@ public class PlayerBehaviour : EntityBehaviour
 
     // falling parameters
     protected bool _isFalling = false;
-    protected Vector2 lastSafePosition = Vector2.zero;
+    public Vector2 lastSafePosition = Vector2.zero;
 
     // ice parameters
     protected Vector2 _closestIce = Vector2.positiveInfinity;
@@ -212,6 +212,7 @@ public class PlayerBehaviour : EntityBehaviour
             //but wil be just idle for now
             currentSprite.color = new Color(0.5f, 0.5f, 0.5f, 1f); // change color to grey if swapped out or if cutscene dialogue is playing (maybe set as variable)
             DoIdleAnimation();
+            Debug.Log("HI" + gameObject.name);
             return;
         }
         else
@@ -221,7 +222,7 @@ public class PlayerBehaviour : EntityBehaviour
 
         base.FixedUpdate();
 
-        if(gameObject.name == "Horse" || gameObject.name == "Fish"){
+        if(gameObject.name == "Fish"){
             return;
         }
 
@@ -548,6 +549,8 @@ public class PlayerBehaviour : EntityBehaviour
     public void handleAnimation()
     {
 
+        Debug.Log("Handling animatino on" + gameObject.name);
+
         // Debug.Log("From " + name + " " +  movement.x + " " + movement.y);
         // // if we are falling, do the falling animation lol
         
@@ -704,8 +707,8 @@ public class PlayerBehaviour : EntityBehaviour
 
         setInvincible(true);
 
-        IEnumerator dropToPit = DropToPit(pitPosition);
-        StartCoroutine(dropToPit);
+        // IEnumerator dropToPit = DropToPit(pitPosition);
+        // StartCoroutine(dropToPit);
         _currentFrame = 0;
 
         // play falling sound
