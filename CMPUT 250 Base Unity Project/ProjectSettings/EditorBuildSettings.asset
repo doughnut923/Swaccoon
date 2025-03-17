@@ -59,4 +59,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TechDemo/scenes/HorseOut.unity
     guid: 4d73a41a9b2f97a43a481c6297581fa1
+  - enabled: 1
+    path: Assets/TechDemo/scenes/IntroTutorial.unity
+    guid: 598337f9d4e51e844a3f86db1ad48dea
   m_configObjects: {}
