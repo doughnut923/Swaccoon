@@ -118,7 +118,7 @@ public class CompletionTrigger : MonoBehaviour
 
 
         // show game over UI
-        GameOverUIBehavior.instance.ShowGameOverUI();
+        // GameOverUIBehavior.instance.ShowGameOverUI();
         levelCompleteSoundSource.clip = levelCompletePulledSound;
         levelCompleteSoundSource.volume = 0.5f;
         levelCompleteSoundSource.Play();

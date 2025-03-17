@@ -12,6 +12,7 @@ public class LeverManager : MonoBehaviour
 
     public void UpdateLeverStatus(int index)
     {
+        Debug.Log("Pressure Plate " + index + " is activated");
         PressurePlateStatus[index] = true;
         CheckPlateStatus();
     }

@@ -10,6 +10,7 @@ public class GoalBehaviour : MonoBehaviour
 
     public void onGoalReached()
     {
+        Debug.Log("Invoking");
         _onGoalReached.Invoke();
     }
 }
