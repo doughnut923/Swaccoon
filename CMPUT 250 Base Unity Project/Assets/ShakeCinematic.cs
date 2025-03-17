@@ -13,7 +13,7 @@ public class ShakeCinematic : MonoBehaviour
     public bool doneShake = false;
 
     public void Play(){
-
+        timeElapsed = 0.0f;
         StartCoroutine(Shake());
     }
 
