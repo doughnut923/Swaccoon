@@ -40,6 +40,7 @@ public class GameStateManager : MonoBehaviour
         if(fadeImage == null)
         {
             Debug.LogWarning("No fade image found, skipping fading");
+            return;
         }
         FadeInScene();
     }

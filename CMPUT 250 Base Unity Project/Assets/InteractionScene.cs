@@ -10,6 +10,7 @@ public class InteractionScene : MonoBehaviour
     public List<bool> flags;
 
     public UnityEvent OnPlay;
+    public UnityEvent OnComplete;
 
     public bool CheckDone(){
         foreach(bool flag in flags){
@@ -17,12 +18,13 @@ public class InteractionScene : MonoBehaviour
                 return false;
             }
         }
+        OnComplete?.Invoke();
         return true;
     }
 
     public void Play(){
         //Actually does nothing
-        OnPlay.Invoke();
+        OnPlay?.Invoke();
         //set all flags to false
         for(int i = 0; i < flags.Count; i++){
             flags[i] = false;
