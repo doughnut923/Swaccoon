@@ -410,9 +410,9 @@ public class BoxBehaviour : EntityBehaviour
             sokobanScript.DecrementCrates();
 
             GameObject goalGameObject = collision.gameObject;
-            if(gameObject.GetComponent<GoalBehaviour>() != null)
+            if(goalGameObject.GetComponent<GoalBehaviour>() != null)
             {
-                gameObject.GetComponent<GoalBehaviour>().onGoalReached();
+                goalGameObject.GetComponent<GoalBehaviour>().onGoalReached();
             }
 
             //Destroy(collision.gameObject);

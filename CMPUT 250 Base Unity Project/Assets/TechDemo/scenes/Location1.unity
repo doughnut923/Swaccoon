@@ -3246,6 +3246,31 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: onPlatePressed.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: onPlatePressed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: onPlatePressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1737095526}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: onPlatePressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateLeverStatus
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: onPlatePressed.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d50dfdf3771634f9ebf9011a47dc1719, type: 3}
 --- !u!1 &1132938666 stripped
@@ -12693,6 +12718,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: onPlatePressed.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: onPlatePressed.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: onPlatePressed.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: onPlatePressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1737095526}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: onPlatePressed.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: onPlatePressed.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: UpdateLeverStatus
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d50dfdf3771634f9ebf9011a47dc1719, type: 3}

@@ -2447,7 +2447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a87721dc02f4f90ab85ff6d6bcc883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueCSV: {fileID: 4900000, guid: c89a69d440a374fb6bbc88e4d45993a9, type: 3}
+  dialogueCSV: {fileID: 0}
   writeToFlagId: intro_done
   writeToFlagValue: 1
   conditions: []
@@ -6446,6 +6446,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -7292806435240409650, guid: 49a0237bf709025438e58f7a2ff89ffa,
         type: 3}
+    - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
+      propertyPath: tilemap
+      value: 
+      objectReference: {fileID: 1606240336}
     - target: {fileID: 8461553506607811304, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
       propertyPath: InitialModule.gravityModifier.scalar
@@ -6647,6 +6652,11 @@ PrefabInstance:
       propertyPath: walkParticles
       value: 
       objectReference: {fileID: 2092620471}
+    - target: {fileID: 6711103143901753132, guid: 32749da348ac7fb42a9afa32f1cec477,
+        type: 3}
+      propertyPath: tilemap
+      value: 
+      objectReference: {fileID: 1606240336}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32749da348ac7fb42a9afa32f1cec477, type: 3}
 --- !u!1001 &4160942891938959564

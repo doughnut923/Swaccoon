@@ -42,7 +42,6 @@ public class HeavyBoxBehaviour : BoxBehaviour
             sokobanScript.DecrementGoals();
             sokobanScript.DecrementCrates();
 
-            GameObject goalGameObject = collision.gameObject;
             if (goal.GetComponent<GoalBehaviour>() != null)
             {
                 goal.GetComponent<GoalBehaviour>().onGoalReached();
