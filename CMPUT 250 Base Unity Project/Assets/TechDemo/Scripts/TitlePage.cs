@@ -9,7 +9,8 @@ public class TitlePage : MonoBehaviour
 
     public void LoadGame()
     {
-        SceneManager.LoadScene(1); // first game scene --> would be intro tutorial
+        // loads the first game scene --> would be intro tutorial
+        SceneManager.LoadScene(3); // currently loads to fish intro
     }
     // Start is called before the first frame update
     void Start()
