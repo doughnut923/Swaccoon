@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -45,11 +46,22 @@ public class GameStateManager : MonoBehaviour
         FadeInScene();
     }
 
-    void FadeInScene()
+    public void FadeInScene()
     {
         //Fade in the screen
         fadeImage.canvasRenderer.SetAlpha(1.0f);
         fadeImage.CrossFadeAlpha(0, fadeSpeed, false);
+    }
+
+    public IEnumerator LoadNextScene(String name)
+    {
+        fadeImage.CrossFadeAlpha(1, fadeSpeed, false);
+        yield return new WaitForSeconds(fadeSpeed);
+        SceneManager.LoadScene(name);
+    }
+
+    public void GoNextScene(String name){
+        StartCoroutine(LoadNextScene(name));
     }
 
     

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CompletionTrigger : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class CompletionTrigger : MonoBehaviour
     [SerializeField] AnimationCurve vortexCurve;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] SpriteRenderer shadowSpriteRenderer;
+    public UnityEvent onLevelComplete;
 
     private float minPitch = 0.5f;
     private float maxPitch = 1f;
@@ -119,6 +121,7 @@ public class CompletionTrigger : MonoBehaviour
 
         // show game over UI
         // GameOverUIBehavior.instance.ShowGameOverUI();
+        onLevelComplete?.Invoke();
         levelCompleteSoundSource.clip = levelCompletePulledSound;
         levelCompleteSoundSource.volume = 0.5f;
         levelCompleteSoundSource.Play();
