@@ -59,13 +59,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/TechDemo/scenes/Location2.unity
     guid: fda1d82b7a71b6041bea5a936ff1a4f3
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/TechDemo/scenes/HorseOut.unity
     guid: 4d73a41a9b2f97a43a481c6297581fa1
   - enabled: 1
     path: Assets/TechDemo/scenes/Outro.unity
     guid: 60fb32c069f1fde4b8b1e69104a48165
+  - enabled: 1
+    path: Assets/TechDemo/scenes/Credits.unity
+    guid: 1bb0cc8ce592942f09082266bf7a996b
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}
