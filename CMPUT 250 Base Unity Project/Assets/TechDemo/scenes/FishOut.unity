@@ -169,6 +169,12 @@ MonoBehaviour:
     toPosition: {x: 0, y: -2, z: -10}
     speed: 4
     delay: 0
+  OnPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  CinematicEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &9008006
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +385,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flagtocheck: 0
   cutsceneDialogue: {fileID: 1155106695}
+  OnPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDialogueEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &94852749
 GameObject:
   m_ObjectHideFlags: 0
@@ -5214,7 +5226,7 @@ MonoBehaviour:
   - id: fearA
     sprite: {fileID: 21300000, guid: 6721315fbc252fc4d9b3d7dcdef0b521, type: 3}
   - id: neutralB
-    sprite: {fileID: -5107095409447224594, guid: 8e726fcc17f7a4ef68779cfa37e96399,
+    sprite: {fileID: -7839224193386075401, guid: 22fb5f227127a4686bff849d26d3d3a4,
       type: 3}
   - id: questionB
     sprite: {fileID: 21300000, guid: 67b4257ac46fb6e41871bd6346a1eb6b, type: 3}
@@ -6127,6 +6139,12 @@ MonoBehaviour:
     toPosition: {x: 14, y: 1.9, z: -7.2}
     speed: 5
     delay: 0
+  OnPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  CinematicEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &920567294
 GameObject:
   m_ObjectHideFlags: 0
@@ -7736,6 +7754,12 @@ MonoBehaviour:
     toPosition: {x: 11, y: -2.9, z: -10}
     speed: 10
     delay: 0
+  OnPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  CinematicEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1681966291
 GameObject:
   m_ObjectHideFlags: 0
@@ -7902,6 +7926,12 @@ MonoBehaviour:
     toPosition: {x: 0, y: 1.9, z: -7.2}
     speed: 4
     delay: 0
+  OnPlay:
+    m_PersistentCalls:
+      m_Calls: []
+  CinematicEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1820599779
 GameObject:
   m_ObjectHideFlags: 0
