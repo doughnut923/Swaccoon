@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class WinCheck : MonoBehaviour
 {
-    public SwacoonNarrative.SwacoonDialogueTrigger dialogueTrigger;
+    //public SwacoonNarrative.SwacoonDialogueTrigger dialogueTrigger;
 
     [SerializeField] private UnityEngine.UI.Image fadeImage;
     [SerializeField] private float fadeSpeed = 1.5f;
@@ -27,7 +27,8 @@ public class WinCheck : MonoBehaviour
     //check if the Diague is done, if so, fade out the screen
     void Update()
     {
-        if (dialogueTrigger.isDialogueDone && !faded)
+        //if (dialogueTrigger.isDialogueDone && !faded)
+        if (!faded)
         {
             faded = true;
             StartCoroutine(FadeOutAndNextScene());

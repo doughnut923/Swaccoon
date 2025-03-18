@@ -3917,7 +3917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movements:
   - character: {fileID: 1830725648}
-    toPosition: {x: 10, y: 0, z: -10}
+    toPosition: {x: 12, y: 0, z: -10}
     speed: 5
     delay: 0
   OnPlay:
