@@ -25,7 +25,7 @@ public class Dialogue : MonoBehaviour
 
             foreach (GameObject player in players)
             {
-                // player.GetComponent<PlayerBehaviour>().enabled = true;
+                player.GetComponent<PlayerBehaviour>().enabled = true;
                 if (player == PlayerManager.Instance.CurrentCharacter)
                 {
                     player.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.IDLE;
@@ -58,7 +58,8 @@ public class Dialogue : MonoBehaviour
 
         foreach (GameObject player in players)
         {
-            // player.GetComponent<PlayerBehaviour>().enabled = false;
+            player.GetComponent<PlayerBehaviour>().enabled = false;
+            Debug.Log("hello");
             player.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.CUTSCENE_PLAYING;
         }
 
