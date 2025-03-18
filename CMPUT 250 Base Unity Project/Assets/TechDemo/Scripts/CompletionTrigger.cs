@@ -129,7 +129,7 @@ public class CompletionTrigger : MonoBehaviour
         levelCompleteSoundSource.clip = levelCompletePulledSound;
         levelCompleteSoundSource.volume = 0.5f;
         levelCompleteSoundSource.Play();
-        dialogueTrigger.Trigger(); // triggers level over cutscene
+        dialogueTrigger?.Trigger(); // triggers level over cutscene
         yield return null;
 
     }
