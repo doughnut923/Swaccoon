@@ -2037,7 +2037,7 @@ Transform:
   m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_Children: []
   m_Father: {fileID: 1357839353}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &742234578
 SpriteRenderer:
@@ -2610,10 +2610,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837508173}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.699999, y: 0.42999998, z: 100}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1357839353}
+  m_Father: {fileID: 6070615634673874282}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &837508175
@@ -2628,6 +2628,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b8b29ffd9725d7498a97b6ab078a4ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueTrigger: {fileID: 308038073}
   fadeImage: {fileID: 1736312395}
   fadeSpeed: 1.5
   nextScene: FishOut
@@ -4024,6 +4025,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e77b26d173ad49e69ac29520a775df9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dialogueTrigger: {fileID: 308038073}
   levelCompleteSoundSource: {fileID: 695096444}
   levelCompletePulledSound: {fileID: 8300000, guid: 97d4d3111397a40648878df1ba6e1d66,
     type: 3}
@@ -4058,19 +4060,7 @@ MonoBehaviour:
   shadowSpriteRenderer: {fileID: 1044305796}
   onLevelComplete:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2712201822677380690, guid: 267e4fd348a52354a9dbd3fd79d76b79,
-          type: 3}
-        m_MethodName: GoNextScene
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: HorseIn
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   character_name: Player
 --- !u!4 &1357839353 stripped
 Transform:
@@ -17095,6 +17085,18 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
+      propertyPath: sleepSpritesRight.Array.data[0]
+      value: 
+      objectReference: {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e,
+        type: 3}
+    - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
+      propertyPath: sleepSpritesRight.Array.data[2]
+      value: 
+      objectReference: {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e,
+        type: 3}
+    - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
       propertyPath: sleepSpritesRight.Array.data[3]
       value: 
       objectReference: {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e,
@@ -18112,15 +18114,21 @@ PrefabInstance:
     - target: {fileID: 1919645796711235073, guid: 065f19e0f46f50f41af448ea3aebce9c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1919645796711235087, guid: 065f19e0f46f50f41af448ea3aebce9c,
         type: 3}
       propertyPath: dialogueCSV
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4900000, guid: d6358f2b129a44663afca1903f2f2a67, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 065f19e0f46f50f41af448ea3aebce9c, type: 3}
+--- !u!4 &6070615634673874282 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1919645796711235086, guid: 065f19e0f46f50f41af448ea3aebce9c,
+    type: 3}
+  m_PrefabInstance: {fileID: 6070615634673874281}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6222294688225689253
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -3478,6 +3478,18 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
+      propertyPath: sleepSpritesRight.Array.data[0]
+      value: 
+      objectReference: {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e,
+        type: 3}
+    - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
+      propertyPath: sleepSpritesRight.Array.data[2]
+      value: 
+      objectReference: {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e,
+        type: 3}
+    - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
       propertyPath: sleepSpritesRight.Array.data[3]
       value: 
       objectReference: {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e,
