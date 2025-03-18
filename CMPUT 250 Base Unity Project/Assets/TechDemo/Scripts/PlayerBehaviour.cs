@@ -764,6 +764,7 @@ public class PlayerBehaviour : EntityBehaviour
 
     public void CreateWalkParticles()
     {
+        Debug.Log("Creating walk particles from " + name);
         walkParticles.Play();
     }
 

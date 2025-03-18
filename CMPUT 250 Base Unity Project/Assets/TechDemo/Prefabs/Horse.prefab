@@ -26,8 +26,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582161805379137998}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.33, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.62, z: 0}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children: []
   m_Father: {fileID: 3337710891339721998}
   m_RootOrder: 2
@@ -5357,6 +5357,7 @@ MonoBehaviour:
   tilemap: {fileID: 0}
   walkParticles: {fileID: 4677869117992742224}
   _currentFrame: 0
+  lastSafePosition: {x: 0, y: 0, z: 0}
   movement: {x: 0, y: 0}
   acceleration: 0.223
   TiltAngle: 10
@@ -5364,6 +5365,7 @@ MonoBehaviour:
   particleTimer: 0.25
   isPunching: 0
   inWater: 0
+  original_z: 0
 --- !u!114 &3735329918052374042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5570,8 +5572,9 @@ MonoBehaviour:
   walkSound: {fileID: 8300000, guid: 9f81c7bccf6294d9697daa51327e22d0, type: 3}
   slipSound: {fileID: 8300000, guid: c4f6c0e49f8a54733a060d04f87a2e50, type: 3}
   tilemap: {fileID: 0}
-  walkParticles: {fileID: 0}
+  walkParticles: {fileID: 4677869117992742224}
   _currentFrame: 0
+  lastSafePosition: {x: 0, y: 0, z: 0}
   movement: {x: 0, y: 0}
   acceleration: 1
   TiltAngle: 5.8
@@ -5579,6 +5582,7 @@ MonoBehaviour:
   particleTimer: 0.5
   isPunching: 0
   inWater: 0
+  original_z: 0
 --- !u!114 &3856870429523386782
 MonoBehaviour:
   m_ObjectHideFlags: 0

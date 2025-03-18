@@ -6700,7 +6700,17 @@ PrefabInstance:
     - target: {fileID: 3319275978511276543, guid: 8f5c711183cebc943a620bde1d09fb1a,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3319275978511276543, guid: 8f5c711183cebc943a620bde1d09fb1a,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3319275978511276543, guid: 8f5c711183cebc943a620bde1d09fb1a,
+        type: 3}
+      propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
+      value: 1.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8f5c711183cebc943a620bde1d09fb1a, type: 3}
@@ -6928,11 +6938,6 @@ PrefabInstance:
       objectReference: {fileID: 1606240336}
     - target: {fileID: 3856870429523386780, guid: 32749da348ac7fb42a9afa32f1cec477,
         type: 3}
-      propertyPath: walkParticles
-      value: 
-      objectReference: {fileID: 2092620471}
-    - target: {fileID: 3856870429523386780, guid: 32749da348ac7fb42a9afa32f1cec477,
-        type: 3}
       propertyPath: fallSprites.Array.size
       value: 6
       objectReference: {fileID: 0}
@@ -6981,6 +6986,11 @@ PrefabInstance:
         type: 3}
       propertyPath: Priority
       value: 81
+      objectReference: {fileID: 0}
+    - target: {fileID: 4677869117992742224, guid: 32749da348ac7fb42a9afa32f1cec477,
+        type: 3}
+      propertyPath: InitialModule.maxNumParticles
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 5537717461819650609, guid: 32749da348ac7fb42a9afa32f1cec477,
         type: 3}

@@ -4060,7 +4060,18 @@ MonoBehaviour:
   shadowSpriteRenderer: {fileID: 1044305796}
   onLevelComplete:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2712201822311196760}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   character_name: Player
 --- !u!4 &1357839353 stripped
 Transform:
@@ -16606,12 +16617,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!198 &2092620471 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8461553506607811304, guid: ec5d4cf984d63344fb93aec78dfc9e47,
-    type: 3}
-  m_PrefabInstance: {fileID: 2006271616154854292}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2097179042
 GameObject:
   m_ObjectHideFlags: 0
@@ -17219,6 +17224,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 267e4fd348a52354a9dbd3fd79d76b79, type: 3}
+--- !u!1 &2712201822311196760 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2712201822677380691, guid: 267e4fd348a52354a9dbd3fd79d76b79,
+    type: 3}
+  m_PrefabInstance: {fileID: 2712201822311196759}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4160942891938959564
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17946,11 +17957,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4742157441194013280, guid: 941a9d04ba992d446bc58dedbc527013,
         type: 3}
-      propertyPath: walkParticles
-      value: 
-      objectReference: {fileID: 2092620471}
-    - target: {fileID: 4742157441194013280, guid: 941a9d04ba992d446bc58dedbc527013,
-        type: 3}
       propertyPath: fishSoundSource
       value: 
       objectReference: {fileID: 695096444}
@@ -17962,12 +17968,12 @@ PrefabInstance:
     - target: {fileID: 6491994348858145685, guid: 941a9d04ba992d446bc58dedbc527013,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -9.9
+      value: -8.87
       objectReference: {fileID: 0}
     - target: {fileID: 6491994348858145685, guid: 941a9d04ba992d446bc58dedbc527013,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 4.9
+      value: 1.92
       objectReference: {fileID: 0}
     - target: {fileID: 6491994348858145685, guid: 941a9d04ba992d446bc58dedbc527013,
         type: 3}

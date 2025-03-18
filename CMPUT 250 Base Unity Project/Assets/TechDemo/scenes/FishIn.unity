@@ -3255,12 +3255,6 @@ MonoBehaviour:
   CinematicEnd:
     m_PersistentCalls:
       m_Calls: []
---- !u!198 &1258997371 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8461553506607811304, guid: ec5d4cf984d63344fb93aec78dfc9e47,
-    type: 3}
-  m_PrefabInstance: {fileID: 1830725647}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1291398220
 GameObject:
   m_ObjectHideFlags: 0
@@ -3696,11 +3690,6 @@ PrefabInstance:
       propertyPath: fishTransform
       value: 
       objectReference: {fileID: 679647662}
-    - target: {fileID: 4742157441194013280, guid: 941a9d04ba992d446bc58dedbc527013,
-        type: 3}
-      propertyPath: walkParticles
-      value: 
-      objectReference: {fileID: 1258997371}
     - target: {fileID: 4742157441194013280, guid: 941a9d04ba992d446bc58dedbc527013,
         type: 3}
       propertyPath: OutOfWaterLimit

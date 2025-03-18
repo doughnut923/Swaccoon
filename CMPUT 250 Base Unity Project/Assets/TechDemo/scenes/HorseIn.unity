@@ -1662,7 +1662,7 @@ PrefabInstance:
         type: 3}
       propertyPath: walkParticles
       value: 
-      objectReference: {fileID: 1219710677}
+      objectReference: {fileID: 1438164740}
     - target: {fileID: 3856870429523386780, guid: 32749da348ac7fb42a9afa32f1cec477,
         type: 3}
       propertyPath: idleSpriteUp.Array.data[0]
@@ -4012,12 +4012,6 @@ MonoBehaviour:
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
---- !u!198 &1219710677 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 8461553506607811304, guid: ec5d4cf984d63344fb93aec78dfc9e47,
-    type: 3}
-  m_PrefabInstance: {fileID: 1830725647}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1236815900
 GameObject:
   m_ObjectHideFlags: 0
@@ -4466,6 +4460,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437419011}
   m_CullTransparentMesh: 0
+--- !u!198 &1438164740 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4677869117992742224, guid: 32749da348ac7fb42a9afa32f1cec477,
+    type: 3}
+  m_PrefabInstance: {fileID: 575483077}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1442315096
 GameObject:
   m_ObjectHideFlags: 0

@@ -476,8 +476,9 @@ MonoBehaviour:
   walkSound: {fileID: 8300000, guid: 14c7a01ca04254f78bf91fff47ba9c0f, type: 3}
   slipSound: {fileID: 8300000, guid: 2a7075c73ead2fe47829de5d6053adaf, type: 3}
   tilemap: {fileID: 0}
-  walkParticles: {fileID: 0}
+  walkParticles: {fileID: 3792872031254739915}
   _currentFrame: 0
+  lastSafePosition: {x: 0, y: 0, z: 0}
   movement: {x: 0, y: 0}
   acceleration: 0.1
   TiltAngle: 10
@@ -485,6 +486,7 @@ MonoBehaviour:
   particleTimer: 0.5
   isPunching: 0
   inWater: 0
+  original_z: 0
   OutOfWaterLimit: 4
   InWater: 1
   fishTransform: {fileID: 6491994348858145685}
