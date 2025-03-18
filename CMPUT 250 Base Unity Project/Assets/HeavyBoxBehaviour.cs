@@ -17,7 +17,6 @@ public class HeavyBoxBehaviour : BoxBehaviour
             //If the current player is not a horse, we don't want to move the box
             return Update;
         }
-        
         return base.getMovement();
     }
 
@@ -57,8 +56,8 @@ public class HeavyBoxBehaviour : BoxBehaviour
             // checks if we won everytime we move box onto goal
             //sokobanScript.Win();
             Debug.Log("stopping moving sound");
-            boxSoundSource.Play();
-            boxSoundSource.pitch = 0.75f;
+            boxSoundSource.Stop();
+            
             boxSoundSource.volume = Mathf.Clamp(boxSoundSource.volume - 0.1f, 0f, 1f);
             if (boxSoundSource.volume == 0f)
             {

@@ -102,19 +102,19 @@ public class WaterBehaviour : MonoBehaviour
             Vector2 bottomLeft = new Vector2(boat.transform.position.x - extents.x, boat.transform.position.y - extents.y);
 
             // check if the corners are in the water
-            if (Mathf.Abs(topRight.x - transform.position.x) <= fallRadius+2 && Mathf.Abs(topRight.y - transform.position.y) <= fallRadius+2)
+            if (Mathf.Abs(topRight.x - transform.position.x) <= fallRadius && Mathf.Abs(topRight.y - transform.position.y) <= fallRadius)
             {
                 return true;
             }
-            if (Mathf.Abs(topLeft.x - transform.position.x) <= fallRadius+2 && Mathf.Abs(topLeft.y - transform.position.y) <= fallRadius+2)
+            if (Mathf.Abs(topLeft.x - transform.position.x) <= fallRadius && Mathf.Abs(topLeft.y - transform.position.y) <= fallRadius)
             {
                 return true;
             }
-            if (Mathf.Abs(bottomRight.x - transform.position.x) <= fallRadius+2 && Mathf.Abs(bottomRight.y - transform.position.y) <= fallRadius+2)
+            if (Mathf.Abs(bottomRight.x - transform.position.x) <= fallRadius && Mathf.Abs(bottomRight.y - transform.position.y) <= fallRadius)
             {
                 return true;
             }
-            if (Mathf.Abs(bottomLeft.x - transform.position.x) <= fallRadius+2 && Mathf.Abs(bottomLeft.y - transform.position.y) <= fallRadius+2)
+            if (Mathf.Abs(bottomLeft.x - transform.position.x) <= fallRadius && Mathf.Abs(bottomLeft.y - transform.position.y) <= fallRadius)
             {
                 return true;
             }
