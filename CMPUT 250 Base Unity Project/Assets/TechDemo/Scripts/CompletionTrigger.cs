@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class CompletionTrigger : MonoBehaviour
 {
-    public SwacoonNarrative.SwacoonDialogueTrigger dialogueTrigger;
+    //public SwacoonNarrative.SwacoonDialogueTrigger dialogueTrigger;
     private SokobanBehaviour sokobanScript;
     private Rigidbody2D player;
 
@@ -129,7 +129,7 @@ public class CompletionTrigger : MonoBehaviour
         levelCompleteSoundSource.clip = levelCompletePulledSound;
         levelCompleteSoundSource.volume = 0.5f;
         levelCompleteSoundSource.Play();
-        dialogueTrigger.Trigger(); // triggers level over cutscene
+        //dialogueTrigger.Trigger(); // triggers level over cutscene
         yield return null;
 
     }
