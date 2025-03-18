@@ -85,6 +85,13 @@ public class GameStateManager : MonoBehaviour
             }
 
         }
+        if(gameState == GameState.PLAYING)
+        {
+            if(Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
         
     }
 }

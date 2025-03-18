@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -129,6 +129,7 @@ public class LeverBehaviour : MonoBehaviour
         Debug.Log("lever was pulled");
 
         // log that the lever has been pulled
+    
         PlayerPrefs.SetInt(gameObject.scene.name + gameObject.name, 1);
 
         leverSoundSource.clip = leverPulledSound;
