@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d1514134bc4fbd41bb739b1b9a49231, type: 3}
   m_Name: WaterRuleTile
   m_EditorClassIdentifier: 
-  m_DefaultSprite: {fileID: 1156542126602629793, guid: 49a0237bf709025438e58f7a2ff89ffa,
+  m_DefaultSprite: {fileID: -4321633308719413337, guid: 4176dda94b01b4d00865ed9df43b1f5c,
     type: 3}
   m_DefaultGameObject: {fileID: 6623849132937107699, guid: f7940c5f2ecf96544bf57c82cfe7662e,
     type: 3}
@@ -20,7 +20,7 @@ MonoBehaviour:
   m_TilingRules:
   - m_Id: 9
     m_Sprites:
-    - {fileID: 1156542126602629793, guid: 49a0237bf709025438e58f7a2ff89ffa, type: 3}
+    - {fileID: -4321633308719413337, guid: 4176dda94b01b4d00865ed9df43b1f5c, type: 3}
     m_GameObject: {fileID: 6623849132937107699, guid: f7940c5f2ecf96544bf57c82cfe7662e,
       type: 3}
     m_MinAnimationSpeed: 1
