@@ -212,13 +212,13 @@ public class PlayerBehaviour : EntityBehaviour
         }
 
         Debug.Log("At 2");
-        if(CutSceneManager.instance.canMove == false)
-        {
+
+        CutSceneManager cm = CutSceneManager.instance;
+        if(cm != null && !CutSceneManager.instance.canMove){
             //Possibly sleepping animation
             //but wil be just idle for now
-            handleAnimation();
+            DoIdleAnimation();
             return;
-
         }
 
         Debug.Log("At 3");
