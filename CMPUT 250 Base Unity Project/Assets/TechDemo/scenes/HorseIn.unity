@@ -1495,6 +1495,11 @@ PrefabInstance:
       objectReference: {fileID: 5800840444205659606}
     - target: {fileID: 3856870429523386780, guid: 32749da348ac7fb42a9afa32f1cec477,
         type: 3}
+      propertyPath: _playerState
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3856870429523386780, guid: 32749da348ac7fb42a9afa32f1cec477,
+        type: 3}
       propertyPath: walkParticles
       value: 
       objectReference: {fileID: 1438164740}
@@ -1930,6 +1935,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -4142902232880046436, guid: 78d2b5a73234141b2b757d21edff955d,
         type: 3}
+    - target: {fileID: 5537717461819650609, guid: 32749da348ac7fb42a9afa32f1cec477,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.47
+      objectReference: {fileID: 0}
     - target: {fileID: 6711103143901753132, guid: 32749da348ac7fb42a9afa32f1cec477,
         type: 3}
       propertyPath: tilemap
@@ -6528,6 +6538,7 @@ MonoBehaviour:
   fadeImage: {fileID: 519454385}
   fadeSpeed: 1
   nextScene: Location2
+  canMove: 0
 --- !u!4 &2107599645
 Transform:
   m_ObjectHideFlags: 0
