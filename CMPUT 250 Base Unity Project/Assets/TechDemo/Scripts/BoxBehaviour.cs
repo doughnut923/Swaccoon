@@ -417,7 +417,7 @@ public class BoxBehaviour : EntityBehaviour
 
             //Destroy(collision.gameObject);
             //Destroy(gameObject);
-            IEnumerator coroutine = MoveSelfToPosition(collision.transform.position);
+            IEnumerator coroutine = MoveSelfToPosition( new Vector3(collision.transform.position.x, collision.transform.position.y, transform.position.z));
             StartCoroutine(coroutine);
 
             CameraManager.Instance.ShakeCamera(0.2f, 0.1f);
@@ -433,11 +433,11 @@ public class BoxBehaviour : EntityBehaviour
         }
     }
 
-    protected IEnumerator MoveSelfToPosition(Vector2 position)
+    protected IEnumerator MoveSelfToPosition(Vector3 position)
     {
         while (Vector2.Distance(transform.position, position) > 0.01f)
         {
-            transform.position = Vector2.Lerp(transform.position, position, 0.1f);
+            transform.position = Vector3.Lerp(transform.position, position, 0.1f);
             yield return new WaitForFixedUpdate();
         }
         yield return null;

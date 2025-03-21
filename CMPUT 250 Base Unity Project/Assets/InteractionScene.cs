@@ -12,27 +12,51 @@ public class InteractionScene : MonoBehaviour
     public UnityEvent OnPlay;
     public UnityEvent OnComplete;
 
-    public bool CheckDone(){
-        foreach(bool flag in flags){
-            if(!flag){
+    public bool CheckDone()
+    {
+        foreach (bool flag in flags)
+        {
+            if (!flag)
+            {
                 return false;
             }
         }
+
+
         OnComplete?.Invoke();
         return true;
     }
 
-    public void Play(){
+    public void Play()
+    {
+
+        List<GameObject> players = PlayerManager.Instance.SwappableCharacters;
+
+        foreach (GameObject player in players)
+        {
+            // player.GetComponent<PlayerBehaviour>().enabled = true;
+            if (player == PlayerManager.Instance.CurrentCharacter)
+            {
+                player.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.IDLE;
+            }
+            else
+            {
+                player.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.SWAPPED_OUT;
+            }
+        }
+        
         //Actually does nothing
         OnPlay?.Invoke();
         //set all flags to false
-        for(int i = 0; i < flags.Count; i++){
+        for (int i = 0; i < flags.Count; i++)
+        {
             flags[i] = false;
         }
         return;
     }
 
-    public void SetFlag(int index){
+    public void SetFlag(int index)
+    {
         flags[index] = true;
     }
 }

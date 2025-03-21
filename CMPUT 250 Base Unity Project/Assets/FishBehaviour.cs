@@ -18,6 +18,7 @@ public class FishBehaviour : PlayerBehaviour
     private Vector2 punchDir;
     private GameObject closestWater;
     [SerializeField] private float LandSpeed = 1f;
+    [SerializeField] private float WaterSpeed = 2f;
 
     private int punch_key_down;
 
@@ -69,10 +70,19 @@ public class FishBehaviour : PlayerBehaviour
 
         }
 
+        CutSceneManager cm = CutSceneManager.instance;
+        if(cm != null && !CutSceneManager.instance.canMove){
+            //Possibly sleepping animation
+            //but wil be just idle for now
+            DoIdleAnimation();
+            return;
+        }
+
+
         // check if we are in water
         checkInWater();
         // if we are out of the water, decrement the timer
-        moveSpeed = 4f;
+        moveSpeed = WaterSpeed;
         if (!InWater)
         {
             TimeBar.gameObject.SetActive(true);
@@ -338,7 +348,7 @@ public class FishBehaviour : PlayerBehaviour
             //set the safe position to the center of the tile
             // Vector3Int gridPosition = tilemap.WorldToCell(new Vector3(transform.position.x, transform.position.y, transform.position.z));
             // Vector3 worldPos = tilemap.CellToWorld(gridPosition);
-            lastSafePosition = closestWater.transform.position;
+            lastSafePosition = new Vector3 (closestWater.transform.position.x, closestWater.transform.position.y, transform.position.z);
         }
     }
 

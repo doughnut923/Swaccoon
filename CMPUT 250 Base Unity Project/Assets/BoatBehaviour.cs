@@ -65,7 +65,6 @@ public class BoatBehaviour : EntityBehaviour
     //Update is called once per frame
     public void Update()
     {
-        base.FixedUpdate();
         //updateIce();
         previousLocation = boat.position;
     }
@@ -106,9 +105,7 @@ public class BoatBehaviour : EntityBehaviour
         //Debug.Log("Player: " + player);
 
         // handle player collision with crate
-        if (Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= 1f
-        // || Mathf.Abs(Vector2.Distance(player1.position, transform.position)) <= 1f
-        )
+        if (Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= 1f)
 
         {
             //handle collision with doors
@@ -128,8 +125,8 @@ public class BoatBehaviour : EntityBehaviour
             Vector2 downDir = new Vector2(0, -1);
 
             // handles pushing depending on which player is pushing the box
-            if ((Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= 1f) && (playerScript._playerState == CurrentPlayerState.IDLE)&& player.name == "Fish")
-            { // if raccoon is pushing
+            if ((Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= 1f) && player.name == "Fish")
+            { // if fish is pushing
 
                 float rightDist = Vector2.Distance(right, player.position);
                 float leftDist = Vector2.Distance(left, player.position);
@@ -137,27 +134,25 @@ public class BoatBehaviour : EntityBehaviour
                 float downDist = Vector2.Distance(down, player.position);
 
                 float minDist = Mathf.Min(rightDist, leftDist, upDist, downDist);
-                Vector2 playerDirection = playerScript.dirToVec();
 
+                Vector2 playerDirection = playerScript.dirToVec();
                 // according to case, check if we should be allowed to push the block!
                 if (minDist == rightDist && playerDirection == leftDir)
                 {
                     update = new Vector2(-1, 0);
                 }
-                else if (minDist == leftDist && playerScript.dirToVec() == rightDir)
+                else if (minDist == leftDist && playerDirection == rightDir)
                 {
                     update = new Vector2(1, 0);
                 }
-                else if (minDist == upDist && playerScript.dirToVec() == downDir)
+                else if (minDist == upDist && playerDirection == downDir)
                 {
                     update = new Vector2(0, -1);
                 }
-                else if (minDist == downDist && playerScript.dirToVec() == upDir)
+                else if (minDist == downDist && playerDirection == upDir)
                 {
-                    Debug.Log("pushing player now");
                     update = new Vector2(0, 1);
                 }
-                // if we have an update, we need to be making the move sound!    
             }
                 
         //}

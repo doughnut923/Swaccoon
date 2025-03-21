@@ -117,7 +117,6 @@ public class GateBehaviour : MonoBehaviour
         //Debug.Log("Unlock function");
         //Debug.Log("is sound playing " + gateSoundSource.isPlaying);
         if(gateOpen){
-            Debug.Log("Gate is already open");
             return;
         }
 
@@ -126,7 +125,6 @@ public class GateBehaviour : MonoBehaviour
         if (openCondition == Condition.GateOpen){
             if (lever.IsLeverPulled == true)
             {
-                Debug.Log("here gate is now opening sound " + lever.IsLeverPulled);
                 spriteRenderer.color = new Color(1, 1, 1, 0);
                 gameObject.GetComponent<Collider2D>().enabled = false;
                 gateCollider.isTrigger = true;
@@ -186,7 +184,6 @@ public class GateBehaviour : MonoBehaviour
         //(gameObject.GetComponent(typeof(Collider2D)) as Collider2D).isTrigger = true;
         if (lever.IsLeverPulled == true)
         {
-            Debug.Log("gate is now opening sound " + lever.IsLeverPulled);
             spriteRenderer.color = new Color(1, 1, 1, 0);
             gameObject.GetComponent<Collider2D>().enabled = false;
             gateCollider.isTrigger = true;
