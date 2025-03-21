@@ -51,7 +51,7 @@ namespace SwacoonNarrative
         /// </summary>
         public void ClosePortraitLeft()
         {
-            if (portraitLeft.IsVisible)
+            if (portraitLeft.IsVisible && portraitLeft.IsEntered == true)
             {
                 portraitLeft.ExitFade(0.5f);
             }
@@ -62,7 +62,7 @@ namespace SwacoonNarrative
         /// </summary>
         public void ClosePortraitRight()
         {
-            if (portraitRight.IsVisible)
+            if (portraitRight.IsVisible && portraitRight.IsEntered == true)
             {
                 portraitRight.ExitFade(0.5f);
             }

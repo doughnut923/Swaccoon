@@ -21,6 +21,7 @@ namespace SwacoonNarrative
         public bool IsVisible { get { return isVisible; } }
         private bool isEntered = false;
         public bool IsEntered { get { return isEntered; } }
+        public bool isFading = false;
 
         // Awake is called before Start
         void Awake()
@@ -59,12 +60,15 @@ namespace SwacoonNarrative
         /// <param name="duration">How long to fade out seconds</param>
         public void ExitFade(float duration)
         {
-            if(fadeCoroutine != null)
+            
+            if (fadeCoroutine != null)
             {
                 //Stop any other fades if they were playing
                 StopCoroutine(fadeCoroutine);
             }
             fadeCoroutine = StartCoroutine(IExitFade(duration));
+            
+            
         }
 
         /// <summary>
