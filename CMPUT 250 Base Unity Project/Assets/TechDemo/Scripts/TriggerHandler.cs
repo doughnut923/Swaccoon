@@ -34,15 +34,17 @@ public class TriggerHandler : MonoBehaviour
             //Debug.Log("game object name is " + gameObject.name);
             if (gameObject.tag == "Lever Trigger")
             {
+                dialogueTrigger.Trigger();
+                Destroy(gameObject);
                 //Debug.Log("compare tag");
-                if (!lever.IsLeverPulled)
-                {
-                    dialogueTrigger.Trigger();
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
+                //if (!lever.IsLeverPulled)
+                //{
+                //    dialogueTrigger.Trigger();
+                //}
+                //else
+                //{
+                //    Destroy(gameObject);
+                //}
             }
             if (gameObject.tag == "Gate Trigger")
             {
