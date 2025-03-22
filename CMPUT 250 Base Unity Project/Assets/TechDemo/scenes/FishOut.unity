@@ -12997,6 +12997,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a846b3b4df34b35ae3837b91db34b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFading: 0
 --- !u!222 &1184636284
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13893,7 +13894,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movements:
   - character: {fileID: 1830725648}
-    toPosition: {x: 13, y: -2.9, z: -10}
+    toPosition: {x: 14, y: -2.9, z: -10}
     speed: 10
     delay: 0
   OnPlay:
@@ -15394,6 +15395,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3a846b3b4df34b35ae3837b91db34b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isFading: 0
 --- !u!222 &2146940272
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -85,8 +85,9 @@ namespace SwacoonNarrative
             else
             {
                 //Finished, close textbox
-                textbox.CloseTextbox();
+                //onFinish.Invoke();
                 portraits.ClosePortraits();
+                textbox.CloseTextbox();
                 onFinish.Invoke();
             }
         }
