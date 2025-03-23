@@ -148,22 +148,25 @@ public class CutSceneItem
         }
         else if (cutsceneState == CutsceneState.DIALOGUE)
         {
-            Debug.Log("Playing Cinematic:" + CutSceneObject.name);
+            Debug.Log("Playing Dialogue:" + CutSceneObject.name);
             CutSceneObject.GetComponent<Dialogue>().Play();
             CutSceneManager.instance.canMove = false;
         }
         else if (cutsceneState == CutsceneState.INTERACT)
         {
+            Debug.Log("Playing Interaction:" + CutSceneObject.name);
             CutSceneObject.GetComponent<InteractionScene>().Play();
             CutSceneManager.instance.canMove = true;
         }
         else if (cutsceneState == CutsceneState.SHAKE_OBJECT)
         {
+            Debug.Log("Playing Shaking Object:" + CutSceneObject.name);
             CutSceneObject.GetComponent<ShakeCinematic>().Play();
             CutSceneManager.instance.canMove = false;
         }
         else if (cutsceneState == CutsceneState.SLIDESHOW)
         {
+            Debug.Log("Playing Slideshow:" + CutSceneObject.name);
             CutSceneObject.GetComponent<Slideshow>().Play();
             CutSceneManager.instance.canMove = false;
         }

@@ -201,7 +201,7 @@ public class PlayerBehaviour : EntityBehaviour
             return;
         }
 
-        Debug.Log("At 1");
+        //Debug.Log("At 1");
         if(_playerState == CurrentPlayerState.CUTSCENE_PLAYING)
         {
             //Possibly sleepping animation
@@ -211,7 +211,7 @@ public class PlayerBehaviour : EntityBehaviour
 
         }
 
-        Debug.Log("At 2");
+        //Debug.Log("At 2");
 
         CutSceneManager cm = CutSceneManager.instance;
         if(cm != null && !CutSceneManager.instance.canMove){
@@ -221,7 +221,7 @@ public class PlayerBehaviour : EntityBehaviour
             return;
         }
 
-        Debug.Log("At 3");
+        //Debug.Log("At 3");
         if (_playerState == CurrentPlayerState.SWAPPED_OUT)
         {
 

@@ -2265,7 +2265,7 @@ MonoBehaviour:
   - character: {fileID: 1830725648}
     toPosition: {x: 14, y: -2, z: -10}
     speed: 4
-    delay: 0
+    delay: 1
   OnPlay:
     m_PersistentCalls:
       m_Calls: []
@@ -2574,8 +2574,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movements:
-  - character: {fileID: 1830725648}
-    toPosition: {x: 12, y: -2, z: -10}
+  - character: {fileID: 575483080}
+    toPosition: {x: 14, y: -2, z: -11}
     speed: 4
     delay: 0
   OnPlay:
