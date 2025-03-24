@@ -393,7 +393,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61583811}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2800001, y: 0.1, z: 5.365556}
+  m_LocalPosition: {x: -0.2800001, y: 0.1, z: 2.66}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 540327108}
@@ -7493,7 +7493,7 @@ Transform:
   m_GameObject: {fileID: 862586872471993381}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -1.21, y: 0, z: 0}
-  m_LocalScale: {x: 1.9125, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 862586871919265681}
   m_RootOrder: 0
@@ -7602,20 +7602,20 @@ CompositeCollider2D:
   m_ColliderPaths:
   - m_Collider: {fileID: 862586872471993383}
     m_ColliderPaths:
-    - - X: 248625008
+    - - X: 130000000
         Y: -20000000
-      - X: 248625008
+      - X: 130000000
         Y: 90000000
-      - X: -210375008
+      - X: -110000000
         Y: 90000000
-      - X: -210375008
+      - X: -110000000
         Y: -20000000
   m_CompositePaths:
     m_Paths:
-    - - {x: 24.862473, y: -2}
-      - {x: 24.862473, y: 9}
-      - {x: -21.0375, y: 8.99997}
-      - {x: -21.037472, y: -2}
+    - - {x: 12.99997, y: -2}
+      - {x: 12.99997, y: 9}
+      - {x: -11, y: 8.99997}
+      - {x: -10.99997, y: -2}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!1839735485 &862586872471993401
@@ -15604,7 +15604,7 @@ Tilemap:
     m_Data: {fileID: 4214972454254262604, guid: c60afa3f5c0b4c441a29da67030f84f4,
       type: 3}
   m_AnimationFrameRate: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
   m_Origin: {x: -45, y: -26, z: 0}
   m_Size: {x: 82, y: 41, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}

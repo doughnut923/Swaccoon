@@ -126,8 +126,9 @@ MonoBehaviour:
     type: 3}
   platformTimeLimit: 10
   platformSoundSource: {fileID: 1917606766997412785}
-  platformRiseSound: {fileID: 8300000, guid: 86e393d86d50845a0a63af5d5673b530, type: 3}
+  platformRiseSound: {fileID: 8300000, guid: 9b00563e79528654680ab7f6c744fc75, type: 3}
   hasRose: 0
+  shakeIntensity: 0.01
 --- !u!61 &8620210727469345101
 BoxCollider2D:
   m_ObjectHideFlags: 0

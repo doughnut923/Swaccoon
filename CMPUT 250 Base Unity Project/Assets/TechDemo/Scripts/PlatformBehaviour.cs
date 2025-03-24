@@ -7,7 +7,7 @@ public class PlatformBehaviour : MonoBehaviour
 
     private Vector3 TargetPosition;
     private Vector3 StartPosition;
-    
+
     [SerializeField] AnimationCurve riseCurve;
     [SerializeField] float riseTime = 1f;
     [SerializeField] SpriteRenderer spriteRenderer;
@@ -26,9 +26,10 @@ public class PlatformBehaviour : MonoBehaviour
     public bool hasRose = false;
     public float shakeIntensity = 0.01f;
 
-    void Awake(){
+    void Awake()
+    {
         TargetPosition = transform.position;
-        transform.position = new Vector3(transform.position.x, transform.position.y-10, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y - 10, transform.position.z);
         StartPosition = transform.position;
         spriteRenderer.color = new Color(1, 1, 1, 0);
 
@@ -41,7 +42,8 @@ public class PlatformBehaviour : MonoBehaviour
     }
     public void Rise()
     {
-        if(hasRose){
+        if (hasRose)
+        {
             //reset the timer
             timeRemaining = platformTimeLimit;
             return;
@@ -54,7 +56,7 @@ public class PlatformBehaviour : MonoBehaviour
         if (sokobanScript.puzzleComplete == true)
         {
             FallTimer();
-            CameraManager.Instance.ShakeCamera(riseTime, .1f);
+            CameraManager.Instance.ShakeCamera(riseTime, .05f);
             StartCoroutine(RisePlatform());
         }
     }
@@ -62,18 +64,16 @@ public class PlatformBehaviour : MonoBehaviour
     IEnumerator RisePlatform()
     {
         //use the curve to move the platform up also change the opcaity of the platform
-        
+        platformSoundSource.clip = platformRiseSound;
+        platformSoundSource.Play();
+
         float time = 0;
         while (time < riseTime)
         {
-            platformSoundSource.clip = platformRiseSound;
-            platformSoundSource.volume = 0.5f;
 
             time += Time.deltaTime;
             float t = time / riseTime;
 
-            platformSoundSource.pitch = Mathf.Lerp(minPitch, maxPitch, t);
-            platformSoundSource.Play();
             transform.position = Vector3.Lerp(StartPosition, TargetPosition, riseCurve.Evaluate(t));
             spriteRenderer.color = new Color(1, 1, 1, riseCurve.Evaluate(t));
             yield return null;
@@ -86,10 +86,12 @@ public class PlatformBehaviour : MonoBehaviour
         StartCoroutine(Shake());
     }
 
-    IEnumerator Shake(){
+    IEnumerator Shake()
+    {
         Vector3 originalPos = transform.position;
         float elapsed = 0.0f;
-        while (elapsed < 0.5f){
+        while (elapsed < 0.5f)
+        {
             float x = UnityEngine.Random.Range(-1f, 1f) * shakeIntensity;
             float y = UnityEngine.Random.Range(-1f, 1f) * shakeIntensity;
             transform.position = new Vector3(transform.position.x + x, transform.position.y + y, transform.position.z);
@@ -107,7 +109,8 @@ public class PlatformBehaviour : MonoBehaviour
         {
             //Debug.Log("platform timer is "+timeRemaining);
             timeRemaining--;
-            if(timeRemaining < platformTimeLimit / 2 && timeRemaining > 0){
+            if (timeRemaining < platformTimeLimit / 2 && timeRemaining > 0)
+            {
                 ShakePlatform();
             }
             Invoke("FallTimer", 1f);
@@ -131,21 +134,20 @@ public class PlatformBehaviour : MonoBehaviour
     IEnumerator FallPlatform()
     {
         //use the curve to move the platform down, also change the opcaity of the platform to invisible
+        platformSoundSource.clip = platformRiseSound;
+        platformSoundSource.Play();
+
         float time = 0;
         while (time < riseTime)
         {
-            platformSoundSource.clip = platformRiseSound;
-            platformSoundSource.volume = 0.5f;
 
             time += Time.deltaTime;
             float t = time / riseTime;
             // calculate how transparent the platform should be as it falls. going from solid to transparent (1 to 0)
             float transparency = Mathf.Lerp(1f, 0f, riseCurve.Evaluate(t));
 
-            platformSoundSource.pitch = Mathf.Lerp(minPitch, maxPitch, t);
-            platformSoundSource.Play();
             transform.position = Vector3.Lerp(TargetPosition, StartPosition, riseCurve.Evaluate(t));
-            
+
             spriteRenderer.color = new Color(1, 1, 1, transparency);
 
 

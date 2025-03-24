@@ -5380,8 +5380,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   puzzleComplete: 0
   puzzleSoundSource: {fileID: 3856870430249459172}
-  boxCompleteClip: {fileID: 8300000, guid: 0342ee12d0df4478496971b48cc41584, type: 3}
-  puzzleCompleteClip: {fileID: 8300000, guid: 97d4d3111397a40648878df1ba6e1d66, type: 3}
+  boxCompleteClip: {fileID: 8300000, guid: a8da0eba17bff0e448456d8415f3cc17, type: 3}
+  puzzleCompleteClip: {fileID: 8300000, guid: 7dbb00f6887dfc8498b91beb835d390f, type: 3}
   endLocationDialogue: {fileID: 0}
 --- !u!114 &3856870429523386780
 MonoBehaviour:

@@ -515,7 +515,9 @@ public class PlayerBehaviour : EntityBehaviour
             return;
         }
 
-        if(searchedTile.name == "GroundTile"){
+        Debug.Log("Tilename: " + searchedTile.name.ToLower());
+
+        if(!searchedTile.name.ToLower().Contains("water") || !searchedTile.name.ToLower().Contains("pit")){
             Vector3 worldPos = tilemap.CellToWorld(gridPosition);
             lastSafePosition = new Vector3(worldPos.x + tilemap.cellSize.x/2, worldPos.y + tilemap.cellSize.y/2, original_z);
         }

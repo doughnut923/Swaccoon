@@ -245,16 +245,6 @@ PrefabInstance:
       objectReference: {fileID: 140803464}
     - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
         type: 3}
-      propertyPath: leverPulledSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 650643d8443ea4ed7bb6ebac0fbb737e, type: 3}
-    - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
-        type: 3}
-      propertyPath: leverSoundSource
-      value: 
-      objectReference: {fileID: 695096444}
-    - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
-        type: 3}
       propertyPath: leverSprite.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -451,21 +441,6 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: -7508397687440914691, guid: e407fb3446b28492a9525fe32c193945,
-        type: 3}
-      propertyPath: boxSoundSource
-      value: 
-      objectReference: {fileID: 1496685831}
-    - target: {fileID: -7508397687440914691, guid: e407fb3446b28492a9525fe32c193945,
-        type: 3}
-      propertyPath: boxSinkingPulledSound
-      value: 
-      objectReference: {fileID: 8300000, guid: d29f31731a2d60d4b85802dbf4e61912, type: 3}
-    - target: {fileID: -7508397687440914691, guid: e407fb3446b28492a9525fe32c193945,
-        type: 3}
-      propertyPath: boxSinkingSoundSource
-      value: 
-      objectReference: {fileID: 695096444}
     - target: {fileID: 4964052204845527533, guid: e407fb3446b28492a9525fe32c193945,
         type: 3}
       propertyPath: m_RootOrder
@@ -802,16 +777,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 151284273154607621, guid: e3090b3290e7a4590b86754ed6641bc1,
-        type: 3}
-      propertyPath: wallBreakPulledSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 153a2a052ec604c47a6fe4ca61808f94, type: 3}
-    - target: {fileID: 151284273154607621, guid: e3090b3290e7a4590b86754ed6641bc1,
-        type: 3}
-      propertyPath: wallBreakSoundSource
-      value: 
-      objectReference: {fileID: 695096444}
     - target: {fileID: 151284273154607622, guid: e3090b3290e7a4590b86754ed6641bc1,
         type: 3}
       propertyPath: m_Size.x
@@ -1319,16 +1284,6 @@ PrefabInstance:
       objectReference: {fileID: 2111093157}
     - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
         type: 3}
-      propertyPath: leverPulledSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 650643d8443ea4ed7bb6ebac0fbb737e, type: 3}
-    - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
-        type: 3}
-      propertyPath: leverSoundSource
-      value: 
-      objectReference: {fileID: 695096444}
-    - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
-        type: 3}
       propertyPath: leverSprite.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1488,21 +1443,6 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: -7508397687440914691, guid: e407fb3446b28492a9525fe32c193945,
-        type: 3}
-      propertyPath: boxSoundSource
-      value: 
-      objectReference: {fileID: 743497292}
-    - target: {fileID: -7508397687440914691, guid: e407fb3446b28492a9525fe32c193945,
-        type: 3}
-      propertyPath: boxSinkingPulledSound
-      value: 
-      objectReference: {fileID: 8300000, guid: d29f31731a2d60d4b85802dbf4e61912, type: 3}
-    - target: {fileID: -7508397687440914691, guid: e407fb3446b28492a9525fe32c193945,
-        type: 3}
-      propertyPath: boxSinkingSoundSource
-      value: 
-      objectReference: {fileID: 695096444}
     - target: {fileID: 4964052204788618096, guid: e407fb3446b28492a9525fe32c193945,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -2444,12 +2384,6 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6222294688131702379, guid: 8be35696f53ed4798a0eae38336d87bc, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8be35696f53ed4798a0eae38336d87bc, type: 3}
---- !u!82 &743497292 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 7096411873445857036, guid: e407fb3446b28492a9525fe32c193945,
-    type: 3}
-  m_PrefabInstance: {fileID: 404996486}
-  m_PrefabAsset: {fileID: 0}
 --- !u!61 &743497293 stripped
 BoxCollider2D:
   m_CorrespondingSourceObject: {fileID: 4964052204845527534, guid: e407fb3446b28492a9525fe32c193945,
@@ -8116,16 +8050,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -90
       objectReference: {fileID: 0}
-    - target: {fileID: 151284273154607621, guid: e3090b3290e7a4590b86754ed6641bc1,
-        type: 3}
-      propertyPath: wallBreakPulledSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 153a2a052ec604c47a6fe4ca61808f94, type: 3}
-    - target: {fileID: 151284273154607621, guid: e3090b3290e7a4590b86754ed6641bc1,
-        type: 3}
-      propertyPath: wallBreakSoundSource
-      value: 
-      objectReference: {fileID: 695096444}
     - target: {fileID: 151284273154607622, guid: e3090b3290e7a4590b86754ed6641bc1,
         type: 3}
       propertyPath: m_Size.x
@@ -8162,16 +8086,6 @@ PrefabInstance:
       propertyPath: spriteRenderer
       value: 
       objectReference: {fileID: 1487413166}
-    - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
-        type: 3}
-      propertyPath: leverPulledSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 650643d8443ea4ed7bb6ebac0fbb737e, type: 3}
-    - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
-        type: 3}
-      propertyPath: leverSoundSource
-      value: 
-      objectReference: {fileID: 695096444}
     - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
         type: 3}
       propertyPath: leverSprite.Array.size
@@ -8787,16 +8701,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 151284273154607621, guid: e3090b3290e7a4590b86754ed6641bc1,
-        type: 3}
-      propertyPath: wallBreakPulledSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 153a2a052ec604c47a6fe4ca61808f94, type: 3}
-    - target: {fileID: 151284273154607621, guid: e3090b3290e7a4590b86754ed6641bc1,
-        type: 3}
-      propertyPath: wallBreakSoundSource
-      value: 
-      objectReference: {fileID: 695096444}
     - target: {fileID: 151284273154607622, guid: e3090b3290e7a4590b86754ed6641bc1,
         type: 3}
       propertyPath: m_Size.x
@@ -8877,16 +8781,6 @@ PrefabInstance:
       propertyPath: spriteRenderer
       value: 
       objectReference: {fileID: 1622054809}
-    - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
-        type: 3}
-      propertyPath: leverPulledSound
-      value: 
-      objectReference: {fileID: 8300000, guid: 650643d8443ea4ed7bb6ebac0fbb737e, type: 3}
-    - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
-        type: 3}
-      propertyPath: leverSoundSource
-      value: 
-      objectReference: {fileID: 695096444}
     - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
         type: 3}
       propertyPath: leverSprite.Array.size
@@ -10191,12 +10085,6 @@ SpriteRenderer:
 --- !u!4 &1496685829 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4964052204845527533, guid: e407fb3446b28492a9525fe32c193945,
-    type: 3}
-  m_PrefabInstance: {fileID: 15584061}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1496685831 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 7096411873445857036, guid: e407fb3446b28492a9525fe32c193945,
     type: 3}
   m_PrefabInstance: {fileID: 15584061}
   m_PrefabAsset: {fileID: 0}
@@ -20401,11 +20289,6 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.83
       objectReference: {fileID: 0}
-    - target: {fileID: 7683640437557703844, guid: 09cf657881df75747aef08b139070562,
-        type: 3}
-      propertyPath: platformSoundSource
-      value: 
-      objectReference: {fileID: 695096444}
     - target: {fileID: 7683640437557703845, guid: 09cf657881df75747aef08b139070562,
         type: 3}
       propertyPath: m_Sprite
@@ -23003,11 +22886,6 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7683640437557703844, guid: 09cf657881df75747aef08b139070562,
-        type: 3}
-      propertyPath: platformSoundSource
-      value: 
-      objectReference: {fileID: 695096444}
     - target: {fileID: 7683640437557703845, guid: 09cf657881df75747aef08b139070562,
         type: 3}
       propertyPath: m_Sprite

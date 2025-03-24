@@ -104,7 +104,6 @@ public class BoxBehaviour : EntityBehaviour
         //Destroy the box
         //Destroy(gameObject);
         boxSinkingSoundSource.clip = boxSinkingPulledSound;
-        boxSinkingSoundSource.volume = 0.5f;
         boxSinkingSoundSource.Play();
 
         //Player Box sinking animation
