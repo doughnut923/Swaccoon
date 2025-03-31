@@ -33,6 +33,8 @@ namespace SwacoonNarrative
         public bool IsOpen { get { return isOpen; } }
         public bool IsActive { get { return isActive; } }
 
+        [SerializeField] private KeyCode skip = KeyCode.Z;
+
         // Start is called before the first frame update
         private void Start()
         {
@@ -86,11 +88,11 @@ namespace SwacoonNarrative
                 //Debug.Log("writing the text!");
                 //Advance visible characters
                 //if (Input.GetMouseButtonDown(1))
-                if (Input.GetButtonDown("Submit"))
+                if (Input.GetKeyDown(skip))
                 //if (isSpedUp == true)
                 {
                     //Debug.Log("speed up little lads");
-                    //speedUpText();
+                    speedUpText();
                     //isSpedUp = true;
                     //CheckInput();
 
