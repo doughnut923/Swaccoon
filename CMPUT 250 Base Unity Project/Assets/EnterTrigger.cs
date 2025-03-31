@@ -11,7 +11,8 @@ public class EnterTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.name == "Player"){
+        Debug.Log("in entertrigger");
+        if (other.gameObject.name == "Player"){
             onEnterTrigger.Invoke();
         }
     }

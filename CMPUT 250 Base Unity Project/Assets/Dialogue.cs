@@ -59,8 +59,9 @@ public class Dialogue : MonoBehaviour
         foreach (GameObject player in players)
         {
             // player.GetComponent<PlayerBehaviour>().enabled = false;
-            Debug.Log("hello");
+            //Debug.Log("hello");
             player.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.CUTSCENE_PLAYING;
+            Debug.Log("State is " + player.GetComponent<PlayerBehaviour>()._playerState);
         }
 
         OnPlay?.Invoke();

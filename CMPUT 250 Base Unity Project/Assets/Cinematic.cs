@@ -42,7 +42,7 @@ public class Cinematic : MonoBehaviour
             enableWaterFlag = true;
             
             CinematicEnd?.Invoke();
-
+            CutSceneManager.instance.cinematicControlled = false;
             return true;
         }
         return false;
