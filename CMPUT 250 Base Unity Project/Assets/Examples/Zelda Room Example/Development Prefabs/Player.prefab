@@ -407,6 +407,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4.5
   invincibilityTime: 1
+  padding: {x: 0, y: 0}
   rb: {fileID: 2006271616285821578}
   _collider: {fileID: 2006271616285821579}
   _playerState: 0
@@ -536,12 +537,15 @@ MonoBehaviour:
   tilemap: {fileID: 0}
   walkParticles: {fileID: 8461553506607811304}
   _currentFrame: 0
+  lastSafePosition: {x: 0, y: 0, z: 0}
+  movement: {x: 0, y: 0}
   acceleration: 0.223
   TiltAngle: 10
   tiltSpeed: 0.2
   particleTimer: 0.25
   isPunching: 0
   inWater: 0
+  original_z: 0
 --- !u!114 &455098849238544802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5445,7 +5449,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

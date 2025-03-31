@@ -209,6 +209,7 @@ public class PlayerManager : MonoBehaviour
     {
 
         _playerManagerState = PlayerManagerState.NOT_SWAPPING;
+        lastCharacter = currentIndex;
         currentIndex = (currentIndex + 1) % SwappableCharacters.Count;
         Debug.Log("Swapping from : " + lastCharacter + " to : " + currentIndex);
         CurrentCharacter = SwappableCharacters[currentIndex];
@@ -243,6 +244,8 @@ public class PlayerManager : MonoBehaviour
         }
 
         onSwap?.Invoke();
+        PlayerToPlayerLightning.Instance.LightningEffect(SwappableCharacters[currentIndex].transform, SwappableCharacters[lastCharacter].transform);
+        //Debug.Log("You are now : " + lastCharacter + " and can swap to : " + currentIndex);
         SwapsLeft--;
     }
 
