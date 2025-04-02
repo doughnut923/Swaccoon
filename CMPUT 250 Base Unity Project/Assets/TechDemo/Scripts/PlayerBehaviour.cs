@@ -512,15 +512,15 @@ public class PlayerBehaviour : EntityBehaviour
         Vector3Int gridPosition = tilemap.WorldToCell(new Vector3(transform.position.x, transform.position.y, transform.position.z));
         TileBase searchedTile = tilemap.GetTile(gridPosition);
 
-        //Debug.Log(searchedTile.name);
+        
         
         if(searchedTile == null){
             return;
         }
 
-        //Debug.Log("Tilename: " + searchedTile.name.ToLower());
 
-        if(!searchedTile.name.ToLower().Contains("water") || !searchedTile.name.ToLower().Contains("pit")){
+        if(!searchedTile.name.Contains("Water") && !searchedTile.name.ToLower().Contains("pit")){
+            Debug.Log("searched tile is " + searchedTile.name + ", Setting last safe position to " + searchedTile.name);    
             Vector3 worldPos = tilemap.CellToWorld(gridPosition);
             lastSafePosition = new Vector3(worldPos.x + tilemap.cellSize.x/2, worldPos.y + tilemap.cellSize.y/2, original_z);
         }
