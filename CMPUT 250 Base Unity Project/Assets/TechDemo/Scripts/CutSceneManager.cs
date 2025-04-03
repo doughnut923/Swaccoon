@@ -47,7 +47,7 @@ public class CutSceneManager : MonoBehaviour
     [SerializeField] public List<CutSceneItem> cutSceneItems;
     private CutSceneItem currentCutSceneItem;
 
-    public bool cinematicControlled = true;
+    public bool cinematicControlled = false;
 
     private int _cutsceneIndex = 0;
     [SerializeField] private Image fadeImage;
@@ -145,6 +145,7 @@ public class CutSceneItem
             Debug.Log("Playing Cinematic:" + CutSceneObject.name);
             CutSceneObject.GetComponent<Cinematic>().Play();
             CutSceneManager.instance.canMove = false;
+            CutSceneManager.instance.cinematicControlled = true;
         }
         else if (cutsceneState == CutsceneState.DIALOGUE)
         {

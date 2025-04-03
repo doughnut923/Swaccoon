@@ -4,25 +4,25 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: 444111797852221278
-    second: bunnysheet5_0
+    second: bunnysheet5_left 0
   - first:
       213: 7977435031334894272
-    second: bunnysheet5_1
+    second: bunnysheet5_left 1
   - first:
       213: -3348856246090889719
-    second: bunnysheet5_2
+    second: bunnysheet5_left 2
   - first:
       213: 4653676723318331041
-    second: bunnysheet5_3
+    second: bunnysheet5_left 3
   - first:
       213: -5482664134182839463
-    second: bunnysheet5_4
+    second: bunnysheet5_left 4
   - first:
       213: -2242379734599970852
-    second: bunnysheet5_5
+    second: bunnysheet5_left 5
   - first:
       213: 3123300321099728854
-    second: bunnysheet5_6
+    second: bunnysheet5_up 6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -183,11 +183,11 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bunnysheet5_0
+      name: bunnysheet5_left 0
       rect:
         serializedVersion: 2
         x: 21
-        y: 7
+        y: 6
         width: 35
         height: 35
       alignment: 9
@@ -204,11 +204,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bunnysheet5_1
+      name: bunnysheet5_left 1
       rect:
         serializedVersion: 2
-        x: 56
-        y: 7
+        x: 57
+        y: 6
         width: 35
         height: 35
       alignment: 0
@@ -225,7 +225,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bunnysheet5_2
+      name: bunnysheet5_left 2
       rect:
         serializedVersion: 2
         x: 95
@@ -246,7 +246,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bunnysheet5_3
+      name: bunnysheet5_left 3
       rect:
         serializedVersion: 2
         x: 133
@@ -267,11 +267,11 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bunnysheet5_4
+      name: bunnysheet5_left 4
       rect:
         serializedVersion: 2
         x: 174
-        y: 8
+        y: 7
         width: 33
         height: 34
       alignment: 0
@@ -288,7 +288,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bunnysheet5_5
+      name: bunnysheet5_left 5
       rect:
         serializedVersion: 2
         x: 238
@@ -309,10 +309,157 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: bunnysheet5_6
+      name: bunnysheet5_up 6
       rect:
         serializedVersion: 2
         x: 23
+        y: 158
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6d743061811385b20800000000000000
+      internalID: 3123300321099728854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnysheet5_right 7
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 77
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3753a9815f64b2760800000000000000
+      internalID: 7434113628398826867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnysheet5_right 8
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 77
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cd97cef58b1a9c10800000000000000
+      internalID: 2060990041794518466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnysheet5_right 9
+      rect:
+        serializedVersion: 2
+        x: 90
+        y: 77
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e3f496fc867abe40800000000000000
+      internalID: 5672977028431016932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnysheet5_right 10
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 77
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 66dc2dfc2b9c2c5b0800000000000000
+      internalID: -5349491637534667418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnysheet5_right 11
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 77
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ef3462d2d0b79a60800000000000000
+      internalID: 7680802109023076327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnysheet5_right 12
+      rect:
+        serializedVersion: 2
+        x: 239
+        y: 77
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d97953c2742cf3570800000000000000
+      internalID: 8448685036910516125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnysheet5_up 13
+      rect:
+        serializedVersion: 2
+        x: 56
         y: 158
         width: 35
         height: 35
@@ -323,8 +470,218 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6d743061811385b20800000000000000
-      internalID: 3123300321099728854
+      spriteID: 708e96bb5eb4daef0800000000000000
+      internalID: -95336567041038329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnysheet5_up 14
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 158
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7eb3d3035296d890800000000000000
+      internalID: -7433593249684275589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnysheet5_up 15
+      rect:
+        serializedVersion: 2
+        x: 135
+        y: 158
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ec79d0f9c9e34d20800000000000000
+      internalID: 3261707608684854505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnysheet5_up 16
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 158
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 426757cb146375450800000000000000
+      internalID: 6077385878122362404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnysheet5_up 17
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 158
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 255ca5ee3f7119700800000000000000
+      internalID: 545243366331958610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnysheet5_down 18
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 246
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d9620362dbe13af0800000000000000
+      internalID: -418294001531983399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnysheet5_down 19
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 246
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f84a8c786382c3430800000000000000
+      internalID: 3763927603246310543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnysheet5_down 20
+      rect:
+        serializedVersion: 2
+        x: 95
+        y: 246
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abf17188697745b00800000000000000
+      internalID: 816408920872918970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnysheet5_down 21
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 246
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d9341e3c4a4b15450800000000000000
+      internalID: 6075835992053466013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnysheet5_down 22
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 246
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d297877f474d48720800000000000000
+      internalID: 2847634463238158637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: bunnysheet5_down 23
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 246
+        width: 35
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c14f6198b3f22f8d0800000000000000
+      internalID: -2814134884403579876
       vertices: []
       indices: 
       edges: []

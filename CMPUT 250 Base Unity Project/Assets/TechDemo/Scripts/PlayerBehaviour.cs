@@ -202,10 +202,11 @@ public class PlayerBehaviour : EntityBehaviour
         }
 
         //Debug.Log("At 1");
-        if(_playerState == CurrentPlayerState.CUTSCENE_PLAYING)
+        if (_playerState == CurrentPlayerState.CUTSCENE_PLAYING && CutSceneManager.instance.cinematicControlled == true)
         {
             //Possibly sleepping animation
             //but wil be just idle for now
+            Debug.Log("go to handle animation");
             handleAnimation();
             return;
 
@@ -217,6 +218,7 @@ public class PlayerBehaviour : EntityBehaviour
         if(cm != null && !CutSceneManager.instance.canMove){
             //Possibly sleepping animation
             //but wil be just idle for now
+            Debug.Log("go to idle animation");
             DoIdleAnimation();
             return;
         }
@@ -435,6 +437,7 @@ public class PlayerBehaviour : EntityBehaviour
 
     public void DoIdleAnimation()
     {
+        Debug.Log("in idle animation");
         _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _walkFramesPerSecond, 6f);
         //Debug.Log("current sprite is");
         //switch (_currDir)
@@ -514,6 +517,7 @@ public class PlayerBehaviour : EntityBehaviour
         if(searchedTile == null){
             return;
         }
+
 
         if(!searchedTile.name.Contains("Water") && !searchedTile.name.ToLower().Contains("pit")){
             // Debug.Log("searched tile is " + searchedTile.name + ", Setting last safe position to " + searchedTile.name);    
@@ -625,6 +629,7 @@ public class PlayerBehaviour : EntityBehaviour
         // if idle
         else if (((movement.x == 0 && movement.y == 0) || _isOnIce) && isPunching==false)
         {
+            Debug.Log("player is not moving");
             _playerState = CurrentPlayerState.IDLE;
 
             _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _walkFramesPerSecond, 6f);

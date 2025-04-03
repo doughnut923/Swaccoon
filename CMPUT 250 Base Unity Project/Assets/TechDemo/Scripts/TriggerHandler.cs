@@ -25,6 +25,7 @@ public class TriggerHandler : MonoBehaviour
     //when player enters the trigger area
     private void OnTriggerEnter2D(Collider2D other)
     {
+        Debug.Log("in tiggerhandler");
         sokobanScript = (SokobanBehaviour)other.gameObject.GetComponent(typeof(SokobanBehaviour));
         //Debug.Log("entering trigger zone");
         //Debug.Log("player " + other.name);
