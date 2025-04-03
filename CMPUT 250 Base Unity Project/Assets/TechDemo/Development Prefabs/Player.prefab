@@ -53,6 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   invincibilityTime: 1
+  collisionBuffer: 0.1
+  padding: {x: 0, y: 0}
   rb: {fileID: 0}
   _collider: {fileID: 0}
   _playerState: 0
@@ -63,6 +65,7 @@ MonoBehaviour:
   attack: 32
   reset: 114
   swap: 101
+  punch: 97
   attackCooldown: 2
   idleSpriteUp:
   - {fileID: 3227475870979519549, guid: 68cc7cae3b9d149e4b6afc8301e4c72e, type: 3}
@@ -113,6 +116,14 @@ MonoBehaviour:
   attackSpritesDown: []
   attackSpritesLeft: []
   fallSprites: []
+  punchSpritesUp: []
+  punchSpritesDown: []
+  punchSpritesLeft: []
+  punchSpritesRight: []
+  sleepSpritesUp: []
+  sleepSpritesDown: []
+  sleepSpritesLeft: []
+  sleepSpritesRight: []
   hurtSpriteUp: {fileID: 0}
   hurtSpriteRight: {fileID: 0}
   hurtSpriteDown: {fileID: 0}
@@ -128,6 +139,18 @@ MonoBehaviour:
   playerWalkSoundSource: {fileID: 0}
   walkSound: {fileID: 0}
   slipSound: {fileID: 0}
+  tilemap: {fileID: 0}
+  walkParticles: {fileID: 0}
+  _currentFrame: 0
+  lastSafePosition: {x: 0, y: 0, z: 0}
+  movement: {x: 0, y: 0}
+  acceleration: 0.1
+  TiltAngle: 10
+  tiltSpeed: 0.2
+  particleTimer: 0.5
+  isPunching: 0
+  inWater: 0
+  original_z: 0
 --- !u!61 &2006271616285821579
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -479,6 +502,7 @@ MonoBehaviour:
   puzzleSoundSource: {fileID: 0}
   boxCompleteClip: {fileID: 0}
   puzzleCompleteClip: {fileID: 0}
+  endLocationDialogue: {fileID: 0}
 --- !u!1 &2006271616997992750
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,7 +552,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -610,7 +634,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

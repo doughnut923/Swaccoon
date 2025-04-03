@@ -222,7 +222,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -311,6 +311,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 8
   invincibilityTime: 1
+  collisionBuffer: 0.1
+  padding: {x: 0, y: 0}
   rb: {fileID: 6491994348858145705}
   _collider: {fileID: 6491994348858145704}
   _playerState: 0
@@ -491,6 +493,7 @@ MonoBehaviour:
   InWater: 1
   fishTransform: {fileID: 6491994348858145685}
   LandSpeed: 1
+  WaterSpeed: 2
   fishSoundSource: {fileID: 0}
   punchSound: {fileID: 8300000, guid: d4df104f53fa844eb94d61c1a1bc126e, type: 3}
   TimeBar: {fileID: 6623869287371317319}
@@ -991,7 +994,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5732,7 +5735,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -5849,7 +5852,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

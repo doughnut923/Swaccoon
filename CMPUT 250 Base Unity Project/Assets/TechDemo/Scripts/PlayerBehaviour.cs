@@ -520,7 +520,7 @@ public class PlayerBehaviour : EntityBehaviour
 
 
         if(!searchedTile.name.Contains("Water") && !searchedTile.name.ToLower().Contains("pit")){
-            Debug.Log("searched tile is " + searchedTile.name + ", Setting last safe position to " + searchedTile.name);    
+            // Debug.Log("searched tile is " + searchedTile.name + ", Setting last safe position to " + searchedTile.name);    
             Vector3 worldPos = tilemap.CellToWorld(gridPosition);
             lastSafePosition = new Vector3(worldPos.x + tilemap.cellSize.x/2, worldPos.y + tilemap.cellSize.y/2, original_z);
         }
@@ -576,7 +576,7 @@ public class PlayerBehaviour : EntityBehaviour
         
         //Debug.Log("player is currently " + currentSprite);
         if (_isFalling){
-            Debug.Log("_isfalling is set to " + _isFalling);
+            // Debug.Log("_isfalling is set to " + _isFalling);
             int lastFrame = Mathf.FloorToInt(_currentFrame);
             _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _fallFramesPerSecond, 6f);
 
