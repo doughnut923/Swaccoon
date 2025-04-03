@@ -76,6 +76,12 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: d6b864aca0d8f0c459df5011fde3433b, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 1625bb3117a115a4cb5a7dbcc96f6770, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 1
     m_Data: {fileID: -2662624756918667181, guid: 49a0237bf709025438e58f7a2ff89ffa,
@@ -85,6 +91,12 @@ Tilemap:
       type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 609732387253028099, guid: 49a0237bf709025438e58f7a2ff89ffa, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 3
     m_Data:
@@ -107,14 +119,18 @@ Tilemap:
   m_TileColorArray:
   - m_RefCount: 3
     m_Data: {r: 1, g: 1, b: 1, a: 1}
+  - m_RefCount: 0
+    m_Data: {r: 0.7759514, g: 0.34913903, b: 0.36439875, a: 1}
+  - m_RefCount: 0
+    m_Data: {r: 0.9943946, g: 0.49179348, b: 0.5223519, a: 1}
   m_TileObjectToInstantiateArray:
   - m_RefCount: 1
     m_Data: {fileID: 4214972454254262604, guid: c60afa3f5c0b4c441a29da67030f84f4,
       type: 3}
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -3, y: 0, z: 0}
-  m_Size: {x: 5, y: 1, z: 1}
+  m_Origin: {x: -3, y: -2, z: 0}
+  m_Size: {x: 5, y: 5, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -152,7 +168,7 @@ TilemapRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -192,7 +208,7 @@ GameObject:
   - component: {fileID: 3878761066652312429}
   - component: {fileID: 631900248718244931}
   m_Layer: 31
-  m_Name: Lab 1 Palette
+  m_Name: 2D Level Design Lab 1 & 2 Palette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

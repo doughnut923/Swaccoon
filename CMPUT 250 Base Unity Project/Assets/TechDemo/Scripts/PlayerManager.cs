@@ -1,7 +1,9 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 public enum PlayerManagerState
 {
@@ -22,20 +24,20 @@ public class PlayerManager : MonoBehaviour
             return _instance;
         }
     }
-
+    public UnityEvent onSwap;
     public static PlayerManagerState _playerManagerState { get; set; } = PlayerManagerState.NOT_SWAPPING;
 
     [SerializeField] public GameObject CurrentCharacter { get; private set; }            //Reference to the current character
-    [SerializeField] private List<GameObject> SwappableCharacters = new List<GameObject>(3);    //List of characters that can be swapped
-    [SerializeField] private List<GameObject> UIOutlines = new List<GameObject>(3);             //Reference to list of UI elements displayed for swapping the chaaracter and for the player to see which character they are in control of
+    [SerializeField] public List<GameObject> SwappableCharacters = new List<GameObject>(3);    //List of characters that can be swapped
+    [SerializeField] private List<Image> UIOutlines = new List<Image>(3);             //Reference to list of UI elements displayed for swapping the chaaracter and for the player to see which character they are in control of
     [SerializeField] private int currentIndex = 0;                                              //Index of the current character
     [SerializeField] private int lastCharacter = 0;                                             //Index of the last character
     [SerializeField] private KeyCode startSwap = KeyCode.Q;                                     //Key to start swap the character
     [SerializeField] private KeyCode select = KeyCode.E;                                        //Key for select between character when swapping
     [SerializeField] private KeyCode swap = KeyCode.T;                                   //Key to cancel the swap
     [SerializeField] private KeyCode cancel = KeyCode.Q;                                   //Key to cancel the swap
-
     [SerializeField] private float swapTimeLimit = 60;
+
     public float swapTimer;
 
     public int SwapsLeft = 3;
@@ -47,7 +49,7 @@ public class PlayerManager : MonoBehaviour
             _instance = this;
             CurrentCharacter = SwappableCharacters[currentIndex];
         }
-        swapTimer = swapTimeLimit;
+        //swapTimer = swapTimeLimit;
     }
 
     void Start()
@@ -77,6 +79,18 @@ public class PlayerManager : MonoBehaviour
 
         //Debug.Log("Current character playing is " + CurrentCharacter.name);
 
+        foreach (Image outline in UIOutlines)
+        {
+            if (outline == UIOutlines[currentIndex])
+            {
+                outline.color = new Color(outline.color.r, outline.color.g, outline.color.b, 1f);
+            }
+            else
+            {
+                outline.color = new Color(outline.color.r, outline.color.g, outline.color.b, 0.5f);
+            }
+        }
+
         foreach (GameObject person in SwappableCharacters)
         {
             if (person != null)
@@ -104,59 +118,64 @@ public class PlayerManager : MonoBehaviour
         }
 
 
-        foreach (GameObject character in SwappableCharacters)
-        {
-            if (character != CurrentCharacter)
-            {
-                character.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.SWAPPED_OUT;
-            }
-            else
-            {
-                character.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.IDLE;
-            }
-        }
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(startSwap))
+        if (_playerManagerState == PlayerManagerState.CUTSCENE_PLAYING)
         {
-            StartSwap();
+            return;
         }
-        else if (Input.GetKeyDown(select))
+        //if (swapTimer <= 0)
+        //{
+        //    //Lose
+        //    GameOverUIBehavior.instance.ShowGameOverUI();
+        //}
+        else
         {
-            SelectCharacter();
+            if (!_playerManagerState.Equals(PlayerManagerState.CUTSCENE_PLAYING))
+            {
+                //swapTimer -= Time.deltaTime;
+            }
         }
-        else if (Input.GetKeyDown(swap))
+
+        // if (Input.GetKeyDown(startSwap) && _playerManagerState == PlayerManagerState.NOT_SWAPPING)
+        // {
+        //     StartSwap();
+        // }
+        // else if (Input.GetKeyDown(select))
+        // {
+        //     SelectCharacter();
+        // }
+        if (Input.GetKeyDown(swap))
         {
             SwapCharacter();
         }
-        else if (Input.GetKeyDown(cancel))
-        {
-            CancelSwap();
-        }
+        // else if (Input.GetKeyDown(cancel))
+        // {
+        //     CancelSwap();
+        // }
     }
 
     /**
         * The following function start the swap and outlines the current character and the character that can be swapped to
         */
-    private void StartSwap()
-    {
-        if (SwapsLeft <= 0)
-        {
-            return;
-        }
+    // private void StartSwap()
+    // {
+    //     if (SwapsLeft <= 0)
+    //     {
+    //         return;
+    //     }
 
-        if (_playerManagerState == PlayerManagerState.NOT_SWAPPING)
-        {
-            _playerManagerState = PlayerManagerState.Swapping;
-            CurrentCharacter.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.SWAPPING;
-            lastCharacter = currentIndex;
-            // UIOutlines[lastCharacter].SetActive(true);
-            Debug.Log("You are now : " + lastCharacter + " and can swap to : " + currentIndex);
-            // UIOutlines[currentIndex].SetActive(true);
-        }
-    }
+    //     if (_playerManagerState == PlayerManagerState.NOT_SWAPPING)
+    //     {
+    //         _playerManagerState = PlayerManagerState.Swapping;
+    //         CurrentCharacter.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.SWAPPING;
+    //         lastCharacter = currentIndex;
+
+    //         Debug.Log("You are now : " + lastCharacter + " and can swap to : " + currentIndex);
+    //     }
+    // }
 
     /**
         * The following function selects the character to swap to
@@ -166,8 +185,19 @@ public class PlayerManager : MonoBehaviour
         if (_playerManagerState == PlayerManagerState.Swapping)
         {
             currentIndex = (currentIndex + 1) % SwappableCharacters.Count;
-            // UIOutlines[lastCharacter].SetActive(true);
-            // UIOutlines[currentIndex].SetActive(true);
+            //increase the opacity of the outline of the character that can be swapped to
+            foreach (Image outline in UIOutlines)
+            {
+                if (outline == UIOutlines[currentIndex])
+                {
+                    outline.color = new Color(outline.color.r, outline.color.g, outline.color.b, 1f);
+                }
+                else
+                {
+                    outline.color = new Color(outline.color.r, outline.color.g, outline.color.b, 0.5f);
+                }
+            }
+
             Debug.Log("You are now : " + lastCharacter + " and can swap to : " + currentIndex);
         }
     }
@@ -177,31 +207,46 @@ public class PlayerManager : MonoBehaviour
         */
     private void SwapCharacter()
     {
-        if (_playerManagerState == PlayerManagerState.Swapping)
+
+        _playerManagerState = PlayerManagerState.NOT_SWAPPING;
+        lastCharacter = currentIndex;
+        currentIndex = (currentIndex + 1) % SwappableCharacters.Count;
+        Debug.Log("Swapping from : " + lastCharacter + " to : " + currentIndex);
+        CurrentCharacter = SwappableCharacters[currentIndex];
+
+        //reset timer
+        //swapTimer = swapTimeLimit;
+
+        foreach (GameObject character in SwappableCharacters)
         {
-            _playerManagerState = PlayerManagerState.NOT_SWAPPING;
-            // UIOutlines[lastCharacter].SetActive(false);
-            // UIOutlines[currentIndex].SetActive(false);
-            Debug.Log("Swapping from : " + lastCharacter + " to : " + currentIndex);
-            CurrentCharacter = SwappableCharacters[currentIndex];
-
-            //reset timer
-            swapTimer = swapTimeLimit;
-
-            foreach (GameObject character in SwappableCharacters)
+            if (character != CurrentCharacter)
             {
-                if (character != CurrentCharacter)
-                {
-                    character.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.SWAPPED_OUT;
-                }
-                else
-                {
-                    character.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.IDLE;
-                }
+                character.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.SWAPPED_OUT;
             }
-
-            SwapsLeft--;
+            else
+            {
+                character.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.IDLE;
+                character.gameObject.GetComponentsInChildren<BrainWave>()[0].TriggerBrainWave();
+            }
         }
+
+        //increase the opacity of the outline of the character that can be swapped to
+        foreach (Image outline in UIOutlines)
+        {
+            if (outline == UIOutlines[currentIndex])
+            {
+                outline.color = new Color(outline.color.r, outline.color.g, outline.color.b, 1f);
+            }
+            else
+            {
+                outline.color = new Color(outline.color.r, outline.color.g, outline.color.b, 0.5f);
+            }
+        }
+
+        onSwap?.Invoke();
+        PlayerToPlayerLightning.Instance.LightningEffect(SwappableCharacters[currentIndex].transform, SwappableCharacters[lastCharacter].transform);
+        //Debug.Log("You are now : " + lastCharacter + " and can swap to : " + currentIndex);
+        SwapsLeft--;
     }
 
     /**
@@ -227,8 +272,19 @@ public class PlayerManager : MonoBehaviour
             }
 
             currentIndex = lastCharacter;
-            // UIOutlines[lastCharacter].SetActive(false);
-            // UIOutlines[currentIndex].SetActive(false);
+
+            //reset outlines
+            foreach (Image outline in UIOutlines)
+            {
+                if (outline == UIOutlines[currentIndex])
+                {
+                    outline.color = new Color(outline.color.r, outline.color.g, outline.color.b, 1f);
+                }
+                else
+                {
+                    outline.color = new Color(outline.color.r, outline.color.g, outline.color.b, 0.5f);
+                }
+            }
         }
     }
 

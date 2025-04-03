@@ -21,6 +21,8 @@ public class TopDownPitBehaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        player = PlayerManager.Instance.CurrentCharacter.GetComponent<Rigidbody2D>();
+        playerScript = player.gameObject.GetComponent<PlayerBehaviour>();
         if (Mathf.Abs(player.position.x - transform.position.x) <= fallRadius && Mathf.Abs(player.position.y - transform.position.y) <= fallRadius
         && !HavePlatform()){
             Fall();

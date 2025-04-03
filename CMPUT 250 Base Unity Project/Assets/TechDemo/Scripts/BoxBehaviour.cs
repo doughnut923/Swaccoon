@@ -1,37 +1,59 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class BoxBehaviour : EntityBehaviour
 {
 
-    private SokobanBehaviour sokobanScript;
-    private PlayerBehaviour playerScript;
-    private PlayerBehaviour player1Script;
-    private Rigidbody2D player;
-    private Rigidbody2D player1;
-    private Rigidbody2D box;
+    protected SokobanBehaviour sokobanScript;
+    protected PlayerBehaviour playerScript;
+    protected PlayerBehaviour player1Script;
+    protected Rigidbody2D player;
+    protected Rigidbody2D player1;
+    protected Rigidbody2D box;
 
-    private Collider2D boxCollider;
-    private Collider2D playerCollider;
-    private Collider2D player1Collider;
+    protected Collider2D boxCollider;
+    protected Collider2D playerCollider;
+    protected Collider2D player1Collider;
 
     // ice parameters
-    //private Vector2 _closestIce = Vector2.positiveInfinity;
-    //private bool _isOnIce = false;
-    //private float _iceThreshold = 0.9f;
-    //private bool _lockForce = false;
-    private Vector2 previousLocation;
-    //private Vector2 lastPlayerLocation;
+    //protected Vector2 _closestIce = Vector2.positiveInfinity;
+    //protected bool _isOnIce = false;
+    //protected float _iceThreshold = 0.9f;
+    //protected bool _lockForce = false;
+    protected Vector2 previousLocation;
+    protected Vector3 TargetPosition;
+    protected Vector3 StartPosition;
+    
+    private Vector3 SpawnPosition;
+    private bool isSinking = false;
+
+    //protected Vector2 lastPlayerLocation;
 
     // sound parameters
-    [SerializeField] private AudioSource boxSoundSource;
-    [SerializeField] private AudioClip boxGroundPush;
-    //[SerializeField] private AudioClip boxIceSlide;
+    [SerializeField] protected AudioSource boxSoundSource;
+    [SerializeField] protected AudioClip boxGroundPush;
+    [SerializeField] SpriteRenderer spriteRenderer;
+    //[SerializeField] protected AudioClip boxIceSlide;
 
-    private bool isOnGoal = false;
+    [SerializeField] private AudioSource boxSinkingSoundSource;
+    [SerializeField] private AudioClip boxSinkingPulledSound;
+
+    [SerializeField] private float spawnRaise = 10f;
+    [SerializeField] private float padding = 1.5f;
+    [SerializeField] public float pushRadius = 1f;
+
+    protected bool isOnGoal = false;
+
+    public bool isOnWater = false;
 
     // Start is called before the first frame update
+
+    public void Awake(){
+        SpawnPosition = transform.position;
+    }
+
     override public void Start()
     {
         base.Start();
@@ -42,10 +64,15 @@ public class BoxBehaviour : EntityBehaviour
         // player1Script = (PlayerBehaviour)player1.gameObject.GetComponent(typeof(PlayerBehaviour));
 
         box = gameObject.GetComponent<Rigidbody2D>();
-        GetComponent<Collider2D>().isTrigger = true;
+        // GetComponent<Collider2D>().isTrigger = true;
         sokobanScript = (SokobanBehaviour)player.gameObject.GetComponent(typeof(SokobanBehaviour));
 
         boxCollider = box.GetComponent<Collider2D>();
+
+        //TargetPosition = transform.position;
+        //transform.position = new Vector3(transform.position.x, transform.position.y - 10, transform.position.z);
+        //StartPosition = transform.position;
+        //spriteRenderer.color = new Color(1, 1, 1, 1);
     }
 
     //Update is called once per frame
@@ -55,6 +82,170 @@ public class BoxBehaviour : EntityBehaviour
 
         //updateIce();
         previousLocation = box.position;
+
+        // if the box is on a water tile, it will sink
+        if (isOnWater && !isSinking)
+        {
+            isSinking = true;
+            StartCoroutine(SinkBox());
+        }
+    }
+
+    IEnumerator SinkBox(){
+
+        //Play the box sinking sound
+
+        //Play the box sinking animation
+
+        //Wait for the animation to finish
+        Debug.Log("sinking box");
+        
+
+
+        //Destroy the box
+        //Destroy(gameObject);
+        boxSinkingSoundSource.clip = boxSinkingPulledSound;
+        boxSinkingSoundSource.Play();
+
+        //Player Box sinking animation
+
+        //called After box sinking animation is done
+        yield return new WaitForSeconds(1.0f);
+
+        //Spawn a new box in the box spawnpoint
+        box.position = new Vector2(SpawnPosition.x, SpawnPosition.y);
+        GetComponent<Animator>().Play("SpawnBox");
+        isOnWater = false;
+        boxCollider.isTrigger = true;
+        isSinking = false;
+
+        //spriteRenderer.color = new Color(1, 1, 1, 0);
+        yield return null;
+        //while (transform.position.y > WaterBehaviour.transform.position.y)
+        //{
+        //    transform.position = Vector2.Lerp(transform.position, pitPosition, 0.1f);
+        //    yield return new WaitForFixedUpdate();
+        //}
+    }
+
+    override public void moveAndCollide(Vector2 update)
+    {
+        // if we aren't moving, don't move!
+        if (update == Vector2.zero) { return; }
+
+        // move, with respect for collisions
+        Vector2 position = rb.position;
+        Vector2 extents = _collider.bounds.extents;
+        Vector2 flush = Vector2.zero;
+
+        // corners for raycasting
+        Vector2 topRight = new Vector2(position.x + extents.x * padding, position.y + extents.y * padding);
+        Vector2 topLeft = new Vector2(position.x - extents.x * padding, position.y + extents.y * padding);
+        Vector2 bottomRight = new Vector2(position.x + extents.x * padding, position.y - extents.y * padding);
+        Vector2 bottomLeft = new Vector2(position.x - extents.x * padding, position.y - extents.y * padding);
+
+        // perform 2 raycasts in total from appropriate corners to check collision
+        // raycasting is used due to issues with tilemap colliders
+
+        //    ^  ^
+        //    |  |
+        // <- *--* ->
+        //    |  |
+        // <- *--* ->
+        //    |  |
+        //    V  V
+
+        // horizontal, right
+        if (update.x > 0)
+        {
+            RaycastHit2D tr = Physics2D.Raycast(topRight, Vector2.right);
+            RaycastHit2D br = Physics2D.Raycast(bottomRight, Vector2.right);
+
+            if (collided(tr) || collided(br))
+            {
+                update.x = 0;
+                if (collided(tr))
+                {
+                    flush.x = tr.distance;
+                }
+                if (collided(br))
+                {
+                    flush.x = br.distance;
+                }
+            }
+        }
+        // horizontal, left
+        else if (update.x < 0)
+        {
+            RaycastHit2D tl = Physics2D.Raycast(topLeft, Vector2.left);
+            RaycastHit2D bl = Physics2D.Raycast(bottomLeft, Vector2.left);
+
+            if (collided(tl) || collided(bl))
+            {
+                update.x = 0;
+                if (collided(tl))
+                {
+                    flush.x = tl.distance;
+                }
+                if (collided(bl))
+                {
+                    flush.x = bl.distance;
+                }
+            }
+        }
+
+        // vertical, up
+        if (update.y > 0)
+        {
+            RaycastHit2D tr = Physics2D.Raycast(topRight, Vector2.up);
+            RaycastHit2D tl = Physics2D.Raycast(topLeft, Vector2.up);
+
+            if (collided(tr) || collided(tl))
+            {
+                update.y = 0;
+                if (collided(tr))
+                {
+                    flush.y = tr.distance;
+                }
+                if (collided(tl))
+                {
+                    flush.y = tl.distance;
+                }
+            }
+        }
+        // vertical, down
+        else if (update.y < 0)
+        {
+            RaycastHit2D br = Physics2D.Raycast(bottomRight, Vector2.down);
+            RaycastHit2D bl = Physics2D.Raycast(bottomLeft, Vector2.down);
+
+            if (collided(br) || collided(bl))
+            {
+                update.y = 0;
+                if (collided(br))
+                {
+                    flush.y = br.distance;
+                }
+                if (collided(bl))
+                {
+                    flush.y = bl.distance;
+                }
+            }
+        }
+
+        // update position and clamp according to flush raycasts
+        Vector2 newPosition = position + update * moveSpeed * Time.deltaTime;
+
+        if (flush.x != 0)
+        {
+            newPosition.x = Mathf.Clamp(newPosition.x, position.x - flush.x, position.x + flush.x);
+        }
+        if (flush.y != 0)
+        {
+            newPosition.y = Mathf.Clamp(newPosition.y, position.y - flush.y, position.y + flush.y);
+        }
+
+        rb.MovePosition(newPosition);
     }
 
     override public Vector2 getMovement()
@@ -91,9 +282,9 @@ public class BoxBehaviour : EntityBehaviour
             playerScript = PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>();
 
             //Debug.Log("Player: " + player);
-            
+            Debug.Log("1. Distance between Player and box " + Mathf.Abs(Vector2.Distance(player.position, transform.position)) + " ,While push radius is " +  pushRadius);
             // handle player collision with crate
-            if (Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= 1f
+            if (Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= pushRadius
             // || Mathf.Abs(Vector2.Distance(player1.position, transform.position)) <= 1f
             )
             {
@@ -112,9 +303,10 @@ public class BoxBehaviour : EntityBehaviour
                 Vector2 upDir = new Vector2(0, 1);
                 Vector2 downDir = new Vector2(0, -1);
 
+                Debug.Log("2: Distance between Player and box " + Mathf.Abs(Vector2.Distance(player.position, transform.position)) + " ,While push radius is " +  pushRadius);
                 // handles pushing depending on which player is pushing the box
-                if ((Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= 1f) && (playerScript._playerState == CurrentPlayerState.IDLE))
-                { // if raccoon is pushing
+                if ((Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= pushRadius) && (playerScript._playerState == CurrentPlayerState.IDLE))
+                {
 
                     float rightDist = Vector2.Distance(right, player.position);
                     float leftDist = Vector2.Distance(left, player.position);
@@ -204,7 +396,7 @@ public class BoxBehaviour : EntityBehaviour
     }
 
     //Just overlapped a collider 2D
-    private void OnTriggerEnter2D(Collider2D collision)
+    virtual protected void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Goal")
         {
@@ -218,12 +410,20 @@ public class BoxBehaviour : EntityBehaviour
             sokobanScript.DecrementGoals();
             sokobanScript.DecrementCrates();
 
+            GameObject goalGameObject = collision.gameObject;
+            if(goalGameObject.GetComponent<GoalBehaviour>() != null)
+            {
+                goalGameObject.GetComponent<GoalBehaviour>().onGoalReached();
+            }
+
             //Destroy(collision.gameObject);
             //Destroy(gameObject);
-            IEnumerator coroutine = MoveSelfToPosition(collision.transform.position);
+            IEnumerator coroutine = MoveSelfToPosition( new Vector3(collision.transform.position.x, collision.transform.position.y, transform.position.z));
             StartCoroutine(coroutine);
 
             CameraManager.Instance.ShakeCamera(0.2f, 0.1f);
+            // checks if we won everytime we move box onto goal
+            //sokobanScript.Win();
             Debug.Log("stopping moving sound");
             boxSoundSource.Stop();
             boxSoundSource.volume = Mathf.Clamp(boxSoundSource.volume - 0.1f, 0f, 1f);
@@ -234,11 +434,11 @@ public class BoxBehaviour : EntityBehaviour
         }
     }
 
-    private IEnumerator MoveSelfToPosition(Vector2 position)
+    protected IEnumerator MoveSelfToPosition(Vector3 position)
     {
         while (Vector2.Distance(transform.position, position) > 0.01f)
         {
-            transform.position = Vector2.Lerp(transform.position, position, 0.1f);
+            transform.position = Vector3.Lerp(transform.position, position, 0.1f);
             yield return new WaitForFixedUpdate();
         }
         yield return null;

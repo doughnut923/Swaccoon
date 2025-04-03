@@ -15,8 +15,6 @@ namespace SwacoonNarrative
         /// <summary> The csv file containing the dialogue to be played. </summary>
         [SerializeField] private TextAsset dialogueCSV;
 
-        
-
         [Header("Conditions")]
         [SerializeField] private List<Condition> conditions = new List<Condition>();
 
@@ -27,13 +25,15 @@ namespace SwacoonNarrative
         private string writeToFlagId = "";
         [SerializeField] private bool writeToFlagValue = false;
 
+        public bool isDialogueDone = false;
+
 
         /// <summary>
         /// Call this to activate the dialogue. If condition are set they must all be satisfied.
         /// </summary>
         public void Trigger()
         {
-
+            isDialogueDone = false;
             //Debug.Log("trigger() called");
             //Debug.Log("smothing is already playing "+ SwacoonDialogueSystem.IsPlaying());
             //Debug.Log("trigger " + SwacoonDialogueSystem.IsPlaying());
@@ -52,6 +52,8 @@ namespace SwacoonNarrative
 
             //Activate Dialogue
             //Debug.Log("entering play sequence");
+            PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.CUTSCENE_PLAYING;
+            PlayerManager._playerManagerState = PlayerManagerState.CUTSCENE_PLAYING;
             SwacoonDialogueSystem.OnDialogueEnd.AddListener(OnDialogueEnd);
             SwacoonDialogueSystem.PlaySequence(dialogueCSV);
         }
@@ -77,12 +79,15 @@ namespace SwacoonNarrative
         /// </summary>
         private void OnDialogueEnd()
         {
+            isDialogueDone = true;
             if (writeToFlagId != "")
             {
                 SwacoonDialogueFlags.SetFlag(writeToFlagId, writeToFlagValue);
             }
             SwacoonDialogueSystem.OnDialogueEnd.RemoveListener(OnDialogueEnd);//We shouldn't recieve this if we aren't playing something.
-            if(!repeatable){
+            PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.IDLE;
+            PlayerManager._playerManagerState = PlayerManagerState.NOT_SWAPPING;
+            if (!repeatable){
                 Destroy(this);
             }
         }

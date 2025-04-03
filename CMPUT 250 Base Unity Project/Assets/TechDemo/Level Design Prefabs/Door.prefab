@@ -49,7 +49,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,6 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7311252006878071649}
   - component: {fileID: 7311252006878071651}
+  - component: {fileID: 8913128209524357700}
   m_Layer: 0
   m_Name: Door
   m_TagString: Untagged
@@ -140,3 +141,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8913128209524357700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7311252006878071662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e3b41db3b533467aa1a527a654e98b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openCondition: 0
+  openRadius: 1
+  _remainingLevers: 0
+  gateOpen: 0
+  gateSoundSource: {fileID: 0}
+  gateOpenSound: {fileID: 8300000, guid: 650643d8443ea4ed7bb6ebac0fbb737e, type: 3}
+  spriteRenderer: {fileID: 7311252006544627175}
+  lever: {fileID: 0}

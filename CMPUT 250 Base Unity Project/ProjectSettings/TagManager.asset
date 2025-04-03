@@ -15,6 +15,14 @@ TagManager:
   - Gate Trigger
   - Lever Trigger
   - Pit Trigger
+  - Boat
+  - Water
+  - Platform Trigger
+  - Wall
+  - Platform
+  - Platform Dialogue
+  - Boat Dialogue
+  - Ground
   layers:
   - Default
   - TransparentFX

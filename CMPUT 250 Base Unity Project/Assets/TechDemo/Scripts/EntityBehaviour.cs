@@ -12,9 +12,10 @@ public class EntityBehaviour : MonoBehaviour
     public float invincibilityTime = 1f;
 
     // internal variables
-    private float _collisionBuffer = 0.1f;
+    [SerializeField]private float collisionBuffer = 0.1f;
     protected Direction _currDir = Direction.North;
     protected int _health = 3;
+    public Vector2 padding = new Vector2(0f, 0f);
 
     // invincibility
     private float _invTimer;
@@ -94,7 +95,7 @@ public class EntityBehaviour : MonoBehaviour
     virtual public void handleDeath() { return; }
 
     // controls movement and collision
-    void moveAndCollide(Vector2 update)
+    virtual public void moveAndCollide(Vector2 update)
     {
         // if we aren't moving, don't move!
         if (update == Vector2.zero) { return; }
@@ -105,10 +106,10 @@ public class EntityBehaviour : MonoBehaviour
         Vector2 flush = Vector2.zero;
 
         // corners for raycasting
-        Vector2 topRight = new Vector2(position.x + extents.x, position.y + extents.y);
-        Vector2 topLeft = new Vector2(position.x - extents.x, position.y + extents.y);
-        Vector2 bottomRight = new Vector2(position.x + extents.x, position.y - extents.y);
-        Vector2 bottomLeft = new Vector2(position.x - extents.x, position.y - extents.y);
+        Vector2 topRight = new Vector2(position.x + extents.x + padding.x, position.y + extents.y + padding.y);
+        Vector2 topLeft = new Vector2(position.x - extents.x - padding.x, position.y + extents.y + padding.y);
+        Vector2 bottomRight = new Vector2(position.x + extents.x + padding.x, position.y - extents.y - padding.y);
+        Vector2 bottomLeft = new Vector2(position.x - extents.x - padding.x, position.y - extents.y - padding.y);
 
         // perform 2 raycasts in total from appropriate corners to check collision
         // raycasting is used due to issues with tilemap colliders
@@ -121,9 +122,21 @@ public class EntityBehaviour : MonoBehaviour
         //    |  |
         //    V  V
 
+        //if cutscene is playing, ignore collision
+        if (PlayerManager.Instance.enabled == false)
+        {
+            return;
+        }
+
         // horizontal, right
         if (update.x > 0)
         {
+
+            // raycast from top right and bottom right
+            Debug.DrawRay(topRight, Vector2.right, Color.red);
+            Debug.DrawRay(bottomRight, Vector2.right, Color.red);
+            
+
             RaycastHit2D tr = Physics2D.Raycast(topRight, Vector2.right);
             RaycastHit2D br = Physics2D.Raycast(bottomRight, Vector2.right);
 
@@ -143,11 +156,17 @@ public class EntityBehaviour : MonoBehaviour
         // horizontal, left
         else if (update.x < 0)
         {
+
+            // raycast from top left and bottom left
+            Debug.DrawRay(topLeft, Vector2.left , Color.red);
+            Debug.DrawRay(bottomLeft, Vector2.left , Color.red);
+
             RaycastHit2D tl = Physics2D.Raycast(topLeft, Vector2.left);
             RaycastHit2D bl = Physics2D.Raycast(bottomLeft, Vector2.left);
 
             if (collided(tl) || collided(bl))
             {
+
                 update.x = 0;
                 if (collided(tl))
                 {
@@ -163,11 +182,17 @@ public class EntityBehaviour : MonoBehaviour
         // vertical, up
         if (update.y > 0)
         {
+
             RaycastHit2D tr = Physics2D.Raycast(topRight, Vector2.up);
+            //draw tr
+            Debug.DrawRay(topRight, Vector2.up, Color.red);
             RaycastHit2D tl = Physics2D.Raycast(topLeft, Vector2.up);
+            //draw tl
+            Debug.DrawRay(topLeft, Vector2.up, Color.red);
 
             if (collided(tr) || collided(tl))
             {
+
                 update.y = 0;
                 if (collided(tr))
                 {
@@ -182,11 +207,17 @@ public class EntityBehaviour : MonoBehaviour
         // vertical, down
         else if (update.y < 0)
         {
+
+            Debug.DrawRay(bottomLeft, Vector2.down, Color.red);
+            Debug.DrawRay(bottomRight, Vector2.down, Color.red);
+
             RaycastHit2D br = Physics2D.Raycast(bottomRight, Vector2.down);
             RaycastHit2D bl = Physics2D.Raycast(bottomLeft, Vector2.down);
 
             if (collided(br) || collided(bl))
             {
+                // Debug.Log("collided with bottom wall" + br.collider.name + " " + bl.collider.name);
+
                 update.y = 0;
                 if (collided(br))
                 {
@@ -215,9 +246,9 @@ public class EntityBehaviour : MonoBehaviour
     }
 
     // helper function for collisions
-    bool collided(RaycastHit2D result)
+    protected bool collided(RaycastHit2D result)
     {
-        return (result.collider && result.distance < _collisionBuffer && !result.collider.isTrigger);
+        return result.collider && result.distance < collisionBuffer && !result.collider.isTrigger;
     }
 
     // helper function to take direction and get a corresponding vector

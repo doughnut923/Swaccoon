@@ -7,31 +7,13 @@ public class TriggerHandler : MonoBehaviour
     public SwacoonNarrative.SwacoonDialogueTrigger dialogueTrigger;
     public LeverBehaviour lever;
     public GateBehaviour gate;
-    //private LeverBehaviour leverPulled;
-    //private static TriggerHandler _instance;
-    //public static TriggerHandler Instance
-    //{
-    //    get
-    //    {
-    //        return _instance;
-    //    }
-    //}
+    private SokobanBehaviour sokobanScript;
+    //private Rigidbody2D player;
 
-    //[SerializeField] [HideInInspector] public bool isOpen = false;
-
-    //void Awake()
-    //{
-    //    if (_instance == null)
-    //    {
-    //        _instance = this;
-    //    }
-
-        
-    //}
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -43,38 +25,66 @@ public class TriggerHandler : MonoBehaviour
     //when player enters the trigger area
     private void OnTriggerEnter2D(Collider2D other)
     {
+        sokobanScript = (SokobanBehaviour)other.gameObject.GetComponent(typeof(SokobanBehaviour));
         //Debug.Log("entering trigger zone");
+        //Debug.Log("player " + other.name);
+        //Debug.Log("puzzle complete yet " + sokobanScript.puzzleComplete);
         if (other.CompareTag("Player"))
         {
             //Debug.Log("game object name is " + gameObject.name);
             if (gameObject.tag == "Lever Trigger")
             {
+                dialogueTrigger.Trigger();
+                Destroy(gameObject);
                 //Debug.Log("compare tag");
-                if (!lever.IsLeverPulled)
-                {
-                    dialogueTrigger.Trigger();
-
-
-                }
-                else
-                {
-                    Destroy(this);
-
-                }
+                //if (!lever.IsLeverPulled)
+                //{
+                //    dialogueTrigger.Trigger();
+                //}
+                //else
+                //{
+                //    Destroy(gameObject);
+                //}
             }
             if (gameObject.tag == "Gate Trigger")
             {
                 if (!lever.IsLeverPulled)
                 {
                     dialogueTrigger.Trigger();
-                    
+
                 }
                 else
                 {
+                    Destroy(gameObject);
+                }
+            }
+        }
+        if (other.name != "Fish")
+        {
+            //Debug.Log("player name is " + other.name);
+            // Debug.Log("game obejcte tag is " + gameObject.tag);
+            if (gameObject.tag == "Boat Dialogue")
+            {
+                if (other.CompareTag("Player"))
+                {
+                    Debug.Log("triggering boat dialogue");
+                    dialogueTrigger.Trigger();
+
+                    Destroy(this);
+                }
+            }
+            if (gameObject.tag == "Platform Dialogue")
+            { //only show dialogue after the boxes are in place
+                //Debug.Log("is the puzzle complete? " + sokobanScript.puzzleComplete);
+                if (sokobanScript.puzzleComplete)
+                {
+                    Debug.Log("triggering platform dialogue");
+                    dialogueTrigger.Trigger();
                     Destroy(this);
                 }
             }
         }
-    }
+    }    
+
 }
 

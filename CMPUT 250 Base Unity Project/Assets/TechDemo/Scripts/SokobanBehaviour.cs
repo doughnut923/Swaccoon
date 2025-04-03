@@ -16,6 +16,10 @@ public class SokobanBehaviour : MonoBehaviour
     [SerializeField] private AudioClip boxCompleteClip;
     [SerializeField] private AudioClip puzzleCompleteClip;
 
+    public SwacoonNarrative.SwacoonDialogueTrigger endLocationDialogue;
+
+    //public LeverBehaviour lever;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,20 +43,40 @@ public class SokobanBehaviour : MonoBehaviour
     {
         _goals--;
 
+        Debug.Log("number of goals is "+_goals);
+
+        
+        //if (_goals <= 0 && lever.IsLeverPulled)
+        //{
+        //    Debug.Log("Puzzle complete!");
+        //    puzzleComplete = true;
+
+        //    puzzleSoundSource.clip = puzzleCompleteClip;
+        //    puzzleSoundSource.Play();
+            
+
+        //    // show game over UI
+        //    GameOverUIBehavior.instance.ShowGameOverUI();
+        //    endLocationDialogue.Trigger();
+        //}
+        //else
+        //{
+        //    puzzleSoundSource.clip = boxCompleteClip;
+        //    puzzleSoundSource.Play();
+        //}
+        puzzleSoundSource.clip = boxCompleteClip;
+        puzzleSoundSource.Play();
+        Win();
+    }
+
+    public void Win()
+    {
         if (_goals <= 0)
         {
             Debug.Log("Puzzle complete!");
             puzzleComplete = true;
 
             puzzleSoundSource.clip = puzzleCompleteClip;
-            puzzleSoundSource.Play();
-
-            // show game over UI
-            GameOverUIBehavior.instance.ShowGameOverUI();
-        }
-        else
-        {
-            puzzleSoundSource.clip = boxCompleteClip;
             puzzleSoundSource.Play();
         }
     }

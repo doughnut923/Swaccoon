@@ -87,7 +87,7 @@ TextureImporter:
       213: -5282300517771018440
     second: heroRaconIdleWalk_27
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -104,9 +104,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -116,8 +119,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -138,10 +141,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -153,6 +161,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -165,6 +174,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -768,9 +791,37 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      heroRaconIdleWalk_0: -7149655254542474397
+      heroRaconIdleWalk_1: 4399622216052677518
+      heroRaconIdleWalk_10: 7772193408879962718
+      heroRaconIdleWalk_11: -2524599692705401834
+      heroRaconIdleWalk_12: 6967151936209746986
+      heroRaconIdleWalk_13: -3124884605372549192
+      heroRaconIdleWalk_14: -3253420348759804153
+      heroRaconIdleWalk_15: -3334996315934385002
+      heroRaconIdleWalk_16: -8076581974082333276
+      heroRaconIdleWalk_17: -7278239577763544788
+      heroRaconIdleWalk_18: -5263749153080092271
+      heroRaconIdleWalk_19: 7231112734061405083
+      heroRaconIdleWalk_2: -1906566838827814584
+      heroRaconIdleWalk_20: 8584110993362214456
+      heroRaconIdleWalk_21: -5273296780164134691
+      heroRaconIdleWalk_22: -5576590533242094999
+      heroRaconIdleWalk_23: 2800806559522486351
+      heroRaconIdleWalk_24: 7088810788647407318
+      heroRaconIdleWalk_25: -5532615859466041056
+      heroRaconIdleWalk_26: 3081078354943938890
+      heroRaconIdleWalk_27: -5282300517771018440
+      heroRaconIdleWalk_3: 1287678291942624209
+      heroRaconIdleWalk_4: -7399619259161909340
+      heroRaconIdleWalk_5: -4931093500347432286
+      heroRaconIdleWalk_6: 2308335609822901001
+      heroRaconIdleWalk_7: 3227475870979519549
+      heroRaconIdleWalk_8: -6358411510385881483
+      heroRaconIdleWalk_9: -6122469512599704747
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
