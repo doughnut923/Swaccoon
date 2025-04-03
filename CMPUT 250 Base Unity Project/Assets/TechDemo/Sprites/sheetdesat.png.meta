@@ -612,7 +612,7 @@ TextureImporter:
       213: -4828553957954558703
     second: sheetdesat_47
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -629,9 +629,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -641,8 +644,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -663,10 +666,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -678,6 +686,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -690,6 +699,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -702,6 +712,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -5043,9 +5054,215 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      mud_b: -7092785892856993662
+      mud_bl: 5635196104597765567
+      mud_br: 2566424707090519298
+      mud_c1: -6324679653149127377
+      mud_c2: 8853319057221063591
+      mud_c3: 6684915218624227061
+      mud_c4: -1077292986076034545
+      mud_c5: -2120884050340309849
+      mud_l: -5070541366892259621
+      mud_r: -1043732403268271590
+      mud_t: 7714130149315530316
+      mud_tl: 5076941967251667962
+      mud_tr: -6913826428040052219
+      sheetdesat_0: -2884140183568421514
+      sheetdesat_1: -4387214103010746598
+      sheetdesat_10: -8003152806078470212
+      sheetdesat_100: -3009301136652698835
+      sheetdesat_101: -5923068065619156091
+      sheetdesat_102: -1530783969764047625
+      sheetdesat_103: 48008389390759220
+      sheetdesat_104: 4563838136789895867
+      sheetdesat_105: 6667611158816920265
+      sheetdesat_108: 2787673270407389729
+      sheetdesat_109: -3842345154809324051
+      sheetdesat_11: 7918910180383319930
+      sheetdesat_110: -8257249266663200250
+      sheetdesat_111: 8124094125190092500
+      sheetdesat_112: -9186808060254195730
+      sheetdesat_113: 353433845945617916
+      sheetdesat_114: -118557136238295822
+      sheetdesat_120: -6423402796153244083
+      sheetdesat_121: 329078040209195681
+      sheetdesat_122: -6139854790913733712
+      sheetdesat_123: 5206807430046400175
+      sheetdesat_124: -308761558567839413
+      sheetdesat_125: 5610806674467775200
+      sheetdesat_126: 2786019700196079667
+      sheetdesat_128: -2708135052974040787
+      sheetdesat_13: 7699549014275299238
+      sheetdesat_130: -3469567882151327391
+      sheetdesat_131: -8085764729345840183
+      sheetdesat_133: -556485612165960921
+      sheetdesat_134: 2931549626840990829
+      sheetdesat_135: 638303141297497981
+      sheetdesat_136: -4306221948287106685
+      sheetdesat_137: -378066557109443097
+      sheetdesat_138: -8804571258648941290
+      sheetdesat_14: -4199007091645538737
+      sheetdesat_144: -1644693910903283243
+      sheetdesat_145: 262640034181966547
+      sheetdesat_146: -1874110926802741822
+      sheetdesat_147: 338868868787462957
+      sheetdesat_148: 181634952675059933
+      sheetdesat_149: 4115649796109299527
+      sheetdesat_15: -1388492193969387630
+      sheetdesat_150: 1667546471161709119
+      sheetdesat_151: 881158808001846499
+      sheetdesat_152: 4424819655473786947
+      sheetdesat_153: -8040807792047680100
+      sheetdesat_154: 1234276464733713182
+      sheetdesat_155: -3541950732429199260
+      sheetdesat_156: -3329686704861707535
+      sheetdesat_16: 4967295931940133010
+      sheetdesat_168: 7312708200464963051
+      sheetdesat_169: -1291021099315490022
+      sheetdesat_17: 6206554697850473660
+      sheetdesat_170: -2194215842164911739
+      sheetdesat_171: 3549639044037014316
+      sheetdesat_172: 7872901345606463790
+      sheetdesat_173: -3019060803479702417
+      sheetdesat_174: -2624783995378197715
+      sheetdesat_175: -7253693672197979652
+      sheetdesat_176: -5654589355754840503
+      sheetdesat_177: -6410568881029588455
+      sheetdesat_178: 2265884177955653444
+      sheetdesat_179: -7490782407516719068
+      sheetdesat_18: 7801184695420658940
+      sheetdesat_180: -5897497843773934792
+      sheetdesat_19: -5329593099554375898
+      sheetdesat_192: 1194975917361720106
+      sheetdesat_193: -6699017026008059778
+      sheetdesat_194: 9050353814581723819
+      sheetdesat_195: 248407453735521716
+      sheetdesat_196: -3304367908491511321
+      sheetdesat_197: -4310284712815803986
+      sheetdesat_198: -6558918052390355878
+      sheetdesat_199: -7085048603289704885
+      sheetdesat_2: -2866242469638572412
+      sheetdesat_20: 5884765108373569021
+      sheetdesat_200: -575075685038138289
+      sheetdesat_201: 8000830669717869286
+      sheetdesat_202: 4348990639522325596
+      sheetdesat_203: -345157833919179588
+      sheetdesat_204: -2560566821166757172
+      sheetdesat_21: 6513458096955213088
+      sheetdesat_216: 8428681340884924703
+      sheetdesat_217: 5801859176526787190
+      sheetdesat_218: 5799780697312203189
+      sheetdesat_219: 7643733838715425080
+      sheetdesat_22: -8180238579802427451
+      sheetdesat_220: -1193236764283091741
+      sheetdesat_221: 2106966978428151042
+      sheetdesat_222: -1124932743680780444
+      sheetdesat_223: -4189564434210901292
+      sheetdesat_224: 515079596543473508
+      sheetdesat_225: -6396794204534480625
+      sheetdesat_226: -7235472095957421801
+      sheetdesat_227: -7209511362645924032
+      sheetdesat_228: -8728103100310182025
+      sheetdesat_23: 2668075417360504215
+      sheetdesat_235: 5535973473661429680
+      sheetdesat_24: 3309642582147275211
+      sheetdesat_240: 7587202687970186314
+      sheetdesat_241: 2723269133883428849
+      sheetdesat_242: -8765079249682832608
+      sheetdesat_243: -1802604979924920328
+      sheetdesat_244: 7064077194416238609
+      sheetdesat_245: -8805990625421692309
+      sheetdesat_246: 2920488712547507686
+      sheetdesat_247: -7395590444196452499
+      sheetdesat_248: -3830907451973913950
+      sheetdesat_249: -3454025323756968888
+      sheetdesat_25: 6205605509291487439
+      sheetdesat_250: -465356424077503782
+      sheetdesat_251: 3942883697725446296
+      sheetdesat_252: 1062596548990553494
+      sheetdesat_257: 8569057083181474749
+      sheetdesat_26: 1219969809717414770
+      sheetdesat_264: 394121382000547700
+      sheetdesat_265: 8668151219163438330
+      sheetdesat_266: -7644580644445786890
+      sheetdesat_267: -6858301468116887342
+      sheetdesat_268: 1408991641088341347
+      sheetdesat_269: -4421734903456647651
+      sheetdesat_27: 8180430929800583168
+      sheetdesat_270: -8261143463448154088
+      sheetdesat_271: -1547525943721897218
+      sheetdesat_272: 190254308565506104
+      sheetdesat_273: -2507928943817851937
+      sheetdesat_274: -7193514322612747552
+      sheetdesat_275: 8270538694079278205
+      sheetdesat_276: 8804756570015170129
+      sheetdesat_28: -5459706033164143122
+      sheetdesat_29: -3529833739106038600
+      sheetdesat_3: 158150360785120454
+      sheetdesat_30: -4033774784788259878
+      sheetdesat_32: -2983873720199795185
+      sheetdesat_33: -6482381279460700876
+      sheetdesat_34: 3013295878475237825
+      sheetdesat_35: -6488105361444677831
+      sheetdesat_37: -8783101208031081069
+      sheetdesat_38: -2103378965419734747
+      sheetdesat_39: 7989096500195813585
+      sheetdesat_4: 8091987300906967727
+      sheetdesat_40: -3849951371217902821
+      sheetdesat_41: -4916445357337372197
+      sheetdesat_42: 4249784815522870627
+      sheetdesat_43: 50618153597269299
+      sheetdesat_44: 4033259934922136724
+      sheetdesat_45: 4414205189433755666
+      sheetdesat_46: 6619297254650053907
+      sheetdesat_47: -4828553957954558703
+      sheetdesat_48: 3098232644889138987
+      sheetdesat_49: -7082363156800090633
+      sheetdesat_5: -8804245644325700207
+      sheetdesat_50: -2233467301716618247
+      sheetdesat_51: -4233809752595545190
+      sheetdesat_52: -6210710242930574374
+      sheetdesat_53: 1622007924354541127
+      sheetdesat_54: 7679080762434803248
+      sheetdesat_55: -4088984407631174741
+      sheetdesat_56: 6600623937347771281
+      sheetdesat_57: -1338549993099682855
+      sheetdesat_59: 7507757562411491013
+      sheetdesat_6: -5196497020582081995
+      sheetdesat_60: 5295204300840592951
+      sheetdesat_61: -2846849461315273746
+      sheetdesat_62: 2561422266307693726
+      sheetdesat_63: 2410548976314246638
+      sheetdesat_64: 3912979295857972391
+      sheetdesat_65: -8540598009444326922
+      sheetdesat_66: -3314056108393398711
+      sheetdesat_70: -8039805131641120636
+      sheetdesat_71: -8417378239569044005
+      sheetdesat_72: -5596780290505437800
+      sheetdesat_73: -9222528393518531618
+      sheetdesat_74: -4734018810442820486
+      sheetdesat_75: 4938841405287915268
+      sheetdesat_76: -8581248617157017971
+      sheetdesat_77: -6436670684776247927
+      sheetdesat_78: 1633352413270910461
+      sheetdesat_79: -7060363519478133320
+      sheetdesat_80: -8398008743567796283
+      sheetdesat_81: -2898299842025476607
+      sheetdesat_84: 4565577704674469801
+      sheetdesat_85: 2288616175283839387
+      sheetdesat_86: 8136885704006649433
+      sheetdesat_87: 1466936509450854728
+      sheetdesat_88: 4404067197687713029
+      sheetdesat_89: 2569090193888124968
+      sheetdesat_9: -8701777491367682826
+      sheetdesat_90: -7612925663920147896
+      sheetdesat_96: 6010421165707140119
+      sheetdesat_97: -3723596069989197061
+      sheetdesat_98: -2102640709230781691
+      sheetdesat_99: 477518943603165827
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

@@ -90,7 +90,7 @@ TextureImporter:
       213: 639047068651763350
     second: Minifantasy_ForgottenPlainsProps_28
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -107,9 +107,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -119,8 +122,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -141,10 +144,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -156,6 +164,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -168,6 +177,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -180,6 +190,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -192,6 +203,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -204,6 +216,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -216,6 +229,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -228,6 +242,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -852,9 +867,38 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      Minifantasy_ForgottenPlainsProps_0: -7697879543379296236
+      Minifantasy_ForgottenPlainsProps_1: -1811582006850511466
+      Minifantasy_ForgottenPlainsProps_10: 5407167949813686853
+      Minifantasy_ForgottenPlainsProps_11: -3224202456533794196
+      Minifantasy_ForgottenPlainsProps_12: 6972190123475480336
+      Minifantasy_ForgottenPlainsProps_13: -8763836129941271082
+      Minifantasy_ForgottenPlainsProps_14: -4222553177948739811
+      Minifantasy_ForgottenPlainsProps_15: -6095646586433703057
+      Minifantasy_ForgottenPlainsProps_16: -6257515481187279047
+      Minifantasy_ForgottenPlainsProps_17: 7943778286642929983
+      Minifantasy_ForgottenPlainsProps_18: -7485240063669998773
+      Minifantasy_ForgottenPlainsProps_19: -537874932439381219
+      Minifantasy_ForgottenPlainsProps_2: 838083816341856049
+      Minifantasy_ForgottenPlainsProps_20: 1339536321328131832
+      Minifantasy_ForgottenPlainsProps_21: 7825206905049106096
+      Minifantasy_ForgottenPlainsProps_22: 6349360267525728516
+      Minifantasy_ForgottenPlainsProps_23: -7623661144529183703
+      Minifantasy_ForgottenPlainsProps_24: 4877495625615747448
+      Minifantasy_ForgottenPlainsProps_25: -8278581524229224121
+      Minifantasy_ForgottenPlainsProps_26: 7733943634869700832
+      Minifantasy_ForgottenPlainsProps_27: -6474741099014325866
+      Minifantasy_ForgottenPlainsProps_28: 639047068651763350
+      Minifantasy_ForgottenPlainsProps_3: -358168442467875079
+      Minifantasy_ForgottenPlainsProps_4: -702854666901177391
+      Minifantasy_ForgottenPlainsProps_5: -6630695369954485499
+      Minifantasy_ForgottenPlainsProps_6: -439496800248428465
+      Minifantasy_ForgottenPlainsProps_7: 5963528090424751413
+      Minifantasy_ForgottenPlainsProps_8: 2949759686383389126
+      Minifantasy_ForgottenPlainsProps_9: -3953209486756653526
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

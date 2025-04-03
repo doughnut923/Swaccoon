@@ -492,7 +492,7 @@ TextureImporter:
       213: 6879631824490461451
     second: pit_40
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -509,9 +509,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -521,8 +524,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -543,10 +546,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -558,6 +566,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -570,6 +579,20 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -4008,9 +4031,172 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      2dlevelTiles_0: 135961121899827151
+      2dlevelTiles_1: -5292905308819644964
+      2dlevelTiles_10: -8863600058527116366
+      2dlevelTiles_101: 3717124094549844460
+      2dlevelTiles_102: 6052447074198785169
+      2dlevelTiles_103: -9156385330994942363
+      2dlevelTiles_104: -6698085793139270478
+      2dlevelTiles_105: 9048090333869938925
+      2dlevelTiles_106: 613355906312622168
+      2dlevelTiles_107: 3135940607810530960
+      2dlevelTiles_108: -2110863805900090469
+      2dlevelTiles_11: -1373002934522050320
+      2dlevelTiles_117: 6482621736435493058
+      2dlevelTiles_118: 5864212383209986963
+      2dlevelTiles_119: 1873403303267601754
+      2dlevelTiles_12: -7605451222509115623
+      2dlevelTiles_120: -4089805336423767271
+      2dlevelTiles_121: 6250365043269766424
+      2dlevelTiles_122: -2355511386542920373
+      2dlevelTiles_123: -6451202631974731424
+      2dlevelTiles_124: 8590167023127255136
+      2dlevelTiles_13: 3112777893179691409
+      2dlevelTiles_133: 994433116155912024
+      2dlevelTiles_134: -7860113734580132115
+      2dlevelTiles_135: -1978752264474431826
+      2dlevelTiles_136: -8367447867060935671
+      2dlevelTiles_137: -1994269446556447150
+      2dlevelTiles_138: 6607363682655000251
+      2dlevelTiles_139: 3445162261421773291
+      2dlevelTiles_14: -2127961211543971510
+      2dlevelTiles_147: 2684787146773472938
+      2dlevelTiles_148: 6028634702329172788
+      2dlevelTiles_15: -9179747919633170521
+      2dlevelTiles_151: 2244364884298985687
+      2dlevelTiles_152: 2530045200617303840
+      2dlevelTiles_155: -1948281350811736848
+      2dlevelTiles_156: -8903574666724504843
+      2dlevelTiles_159: -963609312952895384
+      2dlevelTiles_16: -2662624756918667181
+      2dlevelTiles_160: -441320475574131579
+      2dlevelTiles_17: 1057959490447329961
+      2dlevelTiles_18: 1177370195780833936
+      2dlevelTiles_19: -8290236246238374035
+      2dlevelTiles_2: 1325315991904473404
+      2dlevelTiles_20: 4921566816048370127
+      2dlevelTiles_21: 5122418036922508626
+      2dlevelTiles_22: -2580275762013346641
+      2dlevelTiles_23: 7374042372659242147
+      2dlevelTiles_24: -8779573703220623588
+      2dlevelTiles_25: -1987252732841794302
+      2dlevelTiles_26: 6878638684963267856
+      2dlevelTiles_27: 8627693428781136068
+      2dlevelTiles_28: 2467310744154099456
+      2dlevelTiles_29: 8967491372440298950
+      2dlevelTiles_3: -7292806435240409650
+      2dlevelTiles_30: 578370261535055316
+      2dlevelTiles_31: -6185584896759299003
+      2dlevelTiles_32: 4353849083660676800
+      2dlevelTiles_33: -773868705574809064
+      2dlevelTiles_34: -2118620569675515630
+      2dlevelTiles_35: -2821422488769233317
+      2dlevelTiles_36: -7895120756989122509
+      2dlevelTiles_37: -4067623153222404504
+      2dlevelTiles_38: -8035629413341611805
+      2dlevelTiles_39: 5978191292778607004
+      2dlevelTiles_4: -5521594450025362891
+      2dlevelTiles_40: -6597148461684581954
+      2dlevelTiles_41: -4001087920914526448
+      2dlevelTiles_42: 7720564103282266318
+      2dlevelTiles_43: 6712243792939742983
+      2dlevelTiles_44: 2048544179716588391
+      2dlevelTiles_45: 1845190307105322112
+      2dlevelTiles_46: 4112874796087998903
+      2dlevelTiles_47: -4769110712139440692
+      2dlevelTiles_48: 1000437307508520179
+      2dlevelTiles_49: 7878458668608971617
+      2dlevelTiles_5: 6463216729935919964
+      2dlevelTiles_50: -164212767595502812
+      2dlevelTiles_51: 7497157036830434387
+      2dlevelTiles_52: 8598091673205751753
+      2dlevelTiles_53: -6887701535258197047
+      2dlevelTiles_54: -7224312934342456289
+      2dlevelTiles_55: 3309628189401670399
+      2dlevelTiles_56: 1831263504087426848
+      2dlevelTiles_57: -416480871734950039
+      2dlevelTiles_58: 216746144948666549
+      2dlevelTiles_59: -9206645989962877727
+      2dlevelTiles_6: -7639439904438720340
+      2dlevelTiles_60: -1804764744655637993
+      2dlevelTiles_61: -5193419771125779847
+      2dlevelTiles_62: 1967171517124861878
+      2dlevelTiles_63: 8286364715663648251
+      2dlevelTiles_64: 6429413089832068410
+      2dlevelTiles_65: 4803813797983988692
+      2dlevelTiles_66: -6908110392234405548
+      2dlevelTiles_67: 137354799249679983
+      2dlevelTiles_68: -2824765226830103005
+      2dlevelTiles_69: 5196340007532013261
+      2dlevelTiles_7: -1611528469335502850
+      2dlevelTiles_70: -8376173905193570411
+      2dlevelTiles_71: 2092667519467793525
+      2dlevelTiles_72: 3990882192702247856
+      2dlevelTiles_73: -4998650045182282011
+      2dlevelTiles_74: -7800145958444014091
+      2dlevelTiles_75: -556598441851618851
+      2dlevelTiles_76: -4977721718678370127
+      2dlevelTiles_8: -6607021063459815003
+      2dlevelTiles_85: -2583341044654942974
+      2dlevelTiles_86: 1156542126602629793
+      2dlevelTiles_87: -4822393321858993220
+      2dlevelTiles_88: 2733128304922454003
+      2dlevelTiles_89: 9176551580807927628
+      2dlevelTiles_9: 6608033398102608709
+      2dlevelTiles_90: 8748910828219975538
+      2dlevelTiles_91: -6269344441260816129
+      2dlevelTiles_92: 1618420399475413816
+      pit_1: 2802384022491241688
+      pit_10: -6743693368202027900
+      pit_11: -6493686178424513657
+      pit_12: 2683234937638721663
+      pit_13: -1812718615719150073
+      pit_14: 1636957592798825575
+      pit_15: 6404434035055780665
+      pit_16: -2185502672613724164
+      pit_17: -2776514326068107949
+      pit_18: -7640441132917874269
+      pit_19: -6141520560031998640
+      pit_2: -6798523090468997199
+      pit_20: -2468671294714962141
+      pit_21: -7020206183739485365
+      pit_22: 7319917080518314169
+      pit_23: -8919328414092371829
+      pit_24: 812148507001213401
+      pit_25: -3430973442240654650
+      pit_26: 2597059628457584590
+      pit_27: -8840941708553634702
+      pit_28: -3936566312219420122
+      pit_29: 7322979096698743494
+      pit_3: -4061147691720328086
+      pit_30: -5682359798707034539
+      pit_31: 609732387253028099
+      pit_32: -7250479724461152980
+      pit_33: 4336309192473370429
+      pit_34: -5529963035849988074
+      pit_35: -2626614085846768100
+      pit_36: -6466869623932174795
+      pit_37: -9033458357664827293
+      pit_38: -1723155238960583223
+      pit_39: 225926534228864306
+      pit_4: 6061487782524959582
+      pit_40: 6879631824490461451
+      pit_41: 8960258146737362144
+      pit_42: 940204328057981691
+      pit_43: 9118889582856664240
+      pit_44: 1941545869799842588
+      pit_45: 7166069098792670140
+      pit_46: 2881233557330148244
+      pit_47: 3753004908281386514
+      pit_5: 7443427876369118552
+      pit_6: 4105311654500327828
+      pit_7: 3435483817636834811
+      pit_8: -4145540858257389516
+      pit_9: 6783048189135626270
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
