@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -2709,7 +2709,7 @@ PrefabInstance:
     - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
       propertyPath: walkSpritesDown.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
@@ -2899,31 +2899,37 @@ PrefabInstance:
         type: 3}
       propertyPath: walkSpritesDown.Array.data[0]
       value: 
-      objectReference: {fileID: 5577865003916826241, guid: 5459087ec2ab64b7a9d4cc1eb92828b8,
+      objectReference: {fileID: -803138403708184043, guid: 0db166dc59e564336af2ed6d32dd997b,
         type: 3}
     - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
       propertyPath: walkSpritesDown.Array.data[1]
       value: 
-      objectReference: {fileID: -8181930513199877998, guid: 5459087ec2ab64b7a9d4cc1eb92828b8,
+      objectReference: {fileID: 7491572148825274932, guid: 0db166dc59e564336af2ed6d32dd997b,
         type: 3}
     - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
       propertyPath: walkSpritesDown.Array.data[2]
       value: 
-      objectReference: {fileID: -3609463674938961224, guid: 5459087ec2ab64b7a9d4cc1eb92828b8,
+      objectReference: {fileID: 7442368852131610188, guid: 0db166dc59e564336af2ed6d32dd997b,
         type: 3}
     - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
       propertyPath: walkSpritesDown.Array.data[3]
       value: 
-      objectReference: {fileID: -7832961911162659244, guid: 5459087ec2ab64b7a9d4cc1eb92828b8,
+      objectReference: {fileID: -5699224588723418104, guid: 0db166dc59e564336af2ed6d32dd997b,
         type: 3}
     - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
       propertyPath: walkSpritesDown.Array.data[4]
       value: 
-      objectReference: {fileID: 5465019318087835055, guid: 5459087ec2ab64b7a9d4cc1eb92828b8,
+      objectReference: {fileID: 7118648495035173376, guid: 0db166dc59e564336af2ed6d32dd997b,
+        type: 3}
+    - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
+      propertyPath: walkSpritesDown.Array.data[5]
+      value: 
+      objectReference: {fileID: 5127851065567994767, guid: 0db166dc59e564336af2ed6d32dd997b,
         type: 3}
     - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
@@ -3031,37 +3037,37 @@ PrefabInstance:
         type: 3}
       propertyPath: walkSpritesRight.Array.data[0]
       value: 
-      objectReference: {fileID: 5577865003916826241, guid: 5459087ec2ab64b7a9d4cc1eb92828b8,
+      objectReference: {fileID: -803138403708184043, guid: 0db166dc59e564336af2ed6d32dd997b,
         type: 3}
     - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
       propertyPath: walkSpritesRight.Array.data[1]
       value: 
-      objectReference: {fileID: -8181930513199877998, guid: 5459087ec2ab64b7a9d4cc1eb92828b8,
+      objectReference: {fileID: 7491572148825274932, guid: 0db166dc59e564336af2ed6d32dd997b,
         type: 3}
     - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
       propertyPath: walkSpritesRight.Array.data[2]
       value: 
-      objectReference: {fileID: -3609463674938961224, guid: 5459087ec2ab64b7a9d4cc1eb92828b8,
+      objectReference: {fileID: 7442368852131610188, guid: 0db166dc59e564336af2ed6d32dd997b,
         type: 3}
     - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
       propertyPath: walkSpritesRight.Array.data[3]
       value: 
-      objectReference: {fileID: -3609463674938961224, guid: 5459087ec2ab64b7a9d4cc1eb92828b8,
+      objectReference: {fileID: -5699224588723418104, guid: 0db166dc59e564336af2ed6d32dd997b,
         type: 3}
     - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
       propertyPath: walkSpritesRight.Array.data[4]
       value: 
-      objectReference: {fileID: -7832961911162659244, guid: 5459087ec2ab64b7a9d4cc1eb92828b8,
+      objectReference: {fileID: 7118648495035173376, guid: 0db166dc59e564336af2ed6d32dd997b,
         type: 3}
     - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
       propertyPath: walkSpritesRight.Array.data[5]
       value: 
-      objectReference: {fileID: 5577865003916826241, guid: 5459087ec2ab64b7a9d4cc1eb92828b8,
+      objectReference: {fileID: 5127851065567994767, guid: 0db166dc59e564336af2ed6d32dd997b,
         type: 3}
     - target: {fileID: 7540428720669886612, guid: ec5d4cf984d63344fb93aec78dfc9e47,
         type: 3}
@@ -6857,6 +6863,7 @@ MonoBehaviour:
   isOpen: 0
   isActive: 0
   isSpedUp: 0
+  skip: 122
 --- !u!1 &1904175753
 GameObject:
   m_ObjectHideFlags: 0
