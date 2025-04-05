@@ -15,6 +15,14 @@ public class PressurePlateBehviour : MonoBehaviour
     public bool IsPressed { get { return isPressed; } }
     public UnityEvent onPlatePressed = new UnityEvent();
     public UnityEvent onPlateReleased = new UnityEvent();
+    public SpriteRenderer spriteRenderer;
+    [SerializeField] protected List<Sprite> pressurePlateSprite = new List<Sprite>(2);
+    protected SpriteRenderer currentSprite;
+
+    private void Start()
+    {
+        currentSprite = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+    }
 
     private void OnTriggerStay2D(Collider2D collision)
     {
@@ -24,6 +32,8 @@ public class PressurePlateBehviour : MonoBehaviour
         if (collision.gameObject.GetComponent<HorseBehaviour>() != null)
         {
             isPressed = true;
+            // chagne the sprite to pressed down
+            currentSprite.sprite = pressurePlateSprite[1];
             onPlatePressed.Invoke();
         }
     }
@@ -32,6 +42,8 @@ public class PressurePlateBehviour : MonoBehaviour
         if (collision.gameObject.GetComponent<HorseBehaviour>())
         {
             isPressed = false;
+            // change the sprite back to up
+            currentSprite.sprite = pressurePlateSprite[0];
             onPlateReleased.Invoke();
         }
     }

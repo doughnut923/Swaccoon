@@ -1520,10 +1520,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1913674912}
     m_Modifications:
+    - target: {fileID: 2307343212723154165, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307343212723154165, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8bd891d9b8f8f4525a40536d3e6c913a,
+        type: 3}
     - target: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.5724544
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
@@ -1533,7 +1549,7 @@ PrefabInstance:
     - target: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.5424528
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2307343212977290179, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
@@ -1600,6 +1616,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 775781997}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: pressurePlateSprite.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: pressurePlateSprite.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8bd891d9b8f8f4525a40536d3e6c913a,
+        type: 3}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: pressurePlateSprite.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: eea2f25fe3b2a4a56b2f51b09ff134f0,
+        type: 3}
     - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
       propertyPath: onPlatePressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2405,10 +2443,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1913674912}
     m_Modifications:
+    - target: {fileID: 2307343212723154165, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307343212723154165, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8bd891d9b8f8f4525a40536d3e6c913a,
+        type: 3}
     - target: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.5724544
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
@@ -2418,7 +2472,7 @@ PrefabInstance:
     - target: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.5424528
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2307343212977290179, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
@@ -2438,7 +2492,7 @@ PrefabInstance:
     - target: {fileID: 2307343212977290191, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.934788
+      value: 1.72
       objectReference: {fileID: 0}
     - target: {fileID: 2307343212977290191, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
@@ -2485,6 +2539,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 850086458}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: pressurePlateSprite.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: pressurePlateSprite.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8bd891d9b8f8f4525a40536d3e6c913a,
+        type: 3}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: pressurePlateSprite.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: eea2f25fe3b2a4a56b2f51b09ff134f0,
+        type: 3}
     - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
       propertyPath: onPlatePressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -3610,6 +3686,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!212 &775781997 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
+    type: 3}
+  m_PrefabInstance: {fileID: 409941709}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &776112894
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4053,6 +4135,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 842966574}
   m_CullTransparentMesh: 0
+--- !u!212 &850086458 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
+    type: 3}
+  m_PrefabInstance: {fileID: 564374653}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &861848666 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8620210727469345100, guid: ad9e49d8d0694d14093f0fa7f6333ef1,
@@ -8207,6 +8295,12 @@ MonoBehaviour:
   - {fileID: 1913324401}
   - {fileID: 1438484012}
   - {fileID: 861848668}
+--- !u!212 &1031837101 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
+    type: 3}
+  m_PrefabInstance: {fileID: 1337370375}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1117438554
 GameObject:
   m_ObjectHideFlags: 0
@@ -8841,10 +8935,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1913674912}
     m_Modifications:
+    - target: {fileID: 2307343212723154165, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307343212723154165, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8bd891d9b8f8f4525a40536d3e6c913a,
+        type: 3}
     - target: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.5724544
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
@@ -8854,7 +8964,7 @@ PrefabInstance:
     - target: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.5424528
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2307343212977290179, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
@@ -8921,6 +9031,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 1031837101}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: pressurePlateSprite.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: pressurePlateSprite.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8bd891d9b8f8f4525a40536d3e6c913a,
+        type: 3}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: pressurePlateSprite.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: eea2f25fe3b2a4a56b2f51b09ff134f0,
+        type: 3}
     - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
       propertyPath: onPlatePressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -9649,10 +9781,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1913674912}
     m_Modifications:
+    - target: {fileID: 2307343212723154165, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307343212723154165, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8bd891d9b8f8f4525a40536d3e6c913a,
+        type: 3}
     - target: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
       propertyPath: m_Color.b
-      value: 0.5724544
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
@@ -9662,7 +9810,7 @@ PrefabInstance:
     - target: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
       propertyPath: m_Color.r
-      value: 0.5424528
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2307343212977290179, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
@@ -9729,6 +9877,28 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 1994243342}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: pressurePlateSprite.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: pressurePlateSprite.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: 8bd891d9b8f8f4525a40536d3e6c913a,
+        type: 3}
+    - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
+        type: 3}
+      propertyPath: pressurePlateSprite.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: eea2f25fe3b2a4a56b2f51b09ff134f0,
+        type: 3}
     - target: {fileID: 6933297257696124529, guid: d50dfdf3771634f9ebf9011a47dc1719,
         type: 3}
       propertyPath: onPlatePressed.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -19348,6 +19518,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1960815835}
   m_CullTransparentMesh: 0
+--- !u!212 &1994243342 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2307343212723154166, guid: d50dfdf3771634f9ebf9011a47dc1719,
+    type: 3}
+  m_PrefabInstance: {fileID: 1556406458}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2006684669 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6883309381696770329, guid: ce4c2f58840957944a55976791a748bc,
