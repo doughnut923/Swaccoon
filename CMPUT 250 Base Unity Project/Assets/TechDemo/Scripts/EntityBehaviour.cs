@@ -142,7 +142,6 @@ public class EntityBehaviour : MonoBehaviour
 
             if (collided(tr) || collided(br))
             {
-                Debug.Log("collided with right wall" + tr.collider.name + " " + br.collider.name);
                 update.x = 0;
                 if (collided(tr))
                 {
@@ -167,7 +166,6 @@ public class EntityBehaviour : MonoBehaviour
 
             if (collided(tl) || collided(bl))
             {
-                Debug.Log("collided with left wall" + tl.collider.name + " " + bl.collider.name);
 
                 update.x = 0;
                 if (collided(tl))
@@ -195,8 +193,6 @@ public class EntityBehaviour : MonoBehaviour
             if (collided(tr) || collided(tl))
             {
 
-                Debug.Log("collided with top wall" + tr.collider.name + " " + tl.collider.name);
-
                 update.y = 0;
                 if (collided(tr))
                 {
@@ -220,7 +216,7 @@ public class EntityBehaviour : MonoBehaviour
 
             if (collided(br) || collided(bl))
             {
-                Debug.Log("collided with bottom wall" + br.collider.name + " " + bl.collider.name);
+                // Debug.Log("collided with bottom wall" + br.collider.name + " " + bl.collider.name);
 
                 update.y = 0;
                 if (collided(br))

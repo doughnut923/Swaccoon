@@ -303,7 +303,7 @@ TextureImporter:
       213: -8093944944069894244
     second: sheet (1)_99
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -320,9 +320,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -332,8 +335,8 @@ TextureImporter:
   textureSettings:
     serializedVersion: 2
     filterMode: 0
-    aniso: -1
-    mipBias: -100
+    aniso: 1
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 1
@@ -354,10 +357,15 @@ TextureImporter:
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
   maxTextureSizeSet: 0
   compressionQualitySet: 0
   textureFormatSet: 0
+  ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -369,6 +377,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -381,6 +390,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -393,6 +403,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -2466,9 +2477,107 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      fence: 9104367753211185087
+      junglewall_b: -5284584130267098959
+      junglewall_bl: -6809267738572856826
+      junglewall_br: -6244254488820248330
+      junglewall_c: 1751770532886695291
+      junglewall_l: -3884803352728738803
+      junglewall_r: 7197508094023183462
+      junglewall_t: 9086929804508319515
+      junglewall_tl: 5938550451855746225
+      junglewall_tr: -1753320534761790355
+      sheet (1)_0: 2419608121341441858
+      sheet (1)_1: 8812676704634442247
+      sheet (1)_10: 7686778168001851132
+      sheet (1)_11: 5376193163354411776
+      sheet (1)_12: -6162765211545221793
+      sheet (1)_13: -6338634017636684714
+      sheet (1)_14: -6518125055201898136
+      sheet (1)_15: -5909626616793600420
+      sheet (1)_16: -448994025557716219
+      sheet (1)_17: -476297800841516944
+      sheet (1)_18: -515845845775637480
+      sheet (1)_19: -679292928117096398
+      sheet (1)_2: -7177365881467769739
+      sheet (1)_20: 4933235771812333516
+      sheet (1)_21: 4897515996368114623
+      sheet (1)_22: 6617824020456579542
+      sheet (1)_23: -8478867753514199914
+      sheet (1)_24: -1646054755814014717
+      sheet (1)_25: -1345237277068293490
+      sheet (1)_26: 3031009000560969980
+      sheet (1)_27: 1391348586207292306
+      sheet (1)_28: -1490967153624465212
+      sheet (1)_29: -8534033627088005137
+      sheet (1)_3: -8876757403930914152
+      sheet (1)_30: 6990336876865236072
+      sheet (1)_31: -4864206275714441227
+      sheet (1)_32: -3158287105351853223
+      sheet (1)_33: 7007866701781664075
+      sheet (1)_34: -6352720299636432799
+      sheet (1)_35: -7847689962737847495
+      sheet (1)_36: -4904795149976695786
+      sheet (1)_37: -8240431554908057803
+      sheet (1)_38: 676947909890203949
+      sheet (1)_39: -8142664281714203819
+      sheet (1)_4: -836965687439566854
+      sheet (1)_40: 7856294146318569743
+      sheet (1)_41: -7690504333511723720
+      sheet (1)_42: -8171000027075922624
+      sheet (1)_46: 8494071511901014163
+      sheet (1)_47: -6683891500605078035
+      sheet (1)_48: -8555335171555080799
+      sheet (1)_49: 5176325524601004538
+      sheet (1)_5: 4634462297670858529
+      sheet (1)_50: -679911980020482321
+      sheet (1)_51: 4087156181404956721
+      sheet (1)_52: 8982582932477181983
+      sheet (1)_53: 8134952407609305728
+      sheet (1)_54: 8930217658014978301
+      sheet (1)_55: -7395366809279937028
+      sheet (1)_56: 8164676878535217943
+      sheet (1)_57: 8704513404335983932
+      sheet (1)_58: -5433962871008457445
+      sheet (1)_59: -7178439606555142335
+      sheet (1)_6: -91800905490973757
+      sheet (1)_60: 2483607537786764913
+      sheet (1)_61: -4301734564767665995
+      sheet (1)_62: 5503114120787324589
+      sheet (1)_63: 8599248430181249800
+      sheet (1)_64: 5408894081940699949
+      sheet (1)_65: -1870813165883203551
+      sheet (1)_69: 2119430904039872083
+      sheet (1)_7: 3771073648548839011
+      sheet (1)_70: 465639489107098360
+      sheet (1)_71: -6182750519763534156
+      sheet (1)_72: 1636704871509055481
+      sheet (1)_73: -5661404450496026680
+      sheet (1)_74: 4254465863675810142
+      sheet (1)_75: -5456482500774226399
+      sheet (1)_76: -7335996609722775887
+      sheet (1)_77: 7197199781616576096
+      sheet (1)_8: -7521855461957449049
+      sheet (1)_81: 4332027587474136682
+      sheet (1)_82: -7079174547653202430
+      sheet (1)_83: -8303140533947175909
+      sheet (1)_84: -2747246978530084087
+      sheet (1)_85: 2189329024777934358
+      sheet (1)_86: 3187486185658774734
+      sheet (1)_87: 6385372485465556667
+      sheet (1)_88: -5228082887351633679
+      sheet (1)_89: -4303094397326228106
+      sheet (1)_9: -4871031703262492356
+      sheet (1)_93: -3359314114464934302
+      sheet (1)_94: 4070889069970132954
+      sheet (1)_95: -2037763080142558328
+      sheet (1)_96: -7761373515436363457
+      sheet (1)_97: 7333258244375796450
+      sheet (1)_98: 7859403410729876111
+      sheet (1)_99: -8093944944069894244
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

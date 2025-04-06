@@ -42,6 +42,7 @@ public class BoxBehaviour : EntityBehaviour
 
     [SerializeField] private float spawnRaise = 10f;
     [SerializeField] private float padding = 1.5f;
+    [SerializeField] public float pushRadius = 1f;
 
     protected bool isOnGoal = false;
 
@@ -281,9 +282,9 @@ public class BoxBehaviour : EntityBehaviour
             playerScript = PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>();
 
             //Debug.Log("Player: " + player);
-            
+            Debug.Log("1. Distance between Player and box " + Mathf.Abs(Vector2.Distance(player.position, transform.position)) + " ,While push radius is " +  pushRadius);
             // handle player collision with crate
-            if (Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= 1f
+            if (Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= pushRadius
             // || Mathf.Abs(Vector2.Distance(player1.position, transform.position)) <= 1f
             )
             {
@@ -302,9 +303,10 @@ public class BoxBehaviour : EntityBehaviour
                 Vector2 upDir = new Vector2(0, 1);
                 Vector2 downDir = new Vector2(0, -1);
 
+                Debug.Log("2: Distance between Player and box " + Mathf.Abs(Vector2.Distance(player.position, transform.position)) + " ,While push radius is " +  pushRadius);
                 // handles pushing depending on which player is pushing the box
-                if ((Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= 1f) && (playerScript._playerState == CurrentPlayerState.IDLE))
-                { // if raccoon is pushing
+                if ((Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= pushRadius) && (playerScript._playerState == CurrentPlayerState.IDLE))
+                {
 
                     float rightDist = Vector2.Distance(right, player.position);
                     float leftDist = Vector2.Distance(left, player.position);

@@ -12,8 +12,11 @@ public class HeavyBoxBehaviour : BoxBehaviour
         //Check if the current player is a horse
         Vector2 Update = new Vector2(0, 0);
 
+        Debug.Log("HeavyBoxBehaviour: getMovement() called, Checking if current player is a horse");
+
         GameObject currentPlayer = PlayerManager.Instance.CurrentCharacter;
         if(currentPlayer.GetComponent<HorseBehaviour>() == null){
+            Debug.Log("Fuck i am not a horse!");
             //If the current player is not a horse, we don't want to move the box
             return Update;
         }
