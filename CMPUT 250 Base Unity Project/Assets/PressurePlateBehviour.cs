@@ -16,12 +16,12 @@ public class PressurePlateBehviour : MonoBehaviour
     public UnityEvent onPlatePressed = new UnityEvent();
     public UnityEvent onPlateReleased = new UnityEvent();
     public SpriteRenderer spriteRenderer;
-    [SerializeField] protected List<Sprite> pressurePlateSprite = new List<Sprite>(2);
-    protected SpriteRenderer currentSprite;
+    [SerializeField] public List<Sprite> pressurePlateSprite = new List<Sprite>(2);
+    public SpriteRenderer currentPressuePlateSprite;
 
     private void Start()
     {
-        currentSprite = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+        currentPressuePlateSprite = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -33,7 +33,7 @@ public class PressurePlateBehviour : MonoBehaviour
         {
             isPressed = true;
             // chagne the sprite to pressed down
-            currentSprite.sprite = pressurePlateSprite[1];
+            currentPressuePlateSprite.sprite = pressurePlateSprite[1];
             onPlatePressed.Invoke();
         }
     }
@@ -43,7 +43,6 @@ public class PressurePlateBehviour : MonoBehaviour
         {
             isPressed = false;
             // change the sprite back to up
-            currentSprite.sprite = pressurePlateSprite[0];
             onPlateReleased.Invoke();
         }
     }

@@ -131,6 +131,7 @@ MonoBehaviour:
   platformRiseSound: {fileID: 8300000, guid: 9b00563e79528654680ab7f6c744fc75, type: 3}
   hasRose: 0
   shakeIntensity: 0.01
+  pressurePlate: {fileID: 0}
 --- !u!61 &7683640437557703843
 BoxCollider2D:
   m_ObjectHideFlags: 0

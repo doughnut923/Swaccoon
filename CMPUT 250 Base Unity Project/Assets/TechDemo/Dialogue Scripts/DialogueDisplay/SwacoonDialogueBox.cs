@@ -13,11 +13,13 @@ namespace SwacoonNarrative
     {
         //Event Callbacks
         public UnityEvent onAdvance;
+        //public UnityEvent onSkip;
 
         //Sub-object references
         [SerializeField] private TextMeshProUGUI textLabel;
         [SerializeField] private TextMeshProUGUI nameLabel;
         [SerializeField] private SwacoonAdvanceArrow advanceArrow;
+        [SerializeField] private SwacoonSkipImage skipKey;
         [SerializeField] private Animator animator;
 
         //Object properties
@@ -40,6 +42,7 @@ namespace SwacoonNarrative
         {
             //Connect onAdvance event to hide the advancearrow object on invoke
             onAdvance.AddListener(() => advanceArrow.SetVisible(false));
+            onAdvance.AddListener(() => skipKey.SetVisible(false));
         }
 
         // Update is called once per frame
@@ -85,6 +88,7 @@ namespace SwacoonNarrative
             //Debug.Log("textlength is "+textLength);
             if (currentCharacter < textLength)
             {
+                skipKey.SetVisible(true);
                 //Debug.Log("writing the text!");
                 //Advance visible characters
                 //if (Input.GetMouseButtonDown(1))
@@ -123,6 +127,7 @@ namespace SwacoonNarrative
                 {
                     //Debug.Log("end of current text");
                     advanceArrow.SetVisible(true);
+                    skipKey.SetVisible(false);
                 }
             }
         }
@@ -136,6 +141,7 @@ namespace SwacoonNarrative
 
             animator.SetBool("isOpen", true);
             advanceArrow.SetVisible(false);
+            //skipKey.SetVisible(false);
             nameLabel.text = "";
             isActive = true;
             isOpen = true;
@@ -198,6 +204,7 @@ namespace SwacoonNarrative
 
             currentCharacter = textLength;
             advanceArrow.SetVisible(true);
+            skipKey.SetVisible(false);
             isSpedUp = false;
             
             CheckInput();

@@ -26,6 +26,8 @@ public class PlatformBehaviour : MonoBehaviour
     public bool hasRose = false;
     public float shakeIntensity = 0.01f;
 
+    public PressurePlateBehviour pressurePlate;
+
     void Awake()
     {
         TargetPosition = transform.position;
@@ -39,6 +41,8 @@ public class PlatformBehaviour : MonoBehaviour
 
         // set timeRemaining
         timeRemaining = platformTimeLimit;
+
+        
     }
     public void Rise()
     {
@@ -136,6 +140,7 @@ public class PlatformBehaviour : MonoBehaviour
         //use the curve to move the platform down, also change the opcaity of the platform to invisible
         platformSoundSource.clip = platformRiseSound;
         platformSoundSource.Play();
+        pressurePlate.currentPressuePlateSprite.sprite = pressurePlate.pressurePlateSprite[0];
 
         float time = 0;
         while (time < riseTime)
@@ -153,5 +158,6 @@ public class PlatformBehaviour : MonoBehaviour
 
             yield return null;
         }
+        
     }
 }
