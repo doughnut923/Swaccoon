@@ -1660,7 +1660,7 @@ PrefabInstance:
     - target: {fileID: 7690500667111760678, guid: 18b74b7944ee8dc4e92ab25a72431d91,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 135
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 7690500667111760678, guid: 18b74b7944ee8dc4e92ab25a72431d91,
         type: 3}
@@ -1686,6 +1686,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Press T to Swap Back
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2795,6 +2810,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 151284273358931490, guid: e3090b3290e7a4590b86754ed6641bc1,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 151284273358931491, guid: e3090b3290e7a4590b86754ed6641bc1,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.21960784
+      objectReference: {fileID: 0}
+    - target: {fileID: 151284273358931491, guid: e3090b3290e7a4590b86754ed6641bc1,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.36862746
+      objectReference: {fileID: 0}
+    - target: {fileID: 151284273358931491, guid: e3090b3290e7a4590b86754ed6641bc1,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.89411765
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5995,6 +6030,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4045215524416101557, guid: 941a9d04ba992d446bc58dedbc527013,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4742157441194013280, guid: 941a9d04ba992d446bc58dedbc527013,
         type: 3}
       propertyPath: rb
@@ -6371,7 +6411,7 @@ PrefabInstance:
     - target: {fileID: 7690500667111760678, guid: 18b74b7944ee8dc4e92ab25a72431d91,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 135
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 7690500667111760678, guid: 18b74b7944ee8dc4e92ab25a72431d91,
         type: 3}
@@ -6397,6 +6437,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Press T to Swap and Press A to Punch the Wall
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6872,6 +6927,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -3253420348759804153, guid: 68cc7cae3b9d149e4b6afc8301e4c72e,
         type: 3}
+    - target: {fileID: 8785670782905068950, guid: ec5d4cf984d63344fb93aec78dfc9e47,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

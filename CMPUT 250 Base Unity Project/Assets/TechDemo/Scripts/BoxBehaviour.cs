@@ -48,10 +48,13 @@ public class BoxBehaviour : EntityBehaviour
 
     public bool isOnWater = false;
 
+    private ParticleSystem particle;
+
     // Start is called before the first frame update
 
     public void Awake(){
         SpawnPosition = transform.position;
+        particle = GetComponentInChildren<ParticleSystem>();
     }
 
     override public void Start()
@@ -107,13 +110,19 @@ public class BoxBehaviour : EntityBehaviour
         boxSinkingSoundSource.clip = boxSinkingPulledSound;
         boxSinkingSoundSource.Play();
 
+
         //Player Box sinking animation
+        particle.Play();
+        spriteRenderer.color = new Color(1, 1, 1, 0);
+        yield return new WaitForSeconds(particle.main.startLifetime.constantMax);
+
 
         //called After box sinking animation is done
         yield return new WaitForSeconds(1.0f);
 
         //Spawn a new box in the box spawnpoint
         box.position = new Vector2(SpawnPosition.x, SpawnPosition.y);
+        spriteRenderer.color = new Color(1, 1, 1, 1);
         GetComponent<Animator>().Play("SpawnBox");
         isOnWater = false;
         boxCollider.isTrigger = true;

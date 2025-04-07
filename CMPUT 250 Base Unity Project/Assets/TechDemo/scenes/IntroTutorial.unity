@@ -1305,7 +1305,7 @@ PrefabInstance:
     - target: {fileID: 7690500667111760678, guid: 18b74b7944ee8dc4e92ab25a72431d91,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 135
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 7690500667111760678, guid: 18b74b7944ee8dc4e92ab25a72431d91,
         type: 3}
@@ -1336,6 +1336,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: GO RIGHT
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2335,7 +2350,7 @@ PrefabInstance:
     - target: {fileID: 7690500667111760678, guid: 18b74b7944ee8dc4e92ab25a72431d91,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 135
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 7690500667111760678, guid: 18b74b7944ee8dc4e92ab25a72431d91,
         type: 3}
@@ -2366,6 +2381,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: Pull the LEVER with Z and EXIT
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6604,7 +6634,7 @@ PrefabInstance:
     - target: {fileID: 7690500667111760678, guid: 18b74b7944ee8dc4e92ab25a72431d91,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 135
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 7690500667111760678, guid: 18b74b7944ee8dc4e92ab25a72431d91,
         type: 3}
@@ -6630,6 +6660,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -14735,6 +14780,11 @@ PrefabInstance:
       propertyPath: gate
       value: 
       objectReference: {fileID: 89826577}
+    - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
+        type: 3}
+      propertyPath: switchRadius
+      value: 1.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
         type: 3}
       propertyPath: leverSoundSource

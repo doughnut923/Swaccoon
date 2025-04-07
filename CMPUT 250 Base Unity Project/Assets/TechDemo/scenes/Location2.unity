@@ -3637,6 +3637,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1913674912}
     m_Modifications:
+    - target: {fileID: 823438803721975321, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3585363863344477213, guid: 69ddedb4b88fc804cad89471e276c4d8,
         type: 3}
       propertyPath: padding
@@ -9377,6 +9382,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
+        type: 3}
+      propertyPath: switchRadius
+      value: 1.4
       objectReference: {fileID: 0}
     - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
         type: 3}
@@ -20567,6 +20577,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
         type: 3}
+      propertyPath: switchRadius
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4660201048990885100, guid: 31564b7d745bb42709408567c2312f3f,
+        type: 3}
       propertyPath: leverSoundSource
       value: 
       objectReference: {fileID: 2006271616154854293}
@@ -22194,6 +22209,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1913674912}
     m_Modifications:
+    - target: {fileID: 823438803721975321, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3585363863344477213, guid: 69ddedb4b88fc804cad89471e276c4d8,
         type: 3}
       propertyPath: padding

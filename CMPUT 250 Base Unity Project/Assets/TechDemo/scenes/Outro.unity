@@ -5896,7 +5896,7 @@ PrefabInstance:
     - target: {fileID: 7690500667111760678, guid: 18b74b7944ee8dc4e92ab25a72431d91,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 135
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 7690500667111760678, guid: 18b74b7944ee8dc4e92ab25a72431d91,
         type: 3}
@@ -5917,6 +5917,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SwapGuide
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

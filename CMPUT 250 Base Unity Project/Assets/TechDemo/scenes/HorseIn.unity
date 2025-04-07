@@ -568,6 +568,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 823438803721975321, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8440342039835490573, guid: 69ddedb4b88fc804cad89471e276c4d8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1064,6 +1069,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 823438803721975321, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8440342039835490573, guid: 69ddedb4b88fc804cad89471e276c4d8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2632,6 +2642,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 823438803721975321, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8440342039835490573, guid: 69ddedb4b88fc804cad89471e276c4d8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2919,7 +2934,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 135}
+  m_AnchoredPosition: {x: 0, y: 400}
   m_SizeDelta: {x: 267.03, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &879471994
@@ -2944,16 +2959,16 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 6022e506ce06f594385e6f7eed6e3458, type: 3}
-    m_FontSize: 14
+    m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Push the Box and go to the OTHER SIDE
 --- !u!222 &879471995
@@ -3809,6 +3824,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 823438803721975321, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8440342039835490573, guid: 69ddedb4b88fc804cad89471e276c4d8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5555,6 +5575,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 823438803721975321, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8440342039835490573, guid: 69ddedb4b88fc804cad89471e276c4d8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5614,6 +5639,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440342039909161871, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8440342039909161871, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 8440342039909161875, guid: 69ddedb4b88fc804cad89471e276c4d8,
         type: 3}
@@ -6223,6 +6258,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 823438803721975321, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8440342039835490573, guid: 69ddedb4b88fc804cad89471e276c4d8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6642,6 +6682,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 823438803721975321, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8440342039835490573, guid: 69ddedb4b88fc804cad89471e276c4d8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6868,6 +6913,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 823438803721975321, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8440342039835490573, guid: 69ddedb4b88fc804cad89471e276c4d8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -8153,6 +8203,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 823438803721975321, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8440342039835490573, guid: 69ddedb4b88fc804cad89471e276c4d8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -16471,7 +16526,7 @@ PrefabInstance:
     - target: {fileID: 7690500667111760678, guid: 18b74b7944ee8dc4e92ab25a72431d91,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 135
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 7690500667111760678, guid: 18b74b7944ee8dc4e92ab25a72431d91,
         type: 3}
@@ -16492,6 +16547,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SwapGuide
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7690500667111760681, guid: 18b74b7944ee8dc4e92ab25a72431d91,
+        type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
