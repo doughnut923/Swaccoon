@@ -120,6 +120,8 @@ public class PlayerManager : MonoBehaviour
 
     }
 
+
+
     void Update()
     {
         if (_playerManagerState == PlayerManagerState.CUTSCENE_PLAYING)
@@ -284,6 +286,46 @@ public class PlayerManager : MonoBehaviour
                 {
                     outline.color = new Color(outline.color.r, outline.color.g, outline.color.b, 0.5f);
                 }
+            }
+        }
+    }
+
+    public void ReinitalizePlayers(){
+        foreach (Image outline in UIOutlines)
+        {
+            if (outline == UIOutlines[currentIndex])
+            {
+                outline.color = new Color(outline.color.r, outline.color.g, outline.color.b, 1f);
+            }
+            else
+            {
+                outline.color = new Color(outline.color.r, outline.color.g, outline.color.b, 0.5f);
+            }
+        }
+
+        foreach (GameObject person in SwappableCharacters)
+        {
+            if (person != null)
+            {
+                PlayerBehaviour playerBehaviour = person.GetComponent<PlayerBehaviour>();
+                if (playerBehaviour == null)
+                {
+                    Debug.LogError("PlayerBehaviour component missing on " + person.name);
+                    continue; // Skip this character if it doesn't have the PlayerBehaviour component
+                }
+
+                if (person != CurrentCharacter)
+                {
+                    playerBehaviour._playerState = CurrentPlayerState.SWAPPED_OUT;
+                }
+                else
+                {
+                    playerBehaviour._playerState = CurrentPlayerState.IDLE;
+                }
+            }
+            else
+            {
+                Debug.LogError("Character in SwappableCharacters array is null");
             }
         }
     }

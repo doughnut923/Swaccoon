@@ -27,7 +27,7 @@ public class BoxBehaviour : EntityBehaviour
     protected Vector3 StartPosition;
     
     private Vector3 SpawnPosition;
-    private bool isSinking = false;
+    public bool isSinking = false;
 
     //protected Vector2 lastPlayerLocation;
 
@@ -89,6 +89,7 @@ public class BoxBehaviour : EntityBehaviour
         // if the box is on a water tile, it will sink
         if (isOnWater && !isSinking)
         {
+            Debug.Log("Box is on water, sinking...");
             isSinking = true;
             StartCoroutine(SinkBox());
         }
@@ -124,12 +125,14 @@ public class BoxBehaviour : EntityBehaviour
         box.position = new Vector2(SpawnPosition.x, SpawnPosition.y);
         spriteRenderer.color = new Color(1, 1, 1, 1);
         GetComponent<Animator>().Play("SpawnBox");
-        isOnWater = false;
         boxCollider.isTrigger = true;
+        //Wait for the animation to finish
+        yield return new WaitForSeconds(1f);
         isSinking = false;
 
         //spriteRenderer.color = new Color(1, 1, 1, 0);
-        yield return null;
+        isOnWater = false;
+
         //while (transform.position.y > WaterBehaviour.transform.position.y)
         //{
         //    transform.position = Vector2.Lerp(transform.position, pitPosition, 0.1f);
@@ -291,7 +294,6 @@ public class BoxBehaviour : EntityBehaviour
             playerScript = PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>();
 
             //Debug.Log("Player: " + player);
-            Debug.Log("1. Distance between Player and box " + Mathf.Abs(Vector2.Distance(player.position, transform.position)) + " ,While push radius is " +  pushRadius);
             // handle player collision with crate
             if (Mathf.Abs(Vector2.Distance(player.position, transform.position)) <= pushRadius
             // || Mathf.Abs(Vector2.Distance(player1.position, transform.position)) <= 1f

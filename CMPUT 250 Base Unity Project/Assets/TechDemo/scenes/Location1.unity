@@ -34630,11 +34630,6 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4555167576329810672, guid: f91f2c9cc0d27eb48a3564312a46bce3,
         type: 3}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4555167576329810672, guid: f91f2c9cc0d27eb48a3564312a46bce3,
-        type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.91627467
       objectReference: {fileID: 0}
@@ -34687,11 +34682,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameOverUI
-      objectReference: {fileID: 0}
-    - target: {fileID: 4555167576432492440, guid: f91f2c9cc0d27eb48a3564312a46bce3,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -35417,6 +35407,74 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68f760f853c92c741831339e8f8b2486, type: 3}
+--- !u!1001 &8038413025675525287
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 448776604357557653, guid: f6d73f89ff9459041beb7904f0a714b7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.91627467
+      objectReference: {fileID: 0}
+    - target: {fileID: 448776604357557653, guid: f6d73f89ff9459041beb7904f0a714b7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.20567653
+      objectReference: {fileID: 0}
+    - target: {fileID: 448776604357557653, guid: f6d73f89ff9459041beb7904f0a714b7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3.892419
+      objectReference: {fileID: 0}
+    - target: {fileID: 448776604357557653, guid: f6d73f89ff9459041beb7904f0a714b7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 448776604357557653, guid: f6d73f89ff9459041beb7904f0a714b7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448776604357557653, guid: f6d73f89ff9459041beb7904f0a714b7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448776604357557653, guid: f6d73f89ff9459041beb7904f0a714b7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448776604357557653, guid: f6d73f89ff9459041beb7904f0a714b7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448776604357557653, guid: f6d73f89ff9459041beb7904f0a714b7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 448776604357557653, guid: f6d73f89ff9459041beb7904f0a714b7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3060654737760906410, guid: f6d73f89ff9459041beb7904f0a714b7,
+        type: 3}
+      propertyPath: m_Name
+      value: ResetComfirmUI
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f6d73f89ff9459041beb7904f0a714b7, type: 3}
 --- !u!1001 &8440407416627919780
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35538,6 +35596,7 @@ SceneRoots:
   - {fileID: 6222294688225689253}
   - {fileID: 1608446061}
   - {fileID: 4555167575845168074}
+  - {fileID: 8038413025675525287}
   - {fileID: 1913674912}
   - {fileID: 2123314168}
   - {fileID: 1591869689}
