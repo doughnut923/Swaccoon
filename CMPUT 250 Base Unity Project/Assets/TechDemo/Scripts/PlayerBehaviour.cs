@@ -202,11 +202,12 @@ public class PlayerBehaviour : EntityBehaviour
         }
 
         //Debug.Log("At 1");
-        if (_playerState == CurrentPlayerState.CUTSCENE_PLAYING && CutSceneManager.instance.cinematicControlled == true)
+        if (_playerState == CurrentPlayerState.CUTSCENE_PLAYING || GameStateManager.instance.gameState == GameState.RESET_CONFIRM
+        //  && CutSceneManager.instance.cinematicControlled == true
+        )
         {
             //Possibly sleepping animation
             //but wil be just idle for now
-            Debug.Log("go to handle animation");
             handleAnimation();
             return;
 
@@ -218,7 +219,6 @@ public class PlayerBehaviour : EntityBehaviour
         if(cm != null && !CutSceneManager.instance.canMove){
             //Possibly sleepping animation
             //but wil be just idle for now
-            Debug.Log("go to idle animation");
             DoIdleAnimation();
             return;
         }
@@ -410,14 +410,14 @@ public class PlayerBehaviour : EntityBehaviour
         _canStep = true;
     }
 
-    public void DoFallAnimation()
+    public IEnumerator DoFallAnimation()
     {
-        if (_isFalling)
+        while (_isFalling)
         {
             Debug.Log("_isfalling is set to " + _isFalling);
             int lastFrame = Mathf.FloorToInt(_currentFrame);
             _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _fallFramesPerSecond, 6f);
-
+Debug.Log("Huh1");
             // we are done falling! set our position accordingly and take some damage
             if (lastFrame == 5 && Mathf.FloorToInt(_currentFrame) == 0)
             {
@@ -425,19 +425,21 @@ public class PlayerBehaviour : EntityBehaviour
                 setInvincible(false);
                 transform.position = lastSafePosition;
                 takeDamage();
+                Debug.Log("Huh");
+                // GameOverUIBehavior.instance.ShowGameOverUI();
             }
             // keep playing the animation otherwise
             else
             {
                 currentSprite.sprite = fallSprites[Mathf.FloorToInt(_currentFrame)];
-                return;
+                yield return null;
             }
         }
+        
     }
 
     public void DoIdleAnimation()
     {
-        Debug.Log("in idle animation");
         _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _walkFramesPerSecond, 6f);
         //Debug.Log("current sprite is");
         //switch (_currDir)
@@ -629,7 +631,6 @@ public class PlayerBehaviour : EntityBehaviour
         // if idle
         else if (((movement.x == 0 && movement.y == 0) || _isOnIce) && isPunching==false)
         {
-            Debug.Log("player is not moving");
             _playerState = CurrentPlayerState.IDLE;
 
             _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _walkFramesPerSecond, 6f);
@@ -724,7 +725,7 @@ public class PlayerBehaviour : EntityBehaviour
         if (_isFalling) { return false; }
         // time to fall! get rid of our sprite as we play the falling animation, and make us invulnerable!
         _isFalling = true;
-        DoFallAnimation();
+        StartCoroutine(DoFallAnimation());
 
         setInvincible(true);
 
@@ -739,7 +740,7 @@ public class PlayerBehaviour : EntityBehaviour
         // we successfully fell!
 
         // Lose the game (for now)
-        GameOverUIBehavior.instance.ShowGameOverUI();
+        // GameOverUIBehavior.instance.ShowGameOverUI();
         
         return true;
     }
@@ -795,9 +796,4 @@ public class PlayerBehaviour : EntityBehaviour
         // GameOverUIBehavior.instance.ShowGameOverUI();
         // Destroy(gameObject);
     }
-}
-
-
-public class CutsceneElements{
-    
 }

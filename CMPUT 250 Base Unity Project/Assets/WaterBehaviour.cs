@@ -102,7 +102,9 @@ public class WaterBehaviour : MonoBehaviour
                 {
                     Debug.Log("Box is in water");
 
-                    box.isOnWater = true;
+                    if(!box.isSinking){
+                        box.isOnWater = true;
+                    }
 
                     //GameOverUIBehavior.instance.ShowGameOverUI();
                 }
@@ -198,6 +200,9 @@ public class WaterBehaviour : MonoBehaviour
     void Fall()
     {
         //Debug.Log("ahh falling");
+        
         playerScript.fallInPit(transform.position);
+        Debug.Log("Startin Game UI ");
+        GameOverUIBehavior.instance.ShowGameOverUI();
     }
 }

@@ -61,7 +61,7 @@ public class FishBehaviour : PlayerBehaviour
         
         base.FixedUpdate();
 
-        if(_playerState == CurrentPlayerState.CUTSCENE_PLAYING)
+        if(_playerState == CurrentPlayerState.CUTSCENE_PLAYING || GameStateManager.instance.gameState == GameState.RESET_CONFIRM)
         {
             //Possibly sleepping animation
             //but wil be just idle for now

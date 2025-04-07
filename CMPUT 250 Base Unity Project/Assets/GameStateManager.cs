@@ -9,7 +9,8 @@ public enum GameState
     PLAYING,
     PAUSED,
     GAME_OVER,
-    LEVEL_COMPLETE
+    LEVEL_COMPLETE,
+    RESET_CONFIRM
 }
 
 public class GameStateManager : MonoBehaviour
@@ -78,6 +79,7 @@ public class GameStateManager : MonoBehaviour
                     player.UndoMove();
                 }   
                 GameOverUIBehavior.instance.UnshowGameOverUI();
+                gameState = GameState.PLAYING;
             }
             else if(Input.GetKeyDown(KeyCode.R))
             {
@@ -89,7 +91,23 @@ public class GameStateManager : MonoBehaviour
         {
             if(Input.GetKeyDown(KeyCode.R))
             {
+                ResetComfirmUI.instance.ShowResetComfirmUI();
+                gameState = GameState.RESET_CONFIRM;
+            }
+        }
+
+        if(gameState == GameState.RESET_CONFIRM)
+        {
+            Debug.Log("Checking Key");
+            if(Input.GetKeyDown(KeyCode.Y))
+            {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            else if(Input.GetKeyDown(KeyCode.N))
+            {
+                ResetComfirmUI.instance.UnshowResetComfirmUI();
+                PlayerManager.Instance.ReinitalizePlayers();
+                gameState = GameState.PLAYING;
             }
         }
         
