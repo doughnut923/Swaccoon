@@ -28,10 +28,11 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManagerState _playerManagerState { get; set; } = PlayerManagerState.NOT_SWAPPING;
 
     [SerializeField] public GameObject CurrentCharacter { get; private set; }            //Reference to the current character
+    [SerializeField] public GameObject PreviousCharacter { get; private set; }
     [SerializeField] public List<GameObject> SwappableCharacters = new List<GameObject>(3);    //List of characters that can be swapped
     [SerializeField] private List<Image> UIOutlines = new List<Image>(3);             //Reference to list of UI elements displayed for swapping the chaaracter and for the player to see which character they are in control of
-    [SerializeField] private int currentIndex = 0;                                              //Index of the current character
-    [SerializeField] private int lastCharacter = 0;                                             //Index of the last character
+    [SerializeField] public int currentIndex = 0;                                              //Index of the current character
+    [SerializeField] public int lastCharacter = 0;                                             //Index of the last character
     [SerializeField] private KeyCode startSwap = KeyCode.Q;                                     //Key to start swap the character
     [SerializeField] private KeyCode select = KeyCode.E;                                        //Key for select between character when swapping
     [SerializeField] private KeyCode swap = KeyCode.T;                                   //Key to cancel the swap
@@ -48,6 +49,7 @@ public class PlayerManager : MonoBehaviour
         {
             _instance = this;
             CurrentCharacter = SwappableCharacters[currentIndex];
+            PreviousCharacter = SwappableCharacters[lastCharacter];
         }
         //swapTimer = swapTimeLimit;
     }
@@ -215,6 +217,7 @@ public class PlayerManager : MonoBehaviour
         currentIndex = (currentIndex + 1) % SwappableCharacters.Count;
         Debug.Log("Swapping from : " + lastCharacter + " to : " + currentIndex);
         CurrentCharacter = SwappableCharacters[currentIndex];
+        PreviousCharacter = SwappableCharacters[lastCharacter];
 
         //reset timer
         //swapTimer = swapTimeLimit;

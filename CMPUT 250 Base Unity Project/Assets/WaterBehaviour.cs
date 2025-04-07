@@ -12,6 +12,7 @@ public class WaterBehaviour : MonoBehaviour
 
     // the player
     private Rigidbody2D player;
+    private Rigidbody2D swappedOutPlayer;
     private PlayerBehaviour playerScript;
 
     private TopDownPitBehaviour onPlatform;
@@ -63,6 +64,28 @@ public class WaterBehaviour : MonoBehaviour
         {
             //Debug.Log("fall radius is " + fallRadius);
             Fall();
+        }
+        //if (playerScript._playerState == CurrentPlayerState.SWAPPED_OUT && (Mathf.Abs(player.position.x - transform.position.x) <= fallRadius && Mathf.Abs(player.position.y - transform.position.y) <= fallRadius
+        //&& !HaveBoat() && !HavePlatform() && player.name != "Fish"))
+
+        foreach (GameObject person in PlayerManager.Instance.SwappableCharacters)
+        {
+            PlayerBehaviour playerBehaviour = person.GetComponent<PlayerBehaviour>();
+            if (person != PlayerManager.Instance.CurrentCharacter)
+            {
+                //Debug.Log(playerBehaviour._playerState + " " + person.name);
+                if (playerBehaviour._playerState == CurrentPlayerState.SWAPPED_OUT)
+                {
+                    swappedOutPlayer = PlayerManager.Instance.PreviousCharacter.GetComponent<Rigidbody2D>();
+                    Debug.Log(playerBehaviour._playerState + " " + person.name + " " + HaveBoat());
+                    
+                    if (Mathf.Abs(swappedOutPlayer.position.x - transform.position.x) <= fallRadius && Mathf.Abs(swappedOutPlayer.position.y - transform.position.y) <= fallRadius
+                        && !HaveBoat() && !HavePlatform() && swappedOutPlayer.name != "Fish")
+                    {
+                        Fall();
+                    }
+                }
+            }
         }
 
         if (boxes.Count == 0)
