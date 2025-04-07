@@ -410,14 +410,14 @@ public class PlayerBehaviour : EntityBehaviour
         _canStep = true;
     }
 
-    public void DoFallAnimation()
+    public IEnumerator DoFallAnimation()
     {
-        if (_isFalling)
+        while (_isFalling)
         {
             Debug.Log("_isfalling is set to " + _isFalling);
             int lastFrame = Mathf.FloorToInt(_currentFrame);
             _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _fallFramesPerSecond, 6f);
-
+Debug.Log("Huh1");
             // we are done falling! set our position accordingly and take some damage
             if (lastFrame == 5 && Mathf.FloorToInt(_currentFrame) == 0)
             {
@@ -425,14 +425,17 @@ public class PlayerBehaviour : EntityBehaviour
                 setInvincible(false);
                 transform.position = lastSafePosition;
                 takeDamage();
+                Debug.Log("Huh");
+                // GameOverUIBehavior.instance.ShowGameOverUI();
             }
             // keep playing the animation otherwise
             else
             {
                 currentSprite.sprite = fallSprites[Mathf.FloorToInt(_currentFrame)];
-                return;
+                yield return null;
             }
         }
+        
     }
 
     public void DoIdleAnimation()
@@ -722,7 +725,7 @@ public class PlayerBehaviour : EntityBehaviour
         if (_isFalling) { return false; }
         // time to fall! get rid of our sprite as we play the falling animation, and make us invulnerable!
         _isFalling = true;
-        DoFallAnimation();
+        StartCoroutine(DoFallAnimation());
 
         setInvincible(true);
 
@@ -737,7 +740,7 @@ public class PlayerBehaviour : EntityBehaviour
         // we successfully fell!
 
         // Lose the game (for now)
-        GameOverUIBehavior.instance.ShowGameOverUI();
+        // GameOverUIBehavior.instance.ShowGameOverUI();
         
         return true;
     }
@@ -793,9 +796,4 @@ public class PlayerBehaviour : EntityBehaviour
         // GameOverUIBehavior.instance.ShowGameOverUI();
         // Destroy(gameObject);
     }
-}
-
-
-public class CutsceneElements{
-    
 }

@@ -62,5 +62,7 @@ public class TopDownPitBehaviour : MonoBehaviour
 
     void Fall(){
         playerScript.fallInPit(transform.position);
+        Debug.Log("Startin Game UI ");
+        GameOverUIBehavior.instance.ShowGameOverUI();
     }
 }

@@ -179,5 +179,7 @@ public class WaterBehaviour : MonoBehaviour
         //Debug.Log("ahh falling");
         
         playerScript.fallInPit(transform.position);
+        Debug.Log("Startin Game UI ");
+        GameOverUIBehavior.instance.ShowGameOverUI();
     }
 }
