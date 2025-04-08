@@ -40,6 +40,7 @@ public class FishBehaviour : PlayerBehaviour
     [SerializeField] private RectTransform TimeBar;
 
     public override void Start(){
+        _currDir = Direction.South;
         base.Start();
         OutOfWaterTimeLeft = OutOfWaterLimit;
         fishTransform = GameObject.Find("Fish").transform;
