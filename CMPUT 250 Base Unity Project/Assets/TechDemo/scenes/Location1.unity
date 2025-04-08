@@ -35011,7 +35011,7 @@ PrefabInstance:
         type: 3}
       propertyPath: dialogueCSV
       value: 
-      objectReference: {fileID: 4900000, guid: dec576fc714664bfdbd3f0e426a217f8, type: 3}
+      objectReference: {fileID: 4900000, guid: e695bf8e47a0a4a379f8208094414369, type: 3}
     - target: {fileID: 1919645796711235073, guid: 065f19e0f46f50f41af448ea3aebce9c,
         type: 3}
       propertyPath: m_IsActive
