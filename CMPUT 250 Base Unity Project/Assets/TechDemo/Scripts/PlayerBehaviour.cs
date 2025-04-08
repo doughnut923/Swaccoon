@@ -207,6 +207,7 @@ public class PlayerBehaviour : EntityBehaviour
         {
             //Possibly sleepping animation
             //but wil be just idle for now
+            Debug.Log("Player is in cutscene, disabling player movement");
             handleAnimation();
             return;
 
