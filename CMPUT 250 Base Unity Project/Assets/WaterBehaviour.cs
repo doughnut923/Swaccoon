@@ -77,7 +77,7 @@ public class WaterBehaviour : MonoBehaviour
                 if (playerBehaviour._playerState == CurrentPlayerState.SWAPPED_OUT)
                 {
                     swappedOutPlayer = PlayerManager.Instance.PreviousCharacter.GetComponent<Rigidbody2D>();
-                    Debug.Log(playerBehaviour._playerState + " " + person.name + " " + HaveBoat());
+                    // Debug.Log(playerBehaviour._playerState + " " + person.name + " " + HaveBoat());
                     
                     if (Mathf.Abs(swappedOutPlayer.position.x - transform.position.x) <= fallRadius && Mathf.Abs(swappedOutPlayer.position.y - transform.position.y) <= fallRadius
                         && !HaveBoat() && !HavePlatform() && swappedOutPlayer.name != "Fish")

@@ -18,6 +18,7 @@ public enum CutsceneState
     CINEMATIC,
     SLIDESHOW,
     SHAKE_OBJECT,
+    PLAYANIMATION
 }
 
 [System.Serializable]
@@ -171,6 +172,12 @@ public class CutSceneItem
             CutSceneObject.GetComponent<Slideshow>().Play();
             CutSceneManager.instance.canMove = false;
         }
+        else if (cutsceneState == CutsceneState.PLAYANIMATION)
+        {
+            Debug.Log("Playing Animation:" + CutSceneObject.name);
+            CutSceneObject.GetComponent<PlayAnimation>().Play();
+            CutSceneManager.instance.canMove = false;
+        }
         else
         {
             Debug.LogError("Please provide a valid cutscene state");
@@ -198,6 +205,10 @@ public class CutSceneItem
         else if (cutsceneState == CutsceneState.SLIDESHOW)
         {
             CutSceneObject.GetComponent<Slideshow>().Play();
+        }
+        else if (cutsceneState == CutsceneState.PLAYANIMATION)
+        {
+            CutSceneObject.GetComponent<PlayAnimation>().Play();
         }
         else
         {
@@ -227,6 +238,10 @@ public class CutSceneItem
         else if (cutsceneState == CutsceneState.SLIDESHOW)
         {
             return CutSceneObject.GetComponent<Slideshow>().checkDone();
+        }
+        else if (cutsceneState == CutsceneState.PLAYANIMATION)
+        {
+            return CutSceneObject.GetComponent<PlayAnimation>().CheckDone();
         }
         else
         {
