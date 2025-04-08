@@ -5,34 +5,34 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/TechDemo/scenes/TitlePage.unity
     guid: fd9b6c879e416495eae2333a25141b19
-  - enabled: 1
+  - enabled: 0
     path: Assets/TechDemo/scenes/Intro.unity
     guid: 448f1b4ecbb99f544a682772190de705
-  - enabled: 1
+  - enabled: 0
     path: Assets/TechDemo/scenes/IntroTutorial.unity
     guid: 598337f9d4e51e844a3f86db1ad48dea
-  - enabled: 1
+  - enabled: 0
     path: Assets/TechDemo/scenes/FishIn.unity
     guid: eb6906ae087e10347b11503f2c1056b6
-  - enabled: 1
+  - enabled: 0
     path: Assets/TechDemo/scenes/Location1.unity
     guid: d32cb95d0578b4163bc02fff06a7803f
-  - enabled: 1
+  - enabled: 0
     path: Assets/TechDemo/scenes/FishOut.unity
     guid: 0dadd559757c6fc499dc3e1c91925938
-  - enabled: 1
+  - enabled: 0
     path: Assets/TechDemo/scenes/HorseIn.unity
     guid: 6cf4ed1060bc3784e82e2dc42ebfb47a
-  - enabled: 1
+  - enabled: 0
     path: Assets/TechDemo/scenes/Location2.unity
     guid: fda1d82b7a71b6041bea5a936ff1a4f3
-  - enabled: 1
+  - enabled: 0
     path: Assets/TechDemo/scenes/HorseOut.unity
     guid: 4d73a41a9b2f97a43a481c6297581fa1
-  - enabled: 1
+  - enabled: 0
     path: Assets/TechDemo/scenes/Outro.unity
     guid: 60fb32c069f1fde4b8b1e69104a48165
   - enabled: 1
