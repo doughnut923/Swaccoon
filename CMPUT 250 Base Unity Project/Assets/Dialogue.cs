@@ -61,6 +61,7 @@ public class Dialogue : MonoBehaviour
             // player.GetComponent<PlayerBehaviour>().enabled = false;
             //Debug.Log("hello");
             player.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.CUTSCENE_PLAYING;
+            player.GetComponent<PlayerBehaviour>().movement = Vector2.zero;
             Debug.Log("State is " + player.GetComponent<PlayerBehaviour>()._playerState);
         }
 
