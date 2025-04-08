@@ -202,9 +202,8 @@ public class PlayerBehaviour : EntityBehaviour
         }
 
         //Debug.Log("At 1");
-        if (_playerState == CurrentPlayerState.CUTSCENE_PLAYING || GameStateManager.instance.gameState == GameState.RESET_CONFIRM
+        if (_playerState == CurrentPlayerState.CUTSCENE_PLAYING || GameStateManager.instance.gameState == GameState.RESET_CONFIRM)
         //  && CutSceneManager.instance.cinematicControlled == true
-        )
         {
             //Possibly sleepping animation
             //but wil be just idle for now
