@@ -136,7 +136,7 @@ public class PlayerBehaviour : EntityBehaviour
 
     public Vector2 movement = Vector2.zero;
     protected bool _canStep = true;
-    
+
     //add a slider to inspector to adjust acceleration
     [Header("Juice Settings")]
     [Range(0.01f, 1f)]
@@ -160,12 +160,12 @@ public class PlayerBehaviour : EntityBehaviour
 
     void Awake()
     {
-        original_z  = transform.position.z;
+        original_z = transform.position.z;
     }
     override public void Start()
     {
         base.Start();
-        
+
         _attackCountdown = attackCooldown;
 
         // reset the room if we aren't using the connective wrapper
@@ -195,8 +195,8 @@ public class PlayerBehaviour : EntityBehaviour
 
     // Update is called once per frame
     override public void FixedUpdate()
-    {   
-        if(GameStateManager.instance.gameState == GameState.GAME_OVER)
+    {
+        if (GameStateManager.instance.gameState == GameState.GAME_OVER)
         {
             return;
         }
@@ -210,6 +210,19 @@ public class PlayerBehaviour : EntityBehaviour
             //but wil be just idle for now
             Debug.Log("Player is in cutscene, disabling player movement");
             handleAnimation();
+            if (_playerState == CurrentPlayerState.SWAPPED_OUT)
+            {
+
+                //Possibly sleepping animation
+                //but wil be just idle for now
+                currentSprite.color = new Color(0.5f, 0.5f, 0.5f, 1f); // change color to grey if swapped out or if cutscene dialogue is playing (maybe set as variable)
+                DoIdleAnimation();
+                return;
+            }
+            else
+            {
+                currentSprite.color = new Color(1, 1, 1, 1); // change color back to original (maybe set as variable)
+            }
             return;
 
         }
@@ -217,7 +230,8 @@ public class PlayerBehaviour : EntityBehaviour
         //Debug.Log("At 2");
 
         CutSceneManager cm = CutSceneManager.instance;
-        if(cm != null && !CutSceneManager.instance.canMove){
+        if (cm != null && !CutSceneManager.instance.canMove)
+        {
             //Possibly sleepping animation
             //but wil be just idle for now
             DoIdleAnimation();
@@ -241,16 +255,19 @@ public class PlayerBehaviour : EntityBehaviour
 
         base.FixedUpdate();
 
-        if(gameObject.name == "Fish"){
+        if (gameObject.name == "Fish")
+        {
             return;
         }
 
 
         // handle walk sound
-        if (!_isFalling && !_isOnIce && lastSafePosition != (Vector3)transform.position){
+        if (!_isFalling && !_isOnIce && lastSafePosition != (Vector3)transform.position)
+        {
             playerWalkSoundSource.volume = 0.25f;
             playerWalkSoundSource.clip = walkSound;
-            if (!playerWalkSoundSource.isPlaying){
+            if (!playerWalkSoundSource.isPlaying)
+            {
                 // Debug.Log("Playing walk sound");
                 // playerWalkSoundSource.Play();
             }
@@ -296,11 +313,13 @@ public class PlayerBehaviour : EntityBehaviour
         }
     }
 
-    public void LateUpdate(){
+    public void LateUpdate()
+    {
         UpdateSafePosition();
     }
 
-    public void UndoMove(){
+    public void UndoMove()
+    {
         transform.position = lastSafePosition;
     }
 
@@ -329,7 +348,7 @@ public class PlayerBehaviour : EntityBehaviour
             currentTilt = Mathf.Lerp(currentTilt, -TiltAngle, tiltSpeed);
 
             // play walk partciles
-            if(_canStep)
+            if (_canStep)
             {
                 CreateWalkParticles();
                 playerWalkSoundSource.Play();
@@ -349,7 +368,7 @@ public class PlayerBehaviour : EntityBehaviour
             currentTilt = Mathf.Lerp(currentTilt, TiltAngle, tiltSpeed);
 
             // play walk partciles
-            if(_canStep)
+            if (_canStep)
             {
                 CreateWalkParticles();
                 playerWalkSoundSource.Play();
@@ -366,7 +385,7 @@ public class PlayerBehaviour : EntityBehaviour
             movement = update;
 
             // play walk partciles
-            if(_canStep)
+            if (_canStep)
             {
                 CreateWalkParticles();
                 playerWalkSoundSource.Play();
@@ -383,7 +402,7 @@ public class PlayerBehaviour : EntityBehaviour
             movement = update;
 
             // play walk partciles
-            if(_canStep)
+            if (_canStep)
             {
                 CreateWalkParticles();
                 playerWalkSoundSource.Play();
@@ -391,7 +410,8 @@ public class PlayerBehaviour : EntityBehaviour
                 StartCoroutine(WaitForNextStep());
             }
         }
-        else{
+        else
+        {
             movement = Vector2.zero;
         }
 
@@ -404,7 +424,7 @@ public class PlayerBehaviour : EntityBehaviour
         _playerState = CurrentPlayerState.IDLE;
         return update;
     }
-    
+
     protected IEnumerator WaitForNextStep()
     {
         yield return new WaitForSeconds(particleTimer);
@@ -418,7 +438,7 @@ public class PlayerBehaviour : EntityBehaviour
             Debug.Log("_isfalling is set to " + _isFalling);
             int lastFrame = Mathf.FloorToInt(_currentFrame);
             _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _fallFramesPerSecond, 6f);
-Debug.Log("Huh1");
+            Debug.Log("Huh1");
             // we are done falling! set our position accordingly and take some damage
             if (lastFrame == 5 && Mathf.FloorToInt(_currentFrame) == 0)
             {
@@ -436,7 +456,7 @@ Debug.Log("Huh1");
                 yield return null;
             }
         }
-        
+
     }
 
     public void DoIdleAnimation()
@@ -480,30 +500,39 @@ Debug.Log("Huh1");
         }
     }
 
-    public static Direction vectTorDir(Vector2 v){
+    public static Direction vectTorDir(Vector2 v)
+    {
         //Normalize the vector to get the direction;
-        if (v.x > 0 && v.y > 0){
+        if (v.x > 0 && v.y > 0)
+        {
             return Direction.East;
         }
-        else if (v.x > 0 && v.y < 0){
+        else if (v.x > 0 && v.y < 0)
+        {
             return Direction.East;
         }
-        else if (v.x < 0 && v.y > 0){
+        else if (v.x < 0 && v.y > 0)
+        {
             return Direction.West;
         }
-        else if (v.x < 0 && v.y < 0){
+        else if (v.x < 0 && v.y < 0)
+        {
             return Direction.West;
         }
-        else if (v.x > 0){
+        else if (v.x > 0)
+        {
             return Direction.East;
         }
-        else if (v.x < 0){
+        else if (v.x < 0)
+        {
             return Direction.West;
         }
-        else if (v.y > 0){
+        else if (v.y > 0)
+        {
             return Direction.North;
         }
-        else if (v.y < 0){
+        else if (v.y < 0)
+        {
             return Direction.South;
         }
         return Direction.North;
@@ -515,17 +544,19 @@ Debug.Log("Huh1");
         Vector3Int gridPosition = tilemap.WorldToCell(new Vector3(transform.position.x, transform.position.y, transform.position.z));
         TileBase searchedTile = tilemap.GetTile(gridPosition);
 
-        
-        
-        if(searchedTile == null){
+
+
+        if (searchedTile == null)
+        {
             return;
         }
 
 
-        if(!searchedTile.name.Contains("Water") && !searchedTile.name.ToLower().Contains("pit")){
+        if (!searchedTile.name.Contains("Water") && !searchedTile.name.ToLower().Contains("pit"))
+        {
             // Debug.Log("searched tile is " + searchedTile.name + ", Setting last safe position to " + searchedTile.name);    
             Vector3 worldPos = tilemap.CellToWorld(gridPosition);
-            lastSafePosition = new Vector3(worldPos.x + tilemap.cellSize.x/2, worldPos.y + tilemap.cellSize.y/2, original_z);
+            lastSafePosition = new Vector3(worldPos.x + tilemap.cellSize.x / 2, worldPos.y + tilemap.cellSize.y / 2, original_z);
         }
         // if(!_isFalling){
         //     //set the safe position to the center of the tile
@@ -576,22 +607,25 @@ Debug.Log("Huh1");
 
         // Debug.Log("From " + name + " " +  movement.x + " " + movement.y);
         // // if we are falling, do the falling animation lol
-        
+
         //Debug.Log("player is currently " + currentSprite);
-        if (_isFalling){
+        if (_isFalling)
+        {
             // Debug.Log("_isfalling is set to " + _isFalling);
             int lastFrame = Mathf.FloorToInt(_currentFrame);
             _currentFrame = Mathf.Repeat(_currentFrame + Time.deltaTime * _fallFramesPerSecond, 6f);
 
             // we are done falling! set our position accordingly and take some damage
-            if (lastFrame == 5 && Mathf.FloorToInt(_currentFrame) == 0){
+            if (lastFrame == 5 && Mathf.FloorToInt(_currentFrame) == 0)
+            {
                 _isFalling = false;
                 setInvincible(false);
                 transform.position = lastSafePosition;
                 takeDamage();
             }
             // keep playing the animation otherwise
-            else{
+            else
+            {
                 currentSprite.sprite = fallSprites[Mathf.FloorToInt(_currentFrame)];
                 return;
             }
@@ -630,7 +664,7 @@ Debug.Log("Huh1");
             }
         }
         // if idle
-        else if (((movement.x == 0 && movement.y == 0) || _isOnIce) && isPunching==false)
+        else if (((movement.x == 0 && movement.y == 0) || _isOnIce) && isPunching == false)
         {
             _playerState = CurrentPlayerState.IDLE;
 
@@ -673,7 +707,7 @@ Debug.Log("Huh1");
                     currentSprite.sprite = walkSpritesLeft[Mathf.FloorToInt(_currentFrame)];
                     break;
                 default:
-                    break;  
+                    break;
             }
         }
         return;
@@ -742,7 +776,7 @@ Debug.Log("Huh1");
 
         // Lose the game (for now)
         // GameOverUIBehavior.instance.ShowGameOverUI();
-        
+
         return true;
     }
 
@@ -793,7 +827,8 @@ Debug.Log("Huh1");
         //return attackRay.collider && attackRay.distance < _attackThreshold && attackRay.transform.gameObject.tag == "Boat";
     }
 
-    public override void handleDeath(){
+    public override void handleDeath()
+    {
         // GameOverUIBehavior.instance.ShowGameOverUI();
         // Destroy(gameObject);
     }
