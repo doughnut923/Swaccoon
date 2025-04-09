@@ -3642,6 +3642,11 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 823438803721975321, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: pushRadius
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3585363863344477213, guid: 69ddedb4b88fc804cad89471e276c4d8,
         type: 3}
       propertyPath: padding
@@ -22286,6 +22291,11 @@ PrefabInstance:
         type: 3}
       propertyPath: moveSpeed
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 823438803721975321, guid: 69ddedb4b88fc804cad89471e276c4d8,
+        type: 3}
+      propertyPath: pushRadius
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 3585363863344477213, guid: 69ddedb4b88fc804cad89471e276c4d8,
         type: 3}
