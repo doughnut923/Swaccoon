@@ -729,7 +729,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   portraitsByID:
   - id: neutralA
-    sprite: {fileID: 5465019318087835055, guid: 5459087ec2ab64b7a9d4cc1eb92828b8,
+    sprite: {fileID: -7149655254542474397, guid: f9e0cdb420abb354095fa328cff24c61,
       type: 3}
   - id: questionA
     sprite: {fileID: 21300000, guid: e9f5bfeb19ae9394ba21d1ad9ba0cb93, type: 3}
@@ -742,7 +742,7 @@ MonoBehaviour:
   - id: fearA
     sprite: {fileID: 21300000, guid: 6721315fbc252fc4d9b3d7dcdef0b521, type: 3}
   - id: neutralB
-    sprite: {fileID: -5107095409447224594, guid: 8e726fcc17f7a4ef68779cfa37e96399,
+    sprite: {fileID: 5465019318087835055, guid: 5459087ec2ab64b7a9d4cc1eb92828b8,
       type: 3}
   - id: questionB
     sprite: {fileID: 21300000, guid: 67b4257ac46fb6e41871bd6346a1eb6b, type: 3}
@@ -6703,7 +6703,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -7735,6 +7735,8 @@ MonoBehaviour:
   cutSceneItems:
   - CutSceneObject: {fileID: 2013477845}
     cutsceneState: 2
+  - CutSceneObject: {fileID: 309874074}
+    cutsceneState: 1
   - CutSceneObject: {fileID: 203153847}
     cutsceneState: 0
   - CutSceneObject: {fileID: 811325100}
@@ -7749,8 +7751,6 @@ MonoBehaviour:
     cutsceneState: 2
   - CutSceneObject: {fileID: 1431815075}
     cutsceneState: 2
-  - CutSceneObject: {fileID: 309874074}
-    cutsceneState: 1
   - CutSceneObject: {fileID: 58187599}
     cutsceneState: 4
   - CutSceneObject: {fileID: 751676121}
