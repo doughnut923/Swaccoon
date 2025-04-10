@@ -133,9 +133,9 @@ public class LeverBehaviour : MonoBehaviour
         PlayerPrefs.SetInt(gameObject.scene.name + gameObject.name, 1);
 
         leverSoundSource.clip = leverPulledSound;
-        leverSoundSource.volume = 1f;
+        //leverSoundSource.volume = 1f;
         leverSoundSource.Play();
-        leverSoundSource.Stop();
+        //leverSoundSource.Stop();
         //Envoke the Unity Events
         leverPulled.Invoke();
         isLeverPulled = true;

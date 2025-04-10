@@ -36,6 +36,7 @@ namespace SwacoonNarrative
             Debug.Log("in swacoondialoguetrigger");
             isDialogueDone = false;
             PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>()._playerState = CurrentPlayerState.CUTSCENE_PLAYING;
+            PlayerManager.Instance.CurrentCharacter.GetComponent<PlayerBehaviour>().movement = Vector2.zero;
             PlayerManager._playerManagerState = PlayerManagerState.CUTSCENE_PLAYING;
             //Debug.Log("trigger() called");
             //Debug.Log("smothing is already playing "+ SwacoonDialogueSystem.IsPlaying());
